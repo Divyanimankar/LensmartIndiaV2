@@ -1,0 +1,1429 @@
+
+/* =========================================================
+   TOKENS
+========================================================= */
+
+.lmi-payment-page {
+  --teal: #1b6b6a;
+  --teal-dark: #155756;
+  --teal-soft: #edf6f5;
+  --teal-bg: #f1f6f5;
+  --ink: #161616;
+  --text: #3a3a3a;
+  --muted: #777777;
+  --line: #e3e7e6;
+  --red: #e11d2e;
+
+  width: 100%;
+  min-height: 65vh;
+  background: #ffffff;
+  color: var(--text);
+  font-family: "Assistant", sans-serif;
+}
+
+.lmi-payment-page *,
+.lmi-payment-page *::before,
+.lmi-payment-page *::after {
+  box-sizing: border-box;
+}
+
+.lmi-payment-page button,
+.lmi-payment-page input,
+.lmi-payment-page select {
+  font-family: inherit;
+}
+
+.lmi-payment-page :focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.lmi-pay-loading {
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.lmi-pay-section {
+  width: 100%;
+  padding: 26px 0 80px;
+}
+
+.lmi-pay-container {
+  width: min(calc(100% - 64px), 1400px);
+  margin: 0 auto;
+}
+
+.lmi-pay-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 30px;
+  align-items: start;
+}
+
+.lmi-pay-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lmi-pay-side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 20px;
+}
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.lmi-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 26px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.lmi-breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.lmi-breadcrumb a:hover {
+  color: var(--teal);
+}
+
+/* =========================================================
+   TITLE + STEPS
+========================================================= */
+
+.lmi-pay-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.lmi-pay-title h1 {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 37px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.lmi-pay-title p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.lmi-steps {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lmi-steps li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.lmi-steps li span {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 12px;
+  background: #fff;
+}
+
+.lmi-steps li span svg {
+  width: 18px;
+  height: 18px;
+}
+
+.lmi-steps li.active,
+.lmi-steps li.done {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.lmi-steps li.active span,
+.lmi-steps li.done span {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+
+.lmi-steps li.line {
+  width: 50px;
+  height: 1px;
+  background: var(--line);
+}
+
+.lmi-steps li.line.done {
+  background: var(--teal);
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.lmi-pay-card {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.lmi-pay-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.lmi-pay-card-head h2 {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.lmi-edit-link {
+  color: var(--teal);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.lmi-edit-link:hover {
+  text-decoration: underline;
+}
+
+.lmi-secure-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--teal-soft);
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lmi-secure-chip svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ---------- address ---------- */
+
+.lmi-address-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: var(--teal-bg);
+  color: var(--teal);
+}
+
+.lmi-address-box > svg {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  margin-top: 2px;
+}
+
+.lmi-address-box strong {
+  display: block;
+  color: var(--ink);
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.lmi-address-box p {
+  margin: 6px 0 0;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.lmi-address-box .lmi-address-contact {
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+/* =========================================================
+   PAYMENT METHODS
+========================================================= */
+
+.lmi-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lmi-method {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.lmi-method:hover {
+  border-color: #c9d3d2;
+}
+
+.lmi-method.selected {
+  border-color: var(--teal);
+  background: #fafdfc;
+}
+
+.lmi-method-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lmi-method-head input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.lmi-radio {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  border: 1.5px solid #b9c2c1;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.lmi-radio::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--teal);
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.lmi-method-head input:checked + .lmi-radio {
+  border-color: var(--teal);
+}
+
+.lmi-method-head input:checked + .lmi-radio::after {
+  transform: scale(1);
+}
+
+.lmi-method-head input:focus-visible + .lmi-radio {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.lmi-method-icon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--teal-soft);
+  color: var(--teal);
+}
+
+.lmi-method-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.lmi-method-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.lmi-method-text strong {
+  display: block;
+  color: var(--ink);
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.lmi-method-text small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.lmi-method-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--teal-soft);
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.lmi-method-body {
+  padding: 4px 20px 22px;
+}
+
+.lmi-method-body .lmi-field:last-child {
+  margin-bottom: 0;
+}
+
+.lmi-cod-note {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: var(--teal-bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.lmi-pay-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 20px;
+}
+
+/* note shown for card / net banking (details are entered in the gateway window) */
+.lmi-gateway-note {
+  margin: 0;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: var(--teal-bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* ---------- card info panel ---------- */
+
+.lmi-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.lmi-card-chips span {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lmi-card-points {
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lmi-card-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.lmi-card-points svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 1px;
+  color: var(--teal);
+}
+
+.lmi-card-info .lmi-field-hint {
+  margin-top: 0;
+}
+
+/* ---------- net banking tiles ---------- */
+
+.lmi-bank-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.lmi-bank {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lmi-bank:hover {
+  border-color: #b9c9c8;
+}
+
+.lmi-bank.active {
+  border-color: var(--teal);
+  background: var(--teal-soft);
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.1);
+}
+
+.lmi-bank-mark {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--teal-soft);
+  color: var(--teal);
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.lmi-bank.active .lmi-bank-mark {
+  background: #fff;
+}
+
+.lmi-bank-name {
+  min-width: 0;
+  padding-right: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* payment error banner (above the pay button) */
+.lmi-pay-error {
+  margin-top: 20px;
+  padding: 12px 14px;
+  border: 1px solid rgba(225, 29, 46, 0.25);
+  border-radius: 10px;
+  background: #fff5f6;
+  color: var(--red);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   UPI APPS (Google Pay / PhonePe / Paytm / Other)
+========================================================= */
+
+.lmi-upi-label {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.lmi-upi-apps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.lmi-upi-app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 96px;
+  padding: 16px 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lmi-upi-app:hover {
+  border-color: #b9c9c8;
+}
+
+.lmi-upi-app.active {
+  border-color: var(--teal);
+  background: var(--teal-soft);
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.1);
+}
+
+.lmi-upi-mark {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: #fff;
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* official logo image: big, no box (like Titan Eye+) */
+.lmi-upi-mark.lmi-upi-mark-logo {
+  width: 52px;
+  height: 40px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.lmi-upi-mark-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* brand icon from react-icons: wide, no box */
+.lmi-upi-mark.lmi-upi-mark-brand {
+  width: 64px;
+  height: 40px;
+  background: transparent;
+  border-radius: 0;
+}
+
+.lmi-upi-mark-brand svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* generic "other UPI" icon: plain dark outline icon */
+.lmi-upi-mark.lmi-upi-mark-other {
+  width: 52px;
+  height: 40px;
+  background: transparent;
+  border-radius: 0;
+  color: var(--ink);
+}
+
+.lmi-upi-mark-other svg {
+  width: 34px;
+  height: 34px;
+}
+
+.lmi-upi-name {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* spacing fix: hint / error text under inputs */
+.lmi-payment-page .lmi-field .lmi-field-hint {
+  margin: 10px 0 0;
+}
+
+.lmi-payment-page .lmi-field .lmi-field-error {
+  margin: 10px 0 0;
+}
+
+.lmi-upi-tick {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+}
+
+.lmi-upi-tick svg {
+  width: 11px;
+  height: 11px;
+}
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
+.lmi-field {
+  min-width: 0;
+  margin-bottom: 20px;
+}
+
+.lmi-field label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.lmi-field input,
+.lmi-field select {
+  width: 100%;
+  min-width: 0;
+  height: 54px;
+  padding: 0 18px;
+  border: 1px solid #c9cecd;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lmi-field input::placeholder {
+  color: #9aa1a0;
+}
+
+.lmi-field input:focus,
+.lmi-field select:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.12);
+}
+
+.lmi-field.has-error input,
+.lmi-field.has-error select {
+  border-color: var(--red);
+}
+
+.lmi-field.has-error input:focus,
+.lmi-field.has-error select:focus {
+  box-shadow: 0 0 0 3px rgba(225, 29, 46, 0.1);
+}
+
+.lmi-field-error {
+  margin: 8px 0 0;
+  color: var(--red);
+  font-size: 12.5px;
+}
+
+.lmi-field-hint {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.lmi-select {
+  position: relative;
+}
+
+.lmi-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 46px;
+  color: #9aa1a0;
+  cursor: pointer;
+}
+
+.lmi-select select.filled {
+  color: var(--ink);
+}
+
+.lmi-select select option {
+  color: var(--ink);
+}
+
+.lmi-select svg {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+/* =========================================================
+   TRUST BOX
+========================================================= */
+
+.lmi-trust-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 26px;
+  border-radius: 14px;
+  background: var(--teal-bg);
+  color: var(--teal);
+}
+
+.lmi-trust-box > svg {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+}
+
+.lmi-trust-box strong {
+  display: block;
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.lmi-trust-box p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   ORDER SUMMARY
+========================================================= */
+
+.lmi-summary {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.lmi-summary h2 {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.lmi-sum-items {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.lmi-sum-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.lmi-sum-thumb {
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f7f8f8;
+  overflow: hidden;
+}
+
+.lmi-sum-thumb img {
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  display: block;
+}
+
+.lmi-sum-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.lmi-sum-info h3 {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.lmi-sum-meta {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.lmi-sum-boxes {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.lmi-sum-amount {
+  color: var(--ink);
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.lmi-summary-line {
+  height: 1px;
+  margin: 24px 0;
+  background: var(--line);
+}
+
+.lmi-sum-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.lmi-sum-row:last-of-type {
+  margin-bottom: 0;
+}
+
+.lmi-sum-row strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.lmi-sum-row.green,
+.lmi-sum-row.green strong {
+  color: var(--teal);
+}
+
+.lmi-sum-row.bold,
+.lmi-sum-row.bold strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.lmi-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.lmi-total-row span {
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.lmi-total-row strong {
+  font-family: "Jost", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.lmi-save-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: var(--teal-bg);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.lmi-save-box b {
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.lmi-save-box svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  color: var(--teal);
+}
+
+.lmi-tax-text {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ---------- pay button ---------- */
+
+.lmi-pay-button {
+  width: 100%;
+  height: 50px;
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--teal);
+  color: #fff;
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.lmi-pay-button svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.lmi-pay-button:hover:not(:disabled) {
+  background: var(--teal-dark);
+}
+
+.lmi-pay-button:hover:not(:disabled) svg {
+  transform: translateX(3px);
+}
+
+.lmi-pay-button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.lmi-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: lmi-spin 0.7s linear infinite;
+}
+
+@keyframes lmi-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lmi-secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.lmi-secure svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- back ---------- */
+
+.lmi-back {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--teal);
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.lmi-back svg {
+  width: 20px;
+  height: 20px;
+}
+
+.lmi-back:hover {
+  background: var(--teal);
+  color: #fff;
+}
+
+/* =========================================================
+   LARGE LAPTOP
+========================================================= */
+
+@media (max-width: 1280px) {
+  .lmi-pay-layout {
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 24px;
+  }
+
+  .lmi-pay-card,
+  .lmi-summary {
+    padding: 26px;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  .lmi-pay-container {
+    width: calc(100% - 40px);
+  }
+
+  .lmi-pay-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lmi-pay-side {
+    position: static;
+  }
+
+  .lmi-pay-title h1 {
+    font-size: 31px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .lmi-pay-section {
+    padding: 18px 0 60px;
+  }
+
+  .lmi-pay-container {
+    width: calc(100% - 28px);
+  }
+
+  .lmi-breadcrumb {
+    margin-bottom: 18px;
+  }
+
+  .lmi-pay-top {
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+
+  .lmi-pay-title h1 {
+    font-size: 27px;
+  }
+
+  .lmi-pay-title p {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+
+  .lmi-steps {
+    width: 100%;
+    margin-top: 18px;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .lmi-steps li {
+    font-size: 12px;
+    gap: 7px;
+  }
+
+  .lmi-steps li span {
+    width: 30px;
+    height: 30px;
+  }
+
+  .lmi-steps li.line {
+    flex: 1;
+    width: auto;
+    min-width: 12px;
+  }
+
+  .lmi-pay-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .lmi-pay-card-head h2 {
+    font-size: 22px;
+  }
+
+  .lmi-address-box {
+    padding: 16px;
+  }
+
+  .lmi-address-box strong {
+    font-size: 16px;
+  }
+
+  .lmi-address-box p {
+    font-size: 13px;
+  }
+
+  .lmi-method-head {
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .lmi-method-icon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .lmi-method-text strong {
+    font-size: 15px;
+  }
+
+  .lmi-method-text small {
+    font-size: 12px;
+  }
+
+  .lmi-method-badge {
+    display: none;
+  }
+
+  .lmi-method-body {
+    padding: 2px 14px 18px;
+  }
+
+  /* UPI apps: 2 x 2 on mobile */
+  .lmi-upi-apps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .lmi-upi-app {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .lmi-upi-app {
+    min-height: 0;
+  }
+
+  .lmi-upi-mark {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+
+  .lmi-upi-mark.lmi-upi-mark-logo,
+  .lmi-upi-mark.lmi-upi-mark-other {
+    width: 40px;
+    height: 32px;
+    flex: 0 0 40px;
+    border-radius: 0;
+  }
+
+  .lmi-upi-mark.lmi-upi-mark-brand {
+    width: 48px;
+    height: 32px;
+    flex: 0 0 48px;
+    border-radius: 0;
+  }
+
+  .lmi-upi-name {
+    text-align: left;
+    font-size: 13px;
+  }
+
+  .lmi-upi-tick {
+    top: 6px;
+    right: 6px;
+  }
+
+  .lmi-bank-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .lmi-bank {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .lmi-bank-mark {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+    font-size: 11px;
+  }
+
+  .lmi-bank-name {
+    font-size: 12px;
+  }
+
+  .lmi-field input,
+  .lmi-field select {
+    height: 52px;
+    font-size: 14px;
+  }
+
+  .lmi-field label {
+    font-size: 14px;
+  }
+
+  .lmi-trust-box {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .lmi-trust-box strong {
+    font-size: 15px;
+  }
+
+  .lmi-trust-box p {
+    font-size: 12.5px;
+  }
+
+  .lmi-summary {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .lmi-summary h2 {
+    font-size: 22px;
+  }
+
+  .lmi-sum-thumb {
+    width: 64px;
+    height: 64px;
+    flex-basis: 64px;
+  }
+
+  .lmi-sum-info h3 {
+    font-size: 16px;
+  }
+
+  .lmi-sum-row {
+    font-size: 13px;
+  }
+
+  .lmi-total-row strong {
+    font-size: 28px;
+  }
+
+  .lmi-pay-button {
+    height: 56px;
+    font-size: 15px;
+  }
+
+  .lmi-back {
+    height: 54px;
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .lmi-pay-container {
+    width: calc(100% - 20px);
+  }
+
+  .lmi-pay-title h1 {
+    font-size: 23px;
+  }
+
+  .lmi-pay-grid {
+    column-gap: 12px;
+  }
+
+  .lmi-upi-app {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .lmi-upi-name {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .lmi-payment-page * {
+    transition: none !important;
+  }
+
+  .lmi-spinner {
+    animation-duration: 1.5s;
+  }
+}

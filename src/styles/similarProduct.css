@@ -1,0 +1,315 @@
+/* =========================================
+   PRODUCT CAROUSEL
+   Teal #1b6b6a / #145958, borders #d7dfde, text #152625
+========================================= */
+
+.pc {
+  --pc-per-view: 4;
+  --pc-gap: 20px;
+
+  padding: 55px 0 70px;
+  border-top: 1px solid #edf0ef;
+  background: #ffffff;
+  color: #152625;
+  font-family: "Assistant", sans-serif;
+}
+
+.pc *,
+.pc *::before,
+.pc *::after {
+  box-sizing: border-box;
+}
+
+.pc-inner {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ---------- header ---------- */
+
+.pc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-bottom: 26px;
+}
+
+.pc-title {
+  margin: 0;
+  color: #111111;
+  font-family: "Jost", sans-serif;
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.pc-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.pc-viewall {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  color: #1b6b6a;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.pc-viewall:hover {
+  color: #145958;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pc-viewall span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.pc-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.pc-arrow {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1.5px solid #1b6b6a;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #1b6b6a;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.pc-arrow svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pc-arrow:hover:not(:disabled) {
+  background: #1b6b6a;
+  color: #ffffff;
+}
+
+.pc-arrow:disabled {
+  border-color: #d7dfde;
+  color: #b3bdbc;
+  cursor: not-allowed;
+}
+
+/* ---------- scrolling row ---------- */
+
+.pc-viewport {
+  /* room for card shadows / focus rings that would be clipped */
+  margin: -8px -6px -12px;
+  padding: 8px 6px 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 6px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pc-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.pc-track {
+  display: flex;
+  gap: var(--pc-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pc-slide {
+  display: flex;
+  min-width: 0;
+  flex: 0 0
+    calc(
+      (100% - (var(--pc-per-view) - 1) * var(--pc-gap)) / var(--pc-per-view)
+    );
+  scroll-snap-align: start;
+}
+
+.pc-slide > * {
+  width: 100%;
+}
+
+/* ---------- position: counter + dots ---------- */
+
+.pc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 22px;
+}
+
+.pc-count {
+  margin: 0;
+  color: #6e7b7a;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.pc-dots {
+  display: flex;
+  align-items: center;
+}
+
+/* 24px tap area, 8px dot */
+.pc-dot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pc-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #c4cecd;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.25s ease,
+    background 0.2s ease;
+}
+
+.pc-dot:hover::before {
+  background: #8fa3a1;
+}
+
+.pc-dot.is-active::before {
+  width: 22px;
+  background: #1b6b6a;
+}
+
+/* ---------- keyboard focus ---------- */
+
+.pc-viewport:focus-visible,
+.pc-arrow:focus-visible,
+.pc-dot:focus-visible,
+.pc-viewall:focus-visible {
+  outline: 3px solid #1b6b6a;
+  outline-offset: 2px;
+}
+
+.pc-viewport:focus-visible {
+  border-radius: 14px;
+  outline-offset: -3px;
+}
+
+/* ---------- screen-reader only ---------- */
+
+.pc-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* =========================================
+   RESPONSIVE
+   (a fractional number shows the edge of the
+   next card, so people know the row scrolls)
+========================================= */
+
+@media (max-width: 1100px) {
+  .pc {
+    --pc-per-view: 3;
+    --pc-gap: 16px;
+  }
+}
+
+@media (max-width: 820px) {
+  .pc {
+    --pc-per-view: 2.3;
+  }
+}
+
+@media (max-width: 600px) {
+  .pc {
+    --pc-per-view: 1.6;
+    --pc-gap: 12px;
+
+    padding: 40px 0 50px;
+  }
+
+  .pc-inner {
+    width: min(100% - 28px, 1280px);
+  }
+
+  .pc-header {
+    margin-bottom: 18px;
+  }
+
+  .pc-actions {
+    gap: 12px;
+  }
+
+  .pc-viewall {
+    font-size: 13px;
+  }
+
+  .pc-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .pc-footer {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .pc {
+    --pc-per-view: 1.4;
+  }
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-arrow,
+  .pc-dot::before {
+    transition: none;
+  }
+}

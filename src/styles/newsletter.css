@@ -1,0 +1,465 @@
+
+
+/* =====================================================
+   NEWSLETTER SECTION
+===================================================== */
+
+.newsLetterHro {
+  position: relative;
+
+  width: 100%;
+  min-height: 390px;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #f5f5f5;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.newsLetterContent {
+  position: relative;
+
+  width: 100%;
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 65px 30px;
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.newsLetterContent h2 {
+  margin: 0;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 34px;
+  font-weight: 600;
+
+  line-height: 1.25;
+  letter-spacing: 0.3px;
+
+  color: #1b1b1b;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.newsLetterContent > p:not(.newsletterMessage) {
+  width: 100%;
+  max-width: 650px;
+
+  margin: 14px auto 0;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 1.6;
+
+  color: #626262;
+}
+
+
+/* =====================================================
+   NEWSLETTER FORM
+===================================================== */
+
+.newsLetterForm {
+  width: 100%;
+  max-width: 590px;
+
+  height: 58px;
+
+  margin: 30px auto 0;
+
+  display: flex;
+  align-items: stretch;
+
+  overflow: hidden;
+
+  border: 1px solid #dedede;
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 7px 22px rgba(0, 0, 0, 0.06);
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   EMAIL BOX HOVER EFFECT
+===================================================== */
+
+.newsLetterForm {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Mouse hover */
+.newsLetterForm:hover {
+  border-color: #1b6b6a;
+
+  box-shadow:
+    0 8px 25px rgba(27, 107, 106, 0.14);
+
+  transform: translateY(-2px);
+}
+
+/* Input par click / typing */
+.newsLetterForm:focus-within {
+  border-color: #1b6b6a;
+
+  box-shadow:
+    0 8px 28px rgba(27, 107, 106, 0.18);
+
+  transform: translateY(-2px);
+}
+
+/* Input background smooth */
+.newsLetterForm input {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.newsLetterForm:hover input,
+.newsLetterForm:focus-within input {
+  background-color: #ffffff;
+}
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.newsLetterForm input {
+  flex: 1;
+
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  padding: 0 22px;
+
+  border: none;
+  outline: none;
+
+  background: #ffffff;
+
+  color: #252525;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  box-sizing: border-box;
+}
+
+
+.newsLetterForm input::placeholder {
+  color: #9a9a9a;
+
+  opacity: 1;
+}
+
+
+.newsLetterForm input:focus {
+  outline: none;
+}
+
+
+/* =====================================================
+   SUBSCRIBE BUTTON
+===================================================== */
+
+.newsLetterForm button {
+  flex: 0 0 145px;
+
+  width: 145px;
+  height: 100%;
+
+  margin: 0;
+  padding: 0 20px;
+
+  border: none;
+  outline: none;
+
+  background: #1b6b6a;
+
+  color: #ffffff;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.newsLetterForm button:hover {
+  background: #155958;
+}
+
+
+.newsLetterForm button:active {
+  transform: scale(0.98);
+}
+
+
+/* =====================================================
+   SUCCESS / ERROR MESSAGE
+===================================================== */
+
+.newsletterMessage {
+  margin: 12px auto 0 !important;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 13px !important;
+  font-weight: 500;
+
+  line-height: 1.4 !important;
+}
+
+
+.newsletterMessage.success {
+  color: #1b6b6a !important;
+}
+
+
+.newsletterMessage.error {
+  color: #c64242 !important;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .newsLetterHro {
+    min-height: 360px;
+  }
+
+
+  .newsLetterContent {
+    max-width: 760px;
+
+    padding: 55px 30px;
+  }
+
+
+  .newsLetterContent h2 {
+    font-size: 31px;
+  }
+
+
+  .newsLetterContent > p:not(.newsletterMessage) {
+    max-width: 600px;
+
+    font-size: 15px;
+  }
+
+
+  .newsLetterForm {
+    max-width: 550px;
+
+    height: 55px;
+
+    margin-top: 27px;
+  }
+
+
+  .newsLetterForm button {
+    flex-basis: 135px;
+
+    width: 135px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .newsLetterHro {
+    min-height: auto;
+  }
+
+
+  .newsLetterContent {
+    padding: 45px 20px;
+  }
+
+
+  /* HEADING */
+
+  .newsLetterContent h2 {
+    font-size: 26px;
+
+    line-height: 1.25;
+  }
+
+
+  /* DESCRIPTION */
+
+  .newsLetterContent > p:not(.newsletterMessage) {
+    max-width: 420px;
+
+    margin-top: 12px;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+  }
+
+
+  /* FORM */
+
+  .newsLetterForm {
+    width: 100%;
+    max-width: 430px;
+
+    height: auto;
+
+    margin-top: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    overflow: visible;
+
+    border: none;
+    border-radius: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+  }
+
+
+  /* INPUT */
+
+  .newsLetterForm input {
+    width: 100%;
+    height: 50px;
+
+    flex: none;
+
+    padding: 0 17px;
+
+    border: 1px solid #dedede;
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 5px 15px rgba(0, 0, 0, 0.04);
+  }
+
+
+  /* BUTTON */
+
+  .newsLetterForm button {
+    width: 100%;
+    height: 50px;
+
+    flex: none;
+
+    border-radius: 5px;
+
+    font-size: 15px;
+  }
+
+
+  .newsletterMessage {
+    margin-top: 10px !important;
+
+    font-size: 12px !important;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+  .newsLetterContent {
+    padding: 40px 16px;
+  }
+
+
+  .newsLetterContent h2 {
+    font-size: 23px;
+  }
+
+
+  .newsLetterContent > p:not(.newsletterMessage) {
+    font-size: 13px;
+  }
+
+
+  .newsLetterForm {
+    margin-top: 22px;
+  }
+
+
+  .newsLetterForm input,
+  .newsLetterForm button {
+    height: 47px;
+  }
+
+
+  .newsLetterForm input {
+    font-size: 13px;
+  }
+
+
+  .newsLetterForm button {
+    font-size: 14px;
+  }
+}

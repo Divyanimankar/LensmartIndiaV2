@@ -1,0 +1,275 @@
+/* ==========================================================================
+   LENSMART INDIA — INTERACTION STATE LAYER
+   --------------------------------------------------------------------------
+   One place that makes every control behave the same way:
+
+     default · hover · active(pressed) · focus-visible · loading · success ·
+     error · disabled
+
+   Rules here either (a) use :where() so they only fill gaps and never beat a
+   component's own styling, or (b) target a specific, REAL state that exists
+   in the app (e.g. .has-error, aria-invalid, .newsletter-message.success,
+   .is-closing). No state is invented: nothing animates unless the component
+   itself can be in that state.
+
+   Press feedback uses the individual `scale` property, so it composes with
+   any `transform` a component already uses (centering, rotation) instead of
+   replacing it.
+
+   Anything that moves lives in (prefers-reduced-motion: no-preference).
+   Colour/opacity state changes (hover tint, disabled, focus ring) stay on for
+   everyone, because they carry meaning.
+========================================================================== */
+
+/* ---------- 1 · BASELINE FOR EVERY CONTROL (zero specificity) ---------- */
+:where(a, button, [role="button"], summary, label, select, input) {
+  -webkit-tap-highlight-color: transparent;
+}
+:where(button, [role="button"], summary, select, [type="submit"], [type="checkbox"], [type="radio"], [type="range"]) {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+:where(button, [role="button"], [type="submit"]):where(:disabled, [aria-disabled="true"]) {
+  cursor: not-allowed;
+}
+:where(button, [role="button"], [type="submit"])[aria-busy="true"] {
+  cursor: progress;
+}
+
+/* ---------- 2 · DISABLED + BUSY (visible for everyone) ---------- */
+html body :is(button, [type="submit"], [role="button"]):is(:disabled, [aria-disabled="true"]) {
+  opacity: 0.55;
+  box-shadow: none;
+}
+/* the newsletter button is only ever disabled while its request is in flight */
+html body .newsletter-button:disabled {
+  opacity: 0.75;
+  cursor: progress;
+}
+html body :is(input, select, textarea):disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--lm-sand);
+}
+
+/* ---------- 3 · KEYBOARD FOCUS ON CUSTOM CONTROLS ---------- */
+/* visually-hidden native inputs: ring the visible box next to them */
+html body :is(.clp-same-check, .pf-check, .lmi-terms, .lmi-check) input:focus-visible + :is(span, i, .clp-same-box, .lmi-terms-box) {
+  outline: 2px solid var(--lm-teal);
+  outline-offset: 2px;
+}
+html body .clp-switch input:focus-visible + span {
+  outline: 2px solid var(--lm-teal);
+  outline-offset: 3px;
+}
+
+/* ---------- 4 · PRODUCT / CONTENT CARDS: keyboard + touch parity ---------- */
+/* hover lift is mirrored for keyboard users and for the moment of a tap */
+html body :is(.lm-card, .bestseller-card, .shop-category-card):focus-within {
+  border-color: var(--lm-line-strong);
+}
+@media (prefers-reduced-motion: no-preference) {
+  html body :is(.bestseller-card, .shop-category-card):active {
+    scale: 0.992;
+  }
+  html body :is(.bestseller-card, .shop-category-card) {
+    transition-property: transform, box-shadow, border-color, scale;
+  }
+}
+
+/* ---------- 5 · APPEAR PRIMITIVES (one-shot, fail-open) ---------- */
+@keyframes lm-drop-in {
+  from { opacity: 0; translate: 0 calc(var(--lm-dist-sm) * -1); }
+  to   { opacity: 1; translate: 0 0; }
+}
+@keyframes lm-rise-in {
+  from { opacity: 0; translate: 0 var(--lm-dist-sm); }
+  to   { opacity: 1; translate: 0 0; }
+}
+@keyframes lm-pop-in {
+  from { opacity: 0; scale: 0.92; }
+  to   { opacity: 1; scale: 1; }
+}
+@keyframes lm-shake {
+  0%, 100% { translate: 0 0; }
+  20% { translate: -5px 0; }
+  40% { translate: 5px 0; }
+  60% { translate: -3px 0; }
+  80% { translate: 2px 0; }
+}
+@keyframes lm-card-in {
+  from { opacity: 0; translate: 0 var(--lm-dist-md); }
+  to   { opacity: 1; translate: 0 0; }
+}
+@keyframes lm-fade-out {
+  to { opacity: 0; }
+}
+@keyframes lm-drawer-out {
+  to { transform: translate3d(100%, 0, 0); }
+}
+@keyframes lm-modal-out {
+  to { opacity: 0; transform: translate3d(0, var(--lm-dist-md), 0) scale(0.97); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* results: cards enter with a short, capped stagger whenever they are
+     (re)mounted — first load, pagination, sort, filter. `backwards` fill, so a
+     card never keeps a pinned transform and hover still works. */
+  html body .lm-card {
+    animation: lm-card-in var(--lm-dur-4) var(--lm-ease-out) backwards;
+    animation-delay: calc(var(--lm-n, 0) * var(--lm-stagger-fast));
+  }
+  html body .lm-card:nth-child(2) { --lm-n: 1; }
+  html body .lm-card:nth-child(3) { --lm-n: 2; }
+  html body .lm-card:nth-child(4) { --lm-n: 3; }
+  html body .lm-card:nth-child(5) { --lm-n: 4; }
+  html body .lm-card:nth-child(6) { --lm-n: 5; }
+  html body .lm-card:nth-child(7) { --lm-n: 6; }
+  html body .lm-card:nth-child(8) { --lm-n: 7; }
+
+  /* empty / loading result states */
+  html body :is(.all-products-empty, .product-not-found, .lmi-cart-loading, .lmi-co-loading, .lmi-pay-loading) {
+    animation: lm-rise-in var(--lm-dur-4) var(--lm-ease-out) backwards;
+  }
+
+  /* search: the mobile search bar drops in when it is opened */
+  html body .mobile-header-search-wrapper {
+    animation: lm-drop-in var(--lm-dur-3) var(--lm-ease-out) backwards;
+  }
+
+  /* accordions that hide their panel with [hidden] */
+  html body .pd-panel:not([hidden]) {
+    animation: lm-rise-in var(--lm-dur-3) var(--lm-ease-out) backwards;
+  }
+
+  /* ---------- 6 · ERROR + SUCCESS FEEDBACK ---------- */
+  /* error: the field shakes once when it becomes invalid; the message drops in */
+  html body :is(.lmi-field.has-error, .ad-field.has-error) :is(input, select),
+  html body :is(input, select, textarea)[aria-invalid="true"] {
+    animation: lm-shake 360ms var(--lm-ease-out);
+  }
+  html body :is(.lmi-field-error, .lmi-terms-error, .lmi-pay-error, .discount-error, .lmi-coupon-msg, .newsletter-message.error) {
+    animation: lm-drop-in var(--lm-dur-2) var(--lm-ease-out) backwards;
+  }
+  /* success */
+  html body :is(.newsletter-message.success, .discount-success, .successIcon) {
+    animation: lm-pop-in var(--lm-dur-3) var(--lm-ease-spring) backwards;
+  }
+
+  /* ---------- 7 · CART: header response to a REAL add ---------- */
+  /* data-bumped is only set after the cart count actually went up */
+  html body :is(.navbar-action-icon, .mobile-header-icon)[data-bumped] svg {
+    animation: lm-pop 520ms var(--lm-ease-spring);
+  }
+  html body .cart-badge {
+    animation: lm-pop 520ms var(--lm-ease-spring) both;
+  }
+
+  /* ---------- 8 · EXIT ANIMATIONS (overlays that unmount) ---------- */
+  html body .clp-cart-overlay.is-closing,
+  html body .discount-overlay.is-closing {
+    animation: lm-fade-out var(--lm-dur-3) var(--lm-ease-soft) forwards;
+  }
+  html body .clp-cart-drawer.is-closing {
+    animation: lm-drawer-out var(--lm-dur-3) var(--lm-ease-in-out) forwards;
+  }
+  html body .discount-wrap.is-closing {
+    animation: lm-modal-out var(--lm-dur-3) var(--lm-ease-in-out) forwards;
+  }
+  html body .clp-cart-drawer {
+    animation-duration: var(--lm-dur-3);
+    animation-timing-function: var(--lm-ease-out);
+  }
+  html body .clp-cart-overlay {
+    animation-duration: var(--lm-dur-3);
+  }
+}
+
+/* ---------- 9 · TOGGLED OVERLAYS: one shared timing ---------- */
+/* these stay mounted and animate via a .show/.open class, so they already
+   have both an enter and an exit; only their timing is unified here. */
+html body :is(.eyedetail-overlay, .sundetail-overlay, .pf-overlay) {
+  transition-duration: var(--lm-dur-3);
+  transition-timing-function: var(--lm-ease-soft);
+}
+html body :is(.eyedetail-lens-panel, .sundetail-lens-panel, .eyedetail-modal, .sundetail-modal, .pf-drawer) {
+  transition-duration: var(--lm-dur-3);
+  transition-timing-function: var(--lm-ease-in-out);
+}
+html body :is(.eyedetail-toast, .sundetail-toast, .clp-toast, .sale-copy-toast) {
+  transition-duration: var(--lm-dur-3);
+  transition-timing-function: var(--lm-ease-out);
+}
+
+/* ---------- 10 · ROUTE LOADING SCREEN ---------- */
+/* Shown only while a route is genuinely loading. It no longer covers the
+   header, appears after a short grace period (fast loads never flash it),
+   never blocks clicks, and uses ONE indicator instead of three loops. */
+html body .lens-loading-screen {
+  position: relative;
+  inset: auto;
+  z-index: 0;
+  min-height: 62vh;
+  background: var(--lm-ivory);
+  pointer-events: none;
+}
+html body .lens-loader-content {
+  animation: lm-fade-in var(--lm-dur-3) 160ms var(--lm-ease-out) both;
+}
+html body .lens-loader-logo { animation: none; }
+html body .lens-loader-spinner { display: none; }
+html body .lens-loader-progress {
+  width: 120px;
+  height: 2px;
+  background: var(--lm-line);
+}
+html body .lens-loader-progress span {
+  background: var(--lm-teal);
+  animation-duration: var(--lm-dur-loop);
+}
+@keyframes lm-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body .lens-loader-content { animation: none; }
+  html body .lens-loader-progress span { animation: none; width: 100%; }
+}
+
+/* ---------- 11 · FOOTER + TEXT LINKS: pressed ---------- */
+html body .footer-links a:active,
+html body .footer-policy-links a:active {
+  opacity: 0.7;
+}
+
+/* ---------- 12 · TOUCH: no hover-only affordances ---------- */
+/* pointer-less devices get the hover state on press, never on a sticky hover */
+@media (hover: none) {
+  html body :is(.lm-card, .bestseller-card, .shop-category-card):hover {
+    transform: none;
+  }
+  html body :is(.lm-card, .bestseller-card, .shop-category-card):active {
+    box-shadow: var(--lm-shadow-2);
+  }
+}
+
+/* ---------- 13 · TOUCH TARGETS ---------- */
+/* Carousel dots are visually tiny. Their hit area is enlarged (>= 24px) with a
+   transparent pseudo-element, so the artwork stays delicate but a thumb or a
+   pointer can still hit it. */
+html body :is(.bestseller-dot, .pc-dot, .hero-dot, .updatedbestseller-dot, .exclusive-deals-dots button, .perfect-shape-dots button, .latest-blog-dots button, .brand-dot) {
+  position: relative;
+}
+html body :is(.bestseller-dot, .pc-dot, .updatedbestseller-dot, .exclusive-deals-dots button, .perfect-shape-dots button, .latest-blog-dots button, .brand-dot)::after,
+html body .hero-dot::after {
+  content: "";
+  position: absolute;
+  inset: -10px -6px;
+}
+html body .hero-dot::after { inset: -4px -2px; }
+html body .eyedetail-size-guide,
+html body .sundetail-size-guide {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+}

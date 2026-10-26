@@ -1,0 +1,1291 @@
+/* Fonts used throughout the product card */
+
+/* ===== Product card (card2 look + eyeglasses hover motion) =====
+
+   One stylesheet for every product type: sunglasses, eyeglasses,
+
+   contact lenses and contact lens solutions.
+
+   Colour variables are scoped to .lm-card so they don't leak into the rest of the site. */
+
+
+
+.lm-card {
+
+  --teal: #14756f;
+
+  --teal-dark: #0f5c57;
+
+  --teal-soft: #e8f4f2;
+
+  --ink: #222a28;
+
+  --muted: #66726f;
+
+  --sale: #c4161c;
+
+  --green: #13783f;
+
+  --panel: #f6f8f8;
+
+  --line: #e6eae9;
+
+  --star: #e8a200;
+
+
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  padding: 12px;
+
+  background: #fff;
+
+  color: var(--ink);
+
+  border: 1px solid var(--line);
+
+  border-radius: 20px;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+
+  height: 100%;
+
+  min-width: 0;
+
+  font-family: "Assistant", sans-serif;
+
+  line-height: 1.4;
+
+  /* lets the card restyle itself when it sits in a narrow (2-column mobile) slot */
+
+  container-type: inline-size;
+
+  container-name: lmcard;
+
+  transition:
+
+    transform 0.3s ease,
+
+    box-shadow 0.3s ease,
+
+    border-color 0.3s ease;
+
+  -webkit-tap-highlight-color: transparent;
+
+}
+
+.lm-card *,
+
+.lm-card *::before,
+
+.lm-card *::after {
+
+  box-sizing: border-box;
+
+}
+
+/* Assistant is the default font for every element and text inside the card */
+.lm-card,
+.lm-card *,
+.lm-card *::before,
+.lm-card *::after {
+  font-family: "Assistant", sans-serif;
+}
+
+/* Jost for product name, pricing, discount and View Product CTA */
+.lm-card .lm-title,
+.lm-card .lm-title a,
+.lm-card .lm-now,
+.lm-card .lm-now--request,
+.lm-card .lm-mrp,
+.lm-card .lm-off,
+.lm-card .lm-off-body,
+.lm-card .lm-off-num,
+.lm-card .lm-off-unit,
+.lm-card .lm-off-unit i,
+.lm-card .lm-cta {
+  font-family: "Jost", sans-serif;
+}
+
+/* ---- Hover motion (same feel as the eyeglasses cards) ---- */
+
+@media (hover: hover) {
+
+  .lm-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(20, 117, 111, 0.45);
+
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.11);
+
+  }
+
+  .lm-card:hover .lm-img {
+
+    transform: scale(1.04);
+
+  }
+
+  /* .lm-card:hover .lm-title a {
+
+    color: var(--teal);
+
+  } */
+
+}
+
+
+
+/* ---- Image frame: 4:3 ---- */
+
+.lm-media {
+
+  position: relative;
+
+  aspect-ratio: 4/3;
+
+  display: grid;
+
+  place-items: center;
+
+  background: var(--panel);
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  margin-bottom: 4px;
+
+}
+
+.lm-img {
+
+  position: relative;
+
+  width: 90%;
+
+  height: 90%;
+
+  transition: transform 0.35s ease;
+
+}
+
+.lm-img img {
+
+  object-fit: contain;
+
+  mix-blend-mode: multiply;
+
+  animation: lm-fade 0.25s ease;
+
+}
+
+@keyframes lm-fade {
+
+  from {
+
+    opacity: 0;
+
+  }
+
+  to {
+
+    opacity: 1;
+
+  }
+
+}
+
+
+
+/* ---- Discount tag: wraps the card's top-left edge ----
+
+   Lives directly inside .lm-card (not inside .lm-media) so it can overhang the border. */
+
+.lm-off {
+
+  position: absolute;
+
+  z-index: 3;
+
+  top: 20px;
+
+  left: -0.6em;
+
+  font-size: 10px; /* scales the whole tag */
+
+  pointer-events: none;
+
+  filter: drop-shadow(0 2px 3px rgba(120, 0, 0, 0.3));
+
+  animation: lm-tag-in 0.6s ease-out both;
+
+}
+
+/* dark fold under the left end: looks wrapped around the card edge */
+
+.lm-off::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  top: 100%;
+
+  width: 0.6em;
+
+  height: 0.5em;
+
+  background: #7a070b;
+
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+
+}
+
+.lm-off-body {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.2em;
+
+  height: 3em;
+
+  padding: 0 0.95em 0 1em;
+
+  background: linear-gradient(135deg, #e8191f 0%, #c8090f 60%, #a90a10 100%);
+
+  border-radius: 0.3em 1.5em 1.5em 0.3em;
+
+  color: #fff;
+
+  white-space: nowrap;
+
+  font-family: "Jost", sans-serif;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+}
+
+.lm-off-num {
+
+  font-size: 1.95em;
+
+  letter-spacing: -0.04em;
+
+  text-shadow: 0.06em 0.06em 0 rgba(70, 0, 4, 0.55);
+
+}
+
+.lm-off-unit {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 0.05em;
+
+}
+
+.lm-off-unit i {
+
+  font-style: normal;
+
+  text-shadow: 0.07em 0.07em 0 rgba(70, 0, 4, 0.55);
+
+}
+
+.lm-off-unit i:first-child {
+
+  font-size: 1.1em;
+
+}
+
+.lm-off-unit i:last-child {
+
+  font-size: 0.95em;
+
+}
+
+@keyframes lm-tag-in {
+
+  0% {
+
+    opacity: 0;
+
+    transform: translateX(-1.2em);
+
+  }
+
+  60% {
+
+    opacity: 1;
+
+    transform: translateX(0.25em);
+
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform: none;
+
+  }
+
+}
+
+
+
+/* ---- Wishlist heart (top-right) ---- */
+
+.lm-heart {
+
+  position: absolute;
+
+  z-index: 4;
+
+  top: 4px;
+
+  right: 4px;
+
+  width: 48px;
+
+  height: 48px;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 0;
+
+  background: transparent;
+
+  color: var(--ink);
+
+  border: 0;
+
+  cursor: pointer;
+
+}
+
+.lm-heart svg {
+
+  width: 38px;
+
+  height: 38px;
+
+  padding: 8px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 1.9;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  background: #fff;
+
+  border: 1px solid transparent;
+
+  border-radius: 50%;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+
+  transition: all 0.25s ease;
+
+}
+
+@media (hover: hover) {
+
+  .lm-heart:hover svg {
+
+    color: var(--teal);
+
+    border-color: var(--teal);
+
+  }
+
+}
+
+.lm-heart[aria-pressed="true"] svg {
+
+  /* background: var(--teal); */
+  background:white;
+
+ border-color: #e8f4f2;
+
+  color: #e00b0b;
+
+  fill: currentColor;
+
+}
+
+.lm-heart.is-pop svg {
+
+  animation: lm-pop 0.35s ease;
+
+}
+
+@keyframes lm-pop {
+
+  50% {
+
+    transform: scale(1.25);
+
+  }
+
+}
+
+
+
+/* ---- Rating / frame size / bestseller chips ---- */
+
+.lm-chips {
+
+  position: absolute;
+
+  left: 12px;
+
+  right: 12px;
+
+  bottom: 12px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 6px;
+
+  pointer-events: none;
+
+}
+
+.lm-chips-right {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  flex-wrap: wrap;
+
+  gap: 4px;
+
+}
+
+.lm-chip {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  padding: 4px 11px;
+
+  border-radius: 99px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  color: var(--ink);
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+}
+
+.lm-chip svg {
+
+  color: var(--star);
+
+}
+
+.lm-chip small {
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  color: var(--muted);
+
+}
+
+.lm-chip--hot {
+
+  background: #fbe3a6;
+
+}
+
+.lm-chip--size {
+
+  color: var(--teal);
+
+  font-weight: 600;
+
+}
+
+
+
+/* ---- Brand / title / meta ---- */
+
+.lm-brandrow {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 8px;
+
+  padding: 0 2px;
+
+  font-size: 16px;
+
+}
+
+.lm-brand {
+
+  margin: 0;
+
+  font-weight: 600;
+
+  color: var(--muted);
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+}
+
+/* glasses brands read better in caps, like the eyeglasses cards */
+
+.lm-card[data-type="sunglasses"] .lm-brand,
+
+.lm-card[data-type="eyeglasses"] .lm-brand {
+
+  font-size: 14.5px;
+
+  letter-spacing: 0.06em;
+
+  text-transform: uppercase;
+
+}
+
+.lm-trust {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  color: var(--green);
+
+  font-weight: 600;
+
+  font-size: 14.5px;
+
+  white-space: nowrap;
+
+}
+
+.lm-title {
+
+  margin: 0;
+
+  padding: 0 2px;
+
+  font-size: 18px;
+
+  line-height: 1.25;
+
+  font-weight: 600;
+
+  font-family: "jost",sans-serif;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 2;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+
+}
+
+.lm-title a {
+
+  color: inherit;
+
+  text-decoration: none;
+
+  transition: color 0.2s;
+
+}
+
+/* makes the whole card clickable through the title link */
+
+.lm-title a::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 20px;
+
+  z-index: 0;
+
+}
+
+.lm-meta {
+
+  display: flex;
+
+  gap: 6px;
+
+  margin: 0;
+
+  padding: 0 2px;
+
+  font-size: 16px;
+
+  color: var(--muted);
+
+  min-width: 0;
+
+  font-family: "Assistant", sans-serif;
+
+}
+
+.lm-meta .a {
+
+  white-space: normal;
+
+}
+
+.lm-meta b {
+
+  color: var(--teal);
+
+  font-weight: 600;
+
+}
+
+
+
+/* contact lens meta line: Color / replacement schedule (teal) / lens type */
+
+.lm-meta .lm-tag--color {
+
+  color: #b83280;
+
+}
+
+
+
+/* lens type (Spherical / Toric / Multifocal), each in its own colour */
+
+.lm-meta .lm-power--spherical {
+
+  color: #1d5fb4;
+
+}
+
+.lm-meta .lm-power--toric {
+
+  color: #7b3aa8;
+
+}
+
+.lm-meta .lm-power--multifocal {
+
+  color: #b45309;
+
+}
+
+
+
+/* ---- Rating (below the type / meta line) ---- */
+
+.lm-rating {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 4px;
+
+  margin: 0;
+
+  padding: 0 2px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: var(--ink);
+
+}
+
+.lm-rating svg {
+
+  color: var(--star);
+
+}
+
+.lm-rating small {
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  color: var(--muted);
+
+}
+
+
+
+/* ---- Price + colour swatches ---- */
+
+.lm-buy {
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  /* font-family: "Jost", sans-serif; */
+
+  flex-wrap: wrap;
+
+  gap: 10px 12px;
+
+  margin-top: auto;
+
+  padding: 4px 2px 0;
+
+}
+
+.lm-price {
+
+  min-width: 0;
+
+}
+
+.lm-now {
+
+  color: var(--sale);
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  line-height: 1.1;
+
+}
+
+.lm-now--request {
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: var(--ink);
+
+}
+
+.lm-mrp {
+
+  color: var(--muted);
+
+  font-size: 16px;
+
+  margin-left: 8px;
+
+  text-decoration: line-through;
+
+}
+
+.lm-sub {
+
+  margin: 3px 0 0;
+
+  font-size: 15.5px;
+
+  color: var(--muted);
+
+}
+
+.lm-sub b {
+
+  color: var(--green);
+
+  font-weight: 700;
+
+}
+
+
+
+.lm-swatches {
+
+  position: relative;
+
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 2px;
+
+  flex-shrink: 0;
+
+}
+
+.lm-sw {
+
+  width: 30px;
+
+  height: 30px;
+
+  padding: 0;
+
+  display: grid;
+
+  place-items: center;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: none;
+
+  cursor: pointer;
+
+}
+
+.lm-sw i {
+
+  display: block;
+
+  width: 18px;
+
+  height: 18px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  box-shadow:
+
+    0 0 0 2px #fff,
+
+    0 0 0 3px transparent;
+
+  transition:
+
+    transform 0.2s ease,
+
+    box-shadow 0.2s ease;
+
+}
+
+@media (hover: hover) {
+
+  .lm-sw:hover i {
+
+    transform: scale(1.15);
+
+    box-shadow:
+
+      0 0 0 2px #fff,
+
+      0 0 0 3px var(--teal);
+
+  }
+
+}
+
+.lm-sw[aria-checked="true"] i {
+
+  box-shadow:
+
+    0 0 0 2px #fff,
+
+    0 0 0 3.5px var(--teal);
+
+}
+
+.lm-sw:focus-visible {
+
+  outline: 2px solid var(--teal);
+
+  outline-offset: 1px;
+
+}
+
+
+
+/* ---- Call to action ---- */
+
+.lm-cta {
+
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 100%;
+
+  min-height: 40px;
+
+  margin-top: 6px;
+
+  padding: 0 12px;
+
+  border: 0;
+
+  background: var(--teal);
+
+  color: #fff;
+
+  border-radius: 99px;
+
+  font-family: inherit;
+
+  font-weight: 600;
+
+  font-size: 18px;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: background 0.2s;
+
+}
+
+@media (hover: hover) {
+
+  .lm-cta:hover {
+
+    background: var(--teal-dark);
+
+  }
+
+}
+
+.lm-cta:active {
+
+  background: var(--teal-dark);
+
+}
+
+.lm-cta:focus-visible {
+
+  outline: 3px solid var(--ink);
+
+  outline-offset: 3px;
+
+}
+
+
+
+/* ---- Narrow card (e.g. 2 per row on a phone) ---- */
+
+@container lmcard (max-width: 260px) {
+
+  .lm-media {
+
+    aspect-ratio: 1/1;
+
+    border-radius: 10px;
+
+  }
+
+  .lm-off {
+
+    font-size: 12px;
+
+    top: 8px;
+
+  }
+
+  .lm-heart {
+
+    top: 0;
+
+    right: 0;
+
+  }
+
+  .lm-chips {
+
+    left: 6px;
+
+    right: 6px;
+
+    bottom: 6px;
+
+  }
+
+  .lm-chip {
+
+    padding: 2px 8px;
+
+    font-size: 12px;
+
+  }
+
+  .lm-chip small {
+
+    font-size: 11px;
+
+  }
+
+  /* on a narrow card keep only the rating + one right chip */
+
+  .lm-chips-right .lm-chip--hot + .lm-chip--size {
+
+    display: none;
+
+  }
+
+  .lm-brandrow {
+
+    font-size: 12px;
+
+  }
+
+  .lm-card[data-type="sunglasses"] .lm-brand,
+
+  .lm-card[data-type="eyeglasses"] .lm-brand {
+
+    font-size: 12px;
+
+  }
+
+  .lm-trust {
+
+    display: none;
+
+  }
+
+  .lm-title {
+
+    font-size: 15px;
+
+  }
+
+  .lm-meta {
+
+    font-size: 13px;
+
+  }
+
+  .lm-rating {
+
+    font-size: 13px;
+
+  }
+
+  .lm-rating small {
+
+    font-size: 12px;
+
+  }
+
+  .lm-buy {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 6px;
+
+  }
+
+  .lm-now {
+
+    font-size: 18px;
+
+  }
+
+  .lm-mrp {
+
+    font-size: 12px;
+
+    margin-left: 6px;
+
+  }
+
+  .lm-sub {
+
+    font-size: 12px;
+
+  }
+
+  .lm-sw {
+
+    width: 28px;
+
+    height: 28px;
+
+  }
+
+  .lm-cta {
+
+    min-height: 44px;
+
+    font-size: 15px;
+
+  }
+
+}
+
+
+
+/* ---- Mobile: keep rating / Bestseller / size chips in their own strip
+
+   under the product image so they never cover it ---- */
+
+@media (max-width: 640px) {
+
+  /* discount tag: 25% smaller than desktop (16px -> 12px) and sitting higher */
+
+  .lm-off {
+
+    font-size: 12px;
+
+    top: 8px;
+
+  }
+
+  .lm-media {
+
+    display: block;
+
+  }
+
+  .lm-img {
+
+    width: 90%;
+
+    height: 70%;
+
+    margin: 3% auto 0;
+
+  }
+
+  .lm-chips {
+
+    left: 8px;
+
+    right: 8px;
+
+    bottom: 8px;
+
+  }
+
+  .lm-chips-right {
+
+    flex-wrap: nowrap;
+
+  }
+
+}
+
+@container lmcard (max-width: 260px) {
+
+  .lm-media {
+
+    display: block;
+
+  }
+
+  .lm-img {
+
+    width: 90%;
+
+    height: 72%;
+
+    margin: 3% auto 0;
+
+  }
+
+  .lm-chips-right {
+
+    flex-wrap: nowrap;
+
+  }
+
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .lm-off,
+
+  .lm-img img,
+
+  .lm-heart.is-pop svg {
+
+    animation: none;
+
+  }
+
+  .lm-card,
+
+  .lm-card * {
+
+    transition: none !important;
+
+  }
+
+  .lm-card:hover,
+
+  .lm-card:hover .lm-img {
+
+    transform: none;
+
+  }
+
+}

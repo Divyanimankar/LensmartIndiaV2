@@ -1,0 +1,97 @@
+/* Scroll to top button - round, desktop + mobile, har page par */
+
+button.scrollTopBtn {
+  position: fixed;
+  right: 24px;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  left: auto;
+  top: auto;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d5eae7;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--teal, #0d6c66);
+  cursor: pointer;
+  z-index: 99999;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+
+  /* hidden state */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    visibility 0.3s;
+}
+
+/* visible state */
+button.scrollTopBtn.isVisible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.scrollTopIcon {
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+/* Hover: sirf desktop (mouse) par */
+@media (hover: hover) {
+  button.scrollTopBtn.isVisible:hover {
+    background: var(--teal, #0d6c66);
+    color: #fff;
+    border-color: var(--teal, #0d6c66);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(13, 108, 102, 0.45);
+  }
+
+  button.scrollTopBtn.isVisible:hover .scrollTopIcon {
+    transform: translateY(-2px);
+  }
+}
+
+/* Tap / click press effect */
+button.scrollTopBtn.isVisible:active {
+  transform: translateY(-1px) scale(0.95);
+}
+
+button.scrollTopBtn:focus-visible {
+  outline: 3px solid rgba(13, 108, 102, 0.4);
+  outline-offset: 3px;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  button.scrollTopBtn {
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button.scrollTopBtn,
+  .scrollTopIcon {
+    transition: none;
+  }
+}

@@ -1,0 +1,756 @@
+
+
+/* =========================================================
+   BASE
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.account-login-page {
+  width: 100%;
+  min-height: 100vh;
+
+  background: #f7f8f6;
+
+  font-family: "Assistant", sans-serif;
+}
+
+
+/* =========================================================
+   LOGIN SECTION
+========================================================= */
+
+.account-login-section {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+
+  padding: 40px 20px 70px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  background: #f7f8f6;
+}
+
+
+/* =========================================================
+   LOGIN CARD
+========================================================= */
+
+.account-login-card {
+  width: 100%;
+  max-width: 440px;
+
+  padding: 30px 32px 32px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e4e3;
+  border-radius: 9px;
+
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.07),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.account-logo {
+  width: 100%;
+
+  margin-bottom: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+}
+
+.account-logo img {
+  display: block;
+
+  width: 190px;
+  max-width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.account-login-card h1 {
+  margin: 0 0 25px;
+
+  color: #171717;
+
+  font-family: "Jost", sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+
+  line-height: 1.3;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.account-login-form {
+  width: 100%;
+}
+
+
+/* =========================================================
+   FORM FIELD
+========================================================= */
+
+.account-field {
+  width: 100%;
+
+  margin-bottom: 18px;
+}
+
+.account-field > label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #252525;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   EMAIL INPUT
+========================================================= */
+
+.account-field > input {
+  width: 100%;
+  height: 55px;
+
+  padding: 0 16px;
+
+  border: 1px solid #d6dcda;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.account-field > input::placeholder {
+  color: #777777;
+
+  opacity: 1;
+}
+
+.account-field > input:hover {
+  border-color: #b8c1bf;
+}
+
+.account-field > input:focus {
+  border-color: #1b6b6a;
+
+  box-shadow:
+    0 0 0 3px rgba(27, 107, 106, 0.08);
+}
+
+
+/* =========================================================
+   PASSWORD LABEL
+========================================================= */
+
+.account-password-label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #252525;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   PASSWORD INPUT WRAPPER
+========================================================= */
+
+.account-password-input {
+  position: relative;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   PASSWORD INPUT
+========================================================= */
+
+.account-password-input input {
+  width: 100%;
+  height: 55px;
+
+  padding: 0 50px 0 16px;
+
+  border: 1px solid #d6dcda;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.account-password-input input::placeholder {
+  color: #777777;
+
+  opacity: 1;
+}
+
+.account-password-input input:hover {
+  border-color: #b8c1bf;
+}
+
+.account-password-input input:focus {
+  border-color: #1b6b6a;
+
+  box-shadow:
+    0 0 0 3px rgba(27, 107, 106, 0.08);
+}
+
+
+/* =========================================================
+   PASSWORD EYE BUTTON
+========================================================= */
+
+.account-password-toggle {
+  position: absolute;
+
+  top: 50%;
+  right: 13px;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #697573;
+
+  transform: translateY(-50%);
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.account-password-toggle:hover {
+  color: #1b6b6a;
+}
+
+.account-password-toggle svg {
+  width: 19px;
+  height: 19px;
+
+  fill: none;
+
+  stroke: currentColor;
+  stroke-width: 1.7;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+.account-forgot-password {
+  width: 100%;
+
+  margin-top: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.account-forgot-password a {
+  color: #1b6b6a;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.account-forgot-password a:hover {
+  color: #155756;
+
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+========================================================= */
+
+.account-login-btn {
+  width: 100%;
+  height: 50px;
+  padding-top: 15px;
+  margin-top: 2px;
+
+  border: 1px solid #1b6b6a;
+  border-radius: 25px;
+
+  background: #1b6b6a;
+
+  color: #ffffff;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.account-login-btn:hover {
+  background: #155756;
+
+  border-color: #155756;
+
+  transform: translateY(-1px);
+}
+
+.account-login-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   OR DIVIDER
+========================================================= */
+
+.account-divider {
+  width: 100%;
+
+  margin: 27px 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.account-divider span {
+  flex: 1;
+
+  height: 1px;
+
+  background: #d9dddc;
+}
+
+.account-divider p {
+  margin: 0;
+
+  color: #555555;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   SOCIAL BUTTONS
+========================================================= */
+
+.account-social-buttons {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   SOCIAL BUTTON
+========================================================= */
+
+.account-social-btn {
+  min-width: 0;
+  height: 48px;
+
+  padding: 0 13px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 1px solid #d6dcda;
+  border-radius: 25px;
+
+  background: #ffffff;
+
+  color: #202020;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.account-social-btn:hover {
+  border-color: #1b6b6a;
+
+  background: #f8fbfb;
+
+  transform: translateY(-1px);
+}
+
+.account-social-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   GOOGLE & APPLE ICONS
+========================================================= */
+
+.google-icon,
+.apple-icon {
+  width: 19px;
+  height: 19px;
+
+  flex: 0 0 19px;
+}
+
+.apple-icon {
+  color: #000000;
+}
+
+
+/* =========================================================
+   SIGN UP
+========================================================= */
+
+.account-signup {
+  margin-top: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 5px;
+
+  color: #333333;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 13.5px;
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+.account-signup a {
+  color: #1b6b6a;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.account-signup a:hover {
+  color: #155756;
+
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .account-login-section {
+    min-height: calc(100vh - 65px);
+
+    padding: 40px 20px 65px;
+  }
+
+  .account-login-card {
+    max-width: 430px;
+
+    padding: 30px 28px;
+  }
+
+  .account-logo img {
+    width: 180px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .account-login-page {
+    background: #f7f8f6;
+  }
+
+  .account-login-section {
+    min-height: calc(100vh - 60px);
+
+    padding: 28px 15px 50px;
+
+    align-items: flex-start;
+  }
+
+  .account-login-card {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 25px 20px 27px;
+
+    border-radius: 8px;
+  }
+
+
+  /* LOGO */
+
+  .account-logo {
+    margin-bottom: 12px;
+  }
+
+  .account-logo img {
+    width: 170px;
+    max-width: 80%;
+  }
+
+
+  /* HEADING */
+
+  .account-login-card h1 {
+    margin-bottom: 22px;
+
+    font-size: 23px;
+  }
+
+
+  /* FIELD */
+
+  .account-field {
+    margin-bottom: 16px;
+  }
+
+  .account-field > label,
+  .account-password-label {
+    font-size: 13.5px;
+  }
+
+
+  /* INPUTS */
+
+  .account-field > input,
+  .account-password-input input {
+    height: 52px;
+
+    font-size: 14.5px;
+  }
+
+
+  /* FORGOT PASSWORD */
+
+  .account-forgot-password {
+    margin-top: 7px;
+  }
+
+  .account-forgot-password a {
+    font-size: 12.5px;
+  }
+
+
+  /* LOGIN */
+
+  .account-login-btn {
+    height: 48px;
+padding-top: 10px;
+    font-size: 14.5px;
+  }
+
+
+  /* DIVIDER */
+
+  .account-divider {
+    margin: 24px 0;
+  }
+
+
+  /* SOCIAL */
+
+  .account-social-buttons {
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .account-social-btn {
+    width: 100%;
+    height: 47px;
+
+    font-size: 13.5px;
+  }
+
+
+  /* SIGN UP */
+
+  .account-signup {
+    margin-top: 23px;
+
+    font-size: 13px;
+  }
+
+  .account-signup a {
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .account-login-section {
+    padding: 24px 12px 45px;
+  }
+
+  .account-login-card {
+    padding: 22px 16px 25px;
+  }
+
+  .account-logo img {
+    width: 155px;
+  }
+
+  .account-login-card h1 {
+    font-size: 22px;
+  }
+
+  .account-field > input,
+  .account-password-input input {
+    height: 50px;
+
+    font-size: 14px;
+  }
+
+  .account-login-btn {
+    height: 47px;
+  }
+
+  .account-social-btn {
+    height: 45px;
+
+    font-size: 13px;
+  }
+
+  .account-forgot-password a {
+    font-size: 12px;
+  }
+
+}

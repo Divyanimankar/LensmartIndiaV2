@@ -1,0 +1,453 @@
+
+
+/* ==========================================
+   SHOP BY CATEGORY
+   Same sizes + fonts as the eyewear category cards
+   Flat colors only, no gradients
+========================================== */
+
+.updated-shop-category-section {
+  --bg: #f7f7f7;        /* same background on every card */
+  --brand: #1b6b6a;
+  --ink: #111111;
+
+  width: 100%;
+  padding: 52px 0 64px;
+  background: #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.updated-shop-category-container {
+  width: 100%;
+  max-width: 1220px;
+
+  margin: 0 auto;
+  padding: 0 20px;
+
+  box-sizing: border-box;
+}
+
+
+/* ==========================================
+   HEADING
+========================================== */
+
+.updated-shop-category-heading-wrap {
+  margin: 0 0 30px;
+  text-align: center;
+}
+
+.updated-shop-category-heading {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-family: "Jost", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+
+  letter-spacing: 0.5px;
+}
+
+
+/* ==========================================
+   GRID
+========================================== */
+
+.updated-shop-category-grid {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+.updated-shop-category-card {
+  position: relative;
+
+  width: 100%;
+  height: 255px;
+
+  display: block;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background: var(--bg);
+
+  border: 1px solid #dddddd;
+  border-radius: 22px;
+
+  text-decoration: none;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.updated-shop-category-card:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+}
+
+
+/* ==========================================
+   IMAGE  (bigger product, same bg on all cards)
+========================================== */
+
+.updated-shop-category-image-wrap {
+  position: absolute;
+  inset: 0;
+
+  background: var(--bg);
+
+  z-index: 0;
+}
+
+.updated-shop-category-image {
+  object-fit: contain !important;
+  object-position: center;
+
+  /* small padding = bigger product image */
+  padding: 8px 12px 64px;
+  box-sizing: border-box;
+
+  /* white box backgrounds blend into the card color */
+  mix-blend-mode: multiply;
+
+  transition: transform 0.5s ease;
+}
+
+.updated-shop-category-image-overlay {
+  display: none;
+}
+
+
+/* ==========================================
+   TEXT
+========================================== */
+
+.updated-shop-category-content {
+  position: absolute;
+
+  left: 20px;
+  right: 20px;
+  bottom: 17px;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+.updated-shop-category-text {
+  min-width: 0;
+}
+
+
+/* SUBTITLE */
+
+.updated-shop-category-subtitle {
+  display: block;
+
+  margin: 0 0 4px;
+
+  color: var(--brand);
+
+  font-family: "Assistant", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+
+  letter-spacing: 1.1px;
+
+  text-transform: uppercase;
+}
+
+
+/* TITLE */
+
+.updated-shop-category-title {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-family: "Jost", sans-serif;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+
+/* ==========================================
+   NO IMAGE FALLBACK
+========================================== */
+
+.updated-shop-category-no-image {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-bottom: 60px;
+
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+
+  color: var(--brand);
+}
+
+
+/* ==========================================
+   DESKTOP HOVER
+========================================== */
+
+@media (hover: hover) and (pointer: fine) {
+
+  .updated-shop-category-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #d0d0d0;
+
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  }
+
+  .updated-shop-category-card:hover .updated-shop-category-image {
+    transform: scale(1.05);
+  }
+}
+
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 1024px) {
+
+  .updated-shop-category-section {
+    padding: 44px 0 52px;
+  }
+
+  .updated-shop-category-container {
+    padding: 0 18px;
+  }
+
+  .updated-shop-category-heading-wrap {
+    margin-bottom: 26px;
+  }
+
+  .updated-shop-category-heading {
+    font-size: 28px;
+  }
+
+  .updated-shop-category-grid {
+    gap: 18px;
+  }
+
+  .updated-shop-category-card {
+    height: 225px;
+
+    border-radius: 20px;
+  }
+
+  .updated-shop-category-image {
+    padding: 8px 12px 58px;
+  }
+
+  .updated-shop-category-content {
+    left: 17px;
+    right: 17px;
+    bottom: 15px;
+  }
+
+  .updated-shop-category-title {
+    font-size: 21px;
+  }
+
+  .updated-shop-category-subtitle {
+    font-size: 9px;
+  }
+}
+
+
+/* ==========================================
+   SMALL TABLET
+   2 CARDS PER ROW
+========================================== */
+
+@media (max-width: 800px) {
+
+  .updated-shop-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+  }
+
+  .updated-shop-category-card {
+    height: 230px;
+  }
+}
+
+
+/* ==========================================
+   MOBILE
+   2 CARDS PER ROW
+========================================== */
+
+@media (max-width: 600px) {
+
+  .updated-shop-category-section {
+    padding: 30px 0 38px;
+  }
+
+  .updated-shop-category-container {
+    padding: 0 12px;
+  }
+
+  .updated-shop-category-heading-wrap {
+    margin-bottom: 20px;
+  }
+
+  .updated-shop-category-heading {
+    font-size: 23px;
+    font-weight: 600;
+  }
+
+  .updated-shop-category-grid {
+    gap: 10px;
+  }
+
+  .updated-shop-category-card {
+    height: 190px;
+
+    border: 1px solid #e1e1e1;
+    border-radius: 17px;
+
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
+  }
+
+  .updated-shop-category-image {
+    padding: 6px 8px 50px !important;
+  }
+
+  .updated-shop-category-content {
+    left: 12px;
+    right: 10px;
+    bottom: 12px;
+  }
+
+  .updated-shop-category-subtitle {
+    margin-bottom: 3px;
+
+    font-size: 7px;
+    font-weight: 700;
+
+    letter-spacing: 0.7px;
+  }
+
+  .updated-shop-category-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 400px) {
+
+  .updated-shop-category-container {
+    padding: 0 10px;
+  }
+
+  .updated-shop-category-grid {
+    gap: 8px;
+  }
+
+  .updated-shop-category-card {
+    height: 180px;
+
+    border-radius: 16px;
+  }
+
+  .updated-shop-category-image {
+    padding: 6px 6px 48px !important;
+  }
+
+  .updated-shop-category-content {
+    left: 10px;
+    right: 8px;
+    bottom: 10px;
+  }
+
+  .updated-shop-category-title {
+    font-size: 14px;
+  }
+
+  .updated-shop-category-subtitle {
+    font-size: 6.5px;
+
+    letter-spacing: 0.6px;
+  }
+}
+
+
+/* ==========================================
+   VERY SMALL MOBILE
+========================================== */
+
+@media (max-width: 340px) {
+
+  .updated-shop-category-container {
+    padding: 0 8px;
+  }
+
+  .updated-shop-category-grid {
+    gap: 6px;
+  }
+
+  .updated-shop-category-card {
+    height: 165px;
+
+    border-radius: 15px;
+  }
+
+  .updated-shop-category-image {
+    padding: 4px 4px 44px !important;
+  }
+
+  .updated-shop-category-content {
+    left: 9px;
+    right: 7px;
+    bottom: 9px;
+  }
+
+  .updated-shop-category-title {
+    font-size: 13px;
+  }
+
+  .updated-shop-category-subtitle {
+    font-size: 6px;
+  }
+}

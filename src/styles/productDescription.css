@@ -1,0 +1,258 @@
+/* =========================================================
+   ProductDescription — shared by contact lenses, sunglasses
+   and eyeglasses. Look matches the product pages (teal accent,
+   Jost headings, Assistant body). The page's own stylesheet
+   already loads both fonts.
+========================================================= */
+
+.pd {
+  --pd-accent: #1b6b6a;
+  --pd-accent-dark: #145958;
+  --pd-heading: #202020;
+  --pd-title: #292929;
+  --pd-text: #777777;
+  --pd-label: #8b9594;
+  --pd-value: #172323;
+  --pd-rule: #dce1df;
+  --pd-bg: #f6f8f7;
+
+  /* width of the content column; the page type changes these */
+  --pd-max: 1240px;
+  --pd-gutter: 72px;
+
+  padding: 70px 0;
+  background: var(--pd-bg);
+  border-top: 1px solid #ebeeee;
+  color: var(--pd-heading);
+  font-family: "Assistant", sans-serif;
+}
+
+/* contact lens pages use a slightly wider container */
+.pd--contact-lenses {
+  --pd-max: 1280px;
+  --pd-gutter: 48px;
+}
+
+.pd-inner {
+  width: min(calc(100% - var(--pd-gutter)), var(--pd-max));
+  margin: 0 auto;
+}
+
+.pd-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  gap: 80px;
+  align-items: start;
+}
+
+/* ---------- intro ---------- */
+
+.pd-eyebrow {
+  margin: 0;
+  color: var(--pd-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.pd-heading {
+  max-width: 420px;
+  margin: 8px 0 14px;
+  color: var(--pd-heading);
+  font-family: "Jost", sans-serif;
+  font-size: 31px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.pd-text {
+  max-width: 460px;
+  margin: 0 0 12px;
+  color: var(--pd-text);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.pd-text strong {
+  color: #626262;
+  font-weight: 700;
+}
+
+/* ---------- accordions ---------- */
+
+.pd-accordions {
+  border-top: 1px solid var(--pd-rule);
+}
+
+.pd-item {
+  border-bottom: 1px solid var(--pd-rule);
+}
+
+.pd-item-title {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* two classes so it wins over ".xxx-page button" in the page CSS */
+.pd .pd-trigger {
+  width: 100%;
+  padding: 20px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 0;
+  background: transparent;
+  color: var(--pd-title);
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pd .pd-trigger:hover {
+  color: var(--pd-accent);
+}
+
+.pd .pd-trigger:focus-visible {
+  outline: 2px solid var(--pd-accent);
+  outline-offset: 2px;
+}
+
+.pd .pd-icon {
+  flex: none;
+  color: var(--pd-accent);
+  font-family: "Assistant", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.pd-panel {
+  padding: 0 2px 20px;
+  animation: pd-fade 0.25s ease;
+}
+
+/* closed panels stay in the HTML but are not shown */
+.pd-panel[hidden] {
+  display: none;
+}
+
+.pd-panel .pd-text {
+  max-width: none;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* ---------- spec list ---------- */
+
+.pd-specs {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.pd-spec {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 15px;
+  padding: 3px 0;
+}
+
+.pd-spec dt {
+  margin: 0;
+  color: var(--pd-label);
+  font-size: 15px;
+}
+
+.pd-spec dd {
+  margin: 0;
+  color: var(--pd-value);
+  font-size: 15px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+@keyframes pd-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-panel {
+    animation: none;
+  }
+}
+
+/* ---------- responsive (same breakpoints as the product pages) ---------- */
+
+@media (max-width: 1050px) {
+  .pd {
+    --pd-gutter: 48px;
+  }
+
+  .pd-grid {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pd {
+    --pd-gutter: 32px;
+    padding: 44px 0;
+  }
+
+  .pd--contact-lenses {
+    --pd-gutter: 28px;
+  }
+
+  .pd-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .pd-heading {
+    max-width: none;
+    font-size: 26px;
+  }
+
+  .pd-text {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .pd--contact-lenses {
+    --pd-gutter: 22px;
+  }
+}
+
+@media (max-width: 390px) {
+  .pd {
+    --pd-gutter: 24px;
+  }
+
+  .pd--contact-lenses {
+    --pd-gutter: 18px;
+  }
+
+  .pd-heading {
+    font-size: 23px;
+  }
+
+  .pd-spec {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

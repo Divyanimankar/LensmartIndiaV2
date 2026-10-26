@@ -1,0 +1,181 @@
+/* ==========================================================================
+   LENSMART INDIA — BASE LAYER
+   Global surface, typography, focus, selection, scrollbars, utilities.
+   All selectors are prefixed with `html body` so they reliably win over the
+   legacy per-component stylesheets regardless of bundle order.
+========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--lm-header-h) + 24px);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html body {
+  background: var(--lm-ivory);
+  color: var(--lm-ink-2);
+  font-family: var(--lm-font-text);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern", "liga";
+}
+
+html body img {
+  /* never let a missing dimension attribute cause horizontal overflow */
+  max-width: 100%;
+}
+
+html body ::selection {
+  background: var(--lm-teal);
+  color: var(--lm-paper);
+}
+
+/* ---------- FOCUS (accessible, consistent, never removed) ---------- */
+html body :focus-visible {
+  outline: 2px solid var(--lm-teal);
+  outline-offset: 3px;
+  border-radius: var(--lm-r-xs);
+}
+
+html body input:focus-visible,
+html body select:focus-visible,
+html body textarea:focus-visible {
+  outline: 2px solid var(--lm-teal);
+  outline-offset: 1px;
+}
+
+/* ---------- SKIP LINK ---------- */
+.lm-skip {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: var(--lm-z-skip);
+  padding: 12px 20px;
+  background: var(--lm-ink);
+  color: var(--lm-paper);
+  font: 600 13px/1 var(--lm-font-ui);
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  border-radius: var(--lm-r-sm);
+  transform: translateY(-160%);
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+.lm-skip:focus,
+.lm-skip:focus-visible {
+  transform: translateY(0);
+  outline-offset: 2px;
+}
+
+html body #main-content:focus {
+  outline: none;
+}
+
+/* ---------- SCROLLBARS (subtle, desktop only) ---------- */
+@media (hover: hover) and (pointer: fine) {
+  html {
+    scrollbar-color: var(--lm-line-strong) transparent;
+    scrollbar-width: thin;
+  }
+  html::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  html::-webkit-scrollbar-track {
+    background: var(--lm-ivory);
+  }
+  html::-webkit-scrollbar-thumb {
+    background: var(--lm-line-strong);
+    border-radius: var(--lm-r-pill);
+    border: 2px solid var(--lm-ivory);
+  }
+  html::-webkit-scrollbar-thumb:hover {
+    background: var(--lm-faint);
+  }
+}
+
+/* ---------- LINKS / BUTTON RESET FEEL ---------- */
+html body a {
+  -webkit-tap-highlight-color: transparent;
+}
+html body button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* ---------- DISPLAY HEADINGS (existing headings, new voice) ---------- */
+html body .home-section-title,
+html body .sectionTitle,
+html body .shop-category-heading,
+html body .bestseller-heading,
+html body .perfect-shape-heading,
+html body .exclusive-deals-heading,
+html body .updatedbestseller-heading,
+html body .brand-section-heading,
+html body .brand-slider__title,
+html body .tc-title,
+html body .faq-heading,
+html body .latest-blog-heading-wrapper h2,
+html body .before-after-title {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 1.3rem + 2.3vw, 3.25rem);
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  color: var(--lm-ink);
+  text-wrap: balance;
+}
+
+/* Hairline brass rule that precedes each home section heading */
+html body .shop-category-heading::before,
+html body .bestseller-heading::before,
+html body .perfect-shape-heading::before,
+html body .exclusive-deals-heading::before,
+html body .updatedbestseller-heading::before,
+html body .brand-section-heading::before,
+html body .brand-slider__title::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 1px;
+  margin: 0 auto 18px;
+  background: var(--lm-brass);
+}
+html body .shop-category-heading::before {
+  margin-left: 0;
+}
+
+/* ---------- UTILITIES ---------- */
+.lm-sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- REDUCED MOTION (global safety net) ----------
+   Components keep their own reduced-motion rules; this guarantees that no
+   decorative animation or smooth-scroll survives the user's OS setting.       */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  html body *,
+  html body *::before,
+  html body *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}

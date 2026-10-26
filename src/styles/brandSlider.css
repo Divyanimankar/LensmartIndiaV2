@@ -1,0 +1,658 @@
+/* =====================================================
+   TRUSTED BRAND SECTION
+===================================================== */
+
+.brand-section {
+  width: 100%;
+
+  padding: 20px 0 20px;
+
+  overflow: hidden;
+
+  background-color: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.brand-section-heading {
+  width: min(1180px, calc(100% - 80px));
+
+  margin: 0 auto 42px;
+
+  text-align: center;
+}
+
+
+.brand-section-heading span {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  color: #167271;
+}
+
+
+.brand-section-heading h2 {
+  margin: 0 0 10px;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 32px;
+  font-weight: 600;
+
+  line-height: 1.1;
+
+  color: #202020;
+}
+
+
+.brand-section-heading p {
+  margin: 0;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  color: #666666;
+}
+
+
+/* =====================================================
+   SLIDER
+===================================================== */
+
+.brand-slider {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding: 10px 0;
+}
+
+
+/* left/right soft fade */
+
+.brand-slider::before,
+.brand-slider::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 100px;
+
+  z-index: 5;
+
+  pointer-events: none;
+}
+
+
+.brand-slider::before {
+  left: 0;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+
+.brand-slider::after {
+  right: 0;
+
+  background: linear-gradient(
+    270deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+
+/* =====================================================
+   MOVING TRACK
+===================================================== */
+
+.brand-slider-track {
+  width: max-content;
+
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+
+  animation: brandAutoScroll 38s linear infinite;
+
+  will-change: transform;
+}
+
+
+/* pause when mouse hover */
+
+.brand-slider:hover .brand-slider-track {
+  animation-play-state: paused;
+}
+
+
+/* =====================================================
+   EACH BRAND
+===================================================== */
+
+.brand-slide {
+  width: 190px;
+
+  flex: 0 0 190px;
+
+  text-decoration: none;
+}
+
+
+/* =====================================================
+   BRAND LOGO BOX
+===================================================== */
+
+.brand-logo-box {
+  width: 100%;
+  height: 115px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+
+  background-color: #ffffff;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.brand-slide:hover .brand-logo-box {
+  transform: translateY(-4px);
+
+  border-color: #cbe8e7;
+
+  box-shadow:
+    0 10px 28px rgba(0, 80, 80, 0.10);
+}
+
+
+/* =====================================================
+   BRAND IMAGE
+===================================================== */
+
+.brand-logo {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: 145px;
+  max-height: 65px;
+
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+
+.brand-slide:hover .brand-logo {
+  transform: scale(1.05);
+}
+
+
+/* =====================================================
+   INFINITE ANIMATION
+===================================================== */
+
+@keyframes brandAutoScroll {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    /*
+      We duplicated the complete list.
+      Move exactly half of the complete track.
+    */
+    transform: translateX(calc(-50% - 12px));
+  }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .brand-section {
+    padding: 55px 0 60px;
+  }
+
+
+  .brand-section-heading {
+    width: calc(100% - 50px);
+
+    margin-bottom: 35px;
+  }
+
+
+  .brand-section-heading h2 {
+    font-size: 38px;
+  }
+
+
+  .brand-slider-track {
+    gap: 18px;
+
+    animation-duration: 34s;
+  }
+
+
+  .brand-slide {
+    width: 165px;
+
+    flex-basis: 165px;
+  }
+
+
+  .brand-logo-box {
+    height: 105px;
+
+    padding: 18px;
+  }
+
+
+  .brand-logo {
+    max-width: 125px;
+    max-height: 58px;
+  }
+
+
+  .brand-slider::before,
+  .brand-slider::after {
+    width: 60px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .brand-section {
+    padding: 42px 0 48px;
+  }
+
+
+  .brand-section-heading {
+    width: calc(100% - 32px);
+
+    margin-bottom: 28px;
+  }
+
+
+  .brand-section-heading span {
+    margin-bottom: 7px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .brand-section-heading h2 {
+    margin-bottom: 8px;
+
+    font-size: 30px;
+  }
+
+
+  .brand-section-heading p {
+    max-width: 320px;
+
+    margin: 0 auto;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+
+
+  .brand-slider {
+    padding: 6px 0;
+  }
+
+
+  .brand-slider-track {
+    gap: 12px;
+
+    animation-duration: 28s;
+  }
+
+
+  .brand-slide {
+    width: 135px;
+
+    flex-basis: 135px;
+  }
+
+
+  .brand-logo-box {
+    height: 88px;
+
+    padding: 14px;
+
+    border-radius: 8px;
+  }
+
+
+  .brand-logo {
+    max-width: 105px;
+    max-height: 50px;
+  }
+
+
+  .brand-slider::before,
+  .brand-slider::after {
+    width: 30px;
+  }
+
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .brand-slider-track {
+    animation: none;
+  }
+
+}
+
+/* =====================================================
+   TABLET VIEW
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .brand-section {
+    width: 100%;
+    padding: 50px 0;
+    overflow: hidden;
+  }
+
+  .brand-section-heading {
+    width: calc(100% - 40px);
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+
+  .brand-section-heading span {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+  }
+
+  .brand-section-heading h2 {
+    margin: 8px 0 8px;
+    font-size: 36px;
+    line-height: 1.15;
+  }
+
+  .brand-section-heading p {
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .brand-slider {
+    width: 100%;
+    overflow: hidden;
+    padding: 8px 0;
+  }
+
+  .brand-slider-track {
+    gap: 16px;
+    animation-duration: 32s;
+  }
+
+  .brand-slide {
+    width: 160px;
+    flex: 0 0 160px;
+  }
+
+  .brand-logo-box {
+    width: 100%;
+    height: 100px;
+    padding: 16px;
+  }
+
+  .brand-logo {
+    width: 100%;
+    height: 100%;
+    max-width: 125px;
+    max-height: 55px;
+    object-fit: contain;
+  }
+
+  .brand-slider::before,
+  .brand-slider::after {
+    width: 45px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE VIEW
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .brand-section {
+    width: 100%;
+    padding: 38px 0 42px;
+    overflow: hidden;
+  }
+
+
+  /* ---------- HEADING ---------- */
+
+  .brand-section-heading {
+    width: calc(100% - 30px);
+    margin: 0 auto 25px;
+    text-align: center;
+  }
+
+  .brand-section-heading span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 2.2px;
+
+    color: #167271;
+  }
+
+  .brand-section-heading h2 {
+    margin: 0 0 8px;
+
+    font-size: 28px;
+    font-weight: 600;
+
+    line-height: 1.15;
+
+    letter-spacing: 0;
+  }
+
+  .brand-section-heading p {
+    max-width: 300px;
+
+    margin: 0 auto;
+
+    font-size: 13px;
+
+    line-height: 1.45;
+
+    color: #666666;
+  }
+
+
+  /* ---------- SLIDER ---------- */
+
+  .brand-slider {
+    width: 100%;
+
+    padding: 6px 0;
+
+    overflow: hidden;
+  }
+
+
+  .brand-slider-track {
+    display: flex;
+    align-items: center;
+
+    width: max-content;
+
+    gap: 10px;
+
+    animation-duration: 26s;
+  }
+
+
+  /* ---------- EACH BRAND ---------- */
+
+  .brand-slide {
+    width: 125px;
+
+    flex: 0 0 125px;
+  }
+
+
+  /* ---------- LOGO BOX ---------- */
+
+  .brand-logo-box {
+    width: 100%;
+    height: 82px;
+
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+
+    background-color: #ffffff;
+  }
+
+
+  /* ---------- IMAGE ---------- */
+
+  .brand-logo {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 100px;
+    max-height: 48px;
+
+    object-fit: contain;
+  }
+
+
+  /* ---------- SIDE FADE ---------- */
+
+  .brand-slider::before,
+  .brand-slider::after {
+    width: 20px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+  .brand-section {
+    padding: 32px 0 36px;
+  }
+
+  .brand-section-heading {
+    margin-bottom: 22px;
+  }
+
+  .brand-section-heading h2 {
+    font-size: 25px;
+  }
+
+  .brand-section-heading p {
+    max-width: 270px;
+    font-size: 12px;
+  }
+
+  .brand-slider-track {
+    gap: 8px;
+    animation-duration: 24s;
+  }
+
+  .brand-slide {
+    width: 112px;
+    flex: 0 0 112px;
+  }
+
+  .brand-logo-box {
+    height: 75px;
+    padding: 10px;
+  }
+
+  .brand-logo {
+    max-width: 90px;
+    max-height: 43px;
+  }
+}

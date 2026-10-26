@@ -1,0 +1,1207 @@
+
+/* =========================================================
+   SUNGLASSES LISTING PAGE
+   Page layout, toolbar, filters, pagination only.
+   The product card itself lives in lenses-product-card.css
+   (shared by sunglasses, eyeglasses, contact lenses, solutions).
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   PAGE
+========================================= */
+
+.sunglasses-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #171717;
+  font-family: "Assistant", sans-serif;
+}
+
+.sunglasses-container {
+  width: 100%;
+  /* max-width: 1440px; */
+  padding: 0 19px;
+}
+
+/* =========================================
+   BREADCRUMB
+========================================= */
+
+.sunglasses-breadcrumb {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #777777;
+  font-size: 16px;
+}
+
+.sunglasses-breadcrumb a {
+  color: #555555;
+  text-decoration: none;
+}
+
+.sunglasses-breadcrumb a:hover {
+  color: #1b6b6a;
+}
+
+/* =========================================
+   BANNER
+========================================= */
+
+.sunglasses-banner {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.sunglasses-banner-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =========================================
+   PRODUCTS SECTION
+========================================= */
+
+.sunglasses-products-section {
+  padding: 28px 0 70px;
+  scroll-margin-top: 90px;
+}
+
+/* =========================================
+   TOOLBAR
+========================================= */
+
+.sunglasses-toolbar {
+  width: 100%;
+  min-height: 58px;
+  margin-bottom: 18px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.sunglasses-result-count {
+  color: #555555;
+  font-size: 16px;
+}
+
+.sunglasses-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* SORT */
+
+.sunglasses-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sunglasses-sort label {
+  color: #555555;
+  font-size: 16px;
+}
+
+.sunglasses-sort select {
+  width: 225px;
+  height: 45px;
+  padding: 0 38px 0 14px;
+  border: 1px solid #d2d2d2;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff;
+  color: #222222;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.sunglasses-sort select:hover,
+.sunglasses-sort select:focus {
+  border-color: #1b6b6a;
+}
+
+/* MOBILE FILTER BUTTON */
+
+.mobile-filter-button {
+  display: none;
+  height: 44px;
+  padding: 0 15px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1.5px solid #1b6b6a;
+  border-radius: 99px;
+  background: #ffffff;
+  color: #1b6b6a;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mobile-filter-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.mobile-filter-badge {
+  min-width: 22px;
+  padding: 1px 6px;
+  border-radius: 99px;
+  background: #1b6b6a;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* =========================================
+   APPLIED FILTER CHIPS
+========================================= */
+
+.sunglasses-applied {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.sunglasses-applied button {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: 99px;
+  background: #e8f4f2;
+  color: #14756f;
+  font-family: "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.sunglasses-applied button:hover {
+  border-color: #14756f;
+}
+
+.sunglasses-applied .sunglasses-applied-clear {
+  background: none;
+  color: #222222;
+  text-decoration: underline;
+}
+
+/* =========================================
+   LAYOUT
+========================================= */
+
+.sunglasses-layout {
+  display: grid;
+  grid-template-columns: 255px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.sunglasses-product-area {
+  width: 100%;
+  min-width: 0;
+}
+
+/* =========================================
+   PRODUCT GRID (cards come from LensesProductCard)
+========================================= */
+
+.sunglasses-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* =========================================
+   DESKTOP SIDEBAR
+========================================= */
+
+.sunglasses-filter-sidebar {
+  width: 100%;
+  background: #ffffff;
+  border-right: 1px solid #d8d8d8;
+}
+
+.filter-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-top {
+  min-height: 58px;
+  padding: 0 18px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.filter-top h2 {
+  margin: 0;
+  color: #111111;
+  font-family: "Jost", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.filter-top button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #555555;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.filter-top button:hover {
+  color: #1b6b6a;
+}
+
+.filter-scroll-area {
+  width: 100%;
+  padding-right: 18px;
+}
+
+/* =========================================
+   FILTER ACCORDION
+   (JSX toggles .open; groups can start open or closed)
+========================================= */
+
+.filter-group {
+  width: 100%;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.filter-group-header {
+  width: 100%;
+  min-height: 60px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 0;
+  background: transparent;
+  color: #111111;
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.filter-group-header:hover {
+  color: #1b6b6a;
+}
+
+.filter-group-header:focus-visible {
+  outline: 2px solid #1b6b6a;
+  outline-offset: 2px;
+}
+
+.filter-chevron {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.28s ease;
+}
+
+.filter-chevron svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.filter-group.open .filter-chevron {
+  transform: rotate(180deg);
+}
+
+/* closed */
+.filter-dropdown-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.3s ease,
+    opacity 0.22s ease,
+    visibility 0.3s ease;
+}
+
+.filter-options {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+/* open */
+.filter-group.open > .filter-dropdown-content {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+}
+
+.filter-group.open > .filter-dropdown-content > .filter-options {
+  padding: 3px 0 20px;
+}
+
+/* =========================================
+   CHECKBOX
+========================================= */
+
+.filter-checkbox {
+  position: relative;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #444444;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.filter-checkbox:hover {
+  color: #1b6b6a;
+}
+
+.filter-checkbox input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.custom-checkbox {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #aeb2b1;
+  border-radius: 3px;
+  background: #ffffff;
+  color: transparent;
+  font-size: 11px;
+  transition: 0.2s ease;
+}
+
+.filter-checkbox:hover .custom-checkbox {
+  border-color: #1b6b6a;
+}
+
+.filter-checkbox input:checked + .custom-checkbox {
+  border-color: #1b6b6a;
+  background: #1b6b6a;
+  color: #ffffff;
+}
+
+.filter-checkbox input:focus-visible + .custom-checkbox {
+  outline: 2px solid #1b6b6a;
+  outline-offset: 2px;
+}
+
+/* =========================================
+   PRICE RANGE
+========================================= */
+
+.price-range-filter {
+  width: 100%;
+  padding: 3px 2px 7px;
+}
+
+.price-range-values {
+  width: 100%;
+  margin-bottom: 23px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.price-value-box {
+  min-width: 0;
+  padding: 8px 9px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.price-value-box span {
+  display: block;
+  margin-bottom: 2px;
+  color: #888888;
+  font-size: 12px;
+}
+
+.price-value-box strong {
+  display: block;
+  color: #222222;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.price-range-separator {
+  color: #777777;
+}
+
+.price-slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.price-slider-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 4px;
+  background: #dddddd;
+  border-radius: 20px;
+  transform: translateY(-50%);
+}
+
+.price-slider-selected {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  background: #1b6b6a;
+  border-radius: 20px;
+  transform: translateY(-50%);
+}
+
+.price-range-input {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  pointer-events: none;
+  outline: none;
+}
+
+.price-range-input::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+
+.price-range-input::-webkit-slider-thumb {
+  width: 18px;
+  height: 18px;
+  margin-top: -7px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background: #1b6b6a;
+  box-shadow: 0 0 0 1px #1b6b6a;
+  appearance: none;
+  -webkit-appearance: none;
+  pointer-events: auto;
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+.price-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.price-range-input::-moz-range-track {
+  height: 4px;
+  background: transparent;
+}
+
+.price-range-input::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background: #1b6b6a;
+  box-shadow: 0 0 0 1px #1b6b6a;
+  pointer-events: auto;
+}
+
+.price-range-min {
+  z-index: 4;
+}
+
+.price-range-max {
+  z-index: 5;
+}
+
+.price-slider-labels {
+  width: 100%;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #777777;
+  font-size: 13px;
+}
+
+/* =========================================
+   PAGINATION
+========================================= */
+
+.sunglasses-pagination {
+  width: 100%;
+  margin-top: 55px;
+  padding-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-top: 1px solid #eeeeee;
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-number,
+.pagination-arrow {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #222222;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.pagination-arrow {
+  font-size: 25px;
+}
+
+.pagination-number:hover,
+.pagination-arrow:hover:not(:disabled) {
+  border-color: #1b6b6a;
+  color: #1b6b6a;
+}
+
+.pagination-number.active {
+  border-color: #1b6b6a;
+  background: #1b6b6a;
+  color: #ffffff;
+}
+
+.pagination-arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   NO PRODUCTS
+========================================= */
+
+.sunglasses-no-products {
+  padding: 80px 20px;
+  border-radius: 16px;
+  background: #f7f8f8;
+  text-align: center;
+}
+
+.sunglasses-no-products h3 {
+  margin: 0 0 8px;
+  font-family: "Jost", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.sunglasses-no-products p {
+  margin: 0 0 18px;
+  color: #777777;
+  font-size: 17px;
+}
+
+.sunglasses-no-products button {
+  min-height: 44px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 99px;
+  background: #1b6b6a;
+  color: #ffffff;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sunglasses-no-products button:hover {
+  background: #0f5c57;
+}
+
+/* =========================================
+   MOBILE DRAWER (hidden above 768px)
+========================================= */
+
+.mobile-filter-overlay,
+.mobile-filter-drawer {
+  display: none;
+}
+
+/* =========================================
+   LAPTOP  ≤ 1100px
+========================================= */
+
+@media (max-width: 1100px) {
+  .sunglasses-container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .sunglasses-layout {
+    grid-template-columns: 225px minmax(0, 1fr);
+    gap: 22px;
+  }
+
+  .sunglasses-product-grid {
+    gap: 18px;
+  }
+}
+
+/* =========================================
+   TABLET  ≤ 900px
+========================================= */
+
+@media (max-width: 900px) {
+  .sunglasses-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================
+   MOBILE  ≤ 768px  (filters move to a drawer)
+========================================= */
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .sunglasses-page {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .sunglasses-container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .sunglasses-breadcrumb {
+    min-height: 42px;
+    gap: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .sunglasses-banner {
+    height: auto;
+  }
+
+  .sunglasses-banner-image {
+    height: auto;
+    object-fit: contain;
+  }
+
+  .sunglasses-products-section {
+    padding: 18px 0 45px;
+  }
+
+  /* TOOLBAR */
+
+  .sunglasses-toolbar {
+    min-height: auto;
+    margin-bottom: 14px;
+    padding: 0 0 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .sunglasses-result-count {
+    font-size: 14px;
+  }
+
+  .sunglasses-toolbar-right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .mobile-filter-button {
+    flex: 0 0 auto;
+    display: inline-flex;
+    font-size: 14px;
+  }
+
+  .sunglasses-sort {
+    min-width: 0;
+    margin-left: auto;
+    gap: 7px;
+  }
+
+  .sunglasses-sort label {
+    flex-shrink: 0;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .sunglasses-sort select {
+    width: 150px;
+    max-width: 100%;
+    height: 44px;
+    padding: 0 28px 0 10px;
+    font-size: 13px;
+  }
+
+  /* LAYOUT */
+
+  .sunglasses-layout {
+    display: block;
+  }
+
+  .sunglasses-filter-sidebar {
+    display: none;
+  }
+
+  .sunglasses-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .sunglasses-pagination {
+    margin-top: 35px;
+    padding-top: 20px;
+    gap: 5px;
+  }
+
+  .pagination-numbers {
+    gap: 5px;
+  }
+
+  .pagination-number,
+  .pagination-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 13px;
+  }
+
+  .pagination-arrow {
+    font-size: 20px;
+  }
+
+  /* DARK OVERLAY */
+
+  .mobile-filter-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+    display: block;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .mobile-filter-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* FILTER DRAWER */
+
+  .mobile-filter-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 99999;
+    width: 92%;
+    max-width: 390px;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    overflow: hidden;
+    border-radius: 0 18px 18px 0;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition:
+      transform 0.3s ease,
+      visibility 0.3s ease;
+    box-shadow: 6px 0 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-filter-drawer.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .mobile-filter-header {
+    width: 100%;
+    height: 64px;
+    min-height: 64px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #e3e3e3;
+    position: relative;
+    z-index: 5;
+  }
+
+  .mobile-filter-header h2 {
+    margin: 0;
+    font-family: "Jost", sans-serif;
+    font-size: 21px;
+    font-weight: 600;
+    color: #111111;
+  }
+
+  .mobile-filter-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mobile-filter-header .mobile-filter-reset {
+    height: 38px;
+    padding: 0 10px;
+    border: 0;
+    background: transparent;
+    color: #1b6b6a;
+    font-family: "Assistant", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .mobile-filter-header .mobile-filter-close {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #111111;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  /* SCROLLABLE CONTENT */
+
+  .mobile-filter-content {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #ffffff;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #aaaaaa #f1f1f1;
+  }
+
+  .mobile-filter-content::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .mobile-filter-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  .mobile-filter-content::-webkit-scrollbar-thumb {
+    background: #aaaaaa;
+    border-radius: 10px;
+  }
+
+  .mobile-filter-content .filter-content {
+    display: block;
+  }
+
+  .mobile-filter-content .filter-top {
+    display: none;
+  }
+
+  .mobile-filter-content .filter-scroll-area {
+    padding: 0 18px 25px;
+  }
+
+  .mobile-filter-content .filter-group {
+    border-bottom: 1px solid #e3e3e3;
+  }
+
+  .mobile-filter-content .filter-group-header {
+    min-height: 58px;
+    font-size: 16px;
+  }
+
+  .mobile-filter-content
+    .filter-group.open
+    > .filter-dropdown-content
+    > .filter-options {
+    padding: 2px 0 18px;
+  }
+
+  .mobile-filter-content .filter-options {
+    gap: 12px;
+  }
+
+  .mobile-filter-content .filter-checkbox {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .mobile-filter-content .price-range-filter {
+    padding: 5px 0 15px;
+  }
+
+  .mobile-filter-content .price-range-values {
+    margin-bottom: 20px;
+  }
+
+  .mobile-filter-content .price-value-box {
+    padding: 8px 10px;
+  }
+
+  .mobile-show-products {
+    width: calc(100% - 32px);
+    min-height: 50px;
+    margin: 12px 16px 14px;
+    padding: 0 15px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 99px;
+    background: #1b6b6a;
+    color: #ffffff;
+    font-family: "Assistant", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE  ≤ 600px
+========================================= */
+
+@media (max-width: 600px) {
+  .mobile-filter-drawer {
+    width: 94%;
+    max-width: 360px;
+  }
+
+  .mobile-filter-header {
+    height: 60px;
+    min-height: 60px;
+    padding: 0 16px;
+  }
+
+  .mobile-filter-header h2 {
+    font-size: 19px;
+  }
+
+  .mobile-filter-content .filter-scroll-area {
+    padding: 0 16px 22px;
+  }
+
+  .mobile-filter-content .filter-group-header {
+    min-height: 56px;
+    font-size: 15px;
+  }
+
+  .mobile-filter-content .filter-checkbox {
+    font-size: 14px;
+  }
+}
+
+/* =========================================
+   PHONE  ≤ 480px
+========================================= */
+
+@media (max-width: 480px) {
+  .sunglasses-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .sunglasses-banner {
+    height: auto;
+  }
+
+  .sunglasses-toolbar {
+    gap: 10px;
+  }
+
+  .sunglasses-result-count {
+    font-size: 13px;
+  }
+
+  .sunglasses-toolbar-right {
+    gap: 8px;
+  }
+
+  .mobile-filter-button {
+    height: 42px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .sunglasses-sort {
+    flex: 1;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+
+  .sunglasses-sort label {
+    font-size: 12px;
+  }
+
+  .sunglasses-sort select {
+    width: 130px;
+    height: 42px;
+    padding-left: 8px;
+    padding-right: 24px;
+    font-size: 12px;
+  }
+
+  .sunglasses-product-grid {
+    column-gap: 8px;
+    row-gap: 10px;
+  }
+}
+
+/* =========================================
+   iPhone SE  ≤ 400px
+========================================= */
+
+@media (max-width: 400px) {
+  .mobile-filter-drawer {
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+  }
+
+  .mobile-filter-header {
+    height: 58px;
+    min-height: 58px;
+    padding: 0 15px;
+  }
+
+  .mobile-filter-header h2 {
+    font-size: 18px;
+  }
+
+  .mobile-filter-content .filter-scroll-area {
+    padding: 0 15px 20px;
+  }
+
+  .mobile-filter-content .filter-group-header {
+    min-height: 54px;
+  }
+
+  .mobile-show-products {
+    width: calc(100% - 28px);
+    margin: 10px 14px 12px;
+    min-height: 48px;
+    font-size: 14px;
+  }
+}
+
+/* =========================================
+   VERY SMALL  ≤ 340px
+========================================= */
+
+@media (max-width: 340px) {
+  .sunglasses-container {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .sunglasses-product-grid {
+    column-gap: 6px;
+  }
+
+  .sunglasses-sort label {
+    display: none;
+  }
+
+  .sunglasses-sort select {
+    width: 105px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-filter-drawer,
+  .mobile-filter-overlay,
+  .filter-dropdown-content,
+  .filter-chevron {
+    transition: none;
+  }
+}

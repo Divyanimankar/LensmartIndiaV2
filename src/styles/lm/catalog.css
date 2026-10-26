@@ -1,0 +1,799 @@
+/* ==========================================================================
+   LENSMART INDIA — CATALOGUE (listing pages, product cards, filters, sort)
+   Covers: /eyeglasses · /sunglasses · /all-products · /contact-lenses ·
+   brand / shape / type / lens-type / manufacturer collection pages.
+========================================================================== */
+
+/* ---------- PAGE SHELL ---------- */
+html body .all-products-page,
+html body .sunglasses-page,
+html body .eyeglasses-page {
+  background: var(--lm-ivory);
+  color: var(--lm-ink-2);
+  font-family: var(--lm-font-text);
+}
+
+/* breadcrumbs */
+html body .breadcrumb,
+html body .catalog-breadcrumb {
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--lm-muted);
+}
+html body .breadcrumb a,
+html body .catalog-breadcrumb a {
+  position: relative;
+  color: var(--lm-ink-2);
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .breadcrumb a:hover,
+html body .catalog-breadcrumb a:hover {
+  color: var(--lm-teal);
+}
+
+/* campaign banners (artwork is baked in; we only frame & reveal it) */
+html body .contact-lens-banner,
+html body .catalog-banner,
+html body .page-banner,
+html body .pageBanner {
+  background: var(--lm-sand);
+}
+
+/* data-driven catalog hero (brand / lens-type pages) */
+html body .catalog-hero {
+  background:
+    radial-gradient(ellipse 60% 120% at 90% 0%, rgba(217, 196, 155, 0.22), transparent 60%),
+    linear-gradient(135deg, var(--lm-teal-ink) 0%, var(--lm-teal-deep) 60%, var(--lm-teal) 100%);
+  font-family: var(--lm-font-text);
+}
+html body .catalog-hero h1,
+html body .catalog-hero .catalog-hero-title {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 1.4rem + 3.2vw, 4rem);
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+html body .catalog-hero-eyebrow {
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-eyebrow);
+  text-transform: uppercase;
+  color: #d9c49b;
+}
+html body .catalog-hero .catalog-breadcrumb {
+  border-radius: var(--lm-r-pill);
+}
+html body .catalog-hero-chip {
+  border-radius: var(--lm-r-pill);
+  font-family: var(--lm-font-ui);
+  color: var(--lm-teal-deep);
+}
+html body .catalog-hero-chip strong {
+  font-family: var(--lm-font-display);
+  font-size: 1.5rem;
+}
+
+/* ---------- TOOLBAR (count + sort) ---------- */
+html body .pt-bar {
+  background: transparent;
+  border-bottom: 1px solid var(--lm-line);
+}
+html body .pt-count {
+  font-family: var(--lm-font-ui);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--lm-muted);
+}
+html body .pt-count strong {
+  font-family: var(--lm-font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--lm-ink);
+}
+html body .sd {
+  --sd-accent: var(--lm-ink);
+  --sd-outline: var(--lm-line-strong);
+  --sd-tint: var(--lm-sand);
+  --sd-tint-soft: var(--lm-ivory);
+  --sd-text: var(--lm-ink);
+  --sd-muted: var(--lm-muted);
+}
+html body .sd-label {
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-eyebrow);
+  text-transform: uppercase;
+}
+html body .sd-button {
+  height: 44px;
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-paper);
+  font-family: var(--lm-font-ui);
+  font-size: 13.5px;
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), background-color var(--lm-dur-2) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .sd-button:hover,
+html body .sd-control.is-open .sd-button {
+  border-color: var(--lm-ink);
+  background: var(--lm-paper);
+}
+html body .sd-button:focus-visible {
+  box-shadow: var(--lm-ring);
+}
+html body .sd-chevron {
+  background: var(--lm-sand);
+  color: var(--lm-ink);
+  border-radius: 50%;
+  transition: transform var(--lm-dur-3) var(--lm-ease-out), background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .sd-control.is-open .sd-chevron {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body .sd-menu {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-md);
+  background: var(--lm-paper);
+  box-shadow: var(--lm-shadow-3);
+  transform-origin: top right;
+}
+html body .sd-option {
+  border-radius: var(--lm-r-sm);
+  font-family: var(--lm-font-ui);
+  font-size: 14px;
+  transition: background-color var(--lm-dur-1) var(--lm-ease-soft), color var(--lm-dur-1) var(--lm-ease-soft);
+}
+html body .sd-option.is-active {
+  background: var(--lm-ivory);
+}
+html body .sd-option.is-selected {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+
+/* ---------- FILTERS ---------- */
+html body .pf-panel,
+html body .pf-drawer {
+  --pf-accent: var(--lm-ink);
+  --pf-text: var(--lm-ink-2);
+  --pf-muted: var(--lm-muted);
+  --pf-outline: var(--lm-line-strong);
+  --pf-tint: var(--lm-sand);
+  --pf-tint-soft: var(--lm-ivory);
+  font-family: var(--lm-font-text);
+}
+html body .pf-panel {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+  box-shadow: none;
+  overflow: hidden;
+}
+html body .pf-head {
+  padding: 20px 22px;
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body .pf-title {
+  font-family: var(--lm-font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--lm-ivory);
+}
+html body .pf-badge {
+  background: var(--lm-brass);
+  color: var(--lm-ink);
+  border-radius: var(--lm-r-pill);
+  font-family: var(--lm-font-ui);
+  font-weight: 600;
+}
+html body .pf-reset {
+  border: 1px solid rgba(250, 246, 238, 0.4);
+  border-radius: var(--lm-r-pill);
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .pf-reset:hover:not(:disabled) {
+  background: var(--lm-ivory);
+  color: var(--lm-ink);
+}
+html body .pf-close {
+  border-radius: 50%;
+  background: rgba(250, 246, 238, 0.14);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .pf-close:hover {
+  background: rgba(250, 246, 238, 0.3);
+  transform: rotate(90deg);
+}
+html body .pf-chips-wrap {
+  background: var(--lm-sand);
+}
+html body .pf-chips-title {
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  letter-spacing: var(--lm-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--lm-ink-2);
+}
+html body .pf-chip {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-paper);
+  color: var(--lm-ink);
+  font-family: var(--lm-font-ui);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .pf-chip:hover {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body .pf-group + .pf-group,
+html body .pf-chips-wrap + .pf-group {
+  border-top: 1px solid var(--lm-line);
+}
+html body .pf-group-button {
+  padding: 18px 22px;
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  color: var(--lm-ink);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), padding var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .pf-group-button:hover,
+html body .pf-group.is-open > .pf-group-title .pf-group-button {
+  background: var(--lm-ivory);
+}
+html body .pf-group-count {
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-teal);
+  font-family: var(--lm-font-ui);
+}
+html body .pf-chevron {
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .pf-group-body {
+  padding: 4px 16px 20px;
+  animation: lm-menu-col 360ms var(--lm-ease-out) both;
+}
+html body .pf-search-box input {
+  height: 42px;
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-ivory);
+  font-family: var(--lm-font-ui);
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out), background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .pf-search-box input:focus {
+  border-color: var(--lm-teal);
+  background: #fff;
+  box-shadow: var(--lm-ring);
+}
+html body .pf-search-box input:focus-visible {
+  outline: none;
+}
+html body .pf-option {
+  border-radius: var(--lm-r-sm);
+  font-family: var(--lm-font-ui);
+  font-size: 14px;
+  transition: background-color var(--lm-dur-1) var(--lm-ease-soft), padding var(--lm-dur-2) var(--lm-ease-out);
+}
+html body .pf-option:hover {
+  background: var(--lm-ivory);
+}
+html body .pf-box {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-xs);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), border-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-2) var(--lm-ease-spring);
+}
+html body .pf-input:checked ~ .pf-box {
+  background: var(--lm-ink);
+  border-color: var(--lm-ink);
+  transform: scale(1.04);
+}
+html body .pf-input:checked ~ .pf-option-label {
+  color: var(--lm-ink);
+  font-weight: 600;
+}
+html body .pf-count {
+  background: var(--lm-sand);
+  border-radius: var(--lm-r-pill);
+  color: var(--lm-muted);
+  font-family: var(--lm-font-ui);
+  font-size: 11.5px;
+}
+html body .pf-pill span {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  font-family: var(--lm-font-ui);
+  font-size: 13px;
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), border-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out);
+}
+html body .pf-pill:hover span {
+  border-color: var(--lm-ink);
+  color: var(--lm-ink);
+}
+html body .pf-pill:active span {
+  transform: scale(0.96);
+}
+html body .pf-pill input:checked + span {
+  background: var(--lm-ink);
+  border-color: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body .pf-price-value {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-ivory);
+  color: var(--lm-ink);
+}
+html body .pf-price-value:focus-within {
+  border-color: var(--lm-teal);
+  box-shadow: var(--lm-ring);
+}
+html body .pf-range-fill {
+  background: var(--lm-ink);
+}
+html body .pf-range-track {
+  background: var(--lm-line);
+}
+html body .pf-show {
+  border-radius: var(--lm-r-xs);
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+}
+html body .pf-overlay {
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+html body .pf-drawer {
+  transition-timing-function: var(--lm-ease-in-out);
+}
+
+/* floating mobile "Filters" button */
+html body .floating-filter-button {
+  background: var(--lm-ink);
+  border-radius: var(--lm-r-pill);
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  box-shadow: var(--lm-shadow-3);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-2) var(--lm-ease-out);
+}
+html body .floating-filter-button:hover {
+  background: var(--lm-teal-deep);
+}
+html body .floating-filter-button:active {
+  transform: scale(0.96);
+}
+html body .floating-filter-badge {
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-brass);
+  color: var(--lm-ink);
+}
+
+/* ---------- PRODUCT GRID ---------- */
+html body .pg-grid {
+  gap: var(--lm-grid-gap);
+}
+
+/* ---------- PRODUCT CARD (.lm-card — every product type) ---------- */
+html body .lm-card {
+  --teal: var(--lm-teal);
+  --teal-dark: var(--lm-teal-deep);
+  --teal-soft: var(--lm-teal-soft);
+  --ink: var(--lm-ink);
+  --muted: var(--lm-muted);
+  --sale: var(--lm-sale);
+  --green: var(--lm-ok);
+  --panel: var(--lm-img-bg);
+  --line: var(--lm-line);
+  --star: var(--lm-brass);
+  gap: 8px;
+  padding: 10px 10px 16px;
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+  box-shadow: none;
+  transition: transform var(--lm-dur-hover) var(--lm-ease-out), box-shadow var(--lm-dur-hover) var(--lm-ease-out), border-color var(--lm-dur-3) var(--lm-ease-soft);
+}
+@media (hover: hover) {
+  html body .lm-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--lm-line-strong);
+    box-shadow: var(--lm-shadow-3);
+  }
+  html body .lm-card:hover .lm-img {
+    transform: scale(var(--lm-img-hover-scale));
+  }
+}
+html body .lm-card:active {
+  transform: translateY(-1px) scale(0.995);
+}
+html body .lm-card,
+html body .lm-card *,
+html body .lm-card *::before,
+html body .lm-card *::after {
+  font-family: var(--lm-font-text);
+}
+html body .lm-card .lm-title,
+html body .lm-card .lm-title a,
+html body .lm-card .lm-now,
+html body .lm-card .lm-now--request,
+html body .lm-card .lm-mrp,
+html body .lm-card .lm-off,
+html body .lm-card .lm-off-body,
+html body .lm-card .lm-off-num,
+html body .lm-card .lm-off-unit,
+html body .lm-card .lm-off-unit i,
+html body .lm-card .lm-cta {
+  font-family: var(--lm-font-ui);
+}
+html body .lm-card .lm-title,
+html body .lm-card .lm-title a {
+  font-family: var(--lm-font-display);
+}
+
+html body .lm-media {
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-img-bg);
+}
+html body .lm-img {
+  transition: transform var(--lm-dur-img) var(--lm-ease-out);
+}
+html body .lm-img img {
+  animation: lm-fade var(--lm-dur-3) var(--lm-ease-soft);
+}
+
+/* discount tag */
+html body .lm-off-body {
+  border-radius: 0 var(--lm-r-xs) var(--lm-r-xs) 0;
+  background: var(--lm-sale);
+}
+html body .lm-off::after {
+  background: #5e1d18;
+}
+html body .lm-off,
+html body .lm-off-body,
+html body .lm-off-num,
+html body .lm-off-unit i {
+  font-family: var(--lm-font-ui);
+}
+html body .lm-off-num {
+  font-weight: 600;
+}
+
+/* wishlist heart */
+html body .lm-heart svg {
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 253, 249, 0.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--lm-shadow-1);
+  transition: transform var(--lm-dur-2) var(--lm-ease-out), background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .lm-heart:hover svg {
+  transform: scale(1.1);
+  background: #fff;
+}
+html body .lm-heart:active svg {
+  transform: scale(0.9);
+}
+html body .lm-heart[aria-pressed="true"] svg {
+  color: var(--lm-sale);
+}
+html body .lm-heart:focus-visible {
+  outline-offset: 0;
+  border-radius: 50%;
+}
+
+/* chips */
+html body .lm-chip {
+  border-radius: var(--lm-r-pill);
+  background: rgba(255, 253, 249, 0.94);
+  color: var(--lm-ink);
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+html body .lm-chip--hot {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body .lm-chip--hot svg {
+  color: var(--lm-brass);
+}
+html body .lm-chip--size {
+  color: var(--lm-ink-2);
+}
+
+/* text */
+html body .lm-brandrow {
+  font-family: var(--lm-font-ui);
+}
+html body .lm-brand {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--lm-muted);
+}
+html body .lm-trust {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--lm-ok);
+}
+html body .lm-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.005em;
+  color: var(--lm-ink);
+}
+html body .lm-title a {
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .lm-card:hover .lm-title a {
+  color: var(--lm-teal);
+}
+html body .lm-meta {
+  font-family: var(--lm-font-ui);
+  font-size: 13.5px;
+  color: var(--lm-muted);
+}
+html body .lm-meta b {
+  font-weight: 500;
+  color: var(--lm-teal);
+}
+html body .lm-meta .lm-tag--color,
+html body .lm-meta .lm-power--spherical,
+html body .lm-meta .lm-power--toric,
+html body .lm-meta .lm-power--multifocal {
+  color: var(--lm-ink-2);
+}
+html body .lm-rating {
+  font-family: var(--lm-font-ui);
+  font-size: 13px;
+  font-weight: 600;
+}
+html body .lm-rating small {
+  font-weight: 400;
+  color: var(--lm-faint);
+}
+html body .lm-now {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--lm-ink);
+}
+html body .lm-now--request {
+  font-size: 0.95rem;
+}
+html body .lm-mrp {
+  font-size: 0.85rem;
+  color: var(--lm-faint);
+}
+html body .lm-sub {
+  font-family: var(--lm-font-ui);
+  font-size: 12.5px;
+  color: var(--lm-muted);
+}
+html body .lm-sub b {
+  font-weight: 500;
+  color: var(--lm-ok);
+}
+html body .lm-sw i {
+  box-shadow: 0 0 0 2px var(--lm-paper), 0 0 0 3px transparent;
+  transition: box-shadow var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-2) var(--lm-ease-out);
+}
+html body .lm-sw:hover i {
+  transform: scale(1.12);
+}
+html body .lm-sw[aria-checked="true"] i {
+  box-shadow: 0 0 0 2px var(--lm-paper), 0 0 0 3px var(--lm-ink);
+}
+
+/* primary CTA: rectangular, tracked caps, slide-up ink fill on hover */
+html body .lm-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 46px;
+  margin-top: 10px;
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-teal);
+  color: #fff;
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  transition: color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out);
+}
+@media (hover: hover) {
+  html body .lm-cta:hover {
+    background: var(--lm-teal);
+  }
+}
+html body .lm-cta:active {
+  background: var(--lm-teal);
+  transform: scale(0.985);
+}
+html body .lm-cta:focus-visible {
+  outline: 2px solid var(--lm-teal);
+  outline-offset: 3px;
+}
+html body .lm-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--lm-ink);
+  transform: translate3d(0, 101%, 0);
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+@media (hover: hover) {
+  html body .lm-cta:hover::before {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ---------- PAGINATION ---------- */
+html body .all-products-pagination,
+html body .pagination {
+  gap: 8px;
+  flex-wrap: wrap;
+}
+@media (max-width: 480px) {
+  html body .all-products-pagination,
+  html body .pagination {
+    gap: 6px;
+  }
+  html body .all-products-pagination button,
+  html body .all-products-pagination a,
+  html body .pagination button {
+    min-width: 40px;
+    height: 40px;
+  }
+}
+html body .all-products-pagination button,
+html body .all-products-pagination a,
+html body .pagination button {
+  min-width: 44px;
+  height: 44px;
+  border: 1px solid var(--lm-line-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--lm-ink);
+  font-family: var(--lm-font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), border-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-2) var(--lm-ease-out);
+}
+html body .all-products-pagination button:hover:not(:disabled),
+html body .pagination button:hover:not(:disabled) {
+  border-color: var(--lm-ink);
+  transform: translateY(-2px);
+}
+html body .all-products-pagination button:active:not(:disabled) {
+  transform: scale(0.94);
+}
+html body .all-products-pagination button.active,
+html body .all-products-pagination button[aria-current="page"],
+html body .pagination button.active {
+  background: var(--lm-ink);
+  border-color: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body .all-products-pagination button:disabled {
+  opacity: 0.35;
+}
+
+/* ---------- COLLECTION COPY (intro, brands, FAQ) ---------- */
+html body .collection-desc {
+  background: var(--lm-sand);
+  font-family: var(--lm-font-text);
+}
+html body .collection-desc__title,
+html body .collection-desc__subtitle {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--lm-ink);
+}
+html body .collection-desc__title {
+  font-size: clamp(1.8rem, 1.3rem + 1.6vw, 2.6rem);
+}
+html body .collection-desc__subtitle {
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+}
+html body .collection-desc__intro-copy p,
+html body .collection-desc__item p {
+  color: var(--lm-ink-2);
+  line-height: 1.7;
+}
+html body .collection-desc__brand {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+  transition: transform var(--lm-dur-3) var(--lm-ease-out), box-shadow var(--lm-dur-3) var(--lm-ease-out), border-color var(--lm-dur-3) var(--lm-ease-soft);
+}
+html body a.collection-desc__brand:hover,
+html body .collection-desc__brand:hover {
+  transform: translateY(-3px);
+  border-color: var(--lm-line-strong);
+  box-shadow: var(--lm-shadow-2);
+}
+html body .collection-desc__brand-name {
+  font-family: var(--lm-font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+html body .collection-desc__brand-count {
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--lm-teal);
+}
+html body .collection-desc__item summary {
+  font-family: var(--lm-font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  transition: color var(--lm-dur-2) var(--lm-ease-soft), padding var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .collection-desc__item summary:hover {
+  color: var(--lm-teal);
+  padding-left: 4px;
+}
+html body .collection-desc__item summary svg {
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+
+/* ---------- EMPTY / NOT FOUND ---------- */
+html body .pg-empty,
+html body .all-products-empty {
+  font-family: var(--lm-font-display);
+  font-size: 1.6rem;
+  color: var(--lm-muted);
+}
+
+/* ---------- MOBILE LISTING ---------- */
+@media (max-width: 768px) {
+  html body .lm-title {
+    font-size: 1.15rem;
+  }
+  html body .lm-card {
+    padding: 8px 8px 14px;
+  }
+  html body .pf-group-button {
+    padding: 18px 20px;
+    min-height: 56px;
+  }
+  html body .pf-option {
+    min-height: 44px;
+  }
+  html body .lm-cta {
+    min-height: 44px;
+  }
+}

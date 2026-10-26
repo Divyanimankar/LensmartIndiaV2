@@ -1,0 +1,1213 @@
+/* =========================================================
+   ProductFilter — shared by contact lenses, sunglasses and
+   eyeglasses listing pages. Teal theme, Jost headings,
+   Assistant body. All classes start with "pf-".
+========================================================= */
+
+.pf-panel,
+.pf-drawer {
+  --pf-accent: #1b6b6a;
+  --pf-accent-dark: #145958;
+  --pf-tint: #eaf3f2;
+  --pf-tint-soft: #f4f9f8;
+  --pf-line: #dbe6e4;
+  --pf-outline: #bcd2cf;
+  --pf-text: #263232;
+  --pf-muted: #8b9594;
+
+  font-family: "Assistant", sans-serif;
+  color: var(--pf-text);
+  box-sizing: border-box;
+}
+
+.pf-panel *,
+.pf-drawer * {
+  box-sizing: border-box;
+}
+
+.pf-panel button,
+.pf-drawer button,
+.pf-panel input,
+.pf-drawer input {
+  font-family: inherit;
+}
+
+/* visually hidden, still read by screen readers */
+.pf-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =========================================================
+   DESKTOP PANEL (outlined card)
+========================================================= */
+
+.pf-panel {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid var(--pf-outline);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 22px rgba(27, 107, 106, 0.08);
+}
+
+/* ---------- header (panel + drawer) ---------- */
+
+.pf-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 18px;
+  background: var(--pf-accent);
+  color: #ffffff;
+}
+
+.pf-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.pf-badge {
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--pf-accent);
+  font-family: "Assistant", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pf-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pf-reset {
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: transparent;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.pf-reset:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.pf-reset:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.pf-close {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.pf-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.pf-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.pf-panel button:focus-visible,
+.pf-drawer button:focus-visible {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+
+.pf-head button:focus-visible {
+  outline-color: #ffffff;
+}
+
+/* ---------- selected chips ---------- */
+
+.pf-chips-wrap {
+  padding: 14px 18px;
+  background: var(--pf-tint-soft);
+  border-bottom: 1px solid var(--pf-line);
+}
+
+.pf-chips-title {
+  margin: 0 0 8px;
+  color: var(--pf-accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.pf-chips {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.pf-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 5px 8px 5px 11px;
+  border: 1px solid #b6d3d0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--pf-accent);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.pf-chip:hover {
+  background: var(--pf-tint);
+  border-color: var(--pf-accent);
+}
+
+.pf-chip svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+/* ---------- accordion groups ---------- */
+
+.pf-group + .pf-group,
+.pf-chips-wrap + .pf-group {
+  border-top: 1px solid var(--pf-line);
+}
+
+.pf-group-title {
+  margin: 0;
+  font-size: inherit;
+}
+
+.pf-group-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 18px;
+  border: 0;
+  background: transparent;
+  color: var(--pf-accent);
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pf-group-button:hover {
+  background: var(--pf-tint-soft);
+}
+
+.pf-group.is-open > .pf-group-title .pf-group-button {
+  background: var(--pf-tint-soft);
+}
+
+.pf-group-name {
+  flex: 1;
+}
+
+.pf-group-count {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--pf-accent);
+  color: #ffffff;
+  font-family: "Assistant", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.pf-chevron {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  flex: none;
+  transition: transform 0.2s ease;
+}
+
+.pf-chevron svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pf-group.is-open .pf-chevron {
+  transform: rotate(180deg);
+}
+
+.pf-group-body {
+  padding: 6px 12px 16px;
+  animation: pf-fade 0.2s ease;
+}
+
+.pf-group-body[hidden] {
+  display: none;
+}
+
+/* ---------- search ---------- */
+
+.pf-search {
+  padding: 4px 6px 10px;
+}
+
+.pf-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pf-search-box > svg {
+  position: absolute;
+  left: 12px;
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: var(--pf-muted);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.pf-search-box input {
+  width: 100%;
+  height: 40px;
+  padding: 0 38px 0 38px;
+  border: 1px solid var(--pf-outline);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--pf-text);
+  font-size: 14px;
+}
+
+.pf-search-box input::placeholder {
+  color: #9aa6a5;
+}
+
+.pf-search-box input:focus {
+  outline: 0;
+  border-color: var(--pf-accent);
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.16);
+}
+
+.pf-search-clear {
+  position: absolute;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--pf-muted);
+  cursor: pointer;
+}
+
+.pf-search-clear:hover {
+  background: var(--pf-tint);
+  color: var(--pf-accent);
+}
+
+.pf-search-clear svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.pf-search-note {
+  margin: 8px 2px 0;
+  color: var(--pf-muted);
+  font-size: 12.5px;
+}
+
+/* ---------- checkbox options ---------- */
+
+.pf-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pf-list--scroll {
+  max-height: 252px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: #9fc4c1 transparent;
+}
+
+.pf-list--scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pf-list--scroll::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background: #9fc4c1;
+}
+
+.pf-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 8px;
+  border-radius: 9px;
+  color: var(--pf-text);
+  font-size: 14.5px;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.pf-option:hover {
+  background: var(--pf-tint-soft);
+}
+
+/* the real checkbox sits invisibly on top of the custom box */
+.pf-input {
+  position: absolute;
+  left: 8px;
+  width: 19px;
+  height: 19px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.pf-box {
+  width: 19px;
+  height: 19px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #a9bfbc;
+  border-radius: 6px;
+  background: #ffffff;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.pf-box svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.pf-option:hover .pf-box {
+  border-color: var(--pf-accent);
+}
+
+.pf-input:checked ~ .pf-box {
+  background: var(--pf-accent);
+  border-color: var(--pf-accent);
+}
+
+.pf-input:checked ~ .pf-box svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pf-input:focus-visible ~ .pf-box {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+
+.pf-input:checked ~ .pf-option-label {
+  color: var(--pf-accent);
+  font-weight: 700;
+}
+
+.pf-swatch {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.pf-option-label {
+  color: var(--pf-text);
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.pf-count {
+  flex: none;
+  min-width: 26px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #eef4f3;
+  color: #6b7978;
+  font-size: 12px;
+  text-align: center;
+}
+
+.pf-option.is-empty {
+  color: #9aa6a5;
+}
+
+.pf-option.is-empty .pf-count {
+  background: transparent;
+}
+
+.pf-empty {
+  margin: 0;
+  padding: 10px 8px;
+  color: var(--pf-muted);
+  font-size: 14px;
+}
+
+/* ---------- pill options (frame size) ---------- */
+
+.pf-list--pills {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 2px 6px;
+}
+
+.pf-pill {
+  position: relative;
+  cursor: pointer;
+}
+
+.pf-pill input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.pf-pill span {
+  min-width: 46px;
+  height: 38px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--pf-outline);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--pf-text);
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.pf-pill:hover span {
+  border-color: var(--pf-accent);
+  color: var(--pf-accent);
+}
+
+.pf-pill input:checked + span {
+  background: var(--pf-accent);
+  border-color: var(--pf-accent);
+  color: #ffffff;
+}
+
+.pf-pill input:focus-visible + span {
+  outline: 2px solid var(--pf-accent);
+  outline-offset: 2px;
+}
+
+/* ---------- price ---------- */
+
+.pf-price {
+  padding: 4px 8px 0;
+}
+
+.pf-price-inputs {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.pf-price-field {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.pf-price-dash {
+  padding-bottom: 11px;
+  color: var(--pf-muted);
+}
+
+.pf-price-box {
+  flex: 1;
+  min-width: 0;
+  display: block;
+}
+
+.pf-price-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--pf-muted);
+  font-size: 12px;
+}
+
+.pf-price-value {
+  height: 40px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--pf-outline);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--pf-accent);
+  font-weight: 700;
+}
+
+.pf-price-value:focus-within {
+  border-color: var(--pf-accent);
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.16);
+}
+
+.pf-price-value input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--pf-text);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.pf-price-value input:focus {
+  outline: 0;
+}
+
+/* two sliders stacked on one track */
+
+.pf-range {
+  position: relative;
+  height: 30px;
+  margin: 16px 8px 0;
+}
+
+.pf-range-track,
+.pf-range-fill {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  margin-top: -2px;
+  border-radius: 4px;
+}
+
+.pf-range-track {
+  left: 0;
+  right: 0;
+  background: #d5e3e1;
+}
+
+.pf-range-fill {
+  background: var(--pf-accent);
+}
+
+.pf-range-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.pf-range-input::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+
+.pf-range-input::-moz-range-track {
+  height: 4px;
+  background: transparent;
+}
+
+.pf-range-input::-webkit-slider-thumb {
+  width: 22px;
+  height: 22px;
+  margin-top: -9px;
+  border: 3px solid var(--pf-accent);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(20, 60, 59, 0.3);
+  pointer-events: auto;
+  cursor: grab;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.pf-range-input::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--pf-accent);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(20, 60, 59, 0.3);
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.pf-range-input:focus {
+  outline: 0;
+}
+
+.pf-range-input:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px rgba(27, 107, 106, 0.3);
+}
+
+.pf-range-input:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px rgba(27, 107, 106, 0.3);
+}
+
+.pf-range-labels {
+  margin: 4px 4px 0;
+  display: flex;
+  justify-content: space-between;
+  color: var(--pf-muted);
+  font-size: 12px;
+}
+
+/* =========================================================
+   MOBILE DRAWER (bottom sheet)
+========================================================= */
+
+.pf-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(15, 35, 34, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s ease,
+    visibility 0s linear 0.25s;
+}
+
+.pf-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.25s ease;
+}
+
+.pf-drawer {
+  position: fixed;
+  z-index: 1210;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: min(100%, 640px);
+  max-height: 90vh;
+  max-height: 90dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px 18px 0 0;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 -10px 40px rgba(15, 35, 34, 0.25);
+  transform: translateY(100%);
+  visibility: hidden;
+  transition:
+    transform 0.3s ease,
+    visibility 0s linear 0.3s;
+}
+
+.pf-drawer.is-open {
+  transform: translateY(0);
+  visibility: visible;
+  transition: transform 0.3s ease;
+}
+
+.pf-drawer .pf-head {
+  flex: none;
+}
+
+.pf-drawer-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pf-drawer-foot {
+  flex: none;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: #ffffff;
+  border-top: 1px solid var(--pf-line);
+}
+
+.pf-show {
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--pf-accent);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pf-show:hover {
+  background: var(--pf-accent-dark);
+}
+
+/* on touch screens give options a comfortable tap size */
+.pf-drawer .pf-option {
+  padding: 11px 8px;
+}
+
+/* =========================================================
+   FULL SIZE PANEL — fills the width and height of its parent
+   (the sidebar <aside> stretches to the height of the grid row)
+========================================================= */
+
+.all-products-sidebar,
+.desktop-filter-sidebar {
+  width: 100%;
+  align-self: stretch;
+  height: auto;
+  min-width: 0;
+}
+
+.all-products-sidebar > .pf-panel {
+  width: 100%;
+}
+
+/* desktop: the card sticks 18px from the top of the viewport and
+   scrolls on its own when the filters are taller than the screen */
+.pf-panel {
+  /* set --navbar-height on :root (or any parent) to your sticky navbar's
+     real height; the card then sits 18px below it */
+  --pf-sticky-top: calc(var(--navbar-height, 90px) + 18px);
+
+  position: sticky;
+  top: var(--pf-sticky-top);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - var(--pf-sticky-top) - 18px);
+  max-height: calc(100dvh - var(--pf-sticky-top) - 18px);
+}
+
+.pf-panel > .pf-head {
+  flex: none;
+}
+
+/* the filter list has its own scrollbar; the header stays put */
+.pf-panel > .pf-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #9fc4c1 transparent;
+  scrollbar-gutter: stable;
+}
+
+.pf-panel > .pf-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pf-panel > .pf-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pf-panel > .pf-body::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #9fc4c1;
+}
+
+.pf-panel > .pf-body::-webkit-scrollbar-thumb:hover {
+  background: var(--pf-accent);
+}
+
+/* =========================================================
+   MOBILE + TABLET IMPROVEMENTS
+========================================================= */
+
+.pf-grabber {
+  display: none;
+}
+
+.pf-clear {
+  flex: 0 0 auto;
+  height: 48px;
+  padding: 0 20px;
+  border: 1.5px solid var(--pf-outline);
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--pf-accent);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.pf-clear:hover:not(:disabled) {
+  background: var(--pf-tint);
+  border-color: var(--pf-accent);
+}
+
+.pf-clear:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.pf-drawer-foot {
+  display: flex;
+  gap: 10px;
+}
+
+.pf-show {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---------- phones and small tablets: bottom sheet ---------- */
+
+@media (max-width: 767px) {
+  .pf-drawer {
+    width: 100%;
+    max-height: 88vh;
+    max-height: 88dvh;
+    border-radius: 20px 20px 0 0;
+    background: var(--pf-accent);
+  }
+
+  .pf-grabber {
+    display: block;
+    flex: none;
+    width: 44px;
+    height: 5px;
+    margin: 9px auto 0;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .pf-drawer .pf-head {
+    padding: 10px 16px 14px;
+  }
+
+  .pf-drawer .pf-title {
+    font-size: 20px;
+  }
+
+  .pf-drawer .pf-reset {
+    display: none; /* the footer has a Clear all button */
+  }
+
+  .pf-drawer .pf-close {
+    width: 38px;
+    height: 38px;
+  }
+
+  .pf-drawer-scroll,
+  .pf-drawer-foot {
+    background: #ffffff;
+  }
+
+  /* selected chips become one swipeable row */
+  .pf-drawer .pf-chips-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 12px 16px;
+  }
+
+  .pf-drawer .pf-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pf-drawer .pf-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pf-drawer .pf-chips li {
+    flex: none;
+  }
+
+  .pf-drawer .pf-chip {
+    min-height: 36px;
+  }
+
+  .pf-drawer .pf-group-button {
+    min-height: 56px;
+    padding: 14px 16px;
+    font-size: 17px;
+  }
+
+  .pf-drawer .pf-group-body {
+    padding: 6px 10px 18px;
+  }
+
+  .pf-drawer .pf-option {
+    min-height: 46px;
+    padding: 10px 8px;
+    font-size: 15.5px;
+  }
+
+  .pf-drawer .pf-box,
+  .pf-drawer .pf-input {
+    width: 22px;
+    height: 22px;
+  }
+
+  .pf-drawer .pf-list--scroll {
+    max-height: 300px;
+  }
+
+  .pf-drawer .pf-pill span {
+    height: 44px;
+    min-width: 52px;
+  }
+
+  /* 16px stops iOS Safari zooming in when a field is focused */
+  .pf-drawer .pf-search-box input,
+  .pf-drawer .pf-price-value input {
+    font-size: 16px;
+  }
+
+  .pf-drawer .pf-search-box input,
+  .pf-drawer .pf-price-value {
+    height: 46px;
+  }
+
+  .pf-drawer .pf-range {
+    height: 40px;
+  }
+
+  .pf-drawer .pf-range-input::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+    margin-top: -12px;
+  }
+
+  .pf-drawer .pf-range-input::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* ---------- tablets: side sheet sliding in from the right ---------- */
+
+@media (min-width: 768px) {
+  .pf-drawer {
+    top: 0;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    width: min(420px, 90vw);
+    max-height: none;
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    border-radius: 20px 0 0 20px;
+    box-shadow: -10px 0 40px rgba(15, 35, 34, 0.25);
+    transform: translateX(100%);
+  }
+
+  .pf-drawer.is-open {
+    transform: translateX(0);
+  }
+
+  .pf-drawer .pf-head {
+    padding: 18px 22px;
+  }
+
+  .pf-drawer .pf-reset {
+    display: none;
+  }
+
+  .pf-drawer .pf-group-button {
+    padding: 17px 22px;
+    font-size: 17px;
+  }
+
+  .pf-drawer .pf-group-body {
+    padding: 6px 16px 18px;
+  }
+
+  .pf-drawer .pf-chips-wrap {
+    padding: 14px 22px;
+  }
+
+  .pf-drawer .pf-option {
+    min-height: 44px;
+  }
+
+  .pf-drawer .pf-search-box input,
+  .pf-drawer .pf-price-value input {
+    font-size: 16px;
+  }
+
+  .pf-drawer-foot {
+    padding: 14px 22px calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ---------- motion ---------- */
+
+@keyframes pf-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-group-body {
+    animation: none;
+  }
+
+  .pf-drawer,
+  .pf-drawer.is-open,
+  .pf-overlay,
+  .pf-overlay.is-open,
+  .pf-chevron {
+    transition: none;
+  }
+}
+
+
+/* Mobile filter drawer close button */
+.pf-drawer .pf-close {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+}
+
+.pf-drawer .pf-close svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 1;
+}
+
+.pf-drawer .pf-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.pf-drawer .pf-close:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}

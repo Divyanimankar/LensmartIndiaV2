@@ -1,0 +1,10 @@
+@import './components.css';
+@import './home.css';
+@import './catalog.css';
+@import './product.css';
+@import './commerce.css';
+@import './account.css';
+@import './content.css';
+
+:root{--teal:#0d6c66;--dark:#173e3a;--gold:#d6a645;--muted:#6d7f7c;--line:#e4ecea;--light:#f6fbfa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Assistant",Arial,Helvetica,sans-serif;color:#1f3431;background:#fff}a{text-decoration:none;color:inherit}button,input,select,textarea{font:inherit}.container{width:min(1180px,90%);margin:auto}.sectionTitle{text-align:center;font-family:Georgia,serif;font-size:28px;margin:42px 0 28px;letter-spacing:.4px}.sectionTitle:after{content:'';display:block;width:46px;height:2px;background:var(--gold);margin:12px auto 0}.btn,.smallBtn{display:inline-block;border:0;background:var(--teal);color:#fff;padding:11px 20px;border-radius:3px;font-weight:700;cursor:pointer}.smallBtn{font-size:11px;padding:8px 12px;margin-top:10px}.muted{color:var(--muted)}

@@ -1,0 +1,127 @@
+/* ==========================================================================
+   LENSMART INDIA — UX REVIEW LAYER
+   Small, evidence-based fixes from the customer-journey review.
+   Nothing here changes content, prices, or behaviour.
+========================================================================== */
+
+/* 1 · LISTING BANNERS: the artwork is full-bleed and ~335px tall on desktop,
+   which pushes the first products below the fold. Cap the height and crop
+   from the centre (the headline is baked into the middle of the artwork), so
+   shoppers see products sooner. Phones already show the banner at a sensible
+   height and are left alone. */
+@media (min-width: 900px) {
+  html body :where(section, div):has(> img[class$="-banner-image"]),
+  html body :where(section, div):has(> picture > img[class$="-banner-image"]) {
+    height: clamp(200px, 21vw, 300px) !important;
+    overflow: hidden;
+  }
+  html body img[class$="-banner-image"] {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+}
+
+/* 2 · The welcome pop-up's artwork floated up and down forever. The pop-up
+   already asks for attention; a looping decoration beside a form field only
+   competes with the form. */
+html body .discount-art-wrap {
+  animation: none;
+}
+
+/* 3 · LAYOUT STABILITY ---------------------------------------------------- */
+/* Listing banners had no reserved height, so the products section jumped down
+   when the image arrived (layout shift 0.11-0.27 on phones/tablets). Reserve
+   the image's own aspect ratio up front. */
+html body img[src$="eyeglassesbanner.png"],
+html body img[src$="sunglassesbanner.png"] {
+  aspect-ratio: 2048 / 768;
+}
+html body img[src$="contactlensbanner.jpg"] {
+  aspect-ratio: 1024 / 332;
+}
+@media (min-width: 900px) {
+  html body img[src$="eyeglassesbanner.png"],
+  html body img[src$="sunglassesbanner.png"],
+  html body img[src$="contactlensbanner.jpg"] {
+    aspect-ratio: auto;
+  }
+}
+/* Pages that render nothing until their data is read (wishlist, account…)
+   used to pull the footer up under the header and then push it back down. */
+html body #main-content {
+  min-height: 60vh;
+}
+
+/* 4 · SMALL PHONES (≤ 359px) --------------------------------------------- */
+/* The header (menu + logo + 4 icons) was 18px wider than a 320px screen. */
+@media (max-width: 359px) {
+  html body .mobile-header-actions {
+    gap: 0;
+  }
+  html body .mobile-menu-button,
+  html body .mobile-header-icon {
+    width: 38px;
+    flex-basis: 38px;
+  }
+  html body .navbar-logo img,
+  html body .navbar-logo {
+    max-width: 104px;
+  }
+}
+
+/* 5 · TOUCH TARGETS ------------------------------------------------------- */
+/* Text links in the footer and breadcrumbs were 19-20px tall. On touch
+   screens give them a 24px+ tap height without changing the look. */
+@media (pointer: coarse) {
+  html body .footer-links a,
+  html body .footer-policy-links a,
+  html body .footer-contact-item,
+  html body :is(.breadcrumb, .catalog-breadcrumb, [class$="-breadcrumb"]) a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+  }
+}
+html body .pg-guide-dot {
+  position: relative;
+}
+html body .pg-guide-dot::after {
+  content: "";
+  position: absolute;
+  inset: -8px -4px;
+}
+
+/* 6 · BESTSELLERS ARROWS ON PHONES ---------------------------------------- */
+/* The arrows sat on the card's text column and hid the first letters of the
+   brand and product name. Move them up onto the picture area, slightly
+   smaller, so every word stays readable. */
+@media (max-width: 600px) {
+  html body .bestseller-slider-arrow {
+    top: 27%;
+    width: 36px;
+    height: 36px;
+  }
+  html body .bestseller-prev {
+    left: 6px;
+  }
+  html body .bestseller-next {
+    right: 6px;
+  }
+}
+
+/* 7 · MEGA MENU CLOSES ON SELECTION --------------------------------------- */
+/* After a link is clicked the menu used to stay open (pointer still over it,
+   clicked link still focused) until the next page was clicked. Navbar.jsx now
+   marks the parent; the menu is hidden at once and re-arms when the pointer
+   leaves. */
+html body .mega-menu-parent[data-menu-closed] > .mega-menu,
+html body .mega-menu-parent[data-menu-closed]:hover > .mega-menu,
+html body .mega-menu-parent[data-menu-closed]:focus-within > .mega-menu {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(0);
+  transition-delay: 0s;
+}

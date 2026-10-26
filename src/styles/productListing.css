@@ -1,0 +1,81 @@
+/* =========================================================
+   Product listing layout — shared by the sunglasses and
+   eyeglasses pages (same layout the contact lenses page uses):
+   filter column + products, filters become a drawer on tablet
+   and mobile. Classes start with "pl-".
+========================================================= */
+
+.pl-layout {
+  width: 100%;
+  padding: 18px 0 60px;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr); /* same as .all-products-layout */
+  gap: 32px;
+  align-items: stretch; /* the sidebar column is as tall as the grid */
+}
+
+/* the sticky, self-scrolling filter card lives inside this column */
+.pl-sidebar {
+  width: 100%;
+  min-width: 0;
+  align-self: stretch;
+}
+
+.pl-main {
+  width: 100%;
+  min-width: 0;
+}
+
+/* tablets and phones: filters move into the drawer */
+@media (max-width: 1100px) {
+  .pl-layout {
+    display: block;
+    padding: 14px 0 40px;
+  }
+
+  .pl-sidebar {
+    display: none;
+  }
+}
+
+/* Mobile filter button alignment */
+@media (max-width: 767px) {
+  .sunglasses-page .floating-filter-bar,
+  .all-products-page .floating-filter-bar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .sunglasses-page .floating-filter-button,
+  .all-products-page .floating-filter-button {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.collection-mobile-filter {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .collection-mobile-filter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .collection-mobile-filter .floating-filter-button {
+    position: static;
+    margin: 0;
+  }
+
+  .sunglasses-page .floating-filter-bar,
+  .all-products-page .floating-filter-bar {
+    display: none;
+  }
+}

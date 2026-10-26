@@ -1,0 +1,73 @@
+.lens-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+}
+
+.lens-skeleton-card {
+  padding: 14px;
+  overflow: hidden;
+  border: 1px solid #edf1f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.lens-skeleton-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 9px;
+}
+
+.lens-skeleton-line {
+  height: 12px;
+  margin-top: 14px;
+  border-radius: 6px;
+}
+
+.lens-skeleton-title {
+  width: 85%;
+  height: 15px;
+}
+
+.lens-skeleton-short {
+  width: 55%;
+  margin-top: 10px;
+}
+
+.lens-skeleton-price {
+  width: 40%;
+  height: 15px;
+  margin-top: 18px;
+}
+
+.lens-skeleton-image,
+.lens-skeleton-line {
+  background: linear-gradient(100deg, #edf3f2 20%, #f8fbfa 40%, #edf3f2 60%);
+  background-size: 200% 100%;
+  animation: lens-skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes lens-skeleton-shimmer {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+@media (max-width: 768px) {
+  .lens-skeleton-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .lens-skeleton-card {
+    padding: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lens-skeleton-image,
+  .lens-skeleton-line {
+    animation: none;
+  }
+}

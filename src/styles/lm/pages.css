@@ -1,0 +1,98 @@
+/* ==========================================================================
+   LENSMART INDIA — CONTENT PAGES
+   About · Contact · Blog · FAQ · How to order · Shipping · Refund · Privacy
+   Terms · Prescription guide · Sale · Search · Not found · Loading
+========================================================================== */
+
+html body:not(#lm) :is(.about-page, .contact-page, .blog-page, .hto-page, .shipping-page, .refund-page, .privacy-page, .terms-page, .sale-page) {
+  background: var(--lm-ivory);
+  color: var(--lm-ink-2);
+  font-family: var(--lm-font-text);
+}
+
+/* display headings */
+html body:not(#lm) :is(
+  .blog-title, .blog-featured-title, .blog-card-title, .sale-hero__title, .sale-section__heading,
+  .hto-section-heading, .hto-overview-title, .hto-visual-heading, .hto-progress-heading,
+  .shipping-heading, .shipping-timeline-heading, .refund-section-heading, .refund-card-heading,
+  .pg-section-heading, .pg-faq-heading, .about-heading-line, .sectionTitle, .ad-title, .latest-blog-title, .before-after-title
+) {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  line-height: 1.04;
+  color: inherit;
+}
+html body:not(#lm) :is(.about-page, .contact-page, .hto-page, .shipping-page, .refund-page, .privacy-page, .terms-page, .pg-page) :is(h1, h2) {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  line-height: 1.04;
+}
+html body:not(#lm) :is(.about-page, .contact-page, .hto-page, .shipping-page, .refund-page, .privacy-page, .terms-page, .pg-page) h3 {
+  font-family: var(--lm-font-ui);
+  letter-spacing: 0.01em;
+}
+
+/* eyebrows */
+html body:not(#lm) :is(.hto-eyebrow, .shipping-eyebrow, .refund-eyebrow, .terms-eyebrow, .privacy-label, .about-label, .pg-eyebrow, .sale-hero__eyebrow, .contact-label) {
+  font-family: var(--lm-font-ui);
+  letter-spacing: var(--lm-tracking-eyebrow);
+}
+
+/* primary / secondary buttons */
+html body:not(#lm) :is(.hto-primary-btn, .hto-cta-btn, .shipping-primary-btn, .shipping-support-btn, .refund-primary-btn, .refund-support-btn, .pg-button, .sale-button, .contact-submit-button, .blog-btn, .blog-modal-cta, .blog-page-btn) {
+  border-radius: var(--lm-r-xs);
+  font-family: var(--lm-font-ui);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  transition: background-color var(--lm-dur-3) var(--lm-ease-soft), color var(--lm-dur-3) var(--lm-ease-soft), border-color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+@media (hover: hover) {
+  html body:not(#lm) :is(.hto-primary-btn, .hto-cta-btn, .shipping-primary-btn, .refund-primary-btn, .pg-button, .sale-button, .contact-submit-button, .blog-btn):hover {
+    transform: translateY(-2px);
+    box-shadow: var(--lm-shadow-2);
+  }
+}
+html body:not(#lm) :is(.hto-primary-btn, .hto-cta-btn, .shipping-primary-btn, .refund-primary-btn, .pg-button, .sale-button, .contact-submit-button, .blog-btn):active {
+  transform: scale(0.99);
+}
+
+/* contact form */
+html body:not(#lm) .contact-page :is(input, textarea, select) {
+  border-color: var(--lm-line-strong);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+  font-family: var(--lm-font-ui);
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) .contact-page :is(input, textarea, select):focus {
+  border-color: var(--lm-teal);
+  box-shadow: var(--lm-ring);
+  outline: none;
+}
+
+/* blog cards */
+html body:not(#lm) .blog-badge {
+  border-radius: var(--lm-r-xs);
+  font-family: var(--lm-font-ui);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* search results page */
+html body:not(#lm) .search-page {
+  background: var(--lm-ivory);
+  font-family: var(--lm-font-text);
+}
+
+/* not-found + loading */
+html body:not(#lm) :is(.lens-loading-screen, .lens-loading-page, [class^="lens-loading"]:is(div, section)) {
+  background: var(--lm-ivory);
+}
+html body:not(#lm) .product-skeleton-card,
+html body:not(#lm) [class^="product-skeleton"] {
+  border-color: var(--lm-line);
+}

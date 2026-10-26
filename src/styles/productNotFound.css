@@ -1,0 +1,26 @@
+/* NOT FOUND */
+.sundetail-not-found {
+  min-height: 500px;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "Assistant", sans-serif;
+}
+.sundetail-not-found h1 {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+}
+.sundetail-not-found p {
+  color: #777777;
+}
+.sundetail-not-found a {
+  margin-top: 12px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: #1b6b6a;
+  color: #ffffff;
+  text-decoration: none;
+}

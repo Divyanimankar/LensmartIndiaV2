@@ -1,0 +1,170 @@
+/* ==========================================================================
+   LENSMART INDIA — MOTION SYSTEM
+   Principles
+   · One easing family (--lm-ease-out) so everything feels related.
+   · Opacity + transform only — no layout-triggering properties.
+   · Reveals are progressive enhancement: content is visible unless the
+     MotionProvider has opted the page in (html.lm-motion) AND the element is
+     below the fold. Reduced-motion users never get the hidden state.
+   · Reveals use `animation … backwards` (not `forwards`) so they never pin a
+     transform on the element and cannot fight its own hover transitions.
+========================================================================== */
+
+/* ---------- KEYFRAMES ---------- */
+@keyframes lm-rise {
+  from { opacity: 0; transform: translate3d(0, var(--lm-dist-lg), 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes lm-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes lm-mask {
+  from { clip-path: inset(0 0 100% 0); transform: translate3d(0, 14px, 0); opacity: 0.2; }
+  to   { clip-path: inset(0 0 0 0);    transform: translate3d(0, 0, 0);    opacity: 1; }
+}
+@keyframes lm-clip-x {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+@keyframes lm-from-left {
+  from { opacity: 0; transform: translate3d(-48px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes lm-from-right {
+  from { opacity: 0; transform: translate3d(48px, 0, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes lm-scale-in {
+  from { opacity: 0; transform: translate3d(0, 20px, 0) scale(0.94); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+@keyframes lm-wipe {
+  from { opacity: 0.3; clip-path: inset(0 100% 0 0); }
+  to   { opacity: 1; clip-path: inset(0 0 0 0); }
+}
+@keyframes lm-img-settle {
+  from { transform: scale(var(--lm-img-reveal-from)); }
+  to   { transform: scale(1); }
+}
+@keyframes lm-shimmer {
+  from { background-position: 150% 0; }
+  to   { background-position: -50% 0; }
+}
+@keyframes lm-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.22); }
+  100% { transform: scale(1); }
+}
+@keyframes lm-page-in {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+@keyframes lm-progress {
+  0%   { transform: scaleX(0); }
+  30%  { transform: scaleX(0.45); }
+  70%  { transform: scaleX(0.78); }
+  100% { transform: scaleX(0.92); }
+}
+
+/* ---------- SCROLL REVEAL ---------- */
+html.lm-motion [data-lm-rv]:not([data-lm-in]) {
+  opacity: 0;
+}
+html.lm-motion [data-lm-rv="up"]:not([data-lm-in]),
+html.lm-motion [data-lm-rv="mask"]:not([data-lm-in]),
+html.lm-motion [data-lm-rv="clip"]:not([data-lm-in]) {
+  transform: translate3d(0, var(--lm-dist-lg), 0);
+}
+/* NB: the hidden state must never use clip-path — Chrome's IntersectionObserver
+   treats a fully clipped target as non-intersecting and it would never reveal.
+   Clipping only happens inside the @keyframes once the element is released. */
+
+/* directional / scale variants (hidden states use transform + opacity only) */
+html.lm-motion [data-lm-rv="left"]:not([data-lm-in])  { transform: translate3d(-48px, 0, 0); }
+html.lm-motion [data-lm-rv="right"]:not([data-lm-in]) { transform: translate3d(48px, 0, 0); }
+html.lm-motion [data-lm-rv="scale"]:not([data-lm-in]) { transform: translate3d(0, 20px, 0) scale(0.94); }
+
+html.lm-motion [data-lm-rv][data-lm-in] {
+  animation-duration: var(--lm-dur-4);
+  animation-timing-function: var(--lm-ease-out);
+  animation-delay: var(--lm-d, 0ms);
+  animation-fill-mode: backwards;
+}
+html.lm-motion [data-lm-rv="up"][data-lm-in] { animation-name: lm-rise; }
+html.lm-motion [data-lm-rv="fade"][data-lm-in]  { animation-name: lm-fade; animation-duration: var(--lm-dur-4); }
+html.lm-motion [data-lm-rv="mask"][data-lm-in]  { animation-name: lm-mask; animation-duration: var(--lm-dur-4); }
+html.lm-motion [data-lm-rv="clip"][data-lm-in]  { animation-name: lm-mask; animation-duration: 650ms; }
+html.lm-motion [data-lm-rv="left"][data-lm-in]  { animation-name: lm-from-left; animation-duration: 600ms; }
+html.lm-motion [data-lm-rv="right"][data-lm-in] { animation-name: lm-from-right; animation-duration: 600ms; }
+html.lm-motion [data-lm-rv="scale"][data-lm-in] { animation-name: lm-scale-in; animation-duration: 640ms; }
+html.lm-motion [data-lm-rv="wipe"][data-lm-in]  { animation-name: lm-wipe; animation-duration: 650ms; animation-timing-function: var(--lm-ease-in-out); }
+
+/* images inside a clipped frame settle from a slight zoom */
+html.lm-motion [data-lm-rv="clip"][data-lm-in] > img,
+html.lm-motion [data-lm-rv="clip"][data-lm-in] picture img {
+  animation: lm-img-settle 900ms var(--lm-ease-out) backwards;
+  animation-delay: var(--lm-d, 0ms);
+}
+
+/* ---------- RESTRAINED PARALLAX (transform only, set by JS) ---------- */
+html.lm-motion body [data-lm-parallax][data-lm-parallax] {
+  will-change: transform;
+  transform: translate3d(0, var(--lm-py, 0px), 0) scale(var(--lm-ps, 1.08));
+}
+
+/* ---------- ROUTE PROGRESS BAR ---------- */
+.lm-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 2px;
+  z-index: var(--lm-z-progress);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--lm-dur-3) var(--lm-ease-soft);
+}
+.lm-progress::before {
+  content: "";
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--lm-teal), var(--lm-brass));
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+.lm-progress.is-active {
+  opacity: 1;
+}
+.lm-progress.is-active::before {
+  animation: lm-progress 6s var(--lm-ease-out) forwards;
+}
+.lm-progress.is-done::before {
+  transform: scaleX(1);
+  animation: none;
+  transition: transform 220ms var(--lm-ease-out);
+}
+
+/* ---------- SKELETON / SHIMMER (shared utility) ---------- */
+.lm-skeleton,
+html body .product-skeleton-image,
+html body .product-skeleton-line {
+  background: linear-gradient(100deg, var(--lm-sand) 30%, var(--lm-paper) 50%, var(--lm-sand) 70%);
+  background-size: 200% 100%;
+  animation: lm-shimmer var(--lm-dur-loop) linear infinite;
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html.lm-motion [data-lm-rv]:not([data-lm-in]) {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  html.lm-motion body [data-lm-parallax][data-lm-parallax] {
+    transform: none !important;
+  }
+  .lm-skeleton,
+  html body .product-skeleton-image,
+  html body .product-skeleton-line {
+    animation: none;
+  }
+}

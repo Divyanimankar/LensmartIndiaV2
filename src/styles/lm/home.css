@@ -1,0 +1,1275 @@
+/* ==========================================================================
+   LENSMART INDIA — HOMEPAGE
+   Hero · Features · Categories · Bestsellers · Shapes · Deals · Lenses ·
+   Brands · Testimonials · FAQ
+========================================================================== */
+
+html body .home-page {
+  background: var(--lm-ivory);
+  color: var(--lm-ink-2);
+  font-family: var(--lm-font-text);
+}
+
+/* shared editorial CTA used by several sections */
+html body .lm-cta,
+html body .bestseller-view-btn,
+html body .updatedbestseller-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+/* .exclusive-view-all is absolutely positioned by its own sheet on desktop */
+html body .exclusive-view-all {
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   HERO
+========================================================================== */
+html body .hero-slider {
+  background: var(--lm-ivory);
+}
+html body .hero-slider-stage {
+  background: var(--lm-sand);
+}
+html body .hero-slide {
+  transition: opacity 900ms var(--lm-ease-soft), visibility 0s linear 900ms;
+}
+html body .hero-slide.is-active {
+  transition: opacity 900ms var(--lm-ease-soft), visibility 0s;
+}
+
+html body .hero-slide:focus-visible {
+  outline: 2px solid var(--lm-ivory);
+  outline-offset: -8px;
+  box-shadow: inset 0 0 0 4px var(--lm-teal);
+}
+
+/* arrows: quiet glass buttons */
+html body .hero-arrow {
+  width: 52px;
+  height: 52px;
+  background: rgba(255, 253, 249, 0.72);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: var(--lm-ink);
+  box-shadow: var(--lm-shadow-2);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), opacity var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .hero-prev { left: clamp(14px, 2.4vw, 40px); transform: translate3d(-8px, -50%, 0); }
+html body .hero-next { right: clamp(14px, 2.4vw, 40px); transform: translate3d(8px, -50%, 0); }
+html body .hero-slider-stage:hover .hero-arrow,
+html body .hero-arrow:focus-visible {
+  opacity: 1;
+  transform: translate3d(0, -50%, 0);
+}
+html body .hero-arrow:hover {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body .hero-arrow svg {
+  stroke-width: 1.6;
+}
+
+/* progress dots: segmented lines that fill while the slide is shown */
+html body .hero-dots {
+  left: clamp(16px, 4vw, 56px);
+  bottom: clamp(14px, 2.2vw, 30px);
+  transform: none;
+  gap: 8px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+html body .hero-dot {
+  position: relative;
+  width: 40px;
+  height: 18px;
+  border-radius: 0;
+  background: none;
+  overflow: visible;
+}
+html body .hero-dot::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 8px;
+  height: 2px;
+  background: rgba(255, 253, 249, 0.55);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .hero-dot:hover::before {
+  background: rgba(255, 253, 249, 0.9);
+}
+html body .hero-dot.active {
+  width: 64px;
+  background: none;
+}
+html body .hero-dot-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 8px;
+  height: 2px;
+  background: var(--lm-paper);
+  transform-origin: left center;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+html body .hero-dot.active .hero-dot-fill {
+  animation: lm-dot-fill var(--hero-delay, 5000ms) linear both;
+}
+html body .hero-dot.active.is-static .hero-dot-fill {
+  animation: none;
+  transform: scaleX(1);
+}
+@keyframes lm-dot-fill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+html body .hero-dot:focus-visible {
+  outline: 2px solid var(--lm-paper);
+  outline-offset: 2px;
+}
+html body .hero-counter {
+  position: absolute;
+  right: clamp(16px, 4vw, 56px);
+  bottom: clamp(12px, 2vw, 28px);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--lm-paper);
+  font-family: var(--lm-font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  font-variant-numeric: lining-nums tabular-nums;
+  text-shadow: 0 1px 12px rgba(24, 26, 25, 0.35);
+  pointer-events: none;
+}
+html body .hero-counter i {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+html body .hero-counter span:last-child {
+  opacity: 0.7;
+}
+@media (max-width: 768px) {
+  html body .hero-dots {
+    left: 16px;
+    bottom: 14px;
+  }
+  html body .hero-dot {
+    width: 28px;
+  }
+  html body .hero-dot.active {
+    width: 44px;
+  }
+  html body .hero-counter {
+    right: 16px;
+    bottom: 10px;
+    font-size: 1.05rem;
+  }
+}
+@media (hover: none) {
+  html body .hero-arrow {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   FEATURE STRIP (shipping · customise · payments · help)
+========================================================================== */
+html body .feature-section {
+  padding: 0;
+  background: var(--lm-paper);
+  border-bottom: 1px solid var(--lm-line);
+}
+html body .feature-container {
+  max-width: var(--lm-container);
+  gap: 0;
+  padding: 0 var(--lm-gutter);
+}
+html body .feature-card {
+  position: relative;
+  padding: clamp(24px, 3vw, 40px) clamp(14px, 2vw, 32px);
+  border-radius: 0;
+  transition: background-color var(--lm-dur-3) var(--lm-ease-soft);
+}
+html body .feature-card + .feature-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 22%;
+  bottom: 22%;
+  width: 1px;
+  background: var(--lm-line);
+}
+html body .feature-card:hover {
+  background: var(--lm-ivory);
+  transform: none;
+}
+html body .feature-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 14px;
+  padding: 13px;
+  border: 1px solid var(--lm-line-strong);
+  border-radius: 50%;
+  color: var(--lm-teal);
+  transition: color var(--lm-dur-3) var(--lm-ease-soft), background-color var(--lm-dur-3) var(--lm-ease-soft), border-color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .feature-icon svg {
+  stroke-width: 1.7;
+}
+/* calm the original perpetual icon loops — one gesture on hover only */
+html body .shipping-icon svg,
+html body .customize-icon svg,
+html body .payment-icon svg,
+html body .support-icon svg {
+  animation: none;
+}
+html body .feature-card:hover .feature-icon {
+  background: var(--lm-teal);
+  border-color: var(--lm-teal);
+  color: var(--lm-paper);
+  transform: translateY(-3px);
+}
+html body .feature-card:hover .customize-icon svg,
+html body .feature-card:hover .payment-icon svg {
+  animation: none;
+}
+html body .feature-card h3 {
+  margin-bottom: 8px;
+  font-family: var(--lm-font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--lm-ink);
+}
+html body .feature-card:hover h3 {
+  color: var(--lm-teal-deep);
+}
+html body .feature-card p {
+  max-width: 28ch;
+  font-family: var(--lm-font-text);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--lm-muted);
+}
+@media (max-width: 900px) {
+  html body .feature-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  html body .feature-card:nth-child(3)::before {
+    display: none;
+  }
+  html body .feature-card:nth-child(n + 3) {
+    border-top: 1px solid var(--lm-line);
+  }
+}
+@media (max-width: 520px) {
+  html body .feature-container {
+    padding: 0;
+  }
+  html body .feature-card {
+    padding: 22px 12px;
+  }
+  html body .feature-card h3 {
+    font-size: 1.2rem;
+  }
+  html body .feature-card p {
+    font-size: 0.82rem;
+  }
+}
+
+/* ==========================================================================
+   SHOP BY CATEGORY
+========================================================================== */
+html body .shop-category-section {
+  padding: var(--lm-section-y) 0;
+  background: var(--lm-ivory);
+  counter-reset: lm-cat;
+}
+html body .shop-category-container {
+  max-width: var(--lm-container);
+  padding: 0 var(--lm-gutter);
+}
+html body .shop-category-header {
+  align-items: flex-end;
+  margin-bottom: clamp(24px, 3vw, 44px);
+}
+html body .shop-category-heading {
+  text-align: left;
+}
+html body .category-arrow {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--lm-line-strong);
+  background: transparent;
+  color: var(--lm-ink);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), border-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-2) var(--lm-ease-out), opacity var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .category-arrow svg {
+  stroke-width: 1.5;
+}
+html body .category-arrow:hover:not(:disabled) {
+  background: var(--lm-ink);
+  border-color: var(--lm-ink);
+  color: var(--lm-ivory);
+  transform: translateY(-2px);
+}
+html body .category-arrow:active:not(:disabled) {
+  transform: scale(0.94);
+}
+html body .shop-category-slider {
+  gap: var(--lm-grid-gap);
+  padding-bottom: 4px;
+}
+html body .shop-category-card {
+  counter-increment: lm-cat;
+  flex-basis: calc((100% - 2 * var(--lm-grid-gap)) / 3.15);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-img-bg);
+  box-shadow: var(--lm-shadow-1);
+  transition: box-shadow var(--lm-dur-hover) var(--lm-ease-out), transform var(--lm-dur-hover) var(--lm-ease-out);
+}
+html body .shop-category-image {
+  transition: transform 1100ms var(--lm-ease-out);
+  object-position: 50% 50%;
+}
+/* the image carries product on pale ground; keep it rich, not washed out */
+html body .shop-category-card::before {
+  content: counter(lm-cat, decimal-leading-zero);
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  z-index: 3;
+  font-family: var(--lm-font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--lm-ink);
+  mix-blend-mode: multiply;
+  opacity: 0.75;
+}
+html body .shop-category-name-overlay {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 80px 22px 20px;
+  background: linear-gradient(to top, rgba(18, 28, 27, 0.72), rgba(18, 28, 27, 0.18) 62%, transparent);
+  opacity: 1;
+  transform: none;
+}
+html body .shop-category-name {
+  font-family: var(--lm-font-display);
+  font-size: clamp(1.5rem, 1.2rem + 0.9vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--lm-paper);
+}
+html body .shop-category-name-overlay::after {
+  content: "";
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 253, 249, 0.7);
+  border-radius: 50%;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fffdf9' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 18px no-repeat;
+  transition: background-color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out), border-color var(--lm-dur-3) var(--lm-ease-soft);
+}
+@media (hover: hover) and (pointer: fine) {
+  html body .shop-category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--lm-shadow-3);
+  }
+  html body .shop-category-card:hover .shop-category-image {
+    transform: scale(1.05);
+  }
+  html body .shop-category-card:hover .shop-category-name-overlay::after {
+    background-color: var(--lm-paper);
+    border-color: var(--lm-paper);
+    transform: translateX(4px);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23181a19' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  }
+}
+html body .shop-category-card:focus-visible {
+  outline: 2px solid var(--lm-teal);
+  outline-offset: 4px;
+}
+@media (max-width: 1024px) {
+  html body .shop-category-card {
+    flex-basis: calc((100% - var(--lm-grid-gap)) / 2.3);
+  }
+}
+@media (max-width: 600px) {
+  html body .shop-category-card {
+    flex-basis: 82%;
+  }
+  html body .category-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  html body .shop-category-name-overlay {
+    padding: 64px 16px 16px;
+  }
+}
+
+/* ==========================================================================
+   BESTSELLERS — eyewear
+========================================================================== */
+html body .bestseller-section {
+  padding: var(--lm-section-y) 0 calc(var(--lm-section-y) - 12px);
+  background:
+    linear-gradient(180deg, rgba(18, 28, 27, 0.62) 0%, rgba(18, 28, 27, 0.74) 100%),
+    url("/images/bestsellerbackground.png") center / cover no-repeat;
+  background-attachment: scroll;
+}
+html body .bestseller-container {
+  max-width: 1360px;
+  padding: 0 clamp(36px, 5vw, 72px);
+}
+html body .bestseller-heading {
+  margin-bottom: 28px;
+  color: var(--lm-ivory);
+}
+html body .bestseller-heading::before {
+  background: var(--lm-brass);
+}
+html body .bestseller-tabs {
+  width: min(100%, 340px);
+  height: 46px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: clamp(26px, 3vw, 44px);
+  padding: 4px;
+  border-radius: var(--lm-r-pill);
+  background: rgba(255, 253, 249, 0.12);
+  border: 1px solid rgba(255, 253, 249, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: none;
+}
+html body .bestseller-tabs button {
+  padding: 0 14px;
+  border-radius: var(--lm-r-pill);
+  color: var(--lm-ivory);
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  transition: background-color var(--lm-dur-3) var(--lm-ease-soft), color var(--lm-dur-3) var(--lm-ease-soft);
+}
+html body .bestseller-tabs button:hover:not(.active) {
+  background: rgba(255, 253, 249, 0.14);
+}
+html body .bestseller-tabs button.active {
+  background: var(--lm-paper);
+  color: var(--lm-ink);
+}
+html body .bestseller-tabs button:focus-visible {
+  outline-color: var(--lm-paper);
+}
+
+html body .bestseller-slider {
+  gap: var(--lm-grid-gap);
+  padding: 22px 6px 14px;
+}
+html body .bestseller-card {
+  border: 1px solid transparent;
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.5);
+  transition: transform var(--lm-dur-hover) var(--lm-ease-out), box-shadow var(--lm-dur-hover) var(--lm-ease-out);
+}
+html body .bestseller-image-wrapper {
+  width: 100%;
+  height: clamp(168px, 14vw, 210px);
+  margin: 0;
+  border-radius: var(--lm-r-sm) var(--lm-r-sm) 0 0;
+  background: var(--lm-img-bg);
+}
+html body .bestseller-image {
+  transition: transform var(--lm-dur-img) var(--lm-ease-out);
+}
+html body .bestseller-discount {
+  top: 14px;
+  left: 0;
+  padding: 7px 11px 7px 10px;
+  border-radius: 0 var(--lm-r-xs) var(--lm-r-xs) 0;
+  background: var(--lm-sale);
+  box-shadow: none;
+  font-family: var(--lm-font-ui);
+}
+html body .bestseller-discount::after {
+  display: none;
+}
+html body .discount-number {
+  font-family: var(--lm-font-ui);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+html body .discount-unit i {
+  font-size: 11px;
+  font-weight: 600;
+}
+html body .discount-unit em {
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+html body .bestseller-wishlist {
+  top: 10px;
+  right: 10px;
+  border: 0;
+  background: rgba(255, 253, 249, 0.9);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--lm-shadow-1);
+  transition: transform var(--lm-dur-2) var(--lm-ease-out), background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .bestseller-wishlist:hover {
+  transform: scale(1.08);
+  background: #fff;
+}
+html body .bestseller-wishlist:active {
+  transform: scale(0.92);
+}
+html body .bestseller-wishlist svg path {
+  stroke: var(--lm-ink);
+  stroke-width: 1.5;
+}
+html body .bestseller-wishlist.active svg path {
+  fill: var(--lm-sale);
+  stroke: var(--lm-sale);
+}
+html body .bestseller-wishlist.active svg {
+  animation: lm-pop 480ms var(--lm-ease-spring);
+}
+html body .bestseller-size {
+  right: 10px;
+  bottom: 10px;
+  padding: 4px 10px;
+  border-radius: var(--lm-r-pill);
+  background: rgba(255, 253, 249, 0.92);
+  color: var(--lm-ink);
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+html body .bestseller-info {
+  padding: 16px 18px 18px;
+}
+html body .bestseller-brand {
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--lm-muted);
+}
+html body .bestseller-original {
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--lm-ok);
+}
+html body .bestseller-product-name {
+  margin: 6px 0 4px;
+  font-family: var(--lm-font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: var(--lm-ink);
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .bestseller-product-name:hover {
+  color: var(--lm-teal);
+}
+html body .bestseller-type {
+  margin-bottom: 10px;
+  font-family: var(--lm-font-ui);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--lm-muted);
+}
+html body .bestseller-material {
+  color: var(--lm-teal);
+}
+html body .bestseller-rating {
+  font-family: var(--lm-font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--lm-ink);
+}
+html body .rating-star {
+  color: var(--lm-brass);
+  font-size: 13px;
+}
+html body .review-count {
+  font-weight: 400;
+  color: var(--lm-faint);
+}
+html body .current-price {
+  font-family: var(--lm-font-ui);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--lm-ink);
+}
+html body .old-price {
+  font-family: var(--lm-font-ui);
+  font-size: 13px;
+  color: var(--lm-faint);
+}
+html body .product-color {
+  border: 1px solid rgba(24, 26, 25, 0.18);
+  transition: transform var(--lm-dur-2) var(--lm-ease-out);
+}
+html body .product-color:hover {
+  transform: scale(1.15);
+}
+html body .product-color.selected::after {
+  border: 1px solid var(--lm-ink);
+}
+html body .bestseller-saving {
+  margin-top: 8px;
+  font-family: var(--lm-font-ui);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--lm-ok);
+}
+html body .bestseller-view-btn {
+  min-height: 46px;
+  margin-top: 16px;
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-teal);
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  transition: color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out);
+}
+html body .bestseller-view-btn::before,
+html body .updatedbestseller-cta::before,
+html body .lm-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--lm-ink);
+  transform: translate3d(0, 101%, 0);
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .bestseller-view-btn:hover,
+html body .updatedbestseller-cta:hover {
+  background: var(--lm-teal);
+}
+html body .bestseller-view-btn:hover::before,
+html body .updatedbestseller-cta:hover::before,
+html body .lm-cta:hover::before {
+  transform: translate3d(0, 0, 0);
+}
+html body .bestseller-view-btn:active {
+  transform: scale(0.985);
+}
+
+html body .bestseller-slider-arrow {
+  width: 46px;
+  height: 46px;
+  border: 0;
+  background: var(--lm-paper);
+  color: var(--lm-ink);
+  box-shadow: var(--lm-shadow-3);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-2) var(--lm-ease-out);
+}
+html body .bestseller-slider-arrow:hover {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body .bestseller-slider-arrow:active {
+  transform: translateY(-50%) scale(0.94);
+}
+html body .bestseller-dot {
+  height: 3px;
+  border-radius: 0;
+  background: rgba(255, 253, 249, 0.4);
+}
+html body .bestseller-dot.active {
+  width: 30px;
+  background: var(--lm-paper);
+}
+@media (hover: hover) and (pointer: fine) {
+  html body .bestseller-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 34px 56px -26px rgba(0, 0, 0, 0.6);
+  }
+  html body .bestseller-card:hover .bestseller-image {
+    transform: scale(1.06);
+  }
+}
+@media (max-width: 768px) {
+  html body .bestseller-container {
+    padding: 0 28px;
+  }
+  html body .bestseller-product-name {
+    font-size: 1.2rem;
+  }
+  html body .bestseller-info {
+    padding: 14px 14px 16px;
+  }
+}
+@media (max-width: 520px) {
+  html body .bestseller-container {
+    padding: 0 16px;
+  }
+  html body .bestseller-slider-arrow {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ==========================================================================
+   PERFECT SHAPE — eyeglasses / sunglasses
+========================================================================== */
+html body .perfect-shape-section {
+  padding: var(--lm-section-y) 0 calc(var(--lm-section-y) * 0.8);
+  background: radial-gradient(ellipse 50% 60% at 50% 48%, var(--lm-paper) 0%, var(--lm-ivory) 62%, var(--lm-sand) 100%);
+}
+html body .perfect-shape-container {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 56px);
+}
+html body .perfect-shape-heading span {
+  font-style: italic;
+  color: var(--lm-teal);
+}
+html body .ps-tabs {
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid var(--lm-line-strong);
+}
+html body .ps-tab {
+  font-family: var(--lm-font-ui);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  color: var(--lm-muted);
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .ps-tab:hover,
+html body .ps-tab.active {
+  color: var(--lm-ink);
+}
+html body .ps-tab::after {
+  height: 1px;
+  background: var(--lm-ink);
+  bottom: -1px;
+  transform-origin: center;
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .ps-active-link {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-paper);
+  box-shadow: var(--lm-shadow-1);
+  transition: background-color var(--lm-dur-3) var(--lm-ease-soft), border-color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .ps-active-link:hover {
+  background: var(--lm-ink);
+  border-color: var(--lm-ink);
+  transform: translateY(-2px);
+  box-shadow: var(--lm-shadow-3);
+}
+html body .ps-active-name {
+  font-family: var(--lm-font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--lm-ink);
+}
+html body .ps-active-text {
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  color: var(--lm-teal);
+}
+html body .ps-active-link:hover .ps-active-name,
+html body .ps-active-link:hover .ps-active-text {
+  color: var(--lm-ivory);
+}
+html body .shape-arrow,
+html body .exclusive-arrow,
+html body .updatedbestseller-arrow,
+html body .tc-arrow {
+  border: 1px solid var(--lm-line-strong);
+  background: var(--lm-paper);
+  color: var(--lm-ink);
+  box-shadow: var(--lm-shadow-1);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), border-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-2) var(--lm-ease-out);
+}
+html body .shape-arrow:hover,
+html body .exclusive-arrow:hover,
+html body .updatedbestseller-arrow:hover,
+html body .tc-arrow:hover {
+  background: var(--lm-ink);
+  border-color: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body .shape-arrow:active,
+html body .exclusive-arrow:active,
+html body .updatedbestseller-arrow:active,
+html body .tc-arrow:active {
+  transform: scale(0.93);
+}
+html body .shape-arrow:focus-visible,
+html body .exclusive-arrow:focus-visible,
+html body .updatedbestseller-arrow:focus-visible,
+html body .tc-arrow:focus-visible {
+  outline: 2px solid var(--lm-teal);
+  outline-offset: 3px;
+}
+html body .perfect-shape-dot,
+html body .exclusive-deal-dot {
+  height: 3px;
+  border-radius: 0;
+  background: var(--lm-line-strong);
+  transition: width var(--lm-dur-3) var(--lm-ease-out), background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .perfect-shape-dot.active,
+html body .exclusive-deal-dot.active {
+  width: 28px;
+  background: var(--lm-ink);
+}
+/* no-WebGL fallback list */
+html body .ps-fallback-circle {
+  border: 0;
+  background: var(--lm-paper);
+  box-shadow: var(--lm-shadow-2);
+}
+html body .ps-fallback-name {
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   EXCLUSIVE DEALS
+========================================================================== */
+html body .exclusive-deals-section {
+  padding: var(--lm-section-y) 0 calc(var(--lm-section-y) * 0.7);
+  background: var(--lm-sand);
+}
+html body .exclusive-deals-container {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 48px);
+}
+html body .exclusive-view-all {
+  height: 44px;
+  padding: 0 22px;
+  border: 1px solid var(--lm-ink);
+  border-radius: var(--lm-r-pill);
+  background: transparent;
+  color: var(--lm-ink);
+  font-family: var(--lm-font-ui);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  box-shadow: none;
+  transition: color var(--lm-dur-3) var(--lm-ease-soft), border-color var(--lm-dur-3) var(--lm-ease-soft);
+}
+html body .exclusive-view-all::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--lm-ink);
+  transform: translate3d(0, 101%, 0);
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .exclusive-view-all:hover {
+  background: transparent;
+  color: var(--lm-ivory);
+}
+html body .exclusive-view-all:hover::before {
+  transform: translate3d(0, 0, 0);
+}
+@media (max-width: 600px) {
+  html body .exclusive-view-all { position: relative; }
+}
+html body .exclusive-view-all span {
+  display: inline-block;
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .exclusive-view-all:hover span {
+  transform: translateX(4px);
+}
+html body .exclusive-fallback-card {
+  border-radius: var(--lm-r-sm);
+  box-shadow: var(--lm-shadow-2);
+}
+
+/* ==========================================================================
+   MOST LOVED CONTACT LENSES (showcase)
+========================================================================== */
+html body .updatedbestseller-section {
+  padding: var(--lm-section-y) 0;
+  background: var(--lm-ivory);
+}
+html body .updatedbestseller-container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 var(--lm-gutter);
+}
+html body .updatedbestseller-overlay {
+  background: radial-gradient(circle at 15% 50%, rgba(27, 107, 106, 0.07), transparent 38%);
+}
+html body .updatedbestseller-tabs {
+  padding: 4px;
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-paper);
+  box-shadow: none;
+}
+html body .updatedbestseller-tab {
+  height: 38px;
+  border-radius: var(--lm-r-pill);
+  font-family: var(--lm-font-ui);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  color: var(--lm-ink);
+  transition: background-color var(--lm-dur-3) var(--lm-ease-soft), color var(--lm-dur-3) var(--lm-ease-soft);
+}
+html body .updatedbestseller-tab:hover {
+  color: var(--lm-teal);
+}
+html body .updatedbestseller-tab.active {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+  box-shadow: none;
+}
+html body .updatedbestseller-tab-count {
+  background: var(--lm-sand);
+  color: var(--lm-ink-2);
+}
+html body .updatedbestseller-tab.active .updatedbestseller-tab-count {
+  background: rgba(250, 246, 238, 0.2);
+  color: var(--lm-ivory);
+}
+html body .updatedbestseller-stage-fallback a {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-img-bg);
+}
+html body .updatedbestseller-panel {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+  box-shadow: var(--lm-shadow-3);
+}
+html body .updatedbestseller-discount {
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-sale);
+  box-shadow: none;
+  font-family: var(--lm-font-ui);
+}
+html body .updatedbestseller-wishlist {
+  border: 1px solid var(--lm-line-strong);
+  background: var(--lm-paper);
+  transition: transform var(--lm-dur-2) var(--lm-ease-out), border-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .updatedbestseller-wishlist:hover {
+  border-color: var(--lm-ink);
+  transform: scale(1.06);
+}
+html body .updatedbestseller-brand {
+  font-family: var(--lm-font-ui);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--lm-muted);
+}
+html body .updatedbestseller-original {
+  font-family: var(--lm-font-ui);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--lm-ok);
+}
+html body .updatedbestseller-product-name {
+  font-family: var(--lm-font-display);
+  font-size: clamp(1.7rem, 1.3rem + 1vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--lm-ink);
+}
+html body .updatedbestseller-product-name:hover {
+  color: var(--lm-teal);
+}
+html body .updatedbestseller-tags {
+  font-family: var(--lm-font-ui);
+  font-size: 13.5px;
+}
+html body .updatedbestseller-tag-color,
+html body .updatedbestseller-tag-type {
+  color: var(--lm-ink-2);
+}
+html body .updatedbestseller-tag-schedule {
+  color: var(--lm-teal);
+}
+html body .updatedbestseller-rating {
+  font-family: var(--lm-font-ui);
+  color: var(--lm-ink);
+}
+html body .updatedbestseller-rating-star {
+  color: var(--lm-brass);
+}
+html body .updatedbestseller-current-price {
+  font-family: var(--lm-font-ui);
+  font-size: clamp(1.9rem, 1.6rem + 0.8vw, 2.3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--lm-ink);
+}
+html body .updatedbestseller-old-price {
+  font-family: var(--lm-font-ui);
+  color: var(--lm-faint);
+}
+html body .updatedbestseller-pack {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  background: transparent;
+  color: var(--lm-ink-2);
+  font-family: var(--lm-font-ui);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+html body .updatedbestseller-save {
+  font-family: var(--lm-font-ui);
+  font-weight: 500;
+  color: var(--lm-ok);
+}
+html body .updatedbestseller-cta {
+  height: 54px;
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-teal);
+  font-family: var(--lm-font-ui);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  box-shadow: none;
+  transition: color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out);
+}
+html body .updatedbestseller-cta:active {
+  transform: scale(0.985);
+}
+html body .updatedbestseller-progress {
+  height: 2px;
+  background: var(--lm-line);
+}
+html body .updatedbestseller-progress-fill {
+  background: var(--lm-ink);
+}
+html body .updatedbestseller-count {
+  font-family: var(--lm-font-ui);
+  font-variant-numeric: tabular-nums;
+  color: var(--lm-muted);
+}
+
+/* ==========================================================================
+   BRANDS WE CARRY (marquee)
+========================================================================== */
+html body .brand-slider {
+  padding: var(--lm-section-y) 0;
+  background: var(--lm-paper);
+  border-top: 1px solid var(--lm-line);
+  border-bottom: 1px solid var(--lm-line);
+}
+html body .brand-slider__title {
+  text-align: center;
+  font-family: var(--lm-font-display);
+}
+html body .brand-slider__viewport {
+  padding: 28px 0 4px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+html body .brand-slider__item {
+  border: 0;
+  border-right: 1px solid var(--lm-line);
+  border-radius: 0;
+  background: transparent;
+  transition: background-color var(--lm-dur-3) var(--lm-ease-soft);
+}
+html body .brand-slider__item img {
+  filter: grayscale(1) contrast(1.05);
+  opacity: 0.7;
+  transition: filter var(--lm-dur-3) var(--lm-ease-soft), opacity var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .brand-slider__item:hover {
+  background: var(--lm-ivory);
+  box-shadow: none;
+}
+html body .brand-slider__item:hover img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.04);
+}
+html body .brand-slider__viewport:hover .brand-slider__track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  html body .brand-slider__track {
+    animation: none !important;
+    transform: none !important;
+  }
+  html body .brand-slider__viewport {
+    overflow-x: auto;
+  }
+}
+
+/* ==========================================================================
+   TESTIMONIALS
+========================================================================== */
+html body .tc-section {
+  padding: var(--lm-section-y) 0;
+  background: var(--lm-ivory);
+}
+html body .tc-container {
+  max-width: var(--lm-container);
+  margin: 0 auto;
+  padding: 0 var(--lm-gutter);
+}
+html body .tc-title {
+  font-size: clamp(2.3rem, 1.5rem + 3vw, 4.2rem);
+  line-height: 0.98;
+  text-transform: none;
+}
+html body .tc-title strong {
+  font-weight: 500;
+  font-style: italic;
+  color: var(--lm-teal);
+}
+html body .tc-sub {
+  font-family: var(--lm-font-text);
+  font-size: 1rem;
+  color: var(--lm-muted);
+}
+html body .tc-quote-mark {
+  height: 64px;
+  font-family: var(--lm-font-display);
+  font-size: 7rem;
+  line-height: 0.9;
+  color: var(--lm-brass);
+}
+html body .tc-quote {
+  font-family: var(--lm-font-display);
+  font-style: italic;
+  font-size: clamp(1.45rem, 1rem + 1.6vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: 0.002em;
+  color: var(--lm-ink);
+}
+html body .tc-avatar {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+  font-family: var(--lm-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+html body .tc-name {
+  font-family: var(--lm-font-ui);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--lm-ink);
+}
+html body .tc-role {
+  font-family: var(--lm-font-ui);
+  font-size: 0.8rem;
+  color: var(--lm-muted);
+}
+
+/* ==========================================================================
+   FAQ
+========================================================================== */
+html body .faq-section {
+  padding: 0;
+  background: var(--lm-ivory);
+}
+html body .faq-container {
+  background: var(--lm-sand);
+}
+html body .faq-card {
+  background: var(--lm-teal-deep);
+  border-radius: var(--lm-r-sm);
+  box-shadow: var(--lm-shadow-4);
+}
+html body .faq-heading {
+  margin-bottom: 18px;
+  color: var(--lm-ivory);
+  font-size: clamp(1.9rem, 1.4rem + 1.6vw, 2.7rem);
+}
+html body .faq-question {
+  padding: 4px 0;
+  font-family: var(--lm-font-ui);
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color var(--lm-dur-2) var(--lm-ease-soft), padding var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .faq-question:hover {
+  color: var(--lm-paper);
+  padding-left: 4px;
+}
+html body .faq-question:focus-visible {
+  outline-color: var(--lm-paper);
+  outline-offset: 4px;
+}
+html body .faq-arrow {
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .faq-answer {
+  font-family: var(--lm-font-text);
+  color: rgba(255, 253, 249, 0.82);
+}
+html body .faq-image-box {
+  overflow: hidden;
+}
+html body .faq-image {
+  object-fit: cover;
+}

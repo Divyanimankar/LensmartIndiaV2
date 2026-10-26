@@ -1,0 +1,878 @@
+/* =========================================================
+   LENS MART INDIA
+   CONTACT LENS BESTSELLERS  (Three.js cascade slider)
+   ========================================================= */
+
+.updatedbestseller-section {
+  position: relative;
+  width: 100%;
+  padding: 30px 0 0px;
+  background-color: #f5f3ee;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(251, 247, 241, 0.94) 0%,
+      rgba(251, 247, 241, 0.8) 42%,
+      rgba(251, 247, 241, 0.7) 100%
+    ),
+    url("/images/contactlensbestsellerbg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* BACKGROUND OVERLAY */
+
+.updatedbestseller-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 15% 50%,
+    rgba(27, 107, 106, 0.08),
+    transparent 35%
+  );
+  z-index: 0;
+}
+
+/* CONTAINER */
+
+.updatedbestseller-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 70px;
+  box-sizing: border-box;
+}
+
+/* HEADING */
+
+.updatedbestseller-heading {
+  margin: 0 0 20px;
+  text-align: center;
+  color: #111111;
+  font-family: "Jost", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* TABS */
+
+.updatedbestseller-tabs {
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 30px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+}
+
+.updatedbestseller-tab {
+  min-width: 82px;
+  height: 38px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  border-radius: 22px;
+  background: transparent;
+  color: #111111;
+  font-family: "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.updatedbestseller-tab:hover {
+  color: #1b6b6a;
+}
+
+.updatedbestseller-tab.active {
+  background: #1b6b6a;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(27, 107, 106, 0.22);
+}
+
+.updatedbestseller-tab:active {
+  transform: scale(0.97);
+}
+
+/* Product count badge on each tab */
+
+.updatedbestseller-tab-count {
+  min-width: 20px;
+  height: 18px;
+  padding: 0 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(27, 107, 106, 0.12);
+  color: #1b6b6a;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.updatedbestseller-tab.active .updatedbestseller-tab-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Tab with 0 products */
+
+.updatedbestseller-tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.updatedbestseller-tab:disabled:hover {
+  color: #111111;
+}
+
+.updatedbestseller-tab:focus-visible,
+.updatedbestseller-arrow:focus-visible,
+.updatedbestseller-wishlist:focus-visible,
+.updatedbestseller-cta:focus-visible {
+  outline: 2px solid #1b6b6a;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   SHOWCASE  (3D stage + product panel)
+   ========================================================= */
+
+.updatedbestseller-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: 36px;
+}
+
+/* =========================================================
+   THREE.JS STAGE
+   ========================================================= */
+
+.updatedbestseller-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.35 / 1;
+  outline: none;
+
+  /* vertical page scroll allowed, horizontal = drag */
+  touch-action: pan-y;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.updatedbestseller-stage:focus-visible {
+  outline: 2px solid #1b6b6a;
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+
+.updatedbestseller-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: pan-y;
+}
+
+/* no WebGL → simple image */
+
+.updatedbestseller-stage-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.updatedbestseller-stage-fallback a {
+  width: 62%;
+  aspect-ratio: 1 / 1.15;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e0e5e4;
+  border-radius: 20px;
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+
+.updatedbestseller-stage-fallback img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* =========================================================
+   PRODUCT PANEL
+   ========================================================= */
+
+.updatedbestseller-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 32px 24px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #e0e5e4;
+  border-radius: 18px;
+  box-shadow: 0 10px 34px rgba(27, 107, 106, 0.08);
+  box-sizing: border-box;
+}
+
+.updatedbestseller-panel-body {
+  display: flex;
+  flex-direction: column;
+  animation: updatedbestseller-in 0.35s ease;
+}
+
+@keyframes updatedbestseller-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .updatedbestseller-panel-body {
+    animation: none;
+  }
+}
+
+.updatedbestseller-panel-top {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+/* ---------------------------------------------------------
+   OFF % RIBBON  (red, with folded corner)
+   --------------------------------------------------------- */
+
+.updatedbestseller-discount {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  padding: 7px 14px 7px 12px;
+  border-radius: 8px 20px 20px 8px;
+  background: linear-gradient(135deg, #e31e24 0%, #b80f14 100%);
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  line-height: 1;
+  box-shadow: 0 4px 10px rgba(185, 15, 20, 0.28);
+}
+
+/* folded corner at the bottom-left */
+.updatedbestseller-discount::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid #7d0a0d;
+  border-left: 6px solid transparent;
+}
+
+.updatedbestseller-discount-num {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.updatedbestseller-discount-num small {
+  font-size: 13px;
+  font-weight: 800;
+  margin-left: 1px;
+}
+
+.updatedbestseller-discount-off {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+/* WISHLIST HEART */
+
+.updatedbestseller-wishlist {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d9d9d9;
+  border-radius: 50%;
+  background: #ffffff;
+  box-sizing: border-box;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.updatedbestseller-wishlist svg {
+  display: block;
+  width: 21px;
+  height: 21px;
+  overflow: visible;
+}
+
+.updatedbestseller-wishlist svg path {
+  fill: none;
+  stroke: #111111;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.updatedbestseller-wishlist:hover {
+  transform: scale(1.05);
+  border-color: #1b6b6a;
+}
+
+.updatedbestseller-wishlist.active svg path {
+  fill: #e91d25;
+  stroke: #e91d25;
+}
+
+/* ---------------------------------------------------------
+   BRAND ROW  ("Alcon"  ............  "100% original")
+   --------------------------------------------------------- */
+
+.updatedbestseller-brandrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.updatedbestseller-brand {
+  margin: 0;
+  color: #6b7473;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.updatedbestseller-original {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #17803d;
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.updatedbestseller-original svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.updatedbestseller-original svg path {
+  fill: none;
+  stroke: #17803d;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* PRODUCT NAME */
+
+.updatedbestseller-product-name {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #111111;
+  font-family: "Jost", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.28;
+  text-decoration: none;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  transition: color 0.2s ease;
+}
+
+.updatedbestseller-product-name:hover {
+  color: #1b6b6a;
+}
+
+/* ---------------------------------------------------------
+   TAGS  ("Color · Monthly Disposable · Spherical")
+   --------------------------------------------------------- */
+
+.updatedbestseller-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 6px;
+  margin: 10px 0 12px;
+  font-family: "Assistant", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.updatedbestseller-dot {
+  color: #9aa3a2;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.updatedbestseller-tag-color {
+  color: #c2378a;
+}
+
+.updatedbestseller-tag-schedule {
+  color: #1b6b6a;
+}
+
+.updatedbestseller-tag-type {
+  color: #2f62b5;
+}
+
+/* RATING */
+
+.updatedbestseller-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #111111;
+  font-family: "Assistant", sans-serif;
+  font-size: 15px;
+}
+
+.updatedbestseller-rating strong {
+  font-weight: 700;
+}
+
+.updatedbestseller-rating-star {
+  color: #f0a000;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.updatedbestseller-review-count {
+  color: #858e8d;
+  font-size: 13px;
+}
+
+/* PRICE + PACK */
+
+.updatedbestseller-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 16px;
+}
+
+.updatedbestseller-price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+
+.updatedbestseller-current-price {
+  color: #c8161d;
+  font-family: "Jost", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.updatedbestseller-old-price {
+  color: #7d8584;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.updatedbestseller-pack {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  background: #ffffff;
+  border: 1px solid #1b6b6a;
+  border-radius: 20px;
+  color: #1b6b6a;
+  font-family: "Assistant", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* SAVE ₹766 */
+
+.updatedbestseller-save {
+  margin: 8px 0 0;
+  color: #17803d;
+  font-family: "Assistant", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* CTA  (full width, like the product card) */
+
+.updatedbestseller-cta {
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 26px;
+  background: #1b6b6a;
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  box-sizing: border-box;
+  box-shadow: 0 6px 16px rgba(27, 107, 106, 0.22);
+  transition:
+    background-color 0.25s ease,
+    transform 0.2s ease;
+}
+
+.updatedbestseller-cta:hover {
+  background: #155756;
+}
+
+.updatedbestseller-cta:active {
+  transform: scale(0.98);
+}
+
+.updatedbestseller-empty {
+  margin: 0;
+  color: #555f5e;
+  font-family: "Assistant", sans-serif;
+  font-size: 15px;
+}
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.updatedbestseller-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #e8eceb;
+}
+
+.updatedbestseller-arrow {
+  width: 38px;
+  height: 38px;
+  min-width: 0;
+  min-height: 0;
+  flex: none;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 50%;
+  color: #111111;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.updatedbestseller-arrow:hover {
+  background: #1b6b6a;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.updatedbestseller-count {
+  min-width: 52px;
+  margin-left: 6px;
+  color: #555f5e;
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.updatedbestseller-progress {
+  position: relative;
+  flex: 1;
+  height: 3px;
+  border-radius: 3px;
+  background: #dfe6e5;
+  overflow: hidden;
+}
+
+.updatedbestseller-progress-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 3px;
+  background: #1b6b6a;
+  transition: width 0.4s ease;
+}
+
+/* =========================================================
+   LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .updatedbestseller-container {
+    padding: 0 48px;
+  }
+  .updatedbestseller-showcase {
+    gap: 26px;
+  }
+  .updatedbestseller-panel {
+    padding: 24px 26px 22px;
+  }
+  .updatedbestseller-product-name {
+    font-size: 22px;
+  }
+  .updatedbestseller-current-price {
+    font-size: 28px;
+  }
+}
+
+/* =========================================================
+   TABLET / MOBILE  (stack: stage on top, panel below)
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .updatedbestseller-section {
+    padding: 52px 0 44px;
+  }
+  .updatedbestseller-container {
+    padding: 0 32px;
+  }
+  .updatedbestseller-heading {
+    font-size: 28px;
+  }
+
+  .updatedbestseller-showcase {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .updatedbestseller-stage {
+    max-width: 640px;
+    margin: 0 auto;
+    aspect-ratio: 1.3 / 1;
+  }
+
+  .updatedbestseller-panel {
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .updatedbestseller-section {
+    padding: 42px 0 38px;
+    background-position: center center;
+  }
+  .updatedbestseller-container {
+    padding: 0 16px;
+  }
+  .updatedbestseller-heading {
+    margin-bottom: 17px;
+    font-size: 24px;
+  }
+
+  /* TABS: poori width, andar swipe-scroll agar na aayein */
+  .updatedbestseller-tabs {
+    width: 100%;
+    margin: 0 auto 20px;
+    padding: 4px;
+    justify-content: flex-start;
+    gap: 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 24px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    touch-action: pan-x pan-y;
+  }
+
+  .updatedbestseller-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .updatedbestseller-tab {
+    flex: 1 0 auto;
+    min-width: 0;
+    height: 36px;
+    padding: 0 14px;
+    gap: 5px;
+    font-size: 13px;
+    scroll-snap-align: center;
+  }
+
+  .updatedbestseller-tab-count {
+    min-width: 18px;
+    height: 16px;
+    padding: 0 5px;
+    font-size: 10px;
+  }
+
+  .updatedbestseller-stage {
+    aspect-ratio: 1.2 / 1;
+  }
+
+  .updatedbestseller-panel {
+    padding: 20px 20px 18px;
+    border-radius: 16px;
+  }
+  .updatedbestseller-panel-top {
+    margin-bottom: 12px;
+  }
+  .updatedbestseller-discount-num {
+    font-size: 20px;
+  }
+  .updatedbestseller-product-name {
+    font-size: 20px;
+  }
+  .updatedbestseller-tags {
+    font-size: 14px;
+  }
+  .updatedbestseller-bottom {
+    margin-top: 14px;
+  }
+  .updatedbestseller-current-price {
+    font-size: 26px;
+  }
+  .updatedbestseller-old-price {
+    font-size: 14px;
+  }
+  .updatedbestseller-cta {
+    height: 46px;
+    margin-top: 16px;
+    font-size: 16px;
+  }
+  .updatedbestseller-controls {
+    margin-top: 18px;
+    padding-top: 14px;
+  }
+  .updatedbestseller-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 22px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+  .updatedbestseller-container {
+    padding: 0 12px;
+  }
+  .updatedbestseller-heading {
+    font-size: 22px;
+  }
+
+  .updatedbestseller-tabs {
+    padding: 3px;
+    gap: 2px;
+  }
+
+  .updatedbestseller-tab {
+    height: 34px;
+    padding: 0 10px;
+    gap: 4px;
+    font-size: 12px;
+  }
+
+  .updatedbestseller-tab-count {
+    min-width: 16px;
+    height: 15px;
+    padding: 0 4px;
+    font-size: 9px;
+  }
+
+  .updatedbestseller-product-name {
+    font-size: 18px;
+  }
+  .updatedbestseller-current-price {
+    font-size: 24px;
+  }
+}

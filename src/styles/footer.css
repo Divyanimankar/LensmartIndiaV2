@@ -1,0 +1,962 @@
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.site-footer {
+  width: 100%;
+
+  margin: 0;
+  padding: 48px 0 20px;
+
+  background: #0d4f4d;
+  color: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.footer-container {
+  width: calc(100% - 100px);
+  max-width: 1350px;
+
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   TOP ROW
+   Logo + About + Social  |  Contact  |  Subscribe
+===================================================== */
+
+.footer-top {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    1.3fr
+    1fr
+    1.1fr;
+
+  gap: 55px;
+
+  align-items: start;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.footer-brand {
+  min-width: 0;
+}
+
+.footer-logo-link {
+  width: 225px;
+  height: 70px;
+
+  padding: 8px 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* background: #ffffff; */
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  box-sizing: border-box;
+
+  /* box-shadow: 0 5px 18px rgba(0, 0, 0, 0.13); */
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.footer-logo-link:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.17);
+}
+
+.footer-logo {
+  width: 100%;
+  max-width: 195px;
+
+  height: 52px;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+.footer-description {
+  width: 100%;
+  max-width: 340px;
+
+  margin: 16px 0 0;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 1.55;
+
+  color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* =====================================================
+   SOCIAL
+===================================================== */
+
+.footer-socials {
+  margin-top: 18px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.social-link {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  box-sizing: border-box;
+
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.social-link svg {
+  width: 15px;
+  height: 15px;
+
+  display: block;
+}
+
+.social-link:hover {
+  background: #ffffff;
+
+  border-color: #ffffff;
+
+  color: #1b6b6a;
+
+  transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   SMALL HEADINGS
+===================================================== */
+
+.footer-small-heading {
+  margin: 0 0 15px;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 1.2;
+  letter-spacing: 1px;
+
+  color: #72e0db;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.footer-contact {
+  min-width: 0;
+}
+
+.footer-contact-item {
+  width: fit-content;
+
+  margin-bottom: 11px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.footer-contact-item svg {
+  width: 15px;
+  height: 15px;
+
+  flex-shrink: 0;
+
+  color: #72e0db;
+}
+
+.footer-contact-item:hover {
+  color: #72e0db;
+
+  transform: translateX(2px);
+}
+
+.footer-working-hours {
+  margin: 13px 0 0;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  color: rgba(255, 255, 255, 0.62);
+}
+
+
+/* =====================================================
+   SUBSCRIBE (compact)
+===================================================== */
+
+.footer-newsletter {
+  min-width: 0;
+}
+
+.newsletter-subtitle {
+  margin: 0 0 12px;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 1.45;
+
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.newsletter-form {
+  width: 100%;
+  max-width: 360px;
+}
+
+.newsletter-field {
+  width: 100%;
+  height: 44px;
+
+  padding: 4px;
+
+  display: flex;
+  align-items: center;
+
+  background: #ffffff;
+
+  border-radius: 30px;
+
+  box-sizing: border-box;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+
+  transition: box-shadow 0.25s ease;
+}
+
+.newsletter-field:focus-within {
+  box-shadow:
+    0 0 0 3px rgba(114, 224, 219, 0.55),
+    0 4px 14px rgba(0, 0, 0, 0.14);
+}
+
+.newsletter-input {
+  flex: 1;
+
+  min-width: 0;
+  height: 100%;
+
+  padding: 0 8px 0 14px;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.newsletter-input::placeholder {
+  color: #7a7a7a;
+
+  font-weight: 400;
+}
+
+.newsletter-input:disabled {
+  opacity: 0.7;
+}
+
+.newsletter-button {
+  height: 100%;
+
+  padding: 0 18px;
+
+  flex-shrink: 0;
+
+  border: 0;
+  border-radius: 30px;
+
+  background: #1b6b6a;
+
+  color: #ffffff;
+
+  font-family: "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.15s ease;
+}
+
+.newsletter-button:hover {
+  background: #145453;
+}
+
+.newsletter-button:active {
+  transform: scale(0.97);
+}
+
+.newsletter-button:disabled {
+  opacity: 0.75;
+
+  cursor: not-allowed;
+}
+
+.newsletter-message {
+  min-height: 18px;
+
+  margin: 7px 0 0 14px;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 12.5px;
+  font-weight: 600;
+
+  line-height: 1.4;
+}
+
+.newsletter-message.success {
+  color: #8ff0b4;
+}
+
+.newsletter-message.error {
+  color: #ffb4a8;
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 38px 0 34px;
+
+  background: rgba(255, 255, 255, 0.17);
+}
+
+
+/* =====================================================
+   LINKS GRID
+===================================================== */
+
+.footer-grid {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 55px;
+
+  align-items: start;
+}
+
+.footer-column {
+  min-width: 0;
+}
+
+.footer-heading {
+  margin: 0 0 20px;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.2;
+  letter-spacing: 1px;
+
+  color: #72e0db;
+}
+
+.footer-links {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links li:last-child {
+  margin-bottom: 0;
+}
+
+.footer-links a {
+  display: inline-block;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  line-height: 1.35;
+
+  color: rgba(255, 255, 255, 0.94);
+
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: #72e0db;
+
+  transform: translateX(3px);
+}
+
+
+/* =====================================================
+   FOOTER BOTTOM
+===================================================== */
+
+.footer-bottom {
+  width: 100%;
+
+  margin-top: 36px;
+  padding-top: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.footer-copyright {
+  margin: 0;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.footer-policy-links {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 13px;
+
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-policy-links a {
+  color: rgba(255, 255, 255, 0.72);
+
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+}
+
+.footer-policy-links a:hover {
+  color: #72e0db;
+}
+
+
+/* =====================================================
+   LAPTOP
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .site-footer {
+    padding-top: 42px;
+  }
+
+  .footer-container {
+    width: calc(100% - 60px);
+  }
+
+  .footer-top {
+    gap: 35px;
+  }
+
+  .footer-grid {
+    gap: 35px;
+  }
+
+  .footer-logo-link {
+    width: 210px;
+    height: 66px;
+  }
+
+  .footer-logo {
+    max-width: 180px;
+    height: 48px;
+  }
+}
+
+
+/* =====================================================
+   TABLET
+   Top row: logo + contact ek line me, subscribe neeche
+===================================================== */
+
+@media (max-width: 850px) {
+
+  .footer-container {
+    width: calc(100% - 44px);
+  }
+
+  .footer-top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 30px;
+  }
+
+  .footer-newsletter {
+    grid-column: 1 / -1;
+  }
+
+  .newsletter-form {
+    max-width: 420px;
+  }
+
+  .footer-divider {
+    margin: 32px 0 30px;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 36px 30px;
+  }
+
+  .footer-bottom {
+    margin-top: 30px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE  (600px aur usse chhota)
+   Order: Logo -> Contact -> Subscribe -> Links -> Bottom
+
+   - Contact aur Subscribe soft cards me
+   - Input font 16px (iPhone par zoom nahi hoga)
+   - Saare tap targets 40-46px
+   - Notch wale phones ke liye safe-area padding
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .site-footer {
+    padding:
+      32px 0
+      calc(18px + env(safe-area-inset-bottom, 0px));
+
+    overflow-x: hidden;
+  }
+
+  .footer-container {
+    width: calc(100% - 32px);
+  }
+
+  .footer-top {
+    grid-template-columns: minmax(0, 1fr);
+
+    gap: 18px;
+  }
+
+  .footer-newsletter {
+    grid-column: auto;
+  }
+
+
+  /* ---------- BRAND ---------- */
+
+  .footer-brand {
+    padding-bottom: 6px;
+  }
+
+  .footer-logo-link {
+    width: 190px;
+    height: 60px;
+
+    padding: 7px 12px;
+
+    border-radius: 8px;
+  }
+
+  .footer-logo {
+    max-width: 166px;
+    height: 44px;
+  }
+
+  .footer-description {
+    max-width: 330px;
+
+    margin-top: 14px;
+
+    font-size: 13.5px;
+
+    line-height: 1.55;
+  }
+
+  .footer-socials {
+    margin-top: 16px;
+
+    gap: 10px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-link svg {
+    width: 15px;
+    height: 15px;
+  }
+
+
+  /* ---------- CONTACT + SUBSCRIBE CARDS ---------- */
+
+  .footer-contact,
+  .footer-newsletter {
+    padding: 18px 16px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+
+    box-sizing: border-box;
+  }
+
+  .footer-small-heading {
+    margin-bottom: 12px;
+
+    font-size: 12px;
+
+    letter-spacing: 1.1px;
+  }
+
+
+  /* ---------- CONTACT ---------- */
+
+  .footer-contact-item {
+    width: 100%;
+    min-height: 40px;
+
+    margin-bottom: 4px;
+
+    gap: 12px;
+
+    font-size: 14px;
+
+    overflow-wrap: anywhere;
+  }
+
+  .footer-contact-item svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .footer-working-hours {
+    margin-top: 8px;
+    padding-top: 12px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    font-size: 12.5px;
+  }
+
+
+  /* ---------- SUBSCRIBE ---------- */
+
+  .newsletter-subtitle {
+    margin-bottom: 12px;
+
+    font-size: 13.5px;
+  }
+
+  .newsletter-form {
+    max-width: none;
+  }
+
+  .newsletter-field {
+    height: 48px;
+
+    padding: 4px;
+  }
+
+  /* 16px = iPhone input par zoom nahi karega */
+  .newsletter-input {
+    padding-left: 16px;
+
+    font-size: 16px;
+  }
+
+  .newsletter-button {
+    padding: 0 20px;
+
+    font-size: 14px;
+  }
+
+  .newsletter-message {
+    min-height: 0;
+
+    margin: 8px 0 0 4px;
+
+    font-size: 12.5px;
+  }
+
+  /* Khali message jagah na ghere */
+  .newsletter-message:empty {
+    display: none;
+  }
+
+
+  /* ---------- DIVIDER ---------- */
+
+  .footer-divider {
+    margin: 28px 0 26px;
+  }
+
+
+  /* ---------- LINKS (2 columns) ---------- */
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 30px 20px;
+  }
+
+  .footer-heading {
+    margin-bottom: 10px;
+
+    font-size: 12px;
+
+    letter-spacing: 0.9px;
+  }
+
+  .footer-links li {
+    margin-bottom: 0;
+  }
+
+  /* Tap karna aasaan: har link ~36px ऊँचा */
+  .footer-links a {
+    padding: 8px 0;
+
+    font-size: 14px;
+
+    line-height: 1.3;
+  }
+
+
+  /* ---------- BOTTOM ---------- */
+
+  .footer-bottom {
+    margin-top: 26px;
+    padding-top: 18px;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+    text-align: center;
+  }
+
+  .footer-copyright {
+    font-size: 12px;
+
+    line-height: 1.45;
+  }
+
+  .footer-policy-links {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 8px;
+
+    font-size: 12px;
+  }
+}
+
+
+/* =====================================================
+   TOUCH DEVICES
+   Phone par hover ka "slide" effect band
+===================================================== */
+
+@media (hover: none) {
+
+  .footer-links a:hover,
+  .footer-contact-item:hover,
+  .social-link:hover,
+  .footer-logo-link:hover {
+    transform: none;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE (380px aur chhota)
+===================================================== */
+
+@media (max-width: 380px) {
+
+  .site-footer {
+    padding-top: 28px;
+  }
+
+  .footer-container {
+    width: calc(100% - 24px);
+  }
+
+  .footer-logo-link {
+    width: 176px;
+    height: 56px;
+
+    padding: 6px 10px;
+  }
+
+  .footer-logo {
+    max-width: 154px;
+    height: 40px;
+  }
+
+  .footer-description {
+    font-size: 13px;
+  }
+
+  .footer-contact,
+  .footer-newsletter {
+    padding: 16px 13px;
+  }
+
+  .footer-contact-item {
+    font-size: 13px;
+  }
+
+  .newsletter-button {
+    padding: 0 15px;
+
+    font-size: 13px;
+  }
+
+  .footer-grid {
+    gap: 26px 14px;
+  }
+
+  .footer-heading {
+    font-size: 11.5px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+  }
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .footer-links a,
+  .footer-contact-item,
+  .social-link,
+  .footer-logo-link,
+  .newsletter-field,
+  .newsletter-button {
+    transition: none;
+  }
+}

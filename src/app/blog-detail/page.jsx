@@ -1,0 +1,5 @@
+import SiteLayout from '@/components/SiteLayout';
+import { products } from '@/data/products';
+
+export const metadata={title:'Contact Lens Care Guide'};
+export default function Page(){return <SiteLayout><article className="container blogArticle"><p className="muted">Lens Care • September 2026</p><h1>Contact Lens Care Guide</h1><div className="blogHero"></div><p>Good lens care starts with clean hands, the right lens solution and following the recommended replacement schedule.</p><h2>1. Wash and dry your hands</h2><p>Always handle lenses with clean, dry hands. Avoid oily or fragranced products immediately before touching your lenses.</p><h2>2. Follow your replacement schedule</h2><p>Daily, weekly and monthly lenses are designed for different replacement intervals. Do not extend use beyond the schedule recommended for the product.</p><h2>3. Store reusable lenses correctly</h2><p>Use fresh contact lens solution and keep the lens case clean. Never use tap water for storing lenses.</p><a className="btn" href="/blog">Back to Blog</a></article></SiteLayout>}

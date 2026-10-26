@@ -1,0 +1,49 @@
+/* =====================================================
+   PRODUCT GRID  (used by every collection page)
+   Desktop: 3 per row · Tablet: 2 per row · Mobile: 1 per row
+===================================================== */
+
+.pg-grid {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* every cell stretches, so cards in a row share the same height */
+.pg-item {
+  min-width: 0;
+  display: flex;
+}
+
+.pg-item > .lm-card {
+  width: 100%;
+}
+
+/* TABLET */
+@media (max-width: 1099px) {
+  .pg-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .pg-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+}
+
+/* default empty message (collection pages can pass their own emptyState) */
+.pg-empty {
+  margin: 48px 0;
+  text-align: center;
+  color: #66726f;
+  font-size: 18px;
+}

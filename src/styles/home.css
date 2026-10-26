@@ -1,0 +1,648 @@
+
+/* ==========================================
+   GLOBAL HOME PAGE
+========================================== */
+
+.home-page {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Assistant", sans-serif;
+  color: #1f2933;
+  background-color: #ffffff;
+}
+
+.home-section {
+  width: min(1180px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 70px 0;
+  box-sizing: border-box;
+}
+
+.home-section-title {
+  margin: 0 0 36px;
+  text-align: center;
+  font-family: "Jost", sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: #202020;
+}
+
+.section-small-title {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: #0d756d;
+}
+
+.primary-btn {
+  width: 240px;
+  height: 50px;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b7069;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 800;
+  line-height:16.8em;
+  letter-spacing:2.8px;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.primary-btn:hover {
+  background-color: #075c56;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 112, 105, 0.18);
+}
+
+
+
+
+
+/* =====================================================
+   CONTACT LENS OFFER BANNER
+===================================================== */
+
+.contact-offer-banner {
+  position: relative;
+
+  width: 100%;
+  height: 572px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+  box-sizing: border-box;
+
+  background-image: url("/images/ad3.png");
+  background-repeat: no-repeat;
+
+  background-size: auto 100%;
+  background-position: right center;
+
+  background-color: #bfe9ea;
+}
+
+/* =====================================================
+   DESKTOP LEFT DARK GRADIENT
+   Smoothly combines with background image
+===================================================== */
+
+.contact-offer-banner::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  /* Softer and wider fade into image */
+  background: linear-gradient(
+    90deg,
+    rgba(2, 43, 46, 1) 0%,
+    rgba(3, 55, 58, 0.98) 18%,
+    rgba(4, 70, 72, 0.92) 30%,
+    rgba(20, 105, 107, 0.78) 40%,
+    rgba(67, 148, 150, 0.58) 50%,
+    rgba(126, 195, 197, 0.38) 60%,
+    rgba(175, 222, 224, 0.20) 70%,
+    rgba(185, 231, 232, 0.08) 80%,
+    transparent 92%
+  );
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.contact-offer-content {
+  position: relative;
+  z-index: 5;
+
+  width: min(1220px, calc(100% - 100px));
+
+  margin: 0 auto;
+
+  padding-left: 65px;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   CONTACT LENSES LABEL
+===================================================== */
+
+.contact-offer-label {
+  margin: 0 0 24px;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: 5px;
+
+  color: #ffffff;
+}
+
+
+.contact-offer-label::before {
+  content: "";
+
+  display: inline-block;
+
+  width: 42px;
+  height: 1px;
+
+  margin-right: 14px;
+  margin-bottom: 4px;
+
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* =====================================================
+   UP TO
+===================================================== */
+
+.contact-offer-flat {
+  margin: 0 0 7px;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 29px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   30% OFF
+===================================================== */
+
+.contact-offer-title {
+  margin: 0 0 22px;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 88px;
+  font-weight: 500;
+
+  line-height: 0.92;
+
+  letter-spacing: -2px;
+
+  color: #ffffff;
+}
+
+
+/* =====================================================
+   ON BESTSELLERS
+===================================================== */
+
+.contact-offer-box {
+  width: fit-content;
+
+  margin-bottom: 32px;
+
+  padding: 11px 21px;
+
+  box-sizing: border-box;
+
+  border: 2px dashed rgba(255, 255, 255, 0.8);
+
+  border-radius: 7px;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 24px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: #ffffff;
+
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+
+/* =====================================================
+   SHOP NOW BUTTON
+===================================================== */
+
+.contact-offer-button {
+  min-width: 165px;
+  height: 50px;
+
+  padding: 0 28px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border: 1px solid #ffffff;
+  border-radius: 7px;
+
+  background-color: #ffffff;
+
+  color: #075e5d;
+
+  text-decoration: none;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.16);
+
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+.contact-offer-button:hover {
+  background-color: transparent;
+
+  color: #ffffff;
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.22);
+}
+
+
+/* =====================================================
+   LARGE DESKTOP
+===================================================== */
+
+@media (min-width: 1400px) {
+
+  .contact-offer-content {
+    width: min(1280px, calc(100% - 120px));
+
+    padding-left: 75px;
+  }
+
+
+  .contact-offer-label {
+    font-size: 16px;
+  }
+
+
+  .contact-offer-flat {
+    font-size: 31px;
+  }
+
+
+  .contact-offer-title {
+    font-size: 94px;
+  }
+
+
+  .contact-offer-box {
+    font-size: 25px;
+  }
+
+}
+
+
+/* =====================================================
+   LAPTOP
+===================================================== */
+
+@media (max-width: 1200px) and (min-width: 901px) {
+
+  .contact-offer-banner {
+    background-size: auto 100%;
+    background-position: 72% center;
+  }
+
+
+  .contact-offer-banner::before {
+    background: linear-gradient(
+      90deg,
+      rgba(2, 43, 46, 1) 0%,
+      rgba(3, 61, 63, 0.98) 25%,
+      rgba(4, 78, 79, 0.80) 38%,
+      rgba(5, 91, 91, 0.35) 52%,
+      transparent 68%
+    );
+  }
+
+
+  .contact-offer-content {
+    width: calc(100% - 70px);
+
+    padding-left: 45px;
+  }
+
+
+  .contact-offer-label {
+    font-size: 13px;
+  }
+
+
+  .contact-offer-flat {
+    font-size: 25px;
+  }
+
+
+  .contact-offer-title {
+    font-size: 72px;
+  }
+
+
+  .contact-offer-box {
+    font-size: 20px;
+  }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .contact-offer-banner {
+    height: 520px;
+
+    background-size: auto 100%;
+    background-position: 65% center;
+  }
+
+
+  .contact-offer-banner::before {
+    background: linear-gradient(
+      90deg,
+      rgba(2, 43, 46, 0.96) 0%,
+      rgba(3, 61, 63, 0.90) 32%,
+      rgba(5, 91, 91, 0.55) 55%,
+      rgba(5, 91, 91, 0.12) 75%,
+      transparent 88%
+    );
+  }
+
+
+  .contact-offer-content {
+    width: calc(100% - 60px);
+
+    padding-left: 25px;
+  }
+
+
+  .contact-offer-label {
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+  }
+
+
+  .contact-offer-flat {
+    font-size: 21px;
+  }
+
+
+  .contact-offer-title {
+    margin-bottom: 17px;
+
+    font-size: 62px;
+  }
+
+
+  .contact-offer-box {
+    margin-bottom: 25px;
+
+    padding: 8px 15px;
+
+    font-size: 18px;
+  }
+
+
+  .contact-offer-button {
+    min-width: 145px;
+    height: 46px;
+
+    font-size: 14px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   Light background + DARK TEXT
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .contact-offer-banner {
+    height: 500px;
+
+    background-size: auto 100%;
+    background-position: 62% center;
+
+    background-color: #b9e7e8;
+  }
+
+
+  /*
+    Desktop dark gradient removed.
+    Mobile gets light aqua gradient.
+  */
+
+  .contact-offer-banner::before {
+    background: linear-gradient(
+      90deg,
+      #b9e7e8 0%,
+      rgba(185, 231, 232, 0.99) 38%,
+      rgba(185, 231, 232, 0.88) 52%,
+      rgba(185, 231, 232, 0.48) 68%,
+      rgba(185, 231, 232, 0.08) 86%,
+      transparent 100%
+    );
+  }
+
+
+  .contact-offer-content {
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0 25px;
+
+    box-sizing: border-box;
+  }
+
+
+  /* CONTACT LENSES */
+
+  .contact-offer-label {
+    margin-bottom: 17px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 2.7px;
+
+    color: #075e5d;
+  }
+
+
+  .contact-offer-label::before {
+    width: 22px;
+
+    margin-right: 8px;
+
+    background-color: #075e5d;
+  }
+
+
+  /* UP TO */
+
+  .contact-offer-flat {
+    font-size: 19px;
+    font-weight: 400;
+
+    color: #173f40;
+  }
+
+
+  /* 30% OFF */
+
+  .contact-offer-title {
+    margin-bottom: 15px;
+
+    font-size: 50px;
+
+    line-height: 0.95;
+
+    letter-spacing: -1px;
+
+    color: #075e5d;
+  }
+
+
+  /* BESTSELLER */
+
+  .contact-offer-box {
+    margin-bottom: 22px;
+
+    padding: 8px 12px;
+
+    border: 1.5px dashed #176b6b;
+
+    font-size: 15px;
+
+    color: #173f40;
+
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
+
+  /* BUTTON */
+
+  .contact-offer-button {
+    min-width: 130px;
+    height: 43px;
+
+    padding: 0 19px;
+
+    border: none;
+
+    background-color: #ffffff;
+
+    color: #075e5d;
+
+    font-size: 13px;
+
+    box-shadow:
+      0 7px 18px rgba(7, 94, 93, 0.15);
+  }
+
+
+  .contact-offer-button:hover {
+    background-color: #075e5d;
+
+    color: #ffffff;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+  .contact-offer-banner {
+    height: 470px;
+
+    background-position: 64% center;
+  }
+
+
+  .contact-offer-content {
+    padding: 0 18px;
+  }
+
+
+  .contact-offer-label {
+    font-size: 9px;
+  }
+
+
+  .contact-offer-flat {
+    font-size: 17px;
+  }
+
+
+  .contact-offer-title {
+    font-size: 44px;
+  }
+
+
+  .contact-offer-box {
+    font-size: 13px;
+  }
+
+
+  .contact-offer-button {
+    min-width: 118px;
+    height: 40px;
+
+    font-size: 12px;
+  }
+
+}

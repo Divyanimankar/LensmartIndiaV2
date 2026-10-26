@@ -1,0 +1,193 @@
+/* ==========================================================================
+   LENSMART INDIA — FOOTER
+========================================================================== */
+
+html body .site-footer {
+  position: relative;
+  padding: clamp(56px, 6vw, 96px) 0 24px;
+  background:
+    radial-gradient(ellipse 60% 80% at 85% 0%, rgba(27, 107, 106, 0.28), transparent 70%),
+    #0e2927;
+  color: rgba(250, 246, 238, 0.82);
+  font-family: var(--lm-font-text);
+}
+html body .site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lm-brass), transparent);
+  opacity: 0.7;
+}
+html body .footer-container {
+  width: min(var(--lm-container), calc(100% - 2 * var(--lm-gutter)));
+}
+html body .footer-top {
+  padding-bottom: clamp(28px, 4vw, 52px);
+}
+html body .footer-description {
+  font-family: var(--lm-font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.3;
+  color: rgba(250, 246, 238, 0.86);
+}
+html body .footer-logo-link {
+  transition: transform var(--lm-dur-3) var(--lm-ease-out), opacity var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .footer-logo-link:hover {
+  box-shadow: none;
+  opacity: 0.88;
+}
+html body .social-link {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(250, 246, 238, 0.28);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--lm-ivory);
+  transition: background-color var(--lm-dur-3) var(--lm-ease-soft), color var(--lm-dur-3) var(--lm-ease-soft), border-color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .social-link:hover {
+  background: var(--lm-ivory);
+  border-color: var(--lm-ivory);
+  color: var(--lm-teal-ink);
+  transform: translateY(-3px);
+}
+html body .social-link:active {
+  transform: scale(0.94);
+}
+
+html body .footer-small-heading,
+html body .footer-heading {
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-eyebrow);
+  text-transform: uppercase;
+  color: #d9c49b;
+}
+html body .footer-contact-item {
+  font-family: var(--lm-font-ui);
+  font-size: 14px;
+  color: rgba(250, 246, 238, 0.92);
+  transition: color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-2) var(--lm-ease-out);
+}
+html body .footer-contact-item svg {
+  color: #d9c49b;
+}
+html body .footer-contact-item:hover {
+  color: #fff;
+  transform: translateX(3px);
+}
+html body .footer-working-hours,
+html body .newsletter-subtitle {
+  font-family: var(--lm-font-text);
+  color: rgba(250, 246, 238, 0.62);
+}
+
+/* newsletter */
+html body .newsletter-field {
+  height: 52px;
+  padding: 4px;
+  border: 1px solid rgba(250, 246, 238, 0.3);
+  border-radius: var(--lm-r-pill);
+  background: rgba(250, 246, 238, 0.06);
+  box-shadow: none;
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), background-color var(--lm-dur-2) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .newsletter-field:hover {
+  border-color: rgba(250, 246, 238, 0.55);
+}
+html body .newsletter-field:focus-within {
+  border-color: var(--lm-ivory);
+  background: rgba(250, 246, 238, 0.1);
+  box-shadow: 0 0 0 3px rgba(217, 196, 155, 0.35);
+}
+html body .newsletter-input {
+  padding: 0 8px 0 18px;
+  color: var(--lm-ivory);
+  font-family: var(--lm-font-ui);
+  font-size: 14px;
+}
+html body .newsletter-input:focus-visible {
+  outline: none;
+}
+html body .newsletter-input::placeholder {
+  color: rgba(250, 246, 238, 0.5);
+}
+html body .newsletter-button {
+  padding: 0 24px;
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-ivory);
+  color: var(--lm-teal-ink);
+  font-family: var(--lm-font-ui);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out);
+}
+html body .newsletter-button:hover {
+  background: #fff;
+}
+html body .newsletter-button:active {
+  transform: scale(0.97);
+}
+
+html body .footer-divider {
+  background: rgba(250, 246, 238, 0.14);
+}
+
+/* link columns */
+html body .footer-links a {
+  position: relative;
+  font-family: var(--lm-font-text);
+  font-size: 15px;
+  color: rgba(250, 246, 238, 0.86);
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .footer-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: #d9c49b;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body .footer-links a:hover {
+  color: #fff;
+}
+html body .footer-links a:hover::after,
+html body .footer-links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+html body .footer-copyright {
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(250, 246, 238, 0.55);
+}
+html body .footer-policy-links,
+html body .footer-policy-links a {
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+html body .footer-policy-links a {
+  color: rgba(250, 246, 238, 0.7);
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body .footer-policy-links a:hover {
+  color: #fff;
+}
+
+html body .site-footer :focus-visible {
+  outline-color: #d9c49b;
+}

@@ -1,0 +1,122 @@
+/* ==========================================================================
+   LENSMART INDIA — CART · CHECKOUT · PAYMENT · ACCOUNT · WISHLIST
+   Theming layer only: surfaces, type, buttons, inputs, focus, motion.
+   Specificity is raised with :not(#lm) so legacy page sheets do not win.
+========================================================================== */
+
+html body:not(#lm) :is(.lmi-cart-page, .lmi-checkout-page, .lmi-payment-page, .account-login-page, .register-page, .wishlist-page, .search-page) {
+  --teal: var(--lm-teal);
+  --teal-dark: var(--lm-teal-deep);
+  --teal-soft: var(--lm-teal-soft);
+  background: var(--lm-ivory);
+  color: var(--lm-ink-2);
+  font-family: var(--lm-font-text);
+}
+
+/* page titles */
+html body:not(#lm) :is(.lmi-cart-title, .lmi-co-title, .lmi-pay-title, .account-login-page h1, .register-page h1, .wishlist-page h1, .search-page h1) {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  line-height: 1.02;
+  color: var(--lm-ink);
+}
+html body:not(#lm) :is(.lmi-cart-page, .lmi-checkout-page, .lmi-payment-page, .account-login-page, .register-page, .wishlist-page) :is(h2, h3) {
+  font-family: var(--lm-font-ui);
+  letter-spacing: 0.01em;
+  color: var(--lm-ink);
+}
+html body:not(#lm) :is(.lmi-item-name, .lmi-item-title) {
+  font-family: var(--lm-font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.1;
+}
+
+/* surfaces */
+html body:not(#lm) :is(.lmi-cart-page, .lmi-checkout-page, .lmi-payment-page) :is([class*="-card"], [class*="-summary"], [class*="-panel"], [class*="-box"]) {
+  border-color: var(--lm-line);
+  border-radius: var(--lm-r-sm);
+}
+html body:not(#lm) .lmi-ship-banner {
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-teal-soft);
+  font-family: var(--lm-font-ui);
+}
+
+/* primary buttons */
+html body:not(#lm) :is(.lmi-checkout-button, .lmi-pay-button, .account-login-btn, .register-submit-btn, .wishlist-shop-btn, .wishlist-cart-btn) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-teal);
+  color: #fff;
+  font-family: var(--lm-font-ui);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  transition: color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(.lmi-checkout-button, .lmi-pay-button, .account-login-btn, .register-submit-btn, .wishlist-shop-btn, .wishlist-cart-btn)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--lm-ink);
+  transform: translate3d(0, 101%, 0);
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(.lmi-checkout-button, .lmi-pay-button, .account-login-btn, .register-submit-btn, .wishlist-shop-btn, .wishlist-cart-btn):hover:not(:disabled) {
+  background: var(--lm-teal);
+}
+html body:not(#lm) :is(.lmi-checkout-button, .lmi-pay-button, .account-login-btn, .register-submit-btn, .wishlist-shop-btn, .wishlist-cart-btn):hover:not(:disabled)::before {
+  transform: translate3d(0, 0, 0);
+}
+html body:not(#lm) :is(.lmi-checkout-button, .lmi-pay-button, .account-login-btn, .register-submit-btn, .wishlist-shop-btn, .wishlist-cart-btn):active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+/* inputs */
+html body:not(#lm) :is(.lmi-checkout-page, .lmi-payment-page, .account-login-page, .register-page) :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+  border-color: var(--lm-line-strong);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+  font-family: var(--lm-font-ui);
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out), background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) :is(.lmi-checkout-page, .lmi-payment-page, .account-login-page, .register-page) :is(input, select, textarea):focus {
+  border-color: var(--lm-teal);
+  background: #fff;
+  box-shadow: var(--lm-ring);
+}
+html body:not(#lm) :is(.lmi-checkout-page, .lmi-payment-page, .account-login-page, .register-page) :is(input, select, textarea):focus-visible {
+  outline: none;
+}
+html body:not(#lm) :is(.lmi-checkout-page, .lmi-payment-page, .account-login-page, .register-page) :is(label) {
+  font-family: var(--lm-font-ui);
+}
+
+/* wishlist cards */
+html body:not(#lm) .wishlist-page {
+  background: var(--lm-ivory);
+}
+html body:not(#lm) .wishlist-heart-btn {
+  transition: transform var(--lm-dur-2) var(--lm-ease-spring), color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) .wishlist-heart-btn:hover {
+  transform: scale(1.1);
+}
+
+/* site cart drawer + discount popup */
+html body:not(#lm) .discount-popup,
+html body:not(#lm) [class^="discount-"][class$="-modal"] {
+  background: var(--lm-ivory);
+  border-radius: var(--lm-r-md);
+}
+html body:not(#lm) .discount-popup h2,
+html body:not(#lm) .discount-title {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+}

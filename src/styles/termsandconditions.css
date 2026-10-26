@@ -1,0 +1,154 @@
+
+.terms-page {
+  background: #ffffff;
+  color: #435659;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.terms-page *,
+.terms-page *::before,
+.terms-page *::after {
+  box-sizing: border-box;
+}
+
+.terms-container {
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.terms-hero {
+  padding: 65px 0;
+  background: #f3f8f7;
+  border-bottom: 1px solid #e1eae8;
+}
+
+.terms-eyebrow {
+  margin: 0 0 12px;
+  color: #1b6b6a;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.terms-hero h1 {
+  margin: 0 0 14px;
+  color: #17302f;
+  font-family: "Jost", sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.terms-hero p:not(.terms-eyebrow) {
+  max-width: 650px;
+  margin: 0 0 15px;
+  color: #536665;
+  font-size: 17px;
+}
+
+.terms-updated {
+  color: #71817f;
+  font-size: 14px;
+}
+
+/* Terms Content */
+.terms-content {
+  padding: 45px 0 75px;
+}
+
+.terms-section {
+  padding: 28px 0;
+  border-bottom: 1px solid #e5ecea;
+  scroll-margin-top: 100px;
+}
+
+.terms-section:first-child {
+  padding-top: 0;
+}
+
+.terms-section:last-child {
+  border-bottom: none;
+}
+
+.terms-section h2 {
+  margin: 0 0 16px;
+  color: #17302f;
+  font-family: "Jost", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.terms-section p {
+  margin: 0 0 13px;
+  color: #536665;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.terms-section p:last-child {
+  margin-bottom: 0;
+}
+
+.terms-section a {
+  color: #1b6b6a;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.terms-section a:hover {
+  text-decoration: underline;
+}
+
+.terms-section strong {
+  color: #17302f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .terms-container {
+    width: calc(100% - 32px);
+  }
+
+  .terms-hero {
+    padding: 45px 0;
+  }
+
+  .terms-hero h1 {
+    font-size: 34px;
+  }
+
+  .terms-hero p:not(.terms-eyebrow) {
+    font-size: 16px;
+  }
+
+  .terms-content {
+    padding: 30px 0 50px;
+  }
+
+  .terms-section {
+    padding: 24px 0;
+  }
+
+  .terms-section h2 {
+    font-size: 22px;
+  }
+
+  .terms-section p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 420px) {
+  .terms-hero h1 {
+    font-size: 30px;
+  }
+
+  .terms-eyebrow {
+    font-size: 12px;
+  }
+}

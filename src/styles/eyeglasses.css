@@ -1,0 +1,4835 @@
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+/* =========================================
+
+   PAGE
+
+\========================================= */
+
+.eyeglasses-page {
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  background: #ffffff;
+
+  color: #171717;
+
+  font-family: "Assistant", sans-serif;
+
+}
+
+.eyeglasses-container {
+
+  width: 100%;
+
+  /* max-width: 1440px; */
+
+  padding: 0 19px;
+
+}
+
+/* =========================================
+
+   BREADCRUMB
+
+\========================================= */
+
+.eyeglasses-breadcrumb {
+
+  min-height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color: #777777;
+
+  font-size: 16px;
+
+}
+
+.eyeglasses-breadcrumb a {
+
+  color: #555555;
+
+  text-decoration: none;
+
+}
+
+.eyeglasses-breadcrumb a:hover {
+
+  color: #1b6b6a;
+
+}
+
+/* =========================================
+
+   HEADER
+
+\========================================= */
+
+.eyeglasses-page-header {
+
+  padding: 34px 0 38px;
+
+  background: #1B6B6A;
+
+  text-align: center;
+
+}
+
+.eyeglasses-small-title {
+
+  margin: 0 0 8px;
+
+  color: #d2d4d4;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+}
+
+.eyeglasses-page-header h1 {
+
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 38px;
+
+  font-weight: 500;
+
+  line-height: 1.2;
+
+}
+
+.eyeglasses-description {
+
+  max-width: 650px;
+
+  margin: 10px auto 0;
+
+  color: #eeecec;
+
+  font-size: 17px;
+
+  line-height: 1.55;
+
+}
+
+/* =========================================
+
+   PRODUCTS
+
+\========================================= */
+
+.eyeglasses-products-section {
+
+  padding: 28px 0 70px;
+  scroll-margin-top: 90px;
+
+}
+
+/* =========================================
+
+   TOOLBAR
+
+\========================================= */
+
+.eyeglasses-toolbar {
+
+  width: 100%;
+
+  min-height: 58px;
+
+  margin-bottom: 22px;
+
+  padding-bottom: 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom: 1px solid #dddddd;
+
+}
+
+.eyeglasses-result-count {
+
+  color: #555555;
+
+  font-size: 16px;
+
+}
+
+.eyeglasses-toolbar-right {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+}
+
+/* =========================================
+
+   SORT
+
+\========================================= */
+
+.eyeglasses-sort {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+}
+
+.eyeglasses-sort label {
+
+  color: #555555;
+
+  font-size: 16px;
+
+}
+
+.eyeglasses-sort select {
+
+  width: 225px;
+
+  height: 45px;
+
+  padding: 0 38px 0 14px;
+
+  border: 1px solid #d2d2d2;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+}
+
+.eyeglasses-sort select:focus {
+
+  border-color: #1b6b6a;
+
+}
+
+/* =========================================
+
+   MOBILE FILTER BUTTON
+
+\========================================= */
+
+.mobile-filter-button {
+
+  display: none;
+
+  height: 44px;
+
+  padding: 0 15px;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  border: 1px solid #d2d2d2;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+}
+
+.mobile-filter-button svg {
+
+  width: 20px;
+
+  height: 20px;
+
+}
+
+/* =========================================
+
+   LAYOUT
+
+\========================================= */
+
+.eyeglasses-layout {
+
+  display: grid;
+
+  grid-template-columns:
+
+    255px minmax(0, 1fr);
+
+  gap: 32px;
+
+  align-items: start;
+
+}
+
+/* =========================================
+
+   SIDEBAR
+
+\========================================= */
+
+.eyeglasses-filter-sidebar {
+
+  position: sticky;
+
+  top: 90px;
+
+  width: 100%;
+
+  height: calc(100vh - 115px);
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border-right: 1px solid #d8d8d8;
+
+}
+
+.filter-content {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+}
+
+/* =========================================
+
+   FILTER HEADER
+
+\========================================= */
+
+.filter-top {
+
+  min-height: 58px;
+
+  padding: 0 18px 0 0;
+
+  flex: 0 0 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid #d6d6d6;
+
+}
+
+.filter-top h2 {
+
+  margin: 0;
+
+  color: #111111;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 20px;
+
+  font-weight: 500;
+
+}
+
+.filter-top button {
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #555555;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 16px;
+
+  text-decoration: underline;
+
+  cursor: pointer;
+
+}
+
+.filter-top button:hover {
+
+  color: #1b6b6a;
+
+}
+
+/* =========================================
+
+   VERTICAL SCROLL
+
+\========================================= */
+
+.filter-scroll-area {
+
+  width: 100%;
+
+  flex: 1;
+
+  min-height: 0;
+
+  padding-right: 15px;
+
+  overflow-y: auto;
+
+  overflow-x: hidden;
+
+  overscroll-behavior: contain;
+
+  scrollbar-width: thin;
+
+  scrollbar-color: #999999 #eeeeee;
+
+}
+
+.filter-scroll-area::-webkit-scrollbar {
+
+  width: 6px;
+
+}
+
+.filter-scroll-area::-webkit-scrollbar-track {
+
+  background: #eeeeee;
+
+}
+
+.filter-scroll-area::-webkit-scrollbar-thumb {
+
+  background: #999999;
+
+  border-radius: 20px;
+
+}
+
+.filter-scroll-area::-webkit-scrollbar-thumb:hover {
+
+  background: #777777;
+
+}
+
+/* =========================================
+
+   FILTER ACCORDION
+
+\========================================= */
+
+.filter-group {
+
+  width: 100%;
+
+  border-bottom: 1px solid #d6d6d6;
+
+}
+
+.filter-group-header {
+
+  width: 100%;
+
+  min-height: 60px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+}
+
+.filter-chevron {
+
+  width: 21px;
+
+  height: 21px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition: transform 0.3s ease;
+
+}
+
+.filter-chevron svg {
+
+  width: 18px;
+
+  height: 18px;
+
+}
+
+.filter-group.open .filter-chevron {
+
+  transform: rotate(180deg);
+
+}
+
+/* =========================================
+
+   ACCORDION CONTENT
+
+\========================================= */
+
+.filter-dropdown-content {
+
+  display: grid;
+
+  grid-template-rows: 0fr;
+
+  opacity: 0;
+
+  transition:
+
+    grid-template-rows 0.3s ease,
+
+    opacity 0.25s ease;
+
+}
+
+.filter-group.open .filter-dropdown-content {
+
+  grid-template-rows: 1fr;
+
+  opacity: 1;
+
+}
+
+.filter-options {
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 13px;
+
+}
+
+.filter-group.open .filter-options {
+
+  padding: 3px 0 20px;
+
+}
+
+/* =========================================
+
+   CHECKBOX
+
+\========================================= */
+
+.filter-checkbox {
+
+  width: fit-content;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  color: #444444;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 400;
+
+  line-height: 1.4;
+
+  cursor: pointer;
+
+  user-select: none;
+
+}
+
+.filter-checkbox input {
+
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+}
+
+.custom-checkbox {
+
+  width: 19px;
+
+  height: 19px;
+
+  flex: 0 0 19px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #aeb2b1;
+
+  background: #ffffff;
+
+  color: transparent;
+
+  font-size: 11px;
+
+  transition: 0.2s ease;
+
+}
+
+.filter-checkbox:hover .custom-checkbox {
+
+  border-color: #1b6b6a;
+
+}
+
+.filter-checkbox input:checked + .custom-checkbox {
+
+  border-color: #1b6b6a;
+
+  background: #1b6b6a;
+
+  color: #ffffff;
+
+}
+
+/* =========================================
+
+   FRAME SIZE
+
+\========================================= */
+
+.frame-size-filter-list {
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+.frame-size-option {
+
+  width: 100%;
+
+  min-height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  color: #555555;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+}
+
+.frame-size-option:last-child {
+
+  border-bottom: 0;
+
+}
+
+.frame-size-option input {
+
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+}
+
+.frame-size-check {
+
+  width: 19px;
+
+  height: 19px;
+
+  flex: 0 0 19px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #cccccc;
+
+  font-size: 13px;
+
+}
+
+.frame-size-option input:checked + .frame-size-check {
+
+  color: #1b6b6a;
+
+  font-weight: 700;
+
+}
+
+.frame-size-name {
+
+  color: #555555;
+
+}
+
+.frame-size-option:hover .frame-size-name {
+
+  color: #1b6b6a;
+
+}
+
+/* =========================================
+
+   PRICE RANGE
+
+\========================================= */
+
+.price-range-filter {
+
+  width: 100%;
+
+  padding: 3px 2px 7px;
+
+}
+
+.price-range-values {
+
+  width: 100%;
+
+  margin-bottom: 23px;
+
+  display: grid;
+
+  grid-template-columns:
+
+    minmax(0, 1fr)
+
+    auto
+
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+.price-value-box {
+
+  min-width: 0;
+
+  padding: 8px 9px;
+
+  border: 1px solid #dddddd;
+
+  background: #ffffff;
+
+}
+
+.price-value-box span {
+
+  display: block;
+
+  margin-bottom: 2px;
+
+  color: #888888;
+
+  font-size: 12px;
+
+}
+
+.price-value-box strong {
+
+  display: block;
+
+  color: #222222;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+}
+
+.price-range-separator {
+
+  color: #777777;
+
+}
+
+/* SLIDER */
+
+.price-slider-wrapper {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 24px;
+
+  display: flex;
+
+  align-items: center;
+
+}
+
+.price-slider-track {
+
+  position: absolute;
+
+  left: 0;
+
+  right: 0;
+
+  top: 50%;
+
+  height: 4px;
+
+  background: #dddddd;
+
+  border-radius: 20px;
+
+  transform: translateY(-50%);
+
+}
+
+.price-slider-selected {
+
+  position: absolute;
+
+  top: 50%;
+
+  height: 4px;
+
+  background: #1b6b6a;
+
+  border-radius: 20px;
+
+  transform: translateY(-50%);
+
+}
+
+.price-range-input {
+
+  position: absolute;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 24px;
+
+  margin: 0;
+
+  background: transparent;
+
+  appearance: none;
+
+  -webkit-appearance: none;
+
+  pointer-events: none;
+
+  outline: none;
+
+}
+
+.price-range-input::-webkit-slider-runnable-track {
+
+  height: 4px;
+
+  background: transparent;
+
+}
+
+.price-range-input::-webkit-slider-thumb {
+
+  width: 18px;
+
+  height: 18px;
+
+  margin-top: -7px;
+
+  border: 3px solid #ffffff;
+
+  border-radius: 50%;
+
+  background: #1b6b6a;
+
+  box-shadow: 0 0 0 1px #1b6b6a;
+
+  appearance: none;
+
+  -webkit-appearance: none;
+
+  pointer-events: auto;
+
+  cursor: grab;
+
+}
+
+.price-range-input::-moz-range-track {
+
+  height: 4px;
+
+  background: transparent;
+
+}
+
+.price-range-input::-moz-range-thumb {
+
+  width: 14px;
+
+  height: 14px;
+
+  border: 3px solid #ffffff;
+
+  border-radius: 50%;
+
+  background: #1b6b6a;
+
+  box-shadow: 0 0 0 1px #1b6b6a;
+
+  pointer-events: auto;
+
+}
+
+.price-range-min {
+
+  z-index: 4;
+
+}
+
+.price-range-max {
+
+  z-index: 5;
+
+}
+
+.price-slider-labels {
+
+  width: 100%;
+
+  margin-top: 4px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color: #777777;
+
+  font-size: 13px;
+
+}
+
+/* =========================================
+
+   PRODUCT AREA
+
+\========================================= */
+
+.eyeglasses-product-area {
+
+  width: 100%;
+
+  min-width: 0;
+
+}
+
+/* =========================================
+
+   PRODUCT GRID
+
+   3 CARDS × 4 ROWS
+
+\========================================= */
+
+.eyeglasses-product-grid {
+
+  display: grid;
+
+  grid-template-columns:
+
+    repeat(3, minmax(0, 1fr));
+
+  column-gap: 24px;
+
+  row-gap: 42px;
+
+}
+
+/* =========================================
+
+   PRODUCT CARD
+
+\========================================= */
+
+.eyeglasses-product-card {
+
+  width: 100%;
+
+  min-width: 0;
+
+  background: #ffffff;
+
+}
+
+/* =========================================
+
+   IMAGE
+
+\========================================= */
+
+.eyeglasses-product-image-wrapper {
+
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  background: #f5f5f5;
+
+}
+
+.eyeglasses-product-image-link {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+}
+
+.eyeglasses-product-image {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  padding: 20px;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  transition: transform 0.35s ease;
+
+}
+
+.eyeglasses-product-card:hover
+
+.eyeglasses-product-image {
+
+  transform: scale(1.04);
+
+}
+
+/* =========================================
+
+   BADGE
+
+\========================================= */
+
+.eyeglasses-product-badge {
+
+  position: absolute;
+
+  top: 12px;
+
+  left: 12px;
+
+  padding: 5px 9px;
+
+  background: #1b6b6a;
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+
+  text-transform: uppercase;
+
+}
+
+/* =========================================
+
+   WISHLIST
+
+\========================================= */
+
+.eyeglasses-wishlist {
+
+  position: absolute;
+
+  top: 11px;
+
+  right: 11px;
+
+  z-index: 5;
+
+  width: 38px;
+
+  height: 38px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #e0e0e0;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  color: #222222;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+
+}
+
+.eyeglasses-wishlist svg {
+
+  width: 20px;
+
+  height: 20px;
+
+}
+
+.eyeglasses-wishlist:hover,
+
+.eyeglasses-wishlist.active {
+
+  border-color: #1b6b6a;
+
+  background: #1b6b6a;
+
+  color: #ffffff;
+
+}
+
+.eyeglasses-wishlist.active svg {
+
+  fill: currentColor;
+
+}
+
+/* =========================================
+
+   PRODUCT INFO
+
+\========================================= */
+
+.eyeglasses-product-info {
+
+  padding: 14px 2px 0;
+
+}
+
+.eyeglasses-product-category {
+
+  margin: 0 0 6px;
+
+  color: #8b8b8b;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+}
+
+.eyeglasses-product-name {
+
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color: #111111;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 500;
+
+  line-height: 1.35;
+
+  text-decoration: none;
+
+}
+
+.eyeglasses-product-name:hover {
+
+  color: #1b6b6a;
+
+}
+
+/* =========================================
+
+   MAXIMUM 4 COLORS
+
+\========================================= */
+
+.eyeglasses-color-row {
+
+  min-height: 29px;
+
+  margin-bottom: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+}
+
+.product-color-options {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+.product-color-button {
+
+  width: 27px;
+
+  height: 27px;
+
+  padding: 2px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid transparent;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+
+}
+
+.product-color-button:hover {
+
+  border-color: #1b6b6a;
+
+  transform: scale(1.08);
+
+}
+
+.eyeglasses-color-dot {
+
+  width: 19px;
+
+  height: 19px;
+
+  display: block;
+
+  flex: 0 0 19px;
+
+  border: 1px solid #b8b8b8;
+
+  border-radius: 50%;
+
+}
+
+/* =========================================
+
+   PRODUCT PRICE
+
+\========================================= */
+
+.eyeglasses-price-row {
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+}
+
+.eyeglasses-current-price {
+
+  color: #111111;
+
+  font-size: 19px;
+
+  font-weight: 600;
+
+}
+
+.eyeglasses-old-price {
+
+  color: #999999;
+
+  font-size: 15px;
+
+  text-decoration: line-through;
+
+}
+
+/* =========================================
+
+   PAGINATION
+
+\========================================= */
+
+.eyeglasses-pagination {
+
+  width: 100%;
+
+  margin-top: 55px;
+
+  padding-top: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  border-top: 1px solid #eeeeee;
+
+}
+
+.pagination-numbers {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+.pagination-number,
+
+.pagination-arrow {
+
+  width: 42px;
+
+  height: 42px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #d5d5d5;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+
+}
+
+.pagination-arrow {
+
+  font-size: 25px;
+
+}
+
+.pagination-number:hover,
+
+.pagination-arrow:hover:not(:disabled) {
+
+  border-color: #1b6b6a;
+
+  color: #1b6b6a;
+
+}
+
+.pagination-number.active {
+
+  border-color: #1b6b6a;
+
+  background: #1b6b6a;
+
+  color: #ffffff;
+
+}
+
+.pagination-arrow:disabled {
+
+  opacity: 0.35;
+
+  cursor: not-allowed;
+
+}
+
+/* =========================================
+
+   NO PRODUCT
+
+\========================================= */
+
+.eyeglasses-no-products {
+
+  padding: 80px 20px;
+
+  background: #f7f7f7;
+
+  text-align: center;
+
+}
+
+.eyeglasses-no-products h3 {
+
+  margin: 0 0 8px;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 24px;
+
+  font-weight: 500;
+
+}
+
+.eyeglasses-no-products p {
+
+  margin: 0 0 18px;
+
+  color: #777777;
+
+  font-size: 17px;
+
+}
+
+.eyeglasses-no-products button {
+
+  min-height: 44px;
+
+  padding: 0 20px;
+
+  border: 0;
+
+  background: #1b6b6a;
+
+  color: #ffffff;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+}
+
+/* =========================================
+
+   MOBILE DRAWER DEFAULT
+
+\========================================= */
+
+.mobile-filter-overlay,
+
+.mobile-filter-drawer {
+
+  display: none;
+
+}
+
+/* =========================================
+
+   LAPTOP
+
+\========================================= */
+
+@media (max-width: 1100px) {
+
+  .eyeglasses-container {
+
+    padding-left: 24px;
+
+    padding-right: 24px;
+
+  }
+
+  .eyeglasses-layout {
+
+    grid-template-columns:
+
+      225px minmax(0, 1fr);
+
+    gap: 22px;
+
+  }
+
+  .eyeglasses-product-grid {
+
+    grid-template-columns:
+
+      repeat(3, minmax(0, 1fr));
+
+    gap: 35px 16px;
+
+  }
+
+  .eyeglasses-product-name {
+
+    font-size: 16px;
+
+  }
+
+  .eyeglasses-current-price {
+
+    font-size: 17px;
+
+  }
+
+}
+
+/* =========================================
+
+   TABLET
+
+\========================================= */
+
+@media (max-width: 900px) {
+
+  .eyeglasses-product-grid {
+
+    grid-template-columns:
+
+      repeat(2, minmax(0, 1fr));
+
+    gap: 35px 18px;
+
+  }
+
+}
+
+/* =========================================
+
+   MOBILE FILTER DRAWER - FIXED
+
+\========================================= */
+
+@media (max-width: 768px) {
+
+  /* Desktop sidebar hide */
+
+  .eyeglasses-filter-sidebar {
+
+    display: none;
+
+  }
+
+  .eyeglasses-layout {
+
+    display: block;
+
+  }
+
+  .mobile-filter-button {
+
+    display: inline-flex;
+
+  }
+
+  /* =====================================
+
+     DARK OVERLAY
+
+  ===================================== */
+
+  .mobile-filter-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99998;
+
+    display: block;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+
+      opacity 0.3s ease,
+
+      visibility 0.3s ease;
+
+  }
+
+  .mobile-filter-overlay.open {
+
+    opacity: 1;
+
+    visibility: visible;
+
+  }
+
+  /* =====================================
+
+     FILTER DRAWER
+
+  ===================================== */
+
+  .mobile-filter-drawer {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    bottom: 0;
+
+    z-index: 99999;
+
+    /* almost full mobile width */
+
+    width: 92%;
+
+    max-width: 390px;
+
+    height: 100dvh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #ffffff;
+
+    overflow: hidden;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.3s ease;
+
+    box-shadow: 6px 0 30px rgba(0, 0, 0, 0.2);
+
+  }
+
+  .mobile-filter-drawer.open {
+
+    transform: translateX(0);
+
+  }
+
+  /* =====================================
+
+     FILTER HEADER
+
+  ===================================== */
+
+  .mobile-filter-header {
+
+    width: 100%;
+
+    height: 64px;
+
+    min-height: 64px;
+
+    padding: 0 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    flex-shrink: 0;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e3e3e3;
+
+    position: relative;
+
+    z-index: 5;
+
+  }
+
+  .mobile-filter-header h2 {
+
+    margin: 0;
+
+    font-family: "Jost", sans-serif;
+
+    font-size: 21px;
+
+    font-weight: 600;
+
+    color: #111111;
+
+  }
+
+  .mobile-filter-header button {
+
+    width: 38px;
+
+    height: 38px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    background: transparent;
+
+    color: #111111;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+  }
+
+  /* =====================================
+
+     SCROLLABLE FILTER CONTENT
+
+  ===================================== */
+
+  .mobile-filter-content {
+
+    width: 100%;
+
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    background: #ffffff;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+
+    scrollbar-color: #aaaaaa #f1f1f1;
+
+  }
+
+  .mobile-filter-content::-webkit-scrollbar {
+
+    width: 5px;
+
+  }
+
+  .mobile-filter-content::-webkit-scrollbar-track {
+
+    background: #f1f1f1;
+
+  }
+
+  .mobile-filter-content::-webkit-scrollbar-thumb {
+
+    background: #aaaaaa;
+
+    border-radius: 10px;
+
+  }
+
+  /* =====================================
+
+     REMOVE DESKTOP FILTER SETTINGS
+
+  ===================================== */
+
+  .mobile-filter-content .filter-content {
+
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    overflow: visible;
+
+  }
+
+  .mobile-filter-content .filter-top {
+
+    display: none;
+
+  }
+
+  .mobile-filter-content .filter-scroll-area {
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: none;
+
+    padding: 0 18px 25px;
+
+    overflow: visible;
+
+  }
+
+  /* =====================================
+
+     FILTER GROUP
+
+  ===================================== */
+
+  .mobile-filter-content .filter-group {
+
+    width: 100%;
+
+    border-bottom: 1px solid #e3e3e3;
+
+  }
+
+  .mobile-filter-content .filter-group-header {
+
+    width: 100%;
+
+    min-height: 58px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: transparent;
+
+    font-family: "Jost", sans-serif;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    color: #111111;
+
+  }
+
+  /* =====================================
+
+     FILTER OPTIONS
+
+  ===================================== */
+
+  .mobile-filter-content .filter-group.open .filter-options {
+
+    padding: 2px 0 18px;
+
+  }
+
+  .mobile-filter-content .filter-options {
+
+    gap: 12px;
+
+  }
+
+  .mobile-filter-content .filter-checkbox {
+
+    width: 100%;
+
+    gap: 11px;
+
+    font-size: 15px;
+
+    color: #444444;
+
+  }
+
+  .mobile-filter-content .custom-checkbox {
+
+    width: 19px;
+
+    height: 19px;
+
+    flex: 0 0 19px;
+
+  }
+
+  /* =====================================
+
+     FRAME SIZE
+
+  ===================================== */
+
+  .mobile-filter-content .frame-size-option {
+
+    min-height: 42px;
+
+    font-size: 15px;
+
+  }
+
+  /* =====================================
+
+     PRICE
+
+  ===================================== */
+
+  .mobile-filter-content .price-range-filter {
+
+    padding: 5px 0 15px;
+
+  }
+
+  .mobile-filter-content .price-range-values {
+
+    margin-bottom: 20px;
+
+  }
+
+  .mobile-filter-content .price-value-box {
+
+    padding: 8px 10px;
+
+  }
+
+  /* =====================================
+
+     SHOW PRODUCTS BUTTON
+
+  ===================================== */
+
+  .mobile-show-products {
+
+    width: calc(100% - 32px);
+
+    min-height: 50px;
+
+    margin: 12px 16px 14px;
+
+    padding: 0 15px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    background: #1b6b6a;
+
+    color: #ffffff;
+
+    font-family: "Assistant", sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+  }
+
+}
+
+/* =========================================
+
+   MOBILE 600PX
+
+\========================================= */
+
+@media (max-width: 600px) {
+
+  .mobile-filter-drawer {
+
+    width: 94%;
+
+    max-width: 360px;
+
+  }
+
+  .mobile-filter-header {
+
+    height: 60px;
+
+    min-height: 60px;
+
+    padding: 0 16px;
+
+  }
+
+  .mobile-filter-header h2 {
+
+    font-size: 19px;
+
+  }
+
+  .mobile-filter-content .filter-scroll-area {
+
+    padding: 0 16px 22px;
+
+  }
+
+  .mobile-filter-content .filter-group-header {
+
+    min-height: 56px;
+
+    font-size: 15px;
+
+  }
+
+  .mobile-filter-content .filter-checkbox {
+
+    font-size: 14px;
+
+  }
+
+}
+
+/* =========================================
+
+   iPhone / SMALL MOBILE
+
+\========================================= */
+
+@media (max-width: 400px) {
+
+  .mobile-filter-drawer {
+
+    width: 100%;
+
+    max-width: none;
+
+  }
+
+  .mobile-filter-header {
+
+    height: 58px;
+
+    min-height: 58px;
+
+    padding: 0 15px;
+
+  }
+
+  .mobile-filter-header h2 {
+
+    font-size: 18px;
+
+  }
+
+  .mobile-filter-header button {
+
+    width: 34px;
+
+    height: 34px;
+
+    font-size: 25px;
+
+  }
+
+  .mobile-filter-content .filter-scroll-area {
+
+    padding: 0 15px 20px;
+
+  }
+
+  .mobile-filter-content .filter-group-header {
+
+    min-height: 54px;
+
+    font-size: 15px;
+
+  }
+
+  .mobile-show-products {
+
+    width: calc(100% - 28px);
+
+    margin: 10px 14px 12px;
+
+    min-height: 48px;
+
+    font-size: 14px;
+
+  }
+
+}
+
+/* =========================================
+
+   SMALL MOBILE
+
+\========================================= */
+
+@media (max-width: 400px) {
+
+  .eyeglasses-toolbar {
+
+    flex-wrap: wrap;
+
+  }
+
+  .eyeglasses-toolbar-right {
+
+    margin-left: auto;
+
+  }
+
+  .eyeglasses-sort select {
+
+    width: 135px;
+
+  }
+
+  .eyeglasses-product-grid {
+
+    gap: 25px 8px;
+
+  }
+
+  .eyeglasses-product-name {
+
+    font-size: 14px;
+
+  }
+
+  .product-color-button {
+
+    width: 21px;
+
+    height: 21px;
+
+  }
+
+  .eyeglasses-color-dot {
+
+    width: 15px;
+
+    height: 15px;
+
+    flex-basis: 15px;
+
+  }
+
+}
+
+/* =========================================
+
+   VERY SMALL MOBILE
+
+\========================================= */
+
+@media (max-width: 340px) {
+
+  .eyeglasses-product-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+}
+
+/* ================= UPDATED LISTING ================= */
+
+.eyeglasses-banner {
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #f5f5f5;
+
+}
+
+.eyeglasses-banner-image {
+
+  width: 100%;
+
+  height: clamp(220px, 31vw, 430px);
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center;
+
+}
+
+/* Desktop filter: remove inner vertical scrollbar */
+
+@media (min-width: 769px) {
+
+  .eyeglasses-filter-sidebar {
+
+    position: static;
+
+    height: auto;
+
+    overflow: visible;
+
+  }
+
+  .eyeglasses-filter-sidebar .filter-content {
+
+    height: auto;
+
+    overflow: visible;
+
+  }
+
+  .eyeglasses-filter-sidebar .filter-scroll-area {
+
+    flex: none;
+
+    height: auto;
+
+    padding-right: 18px;
+
+    overflow: visible;
+
+    scrollbar-width: none;
+
+  }
+
+  .eyeglasses-filter-sidebar .filter-scroll-area::-webkit-scrollbar {
+
+    display: none;
+
+  }
+
+}
+
+.product-color-button.active {
+
+  border-color: #1b6b6a;
+
+  box-shadow: 0 0 0 1px #1b6b6a;
+
+}
+
+.mobile-filter-header-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+}
+
+.mobile-filter-header .mobile-filter-reset {
+
+  width: auto;
+
+  height: 38px;
+
+  padding: 0 10px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #1b6b6a;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  text-decoration: underline;
+
+  cursor: pointer;
+
+}
+
+.mobile-filter-header .mobile-filter-close {
+
+  width: 38px;
+
+  height: 38px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-size: 30px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+}
+
+@media (max-width: 768px) {
+
+  .mobile-filter-content .filter-top {
+
+    display: none;
+
+  }
+
+  .eyeglasses-banner-image {
+
+    height: 230px;
+
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .eyeglasses-banner-image {
+
+    height: 180px;
+
+  }
+
+}
+
+/* =========================================================
+
+   FINAL FILTER + PRODUCT CARD UPDATES
+
+   ========================================================= */
+
+/* Complete product card background */
+
+.eyeglasses-product-card,
+
+.eyeglasses-product-image-wrapper,
+
+.eyeglasses-product-image-link,
+
+.eyeglasses-product-info {
+
+  background-color: #F5F5F5;
+
+}
+
+/* Give product information breathing room inside grey card */
+
+.eyeglasses-product-info {
+
+  padding: 14px 14px 18px;
+
+}
+
+/* Frame Size uses the same square checkbox as all other filters */
+
+.frame-size-filter-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 13px;
+
+}
+
+.frame-size-filter-list .filter-checkbox {
+
+  width: fit-content;
+
+}
+
+/* =========================================================
+
+   FINAL FIX: UNIFORM PRODUCT CARDS + OPEN ACCORDION FILTERS
+
+   ========================================================= */
+
+/* Every part of every product card uses exactly #F5F5F5 */
+
+.eyeglasses-product-card,
+
+.eyeglasses-product-image-wrapper,
+
+.eyeglasses-product-image-link,
+
+.eyeglasses-product-info {
+
+  background-color: #F5F5F5 !important;
+
+}
+
+/* Do not tint/blend product images from selected color dots */
+
+.eyeglasses-product-image {
+
+  background: transparent !important;
+
+  background-color: transparent !important;
+
+  background-blend-mode: normal !important;
+
+}
+
+/* Accordion heading */
+
+.filter-group-header {
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding: 18px 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+
+}
+
+/* Closed by click */
+
+.filter-dropdown-content {
+
+  display: grid;
+
+  grid-template-rows: 0fr;
+
+  opacity: 0;
+
+  transition: grid-template-rows 0.28s ease, opacity 0.22s ease;
+
+}
+
+.filter-dropdown-content > .filter-options {
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  padding: 0;
+
+}
+
+/* Open by default through JSX, but still clickable */
+
+.filter-group.open .filter-dropdown-content {
+
+  grid-template-rows: 1fr;
+
+  opacity: 1;
+
+}
+
+.filter-group.open .filter-dropdown-content > .filter-options {
+
+  padding: 2px 0 20px;
+
+}
+
+/* Arrow */
+
+.filter-chevron {
+
+  width: 18px;
+
+  height: 18px;
+
+  flex: 0 0 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition: transform 0.28s ease;
+
+}
+
+.filter-chevron svg {
+
+  width: 17px;
+
+  height: 17px;
+
+}
+
+.filter-group.open .filter-chevron {
+
+  transform: rotate(180deg);
+
+}
+
+/* Frame size uses exactly the same checkbox UI */
+
+.frame-size-filter-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0;
+
+}
+
+.frame-size-filter-list .filter-checkbox {
+
+  margin-bottom: 13px;
+
+}
+
+/* Remove old special frame-size boxes/check marks if any old CSS remains */
+
+.frame-size-option,
+
+.frame-size-check {
+
+  all: unset;
+
+}
+
+/* Desktop filter itself should not have a separate vertical scrollbar */
+
+@media (min-width: 769px) {
+
+  .eyeglasses-filter-sidebar,
+
+  .eyeglasses-filter-sidebar .filter-content,
+
+  .eyeglasses-filter-sidebar .filter-scroll-area {
+
+    height: auto !important;
+
+    max-height: none !important;
+
+    overflow: visible !important;
+
+  }
+
+}
+
+/* Mobile accordion remains clickable/open initially too */
+
+@media (max-width: 768px) {
+
+  .mobile-filter-content .filter-dropdown-content {
+
+    display: grid;
+
+  }
+
+  .mobile-filter-content .filter-group.open .filter-dropdown-content {
+
+    grid-template-rows: 1fr;
+
+    opacity: 1;
+
+  }
+
+}
+
+/* =========================================================
+
+   FINAL ACCORDION FIX
+
+   - JSX controls .open
+
+   - starts open when defaultOpen=true
+
+   - click closes/opens properly
+
+   ========================================================= */
+
+.filter-group {
+
+  width: 100%;
+
+  border-bottom: 1px solid #d6d6d6;
+
+}
+
+.filter-group-header {
+
+  width: 100%;
+
+  min-height: 60px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  border: 0;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+
+}
+
+.filter-group-header:focus,
+
+.filter-group-header:active {
+
+  outline: none;
+
+}
+
+.filter-chevron {
+
+  width: 20px;
+
+  height: 20px;
+
+  flex: 0 0 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transform: rotate(0deg);
+
+  transition: transform 0.28s ease;
+
+}
+
+.filter-chevron svg {
+
+  width: 18px;
+
+  height: 18px;
+
+  display: block;
+
+}
+
+.filter-group.open .filter-chevron {
+
+  transform: rotate(180deg);
+
+}
+
+/* CLOSED */
+
+.filter-dropdown-content {
+
+  display: grid !important;
+
+  grid-template-rows: 0fr !important;
+
+  opacity: 0 !important;
+
+  visibility: hidden;
+
+  transition:
+
+    grid-template-rows 0.3s ease,
+
+    opacity 0.22s ease,
+
+    visibility 0.3s ease;
+
+}
+
+.filter-dropdown-content > .filter-options {
+
+  min-height: 0 !important;
+
+  overflow: hidden !important;
+
+  padding-top: 0 !important;
+
+  padding-bottom: 0 !important;
+
+}
+
+/* OPEN */
+
+.filter-group.open > .filter-dropdown-content {
+
+  grid-template-rows: 1fr !important;
+
+  opacity: 1 !important;
+
+  visibility: visible;
+
+}
+
+.filter-group.open > .filter-dropdown-content > .filter-options {
+
+  overflow: hidden !important;
+
+  padding-top: 3px !important;
+
+  padding-bottom: 20px !important;
+
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  .mobile-filter-content .filter-dropdown-content {
+
+    display: grid !important;
+
+    grid-template-rows: 0fr !important;
+
+    opacity: 0 !important;
+
+    visibility: hidden;
+
+  }
+
+  .mobile-filter-content .filter-group.open > .filter-dropdown-content {
+
+    grid-template-rows: 1fr !important;
+
+    opacity: 1 !important;
+
+    visibility: visible;
+
+  }
+
+  .mobile-filter-content
+
+    .filter-group.open
+
+    > .filter-dropdown-content
+
+    > .filter-options {
+
+    padding-top: 2px !important;
+
+    padding-bottom: 18px !important;
+
+  }
+
+}
+
+/* =========================================
+
+   PRODUCT CARD - FINAL
+
+\========================================= */
+
+.eyeglasses-product-card {
+
+  width: 100%;
+
+  min-width: 0;
+
+  background: #ffffff !important;
+
+  overflow: hidden;
+
+  transition:
+
+    transform 0.3s ease,
+
+    box-shadow 0.3s ease;
+
+}
+
+/* =========================================
+
+   IMAGE AREA = #F5F5F5
+
+\========================================= */
+
+.eyeglasses-product-image-wrapper {
+
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  background: #F5F5F5 !important;
+
+}
+
+.eyeglasses-product-image-link {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  background: #F5F5F5 !important;
+
+}
+
+.eyeglasses-product-image {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  padding: 20px;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  background: #F5F5F5 !important;
+
+  transition: transform 0.35s ease;
+
+}
+
+/* =========================================
+
+   TEXT / PRODUCT INFO = WHITE
+
+\========================================= */
+
+.eyeglasses-product-info {
+
+  padding: 14px 14px 18px;
+
+  background: #FFFFFF !important;
+
+}
+
+/* =========================================
+
+   CARD HOVER SHADOW
+
+\========================================= */
+
+.eyeglasses-product-card:hover {
+
+  transform: translateY(-4px);
+
+  box-shadow:
+
+    0 8px 22px rgba(0, 0, 0, 0.12),
+
+    0 3px 8px rgba(0, 0, 0, 0.06);
+
+}
+
+/* Image zoom */
+
+.eyeglasses-product-card:hover
+
+.eyeglasses-product-image {
+
+  transform: scale(1.04);
+
+}
+
+/* =========================================
+
+   MOBILE
+
+\========================================= */
+
+@media (max-width: 768px) {
+
+  .eyeglasses-product-image-wrapper,
+
+  .eyeglasses-product-image-link,
+
+  .eyeglasses-product-image {
+
+    background: #F5F5F5 !important;
+
+  }
+
+  .eyeglasses-product-info {
+
+    background: #FFFFFF !important;
+
+    padding: 12px 12px 16px;
+
+  }
+
+  .eyeglasses-product-card:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
+
+  }
+
+}
+
+/* =========================================
+
+   EYEGLASSES BANNER HEIGHT - FINAL
+
+\========================================= */
+
+.eyeglasses-banner {
+
+  width: 100%;
+
+  height: 400px !important;
+
+  overflow: hidden;
+
+  background: #f5f5f5;
+
+}
+
+.eyeglasses-banner-image {
+
+  width: 100%;
+
+  height: 100% !important;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center;
+
+}
+
+@media (max-width: 768px) {
+
+  .eyeglasses-banner {
+
+    height: 200px !important;
+
+  }
+
+  .eyeglasses-banner-image {
+
+    height: 100% !important;
+
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .eyeglasses-banner {
+
+    height: 160px !important;
+
+  }
+
+  .eyeglasses-banner-image {
+
+    height: 100% !important;
+
+  }
+
+}
+
+/* =========================================================
+
+   FINAL MOBILE VIEW FIX
+
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  html,
+
+  body {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow-x: hidden;
+
+  }
+
+  .eyeglasses-page {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow-x: hidden;
+
+  }
+
+  /* =========================
+
+     CONTAINER
+
+  ========================= */
+
+  .eyeglasses-container {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    margin: 0 auto;
+
+    padding-left: 14px !important;
+
+    padding-right: 14px !important;
+
+    box-sizing: border-box;
+
+  }
+
+  /* =========================
+
+     BREADCRUMB
+
+  ========================= */
+
+  .eyeglasses-breadcrumb {
+
+    min-height: 42px;
+
+    gap: 6px;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+  }
+
+  /* =========================
+
+     BANNER
+
+  ========================= */
+
+  .eyeglasses-banner {
+
+    width: 100% !important;
+
+    height: auto !important;
+
+    overflow: hidden;
+
+    margin: 0 !important;
+
+  }
+
+  .eyeglasses-banner-image {
+
+    width: 100% !important;
+
+    height: auto !important;
+
+    display: block;
+
+    object-fit: contain !important;
+
+    object-position: center !important;
+
+  }
+
+  /* =========================
+
+     PRODUCTS SECTION
+
+  ========================= */
+
+  .eyeglasses-products-section {
+
+    width: 100%;
+
+    padding: 18px 0 45px;
+
+  }
+
+  /* =========================
+
+     TOOLBAR
+
+  ========================= */
+
+  .eyeglasses-toolbar {
+
+    width: 100%;
+
+    min-height: auto;
+
+    margin-bottom: 16px;
+
+    padding: 0 0 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 12px;
+
+    border-bottom: 1px solid #dddddd;
+
+  }
+
+  /* Product count */
+
+  .eyeglasses-result-count {
+
+    width: 100%;
+
+    margin: 0;
+
+    color: #555555;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+  }
+
+  /* Filter + Sort row */
+
+  .eyeglasses-toolbar-right {
+
+    width: 100%;
+
+    margin: 0 !important;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+  }
+
+  /* =========================
+
+     FILTER BUTTON
+
+  ========================= */
+
+  .mobile-filter-button {
+
+    height: 44px;
+
+    padding: 0 12px;
+
+    flex: 0 0 auto;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    border: 1px solid #d2d2d2;
+
+    background: #ffffff;
+
+    color: #222222;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+  }
+
+  .mobile-filter-button svg {
+
+    width: 16px;
+
+    height: 16px;
+
+  }
+
+  /* =========================
+
+     SORT
+
+  ========================= */
+
+  .eyeglasses-sort {
+
+    min-width: 0;
+
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+  }
+
+  .eyeglasses-sort label {
+
+    flex-shrink: 0;
+
+    color: #555555;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+  }
+
+  .eyeglasses-sort select {
+
+    width: 120px !important;
+
+    max-width: 120px;
+
+    height: 44px;
+
+    padding: 0 28px 0 10px;
+
+    font-size: 13px;
+
+    background: #ffffff;
+
+  }
+
+  /* =========================
+
+     LAYOUT
+
+  ========================= */
+
+  .eyeglasses-layout {
+
+    width: 100%;
+
+    display: block;
+
+    min-width: 0;
+
+  }
+
+  .eyeglasses-product-area {
+
+    width: 100%;
+
+    min-width: 0;
+
+  }
+
+  /* Hide desktop sidebar */
+
+  .eyeglasses-filter-sidebar {
+
+    display: none;
+
+  }
+
+  /* =========================
+
+     PRODUCT GRID
+
+  ========================= */
+
+  .eyeglasses-product-grid {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+
+      repeat(2, minmax(0, 1fr)) !important;
+
+    column-gap: 10px !important;
+
+    row-gap: 26px !important;
+
+  }
+
+  /* =========================
+
+     PRODUCT CARD
+
+  ========================= */
+
+  .eyeglasses-product-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    overflow: hidden;
+
+    background: #ffffff !important;
+
+  }
+
+  /* Product image */
+
+  .eyeglasses-product-image-wrapper {
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+
+    background: #f5f5f5 !important;
+
+  }
+
+  .eyeglasses-product-image-link {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+  }
+
+  .eyeglasses-product-image {
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    padding: 12px !important;
+
+    object-fit: contain !important;
+
+    background: #f5f5f5 !important;
+
+  }
+
+  /* =========================
+
+     BADGE
+
+  ========================= */
+
+  .eyeglasses-product-badge {
+
+    top: 8px;
+
+    left: 8px;
+
+    padding: 4px 6px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.3px;
+
+  }
+
+  /* =========================
+
+     WISHLIST
+
+  ========================= */
+
+  .eyeglasses-wishlist {
+
+    top: 7px;
+
+    right: 7px;
+
+    width: 32px;
+
+    height: 32px;
+
+  }
+
+  .eyeglasses-wishlist svg {
+
+    width: 16px;
+
+    height: 16px;
+
+  }
+
+  /* =========================
+
+     PRODUCT INFO
+
+  ========================= */
+
+  .eyeglasses-product-info {
+
+    width: 100%;
+
+    padding: 10px 5px 14px !important;
+
+    background: #ffffff !important;
+
+  }
+
+  .eyeglasses-product-category {
+
+    margin-bottom: 4px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.6px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+  }
+
+  .eyeglasses-product-name {
+
+    width: 100%;
+
+    margin-bottom: 7px;
+
+    font-size: 13px;
+
+    line-height: 1.3;
+
+    overflow-wrap: break-word;
+
+  }
+
+  /* =========================
+
+     COLORS
+
+  ========================= */
+
+  .eyeglasses-color-row {
+
+    min-height: 23px;
+
+    margin-bottom: 7px;
+
+  }
+
+  .product-color-options {
+
+    gap: 4px;
+
+  }
+
+  .product-color-button {
+
+    width: 22px;
+
+    height: 22px;
+
+    padding: 2px;
+
+  }
+
+  .eyeglasses-color-dot {
+
+    width: 15px;
+
+    height: 15px;
+
+    flex: 0 0 15px;
+
+  }
+
+  /* =========================
+
+     PRICE
+
+  ========================= */
+
+  .eyeglasses-price-row {
+
+    gap: 5px;
+
+  }
+
+  .eyeglasses-current-price {
+
+    font-size: 15px;
+
+  }
+
+  .eyeglasses-old-price {
+
+    font-size: 11px;
+
+  }
+
+  /* =========================
+
+     PAGINATION
+
+  ========================= */
+
+  .eyeglasses-pagination {
+
+    margin-top: 35px;
+
+    padding-top: 20px;
+
+    gap: 5px;
+
+  }
+
+  .pagination-numbers {
+
+    gap: 5px;
+
+  }
+
+  .pagination-number,
+
+  .pagination-arrow {
+
+    width: 35px;
+
+    height: 35px;
+
+    font-size: 13px;
+
+  }
+
+  .pagination-arrow {
+
+    font-size: 20px;
+
+  }
+
+}
+
+/* =========================================================
+
+   iPHONE 375PX / SMALL MOBILE
+
+\========================================================= */
+
+@media (max-width: 480px) {
+
+  .eyeglasses-container {
+
+    padding-left: 10px !important;
+
+    padding-right: 10px !important;
+
+  }
+
+  /* Banner */
+
+  .eyeglasses-banner {
+
+    width: 100% !important;
+
+    height: auto !important;
+
+  }
+
+  .eyeglasses-banner-image {
+
+    width: 100% !important;
+
+    height: auto !important;
+
+    object-fit: contain !important;
+
+  }
+
+  /* Toolbar */
+
+  .eyeglasses-toolbar {
+
+    gap: 10px;
+
+  }
+
+  .eyeglasses-result-count {
+
+    font-size: 13px;
+
+  }
+
+  .eyeglasses-toolbar-right {
+
+    width: 100%;
+
+    gap: 8px;
+
+  }
+
+  /* Filter */
+
+  .mobile-filter-button {
+
+    height: 42px;
+
+    /* margin-left: 30%; */
+
+    padding: 0 10px;
+
+    font-size: 12px;
+
+  }
+
+  /* Sort */
+
+  .eyeglasses-sort {
+
+    flex: 1;
+
+    justify-content: flex-end;
+
+    gap: 5px;
+
+  }
+
+  .eyeglasses-sort label {
+
+    font-size: 12px;
+
+  }
+
+  .eyeglasses-sort select {
+
+    width: 100px !important;
+
+    max-width: 100px;
+
+    height: 42px;
+
+    padding-left: 8px;
+
+    padding-right: 24px;
+
+    font-size: 12px;
+
+  }
+
+  /* Product grid */
+
+  .eyeglasses-product-grid {
+
+    grid-template-columns:
+
+      repeat(2, minmax(0, 1fr)) !important;
+
+    column-gap: 8px !important;
+
+    row-gap: 24px !important;
+
+  }
+
+  /* Product */
+
+  .eyeglasses-product-image {
+
+    padding: 10px !important;
+
+  }
+
+  .eyeglasses-product-info {
+
+    padding: 9px 3px 12px !important;
+
+  }
+
+  .eyeglasses-product-name {
+
+    font-size: 12px;
+
+  }
+
+  .eyeglasses-current-price {
+
+    font-size: 14px;
+
+  }
+
+  .eyeglasses-old-price {
+
+    font-size: 10px;
+
+  }
+
+}
+
+/* =========================================================
+
+   VERY SMALL MOBILE
+
+   KEEP 2 PRODUCTS PER ROW
+
+\========================================================= */
+
+@media (max-width: 340px) {
+
+  .eyeglasses-container {
+
+    padding-left: 7px !important;
+
+    padding-right: 7px !important;
+
+  }
+
+  .eyeglasses-product-grid {
+
+    grid-template-columns:
+
+      repeat(2, minmax(0, 1fr)) !important;
+
+    column-gap: 6px !important;
+
+  }
+
+  .eyeglasses-sort label {
+
+    display: none;
+
+  }
+
+  .eyeglasses-sort select {
+
+    width: 105px !important;
+
+    max-width: 105px;
+
+  }
+
+  .eyeglasses-product-name {
+
+    font-size: 11px;
+
+  }
+
+}
+
+/* =========================================
+
+   HOMEPAGE STYLE PRODUCT CARDS
+
+========================================= */
+
+.eyeglasses-product-grid {
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 28px 20px;
+
+}
+
+.eyeglasses-product-card {
+
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  border: 1px solid #e7e7e7;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+}
+
+.eyeglasses-product-card:hover {
+
+  transform: translateY(-4px);
+
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+
+}
+
+.eyeglasses-product-image-wrapper {
+
+  position: relative;
+
+  width: calc(100% - 20px);
+
+  aspect-ratio: 1.25 / 1;
+
+  margin: 10px 10px 0;
+
+  overflow: hidden;
+
+  border-radius: 13px;
+
+  background: #f5f5f5;
+
+}
+
+.eyeglasses-product-image-link {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+.eyeglasses-product-image {
+
+  width: 100%;
+
+  height: 100%;
+
+  padding: 24px 14px;
+
+  display: block;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  transition: transform 0.35s ease;
+
+}
+
+.eyeglasses-product-card:hover .eyeglasses-product-image {
+
+  transform: scale(1.035);
+
+}
+
+.eyeglasses-product-badge {
+
+  display: none;
+
+}
+
+.eyeglasses-discount-badge {
+
+  position: absolute;
+
+  top: 10px;
+
+  left: 10px;
+
+  z-index: 4;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  background: #1b6b6a;
+
+  color: #ffffff;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  line-height: 1.1;
+
+}
+
+.eyeglasses-wishlist {
+
+  top: 10px;
+
+  right: 10px;
+
+  width: 34px;
+
+  height: 34px;
+
+  border: 1px solid #dedede;
+
+  background: #ffffff;
+
+  color: #111111;
+
+}
+
+.eyeglasses-wishlist:hover,
+
+.eyeglasses-wishlist.active {
+
+  border-color: #1b6b6a;
+
+  background: #ffffff;
+
+  color: #1b6b6a;
+
+}
+
+.eyeglasses-product-info {
+
+  display: flex;
+
+  flex: 1;
+
+  flex-direction: column;
+
+  padding: 15px 12px 15px;
+
+}
+
+.eyeglasses-card-meta {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-bottom: 9px;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.2;
+
+}
+
+.eyeglasses-card-type {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: #5d5d5d;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+}
+
+.eyeglasses-card-size {
+
+  flex-shrink: 0;
+
+  color: #1b6b6a;
+
+  font-weight: 500;
+
+}
+
+.eyeglasses-card-brand {
+
+  margin: 0 0 5px;
+
+  color: #111111;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.4px;
+
+  text-transform: uppercase;
+
+}
+
+.eyeglasses-product-name {
+
+  display: -webkit-box;
+
+  min-height: 48px;
+
+  margin: 0 0 16px;
+
+  overflow: hidden;
+
+  color: #252525;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 17px;
+
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  -webkit-box-orient: vertical;
+
+  -webkit-line-clamp: 2;
+
+}
+
+.eyeglasses-product-name:hover {
+
+  color: #1b6b6a;
+
+}
+
+.eyeglasses-card-bottom {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  margin-top: auto;
+
+}
+
+.eyeglasses-price-row {
+
+  display: flex;
+
+  align-items: baseline;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+}
+
+.eyeglasses-current-price {
+
+  color: #f04438;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+}
+
+.eyeglasses-old-price {
+
+  color: #8f8f8f;
+
+  font-family: "Assistant", sans-serif;
+
+  font-size: 14px;
+
+  text-decoration: line-through;
+
+}
+
+.product-color-options {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 5px;
+
+}
+
+.product-color-button {
+
+  width: 21px;
+
+  height: 21px;
+
+  padding: 1px;
+
+  border: 1px solid transparent;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+}
+
+.product-color-button.active {
+
+  border-color: #1b6b6a;
+
+}
+
+.eyeglasses-color-dot {
+
+  width: 15px;
+
+  height: 15px;
+
+  border: 1px solid rgba(0, 0, 0, 0.14);
+
+  border-radius: 50%;
+
+}
+
+@media (max-width: 1100px) {
+
+  .eyeglasses-product-grid {
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 24px 14px;
+
+  }
+
+  .eyeglasses-product-name {
+
+    font-size: 16px;
+
+  }
+
+  .eyeglasses-current-price {
+
+    font-size: 18px;
+
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .eyeglasses-product-grid {
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px 14px;
+
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .eyeglasses-product-grid {
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 14px 10px;
+
+  }
+
+  .eyeglasses-product-card {
+
+    border-radius: 13px;
+
+  }
+
+  .eyeglasses-product-image-wrapper {
+
+    width: calc(100% - 12px);
+
+    margin: 6px 6px 0;
+
+    border-radius: 10px;
+
+  }
+
+  .eyeglasses-product-image {
+
+    padding: 18px 8px;
+
+  }
+
+  .eyeglasses-discount-badge {
+
+    top: 7px;
+
+    left: 7px;
+
+    padding: 4px 7px;
+
+    font-size: 11px;
+
+  }
+
+  .eyeglasses-wishlist {
+
+    top: 7px;
+
+    right: 7px;
+
+    width: 30px;
+
+    height: 30px;
+
+  }
+
+  .eyeglasses-wishlist svg {
+
+    width: 17px;
+
+    height: 17px;
+
+  }
+
+  .eyeglasses-product-info {
+
+    padding: 10px 8px 11px;
+
+  }
+
+  .eyeglasses-card-meta {
+
+    margin-bottom: 6px;
+
+    font-size: 11px;
+
+  }
+
+  .eyeglasses-card-brand {
+
+    font-size: 12px;
+
+  }
+
+  .eyeglasses-product-name {
+
+    min-height: 38px;
+
+    margin-bottom: 10px;
+
+    font-size: 14px;
+
+    line-height: 1.35;
+
+  }
+
+  .eyeglasses-card-bottom {
+
+    align-items: flex-end;
+
+  }
+
+  .eyeglasses-current-price {
+
+    font-size: 16px;
+
+  }
+
+  .eyeglasses-old-price {
+
+    font-size: 11px;
+
+  }
+
+  .product-color-options {
+
+    gap: 2px;
+
+  }
+
+  .product-color-button {
+
+    width: 17px;
+
+    height: 17px;
+
+    padding: 1px;
+
+  }
+
+  .eyeglasses-color-dot {
+
+    width: 13px;
+
+    height: 13px;
+
+  }
+
+}
+
+/* =========================================================
+   UPDATED PRODUCT CARD - MATCHES HOMEPAGE PRODUCT CARD STYLE
+   ========================================================= */
+.eyeglasses-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.eyeglasses-product-card {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.eyeglasses-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.11);
+}
+
+.eyeglasses-product-image-wrapper {
+  position: relative;
+  width: calc(100% - 20px);
+  height: 220px;
+  aspect-ratio: auto;
+  margin: 10px 10px 0;
+  overflow: hidden;
+  background: #f5f5f5;
+  border-radius: 13px;
+}
+
+.eyeglasses-product-image-link {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eyeglasses-product-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 22px;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.35s ease;
+}
+
+.eyeglasses-product-card:hover .eyeglasses-product-image {
+  transform: scale(1.04);
+}
+
+.eyeglasses-product-badge {
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  z-index: 5;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #147574;
+  color: #ffffff;
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.eyeglasses-wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 6;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #111111;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.eyeglasses-wishlist svg { width: 17px; height: 17px; }
+.eyeglasses-wishlist:hover { border-color: #1b6b6a; color: #1b6b6a; background: #ffffff; }
+.eyeglasses-wishlist.active { background: #1b6b6a; border-color: #1b6b6a; color: #ffffff; }
+.eyeglasses-wishlist.active svg { fill: currentColor; }
+
+.eyeglasses-product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 12px 16px;
+}
+
+.eyeglasses-meta-row {
+  width: 100%;
+  margin-bottom: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.eyeglasses-rating { display: flex; align-items: center; gap: 3px; font-family: "Assistant", sans-serif; }
+.rating-star { color: #f5a000; font-size: 17px; line-height: 1; }
+.rating-number { color: #222222; font-size: 14px; font-weight: 600; }
+.rating-reviews { color: #8d8d8d; font-size: 12px; }
+.eyeglasses-frame-size { color: #147574; font-family: "Assistant", sans-serif; font-size: 13px; font-weight: 500; }
+
+.eyeglasses-product-brand {
+  margin: 0 0 5px;
+  color: #111111;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.eyeglasses-product-name {
+  display: block;
+  min-height: 46px;
+  margin: 0 0 18px;
+  color: #222222;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  text-decoration: none;
+}
+.eyeglasses-product-name:hover { color: #1b6b6a; }
+
+.eyeglasses-card-bottom {
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.eyeglasses-price-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.eyeglasses-current-price { color: #f02d2d; font-family: "Assistant", sans-serif; font-size: 18px; font-weight: 700; }
+.eyeglasses-old-price { color: #8c8c8c; font-family: "Assistant", sans-serif; font-size: 13px; font-weight: 400; text-decoration: line-through; }
+
+.eyeglasses-card-bottom .product-color-options { display: flex; align-items: center; gap: 3px; flex-shrink: 0; }
+.eyeglasses-card-bottom .product-color-button {
+  width: 19px;
+  height: 19px;
+  padding: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.eyeglasses-card-bottom .eyeglasses-color-dot { width: 15px; height: 15px; display: block; flex: 0 0 15px; border: 1px solid rgba(0,0,0,.12); border-radius: 50%; }
+.eyeglasses-card-bottom .product-color-button:hover,
+.eyeglasses-card-bottom .product-color-button.active { border-color: #1b6b6a; transform: none; }
+
+@media (max-width: 1100px) {
+  .eyeglasses-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+}
+
+@media (max-width: 700px) {
+  .eyeglasses-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .eyeglasses-product-card { border-radius: 13px; }
+  .eyeglasses-product-image-wrapper { width: calc(100% - 12px); height: 160px; margin: 6px 6px 0; border-radius: 10px; }
+  .eyeglasses-product-image { padding: 12px; }
+  .eyeglasses-product-badge { top: 7px; left: 7px; padding: 4px 7px; font-size: 10px; }
+  .eyeglasses-wishlist { top: 6px; right: 6px; width: 29px; height: 29px; }
+  .eyeglasses-wishlist svg { width: 16px; height: 16px; }
+  .eyeglasses-product-info { padding: 10px 9px 12px; }
+  .eyeglasses-meta-row { margin-bottom: 8px; gap: 5px; }
+  .rating-star { font-size: 14px; }
+  .rating-number { font-size: 12px; }
+  .rating-reviews { font-size: 10px; }
+  .eyeglasses-frame-size { font-size: 11px; }
+  .eyeglasses-product-brand { font-size: 13px; }
+  .eyeglasses-product-name { min-height: 40px; margin-bottom: 12px; font-size: 14px; }
+  .eyeglasses-current-price { font-size: 16px; }
+  .eyeglasses-old-price { font-size: 11px; }
+  .eyeglasses-card-bottom .product-color-options { gap: 1px; }
+  .eyeglasses-card-bottom .product-color-button { width: 17px; height: 17px; }
+  .eyeglasses-card-bottom .eyeglasses-color-dot { width: 13px; height: 13px; flex-basis: 13px; }
+}
+
+@media (max-width: 430px) {
+  .eyeglasses-product-grid { gap: 9px; }
+  .eyeglasses-product-image-wrapper { height: 135px; }
+  .eyeglasses-product-image { padding: 9px; }
+  .eyeglasses-product-info { padding: 9px 7px 11px; }
+  .eyeglasses-product-name { font-size: 13px; }
+  .eyeglasses-current-price { font-size: 15px; }
+  .eyeglasses-card-bottom { gap: 4px; }
+}
+
+/* FINAL PRODUCT DISCOUNT CAPSULE FIX */
+.eyeglasses-product-image-wrapper .eyeglasses-product-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  z-index: 10;
+  min-height: 25px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #147574;
+  color: #fff;
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+}
+@media (max-width: 700px) {
+  .eyeglasses-product-image-wrapper .eyeglasses-product-badge {
+    top: 7px;
+    left: 7px;
+    min-height: 22px;
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+}
+
+/* =====================================================
+   BRANDS FILTER SEARCH + BRAND-ONLY VERTICAL SCROLL
+   Search results update as the customer types.
+===================================================== */
+.brand-filter-search-wrap {
+  width: 100%;
+  padding: 0 0 10px;
+}
+
+.brand-filter-search-label {
+  display: block;
+  margin: 0 0 6px;
+  color: #53605f;
+  font-family: "Assistant", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.brand-filter-search-box {
+  width: 100%;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 9px;
+  border: 1px solid #d7dfdd;
+  border-radius: 7px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-filter-search-box:focus-within {
+  border-color: #1b6b6a;
+  box-shadow: 0 0 0 2px rgba(27, 107, 106, 0.1);
+}
+
+.brand-filter-search-box > svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  color: #6b7775;
+}
+
+.brand-filter-search-box input {
+  width: 100%;
+  min-width: 0;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #222;
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+}
+
+.brand-filter-search-box input::placeholder {
+  color: #929b99;
+}
+
+.brand-filter-search-box input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.brand-search-clear {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #edf3f2;
+  color: #1b6b6a;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.brand-search-result-count {
+  margin: 6px 0 0;
+  color: #6c7775;
+  font-family: "Assistant", sans-serif;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Scrollbar is intentionally limited to the Brands list only. */
+.brand-filter-scroll {
+  width: 100%;
+  max-height: 220px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 2px 8px 4px 0;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #1b6b6a #edf1ef;
+}
+
+.brand-filter-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.brand-filter-scroll::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background: #edf1ef;
+}
+
+.brand-filter-scroll::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #1b6b6a;
+}
+
+.brand-filter-scroll::-webkit-scrollbar-thumb:hover {
+  background: #145655;
+}
+
+.brand-filter-scroll .filter-checkbox {
+  width: 100%;
+  flex: 0 0 auto;
+  padding-right: 3px;
+  font-size: 16px;
+}
+
+.brand-filter-scroll .filter-checkbox-label {
+  overflow-wrap: anywhere;
+}
+
+.brand-filter-no-results {
+  margin: 4px 0;
+  color: #687371;
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .brand-filter-search-box {
+    min-height: 40px;
+  }
+
+  .brand-filter-search-box input {
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .brand-filter-scroll {
+    max-height: 220px;
+  }
+}

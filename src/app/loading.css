@@ -1,0 +1,124 @@
+.lens-loading-screen {
+  /*
+    LOGO SIZE
+    Wide logo (LensMartIndia) ke liye 240px sahi hai.
+    Agar logo1.png square icon hai, to 90px kar do.
+  */
+  --lens-logo-width: 240px;
+
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  font-family: "Assistant", sans-serif;
+}
+
+.lens-loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+  text-align: center;
+  animation: lens-fade-in 0.45s ease both;
+}
+
+/* ---------- LOGO ---------- */
+
+.lens-loader-logo {
+  /* fixed square box hata diya, isi se logo chhota/squeeze ho raha tha */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--lens-logo-width);
+  max-width: 78vw;
+  animation: lens-logo-float 1.8s ease-in-out infinite;
+}
+
+.lens-loader-icon {
+  display: block;
+  width: 100%;
+  height: auto;          /* original ratio, stretch nahi hoga */
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ---------- SPINNER ---------- */
+
+.lens-loader-spinner {
+  width: 32px;
+  height: 32px;
+  margin-top: 2px;
+  border: 3px solid #dcecea;
+  border-top-color: #1b6b6a;
+  border-right-color: #1b6b6a;
+  border-radius: 50%;
+  animation: lens-spin 0.75s linear infinite;
+}
+
+/* ---------- PROGRESS ---------- */
+
+.lens-loader-progress {
+  width: 145px;
+  height: 3px;
+  margin-top: 4px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e5efed;
+}
+
+.lens-loader-progress span {
+  display: block;
+  width: 40%;
+  height: 100%;
+  border-radius: inherit;
+  background: #1b6b6a;
+  animation: lens-progress 1.2s ease-in-out infinite;
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes lens-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes lens-logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes lens-progress {
+  0% { transform: translateX(-110%); }
+  100% { transform: translateX(360%); }
+}
+
+@keyframes lens-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 480px) {
+  .lens-loading-screen {
+    --lens-logo-width: 200px;
+  }
+
+  .lens-loader-content {
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lens-loader-content,
+  .lens-loader-logo,
+  .lens-loader-spinner,
+  .lens-loader-progress span {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+}

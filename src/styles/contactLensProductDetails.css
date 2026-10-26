@@ -1,0 +1,2964 @@
+
+/* =========================================
+   BASE
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.clp-page {
+  width: 100%;
+  background: #ffffff;
+  color: #172423;
+  font-family: "Assistant", sans-serif;
+}
+
+.clp-page button,
+.clp-page input,
+.clp-page select {
+  font-family: "Assistant", sans-serif;
+}
+
+.clp-container {
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* =========================================
+   BREADCRUMB
+========================================= */
+
+.clp-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding: 22px 0;
+  color: #7c8887;
+  font-size: 13px;
+}
+
+.clp-breadcrumb a {
+  color: #53605f;
+  text-decoration: none;
+}
+
+.clp-breadcrumb a:hover {
+  color: #1b6b6a;
+}
+
+/* =========================================
+   PRODUCT LAYOUT
+========================================= */
+
+.clp-product-section {
+  padding: 10px 0 60px;
+}
+
+.clp-product-layout {
+  display: grid;
+  grid-template-columns: minmax(400px, 0.9fr) minmax(500px, 1.1fr);
+  gap: 55px;
+  align-items: start;
+}
+
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.clp-left {
+  position: sticky;
+  top: 130px;
+}
+
+.clp-image-card {
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px;
+  border: 1px solid #e1e7e6;
+  border-radius: 9px;
+  background: #fafbfb;
+  overflow: hidden;
+}
+
+.clp-product-image {
+  width: 100%;
+  max-width: 500px;
+  height: 360px;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.clp-image-card:hover .clp-product-image {
+  transform: scale(1.02);
+}
+
+/* CUSTOMER TRUST */
+
+.clp-trust {
+  margin: 16px 0 0;
+  padding: 18px 20px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px 20px;
+  border: 1px solid #e1e7e6;
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.clp-trust li {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #263232;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.clp-trust svg {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  fill: none;
+  stroke: #1b6b6a;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.clp-pack-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 7px 12px;
+  border-radius: 3px;
+  background: #1b6b6a;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* =========================================
+   MAIN PRODUCT WISHLIST
+========================================= */
+
+.clp-heart {
+  position: absolute;
+  z-index: 5;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid #dce2e1;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.clp-heart svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #273d3d;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease,
+    transform 0.2s ease;
+}
+
+.clp-heart:hover {
+  border-color: #d9d9d9;
+  background: #ffffff;
+  transform: scale(1.04);
+}
+
+.clp-heart:hover svg {
+  fill: #e31e24;
+  stroke: #e31e24;
+}
+
+.clp-heart.active {
+  border-color: #d9d9d9;
+  background: #ffffff;
+}
+
+.clp-heart.active svg {
+  fill: #e31e24;
+  stroke: #e31e24;
+}
+
+/* =========================================
+   RIGHT SIDE - TITLE / PRICE
+========================================= */
+
+.clp-right {
+  min-width: 0;
+}
+
+.clp-brand-line {
+  display: block;
+  margin-bottom: 4px;
+  color: #152625;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.clp-right > h1 {
+  margin: 0 0 14px;
+  color: #152625;
+  font-family: "Jost", sans-serif;
+  font-size: clamp(28px, 3vw, 35px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.5px;
+}
+
+.clp-price-area {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.clp-current-price {
+  color: #e31e24;
+  font-family: "Jost", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.clp-old-price {
+  color: #969f9e;
+  font-size: 17px;
+  text-decoration: line-through;
+}
+
+.clp-discount {
+  padding: 5px 9px;
+  border-radius: 3px;
+  background: #e8f4f3;
+  color: #1b6b6a;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.clp-tax {
+  margin: 3px 0 18px;
+  color: #8b9594;
+  font-size: 11px;
+}
+
+/* =========================================
+   PRESCRIPTION BANNER
+========================================= */
+
+.clp-rx-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #f1f7f6;
+}
+
+.clp-rx-banner-text strong {
+  display: block;
+  color: #1c2928;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.clp-rx-banner-text p {
+  margin: 3px 0 0;
+  color: #6e7b7a;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.clp-rx-banner-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.clp-rx-banner-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 14px;
+}
+
+.clp-rx-action {
+  padding: 0;
+  border: 0;
+  border-bottom: 1.5px solid #1b6b6a;
+  border-radius: 0;
+  background: transparent;
+  color: #1b6b6a;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.clp-rx-action:hover {
+  color: #145958;
+  border-color: #145958;
+}
+
+.clp-rx-action.active {
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #1b6b6a;
+  color: #ffffff;
+}
+
+.clp-rx-action.active:hover {
+  background: #145958;
+  color: #ffffff;
+}
+
+/* SAME PRESCRIPTION FOR BOTH EYES (checkbox) */
+
+.clp-same-check {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  color: #1c2928;
+  cursor: pointer;
+  user-select: none;
+}
+
+.clp-same-check input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.clp-same-box {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #b6c5c3;
+  border-radius: 4px;
+  background: #ffffff;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.clp-same-box svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.clp-same-check:hover .clp-same-box {
+  border-color: #1b6b6a;
+}
+
+.clp-same-check input:checked + .clp-same-box {
+  background: #1b6b6a;
+  border-color: #1b6b6a;
+}
+
+.clp-same-check input:checked + .clp-same-box svg {
+  opacity: 1;
+}
+
+.clp-same-check input:focus-visible + .clp-same-box {
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.25);
+}
+
+.clp-same-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =========================================
+   EYE CARDS  (fields + boxes inside each card)
+========================================= */
+
+.clp-eye-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.clp-eye-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #d7dfde;
+  border-radius: 18px;
+  background: #ffffff;
+  transition: opacity 0.2s ease;
+}
+
+.clp-eye-card.off .clp-fields,
+.clp-eye-card.off .clp-eye-boxes {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.clp-eye-card.synced .clp-fields {
+  pointer-events: none;
+}
+
+.clp-eye-card-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.clp-eye-card-head h3 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: #1c2928;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.clp-eye-card-head h3 small {
+  color: #818b8a;
+  font-family: "Assistant", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.clp-eye-dot {
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.clp-eye-dot.right {
+  background: #1b6b6a;
+}
+
+.clp-eye-dot.left {
+  background: #d9a441;
+}
+
+/* =========================================
+   SWITCH
+========================================= */
+
+.clp-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.clp-switch input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.clp-switch span {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: #c4cecd;
+  transition: background 0.2s ease;
+}
+
+.clp-switch span::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.clp-switch input:checked + span {
+  background: #1b6b6a;
+}
+
+.clp-switch input:checked + span::after {
+  transform: translateX(20px);
+}
+
+.clp-switch input:focus-visible + span {
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.25);
+}
+
+/* =========================================
+   FIELDS
+   Row 1: SPH | CYL   (3 + 3)
+   Row 2: AXIS | BC | DIA   (2 + 2 + 2)
+========================================= */
+
+.clp-fields {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px 10px;
+}
+
+.clp-field {
+  position: relative;
+  min-width: 0;
+}
+
+.clp-field.span-2 {
+  grid-column: span 2;
+}
+
+.clp-field.span-3 {
+  grid-column: span 3;
+}
+
+.clp-field.span-6 {
+  grid-column: span 6;
+}
+
+.clp-field-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #0a0e0e;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =========================================
+   PILL
+========================================= */
+
+.clp-pill {
+  width: 100%;
+  height: 35px;
+  padding: 0 30px 0 14px;
+  border: 1px solid #b6c5c3;
+  border-radius: 999px;
+  outline: none;
+  background: #ffffff;
+  color: #5e6c6b;
+  font-size: 13px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.clp-pill.has-value {
+  color: #1c2928;
+  font-weight: 600;
+}
+
+.clp-pill:hover,
+.clp-pill:focus {
+  border-color: #1b6b6a;
+}
+
+.clp-pill:focus-visible {
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.15);
+}
+
+.clp-pill-btn svg {
+  position: absolute;
+  top: 50%;
+  right: 11px;
+  width: 15px;
+  height: 15px;
+  transform: translateY(-50%);
+  fill: none;
+  stroke: #344544;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.clp-pill-btn {
+  position: relative;
+  display: block;
+  text-align: left;
+}
+
+/* =========================================
+   BOXES (inside each eye card)
+========================================= */
+
+.clp-eye-boxes {
+  margin-top: 14px;
+}
+
+.clp-eye-boxes .clp-field-label {
+  margin-bottom: 6px;
+}
+
+.clp-quantity {
+  width: 100%;
+  height: 35px;
+  display: grid;
+  grid-template-columns: 46px 1fr 46px;
+  border: 1px solid #1b6b6a;
+  border-radius: 999px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.clp-quantity button {
+  border: 0;
+  background: #ffffff;
+  color: #1b6b6a;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.clp-quantity button:hover:not(:disabled) {
+  background: #f1f7f6;
+}
+
+.clp-quantity button:disabled {
+  color: #b9c0bf;
+  cursor: not-allowed;
+}
+
+.clp-quantity > div {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  color: #263635;
+  font-size: 12px;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.clp-quantity > div strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.clp-quantity > div span {
+  font-size: 13px;
+}
+
+/* =========================================
+   POWER PICKER POPOVER
+========================================= */
+
+.clp-power-picker {
+  position: relative;
+}
+
+.clp-power-pop {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  min-width: 170px;
+  max-width: calc(100vw - 40px);
+  overflow: hidden;
+  border: 1px solid #d7dfde;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.clp-power-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f1f7f6;
+}
+
+.clp-power-head span {
+  padding: 10px 0;
+  color: #1b6b6a;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.clp-power-zero {
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid #e4e8e7;
+  background: #ffffff;
+  color: #1c2928;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.clp-power-list {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.clp-power-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.clp-power-row button,
+.clp-power-zero {
+  transition: background 0.15s ease;
+}
+
+.clp-power-row button {
+  padding: 11px 0;
+  border: 0;
+  background: #ffffff;
+  color: #344342;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.clp-power-row button:first-child {
+  border-right: 1px solid #e4e8e7;
+}
+
+.clp-power-row button:hover,
+.clp-power-zero:hover {
+  background: #f1f7f6;
+}
+
+.clp-power-row button.active {
+  background: #1b6b6a;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* =========================================
+   UPLOAD
+========================================= */
+
+.clp-upload-area {
+  margin-top: 14px;
+}
+
+.clp-upload-area input {
+  display: none;
+}
+
+.clp-upload-area label {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border: 1px dashed #aebcba;
+  border-radius: 18px;
+  background: #fafcfc;
+  cursor: pointer;
+}
+
+.clp-upload-area label:hover {
+  border-color: #1b6b6a;
+}
+
+.clp-upload-area label svg {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 8px;
+  fill: none;
+  stroke: #1b6b6a;
+  stroke-width: 1.5;
+}
+
+.clp-upload-area label strong {
+  color: #354443;
+  font-size: 14px;
+}
+
+.clp-upload-area label span {
+  margin-top: 4px;
+  color: #899391;
+  font-size: 11px;
+}
+
+/* UPLOAD DONE */
+
+.clp-upload-done {
+  margin-top: 14px;
+  padding: 18px;
+  border: 1px solid #d7dfde;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.clp-upload-done-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.clp-upload-check {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #1b6b6a;
+}
+
+.clp-upload-check svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.clp-upload-done-text {
+  min-width: 0;
+}
+
+.clp-upload-done-text strong {
+  display: block;
+  color: #1c2928;
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.clp-upload-done-text p {
+  margin: 3px 0 0;
+  overflow: hidden;
+  color: #6e7b7a;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.clp-upload-done-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.clp-upload-remove {
+  height: 42px;
+  padding: 0 22px;
+  border: 1.5px solid #1b6b6a;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1b6b6a;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.clp-upload-remove:hover {
+  background: #f1f7f6;
+}
+
+.clp-upload-link {
+  padding: 0;
+  border: 0;
+  border-bottom: 1.5px solid #1b6b6a;
+  background: transparent;
+  color: #1b6b6a;
+  font-size: 12.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.clp-upload-link:hover {
+  color: #145958;
+  border-color: #145958;
+}
+
+/* =========================================
+   PRESCRIBER
+========================================= */
+
+.clp-prescriber {
+  margin-top: 14px;
+}
+
+.clp-prescriber-toggle {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: #263432;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.clp-prescriber-toggle strong {
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+}
+
+.clp-prescriber-plus {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b6c5c3;
+  border-radius: 50%;
+  color: #1b6b6a;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.clp-optional {
+  color: #7c8987;
+  font-size: 13px;
+}
+
+.clp-prescriber-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 12px;
+  padding: 16px;
+  border: 1px dashed #1b6b6a;
+  border-radius: 14px;
+}
+
+.clp-prescriber-grid label {
+  display: block;
+}
+
+.clp-prescriber-grid label > span {
+  display: block;
+  margin-bottom: 6px;
+  color: #687675;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.35px;
+}
+
+.clp-prescriber-grid input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  border: 1px solid #b6c5c3;
+  border-radius: 999px;
+  outline: none;
+  background: #ffffff;
+  color: #263432;
+  font-size: 13px;
+}
+
+.clp-prescriber-grid input::placeholder {
+  color: #9aa3a2;
+}
+
+.clp-prescriber-grid input:focus {
+  border-color: #1b6b6a;
+  box-shadow: 0 0 0 2px rgba(27, 107, 106, 0.08);
+}
+
+/* =========================================
+   ADD TO CART
+========================================= */
+
+.clp-add-cart {
+  width: 100%;
+  height: 58px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #1b6b6a;
+  color: #ffffff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.clp-add-cart strong {
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+}
+
+.clp-add-cart span {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.clp-add-cart:hover {
+  background: #145958;
+}
+
+/* =========================================
+   NOT FOUND
+========================================= */
+
+.clp-not-found {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  text-align: center;
+  font-family: "Assistant", sans-serif;
+}
+
+.clp-not-found h1 {
+  font-family: "Jost", sans-serif;
+}
+
+.clp-not-found p {
+  color: #73807f;
+}
+
+.clp-not-found a {
+  margin-top: 10px;
+  padding: 12px 20px;
+  background: #1b6b6a;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* =========================================
+   CART DRAWER
+   (very high z-index so the site header never covers it)
+========================================= */
+
+.clp-cart-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  background: rgba(0, 0, 0, 0.45);
+  animation: clpOverlayIn 0.25s ease;
+}
+
+.clp-cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2147483001;
+  width: min(440px, 100%);
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.14);
+  animation: clpDrawerIn 0.3s ease;
+}
+
+/* ---------- Header ---------- */
+
+.clp-cart-drawer-header {
+  flex-shrink: 0;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 20px;
+  border-bottom: 1px solid #e4e9e8;
+}
+
+.clp-cart-drawer-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.clp-cart-drawer-tick {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #1b6b6a;
+}
+
+.clp-cart-drawer-tick svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.clp-cart-drawer-header h2 {
+  margin: 0;
+  color: #182625;
+  font-family: "Jost", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.clp-cart-drawer-count {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #e9f4f3;
+  color: #1b6b6a;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.clp-cart-close {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #f1f4f3;
+  color: #293735;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.clp-cart-close:hover {
+  background: #1b6b6a;
+  color: #ffffff;
+}
+
+/* ---------- Body ---------- */
+
+.clp-cart-drawer-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 20px 20px;
+  background: #fafbfb;
+}
+
+/* ---------- Single cart item card ---------- */
+
+.clp-drawer-item {
+  position: relative;
+  flex-shrink: 0;
+  padding: 12px;
+  border: 1px solid #e3e9e8;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.clp-drawer-item.latest {
+  /* border-color: #1b6b6a;
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.1); */
+  animation: clpItemIn 0.35s ease;
+}
+
+/* ---------- Product ---------- */
+
+.clp-drawer-product {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.clp-drawer-image {
+  width: 86px;
+  height: 86px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 10px;
+  background: #f4f6f6;
+}
+
+.clp-drawer-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.clp-drawer-product-info {
+  min-width: 0;
+  flex: 1;
+  padding-right: 30px;
+}
+
+.clp-drawer-brand {
+  display: block;
+  margin-bottom: 2px;
+  color: #7a8685;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.clp-drawer-product-info h3 {
+  margin: 0;
+  color: #202d2b;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.clp-drawer-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 7px;
+  margin-top: 7px;
+}
+
+.clp-drawer-price strong {
+  color: #e31e24;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.clp-drawer-price del {
+  color: #969f9e;
+  font-size: 12px;
+}
+
+.clp-drawer-price small {
+  color: #8b9594;
+  font-size: 11px;
+}
+
+.clp-drawer-discount {
+  align-self: center;
+  padding: 3px 7px;
+  border-radius: 20px;
+  background: #1b6b6a;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.clp-drawer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.clp-drawer-pack {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #e9f4f3;
+  color: #1b6b6a;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.clp-drawer-pack.alt {
+  background: #f1f1f1;
+  color: #5f6c6b;
+}
+
+/* remove (delete) button */
+
+.clp-drawer-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #f4f6f6;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.clp-drawer-remove svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: #5f6c6b;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.2s ease;
+}
+
+.clp-drawer-remove:hover {
+  background: #fdeaea;
+}
+
+.clp-drawer-remove:hover svg {
+  stroke: #e31e24;
+}
+
+/* ---------- Prescription table ---------- */
+
+.clp-drawer-section {
+  margin-top: 14px;
+}
+
+.clp-drawer-section h4 {
+  margin: 0 0 8px;
+  color: #5c6d6c;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.clp-drawer-rx {
+  overflow: hidden;
+  border: 1px solid #dfe6e5;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.clp-drawer-rx-row {
+  display: grid;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 12px;
+  border-top: 1px solid #edf1f0;
+  color: #1c2928;
+  font-size: 13px;
+  text-align: center;
+}
+
+.clp-drawer-rx-row:first-child {
+  border-top: 0;
+}
+
+.clp-drawer-rx-row.head {
+  padding: 8px 12px;
+  background: #eef5f4;
+  color: #5c6d6c;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.clp-drawer-rx-row strong {
+  font-weight: 700;
+}
+
+.clp-drawer-rx-row .eye {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.clp-drawer-rx-row.head .eye {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.clp-drawer-rx-row i.clp-eye-dot {
+  display: inline-block;
+}
+
+.clp-drawer-upload-note {
+  margin: 0 0 8px;
+  padding: 9px 11px;
+  border: 1px dashed #b6c5c3;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #4f5e5d;
+  font-size: 12px;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.clp-drawer-simple-qty {
+  margin: 0;
+  padding: 9px 11px;
+  border: 1px solid #dfe6e5;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #4f5e5d;
+  font-size: 13px;
+}
+
+.clp-drawer-simple-qty strong {
+  color: #1c2928;
+}
+
+/* ---------- Per-item total ---------- */
+
+.clp-drawer-item-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #dfe6e5;
+}
+
+.clp-drawer-item-total span {
+  color: #6a7776;
+  font-size: 13px;
+}
+
+.clp-drawer-item-total strong {
+  color: #1c2928;
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* ---------- Price breakdown (all items) ---------- */
+
+.clp-drawer-breakdown {
+  flex-shrink: 0;
+  margin-top: 2px;
+  padding: 0 2px;
+}
+
+.clp-drawer-breakdown > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+.clp-drawer-breakdown span {
+  color: #6a7776;
+  font-size: 13px;
+}
+
+.clp-drawer-breakdown strong {
+  color: #1c2928;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.clp-drawer-breakdown del {
+  color: #969f9e;
+  font-size: 13px;
+}
+
+.clp-drawer-breakdown .saving span,
+.clp-drawer-breakdown .saving strong {
+  color: #1b6b6a;
+  font-weight: 700;
+}
+
+/* ---------- Footer ---------- */
+
+.clp-cart-drawer-footer {
+  flex-shrink: 0;
+  padding: 14px 20px 18px;
+  border-top: 1px solid #e2e8e7;
+  background: #ffffff;
+  box-shadow: 0 -6px 16px rgba(0, 0, 0, 0.04);
+}
+
+.clp-drawer-subtotal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.clp-drawer-subtotal span {
+  display: block;
+  color: #1c2928;
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.clp-drawer-subtotal small {
+  display: block;
+  margin-top: 1px;
+  color: #8b9594;
+  font-size: 11px;
+}
+
+.clp-drawer-subtotal strong {
+  color: #e31e24;
+  font-family: "Jost", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.clp-drawer-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.clp-view-cart,
+.clp-continue-shopping {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  font-family: "Jost", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.clp-continue-shopping {
+  border: 1.5px solid #1b6b6a;
+  background: #ffffff;
+  color: #1b6b6a;
+}
+
+.clp-continue-shopping:hover {
+  background: #edf7f6;
+}
+
+.clp-view-cart {
+  border: 1.5px solid #1b6b6a;
+  background: #1b6b6a;
+  color: #ffffff;
+}
+
+.clp-view-cart:hover {
+  background: #145958;
+  border-color: #145958;
+}
+
+@keyframes clpDrawerIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes clpOverlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes clpItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clp-cart-drawer,
+  .clp-cart-overlay,
+  .clp-drawer-item.latest {
+    animation: none;
+  }
+}
+
+/* =========================================
+   TABLET - 1100px
+========================================= */
+
+@media (max-width: 1100px) {
+  .clp-product-layout {
+    grid-template-columns: minmax(340px, 0.85fr) minmax(450px, 1.15fr);
+    gap: 32px;
+  }
+}
+
+/* =========================================
+   TABLET - 900px
+========================================= */
+
+@media (max-width: 900px) {
+  .clp-product-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .clp-left {
+    position: static;
+  }
+
+  .clp-image-card {
+    min-height: 450px;
+  }
+
+  .clp-product-image {
+    height: 330px;
+  }
+}
+
+/* =========================================
+   MOBILE - 700px
+========================================= */
+
+@media (max-width: 700px) {
+  .clp-container {
+    width: min(100% - 28px, 1280px);
+  }
+
+  .clp-breadcrumb {
+    padding: 16px 0;
+    font-size: 11px;
+  }
+
+  .clp-product-section {
+    padding-top: 0;
+  }
+
+  .clp-image-card {
+    min-height: 380px;
+    padding: 35px;
+  }
+
+  .clp-product-image {
+    height: 270px;
+  }
+
+  .clp-right > h1 {
+    font-size: 29px;
+  }
+
+  .clp-rx-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .clp-rx-banner-actions {
+    flex-wrap: wrap;
+  }
+
+  .clp-eye-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .clp-prescriber-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   MOBILE - 560px
+========================================= */
+
+@media (max-width: 560px) {
+  .clp-container {
+    width: min(100% - 22px, 1280px);
+  }
+
+  .clp-trust {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .clp-trust li {
+    font-size: 13px;
+  }
+
+  .clp-product-section {
+    padding-bottom: 40px;
+  }
+
+  .clp-image-card {
+    min-height: 310px;
+    padding: 28px;
+  }
+
+  .clp-product-image {
+    height: 220px;
+  }
+
+  .clp-pack-badge {
+    top: 12px;
+    left: 12px;
+    padding: 6px 9px;
+    font-size: 9px;
+  }
+
+  .clp-heart {
+    top: 11px;
+    right: 11px;
+    width: 39px;
+    height: 39px;
+  }
+
+  .clp-right > h1 {
+    margin-bottom: 12px;
+    font-size: 27px;
+  }
+
+  .clp-current-price {
+    font-size: 26px;
+  }
+
+  .clp-old-price {
+    font-size: 14px;
+  }
+
+  .clp-cart-drawer {
+    width: 100%;
+  }
+
+  .clp-cart-drawer-body {
+    padding: 16px 14px 20px;
+  }
+
+  .clp-cart-drawer-footer {
+    padding: 12px 16px 16px;
+  }
+
+  .clp-drawer-rx-row {
+    padding: 11px 9px;
+    font-size: 12px;
+  }
+
+  .clp-drawer-rx-row.head {
+    padding: 8px 9px;
+    font-size: 9px;
+  }
+
+  .clp-view-cart,
+  .clp-continue-shopping {
+    height: 44px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   VERY SMALL MOBILE - 390px
+========================================= */
+
+@media (max-width: 390px) {
+  .clp-container {
+    width: calc(100% - 18px);
+  }
+
+  .clp-image-card {
+    min-height: 275px;
+  }
+
+  .clp-product-image {
+    height: 190px;
+  }
+
+  .clp-right > h1 {
+    font-size: 25px;
+  }
+
+  .clp-current-price {
+    font-size: 24px;
+  }
+}
+
+/* =========================================================
+   PRESCRIPTION FORM — UX REFRESH
+   (same colours as before: teal #1b6b6a / #145958, soft teal
+   #f1f7f6 / #e8f4f3, borders #d7dfde / #b6c5c3, red #e31e24)
+   Keep this block at the END of the file so it wins over the
+   older rules above.
+========================================================= */
+
+/* ---------- price: "per box" + spec chips ---------- */
+
+.clp-per-box {
+  margin-left: -4px;
+  color: #6e7b7a;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.clp-tax {
+  margin-bottom: 0;
+}
+
+.clp-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.clp-spec {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  padding: 6px 13px;
+  border: 1px solid #d7dfde;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1c2928;
+  font-size: 13.5px;
+  line-height: 1.3;
+}
+
+.clp-spec small {
+  color: #7c8987;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.clp-spec b {
+  font-weight: 700;
+}
+
+.clp-spec.schedule {
+  border-color: #e8f4f3;
+  background: #e8f4f3;
+}
+
+.clp-spec.schedule b {
+  color: #1b6b6a;
+}
+
+/* image badge: now reads e.g. "10 lenses/box" */
+
+.clp-pack-badge {
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+/* ---------- banner ---------- */
+
+.clp-rx-banner {
+  border-radius: 18px;
+  padding: 16px 20px;
+}
+
+/* ---------- "same prescription" checkbox ---------- */
+
+.clp-same-check {
+  margin: 16px 0 0 2px;
+}
+
+/* ---------- eye cards ---------- */
+
+.clp-eye-card {
+  padding: 18px;
+  border-radius: 22px;
+  box-shadow: 0 1px 2px rgba(23, 36, 35, 0.04);
+}
+
+.clp-eye-card.off {
+  background: #fafbfb;
+}
+
+.clp-eye-head-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.clp-eye-state {
+  color: #1b6b6a;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.clp-eye-card.off .clp-eye-state {
+  color: #818b8a;
+}
+
+.clp-field-label {
+  margin-bottom: 6px;
+  color: #3a4948;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.clp-pill {
+  height: 42px;
+  font-size: 14px;
+}
+
+.clp-pill:focus-visible,
+.clp-quantity button:focus-visible,
+.clp-switch input:focus-visible + span {
+  outline: 2px solid #1b6b6a;
+  outline-offset: 2px;
+}
+
+/* boxes stepper */
+
+.clp-quantity {
+  height: 42px;
+  grid-template-columns: 48px 1fr 48px;
+}
+
+.clp-quantity button {
+  font-size: 22px;
+}
+
+/* ---------- power picker ---------- */
+
+.clp-power-list {
+  position: relative;
+}
+
+.clp-power-pop {
+  min-width: 220px;
+  border-radius: 16px;
+}
+
+.clp-power-zero.active,
+.clp-power-row button.active {
+  background: #1b6b6a;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.clp-power-zero:focus-visible,
+.clp-power-row button:focus-visible {
+  outline: 2px solid #1b6b6a;
+  outline-offset: -2px;
+}
+
+.clp-power-row button {
+  height: 36px;
+}
+
+/* single-column list (CYL, AXIS, ADD, BC, DIA): same look as SPH / Power */
+
+.clp-power-pop.sm {
+  min-width: 120px;
+}
+
+.clp-power-row.single {
+  grid-template-columns: 1fr;
+}
+
+.clp-power-row.single button:first-child {
+  border-right: 0;
+}
+
+/* greyed-out picker (left eye while "Same prescription for both eyes" is on) */
+
+.clp-pill:disabled {
+  border-color: #dfe5e4;
+  background: #f4f6f6;
+  color: #a3adac;
+  cursor: not-allowed;
+}
+
+.clp-pill:disabled svg {
+  stroke: #b9c2c1;
+}
+
+.clp-eye-card.synced .clp-field-label {
+  color: #a3adac;
+}
+
+.clp-eye-card.synced .clp-fields {
+  pointer-events: auto;
+}
+
+/* the disabled pickers block clicks themselves */
+
+.clp-sheet-bg,
+.clp-power-title {
+  display: none;
+}
+
+/* ---------- prescriber ---------- */
+
+.clp-prescriber-toggle {
+  min-height: 40px;
+}
+
+/* ---------- add to cart ---------- */
+
+.clp-cta-bar {
+  margin-top: 16px;
+}
+
+.clp-cta-bar .clp-add-cart {
+  margin-top: 0;
+}
+
+.clp-add-cart {
+  height: 60px;
+  font-size: 16px;
+}
+
+.clp-add-cart:focus-visible {
+  outline: 3px solid #145958;
+  outline-offset: 3px;
+}
+
+@keyframes clp-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes clp-sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+/* ---------- tablet landscape: stack the two eye cards ---------- */
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .clp-eye-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- touch / small screens: bigger tap targets ---------- */
+
+@media (pointer: coarse), (max-width: 900px) {
+  .clp-pill,
+  .clp-quantity {
+    height: 48px;
+  }
+
+  .clp-pill {
+    font-size: 16px;
+  }
+
+  /* stops iOS zooming into the select */
+
+  .clp-quantity {
+    grid-template-columns: 54px 1fr 54px;
+  }
+
+  .clp-quantity button {
+    font-size: 24px;
+  }
+
+  .clp-quantity > div strong,
+  .clp-quantity > div span {
+    font-size: 15px;
+  }
+
+  .clp-field-label {
+    font-size: 14px;
+  }
+
+  .clp-switch {
+    width: 50px;
+    height: 30px;
+  }
+
+  .clp-switch span::after {
+    width: 24px;
+    height: 24px;
+  }
+
+  .clp-switch input:checked + span::after {
+    transform: translateX(20px);
+  }
+
+  .clp-same-check {
+    min-height: 44px;
+  }
+
+  .clp-same-box {
+    width: 24px;
+    height: 24px;
+  }
+
+  .clp-prescriber-grid input {
+    font-size: 16px;
+  }
+
+  .clp-prescriber-toggle {
+    min-height: 44px;
+  }
+}
+
+/* ---------- tablet portrait and down: sticky add-to-cart bar ---------- */
+
+@media (max-width: 900px) {
+  .clp-cta-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 30;
+    margin-top: 14px;
+    padding: 14px 0 calc(12px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(to top, #ffffff 72%, rgba(255, 255, 255, 0));
+  }
+}
+
+/* ---------- phones ---------- */
+
+@media (max-width: 720px) {
+  .clp-eye-card {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .clp-rx-banner {
+    padding: 16px;
+  }
+
+  .clp-rx-banner-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 999px;
+    background: #ffffff;
+  }
+
+  .clp-rx-action,
+  .clp-rx-action.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 6px 10px;
+    border: 0;
+    border-radius: 999px;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.15;
+  }
+
+  .clp-rx-action:not(.active) {
+    background: transparent;
+  }
+
+  .clp-spec {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 560px) {
+  .clp-pack-badge {
+    top: 12px;
+    left: 12px;
+    padding: 6px 11px;
+    font-size: 11px;
+  }
+
+  .clp-add-cart {
+    height: auto;
+    min-height: 58px;
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 16px;
+  }
+
+  .clp-add-cart span {
+    margin-top: 2px;
+    font-size: 14px;
+  }
+
+  .clp-per-box {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   TABLET (601px – 900px)
+   Back to one column: image on top, title and the rest below it.
+   Only the image is made shorter.
+========================================================= */
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .clp-image-card {
+    width: 100%;
+    max-width: 380px;
+    min-height: 160px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+
+  .clp-product-image {
+    height: fit-content;
+  }
+}
+
+/* =========================================================
+   PHONE (up to 600px)
+   Right eye and left eye sit next to each other.
+   Inside each narrow card the fields stack one per row.
+========================================================= */
+
+@media (max-width: 600px) {
+  .clp-eye-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .clp-eye-card {
+    padding: 16px 12px 18px;
+    border-radius: 20px;
+  }
+
+  /* title on the first line, "Ordering" label + switch on the second */
+
+  .clp-eye-card-head {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .clp-eye-card-head h3 {
+    gap: 6px;
+    font-size: 16px;
+    line-height: 1.15;
+  }
+
+  .clp-eye-card-head h3 small {
+    font-size: 12px;
+  }
+
+  .clp-eye-head-right {
+    justify-content: space-between;
+  }
+
+  .clp-eye-state {
+    font-size: 12.5px;
+  }
+
+  /* one field per row, with more air between them */
+
+  .clp-fields {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .clp-field.span-2,
+  .clp-field.span-3,
+  .clp-field.span-6 {
+    grid-column: 1 / -1;
+  }
+
+  .clp-field-label {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .clp-pill {
+    height: 52px;
+    padding: 0 30px 0 14px;
+    font-size: 16px;
+  }
+
+  .clp-pill-btn svg {
+    right: 12px;
+  }
+
+  .clp-eye-boxes {
+    margin-top: 18px;
+  }
+
+  .clp-eye-boxes .clp-field-label {
+    margin-bottom: 8px;
+  }
+
+  .clp-quantity {
+    height: 52px;
+    grid-template-columns: 44px 1fr 44px;
+  }
+
+  .clp-quantity button {
+    font-size: 24px;
+  }
+
+  .clp-quantity > div {
+    gap: 3px;
+    overflow: hidden;
+  }
+
+  .clp-quantity > div strong,
+  .clp-quantity > div span {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   PHONE — COMPACT PRESCRIPTION FORM
+   Smaller text, controls and spacing so the form feels lighter.
+   Keep this block at the very END of the file.
+========================================================= */
+
+@media (max-width: 600px) {
+  /* banner */
+
+  .clp-rx-banner {
+    padding: 12px;
+    border-radius: 14px;
+    gap: 10px;
+  }
+
+  .clp-rx-banner-text strong {
+    font-size: 13.5px;
+  }
+
+  .clp-rx-banner-text p {
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+
+  .clp-rx-action,
+  .clp-rx-action.active {
+    min-height: 36px;
+    padding: 4px 8px;
+    font-size: 11.5px;
+  }
+
+  /* same-for-both checkbox */
+
+  .clp-same-check {
+    min-height: 34px;
+    margin-top: 10px;
+    gap: 8px;
+  }
+
+  .clp-same-box {
+    width: 18px;
+    height: 18px;
+  }
+
+  .clp-same-box svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .clp-same-text {
+    font-size: 12.5px;
+  }
+
+  /* eye cards */
+
+  .clp-eye-cards {
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .clp-eye-card {
+    padding: 12px 9px 14px;
+    border-radius: 16px;
+  }
+
+  .clp-eye-card-head {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .clp-eye-card-head h3 {
+    gap: 5px;
+    font-size: 14px;
+  }
+
+  .clp-eye-card-head h3 small {
+    font-size: 10.5px;
+  }
+
+  .clp-eye-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .clp-eye-state {
+    font-size: 11px;
+  }
+
+  /* switch */
+
+  .clp-switch {
+    width: 38px;
+    height: 22px;
+  }
+
+  .clp-switch span::after {
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .clp-switch input:checked + span::after {
+    transform: translateX(16px);
+  }
+
+  /* fields */
+
+  .clp-fields {
+    gap: 11px;
+  }
+
+  .clp-field-label {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+
+  .clp-pill {
+    height: 40px;
+    padding: 0 26px 0 12px;
+    font-size: 13.5px;
+  }
+
+  .clp-pill-btn svg {
+    right: 10px;
+    width: 13px;
+    height: 13px;
+  }
+
+  /* boxes stepper */
+
+  .clp-eye-boxes {
+    margin-top: 12px;
+  }
+
+  .clp-eye-boxes .clp-field-label {
+    margin-bottom: 5px;
+  }
+
+  .clp-quantity {
+    height: 40px;
+    grid-template-columns: 36px 1fr 36px;
+  }
+
+  .clp-quantity button {
+    font-size: 20px;
+  }
+
+  .clp-quantity > div {
+    gap: 3px;
+  }
+
+  .clp-quantity > div strong,
+  .clp-quantity > div span {
+    font-size: 12.5px;
+  }
+
+  /* upload */
+
+  .clp-upload-area label {
+    min-height: 120px;
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .clp-upload-area label svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .clp-upload-area label strong {
+    font-size: 13px;
+  }
+
+  .clp-upload-done {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .clp-upload-check {
+    width: 40px;
+    height: 40px;
+  }
+
+  .clp-upload-check svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .clp-upload-done-text strong {
+    font-size: 14.5px;
+  }
+
+  .clp-upload-done-text p {
+    font-size: 12px;
+  }
+
+  .clp-upload-remove {
+    height: 38px;
+    padding: 0 16px;
+    font-size: 12px;
+  }
+
+  .clp-upload-link {
+    font-size: 11.5px;
+  }
+
+  /* prescriber (inputs stay 16px so iOS doesn't zoom on focus) */
+
+  .clp-prescriber-toggle {
+    min-height: 36px;
+    font-size: 13px;
+  }
+
+  .clp-prescriber-plus {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+
+  .clp-optional {
+    font-size: 12px;
+  }
+
+  .clp-prescriber-grid {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .clp-prescriber-grid label > span {
+    font-size: 10px;
+  }
+
+  .clp-prescriber-grid input {
+    height: 42px;
+    font-size: 16px;
+  }
+
+  /* add to cart */
+
+  .clp-add-cart {
+    min-height: 50px;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .clp-add-cart span {
+    font-size: 12px;
+  }
+}
+
+/* very small phones */
+
+@media (max-width: 380px) {
+  .clp-eye-card {
+    padding: 11px 8px 13px;
+  }
+
+  .clp-eye-card-head h3 {
+    font-size: 12px;
+  }
+
+  .clp-pill {
+    height: 38px;
+    font-size: 13px;
+  }
+
+  .clp-quantity {
+    height: 38px;
+    grid-template-columns: 32px 1fr 32px;
+  }
+}
+
+/* =========================================================
+   PHONE — EXTRA COMPACT CONTROLS
+   (ordering switch, dropdowns, boxes capsule)
+   Keep at the very END of the file.
+========================================================= */
+
+@media (max-width: 600px) {
+  /* ordering switch */
+
+  .clp-switch {
+    width: 32px;
+    height: 18px;
+  }
+
+  .clp-switch span::after {
+    top: 2px;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .clp-switch input:checked + span::after {
+    transform: translateX(14px);
+  }
+
+  .clp-eye-state {
+    font-size: 10.5px;
+  }
+
+  /* dropdowns */
+
+  .clp-pill {
+    height: 34px;
+    padding: 0 22px 0 10px;
+    font-size: 12.5px;
+  }
+
+  .clp-pill-btn svg {
+    right: 8px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .clp-field-label {
+    margin-bottom: 4px;
+    font-size: 11.5px;
+  }
+
+  .clp-fields {
+    gap: 9px;
+  }
+
+  /* boxes capsule */
+
+  .clp-quantity {
+    height: 34px;
+    grid-template-columns: 30px 1fr 30px;
+  }
+
+  .clp-quantity button {
+    font-size: 18px;
+  }
+
+  .clp-quantity > div strong,
+  .clp-quantity > div span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .clp-pill {
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .clp-quantity {
+    height: 32px;
+    grid-template-columns: 28px 1fr 28px;
+  }
+}
+
+/* =========================================================
+   PHONE — SMALLER ORDERING SWITCH (clp-switch)
+   Keep at the very END of the file.
+========================================================= */
+
+@media (max-width: 600px) {
+  .clp-switch {
+    width: 26px;
+    height: 15px;
+  }
+
+  .clp-switch span::after {
+    top: 2px;
+    left: 2px;
+    width: 11px;
+    height: 11px;
+  }
+
+  .clp-switch input:checked + span::after {
+    transform: translateX(11px);
+  }
+}
+
+/* =========================================================
+   SMALLER ORDERING SWITCH (clp-switch) — ALL VIEWS
+   Not inside a media query, and placed last, so it overrides
+   the desktop, tablet and phone sizes above.
+========================================================= */
+
+.clp-switch {
+  width: 26px;
+  height: 15px;
+}
+
+.clp-switch span::after {
+  top: 2px;
+  left: 2px;
+  width: 11px;
+  height: 11px;
+}
+
+.clp-switch input:checked + span::after {
+  transform: translateX(11px);
+}
+
+/* =========================================================
+   DROPDOWNS ON PHONES / TABLETS
+   Same popover as desktop. Keep this block at the very END.
+========================================================= */
+
+@media (max-width: 900px) {
+  /* above the sticky add-to-cart bar (z-index 30) */
+  .clp-power-pop {
+    z-index: 40;
+  }
+}
+
+@media (max-width: 600px) {
+  .clp-power-pop {
+    min-width: 200px;
+    max-width: calc(100vw - 28px);
+  }
+
+  .clp-power-pop.sm {
+    min-width: 120px;
+  }
+
+  /* the right-hand (left eye) card opens towards the left, so the popover stays on screen */
+  .clp-eye-cards > .clp-eye-card:last-child .clp-power-pop {
+    right: 0;
+    left: auto;
+  }
+}
+
+
+
+.clp-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.clp-thumbnail {
+  aspect-ratio: 4 / 3;
+  padding: 8px;
+  background: #f7f9f9;
+  border: 1.5px solid #e2e8e8;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clp-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.clp-thumbnail:hover,
+.clp-thumbnail.active {
+  border-color: #1a6b68;
+}
+
+.clp-thumbnail.active {
+  box-shadow: 0 0 0 2px rgba(26, 107, 104, 0.15);
+}
+
+.clp-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 1000000; 
+  max-width: calc(100% - 32px);
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: #1a6b68;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 16px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.clp-toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 600px) {
+  .clp-toast {
+    bottom: 20px;
+    font-size: 14px;
+    padding: 11px 18px;
+  }
+}
+
+
+
+
+/* Toast notification - Desktop + Mobile */
+.clp-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  /* z-index: 999999999; */
+  z-index: 214748300112;
+
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+
+  padding: 14px 20px;
+  border-radius: 12px;
+
+  background: #1b6b6a;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.clp-toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Mobile responsive toast */
+@media (max-width: 768px) {
+  .clp-toast {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+
+    width: auto;
+    max-width: none;
+    padding: 14px 16px;
+
+    font-size: 14px;
+    border-radius: 12px;
+    /* z-index: 99999; */
+      z-index: 214748300112;
+  }
+}
+

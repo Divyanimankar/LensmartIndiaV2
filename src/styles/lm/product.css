@@ -1,0 +1,823 @@
+/* ==========================================================================
+   LENSMART INDIA — PRODUCT DETAIL PAGES
+   Eyeglasses (.eyedetail-*) · Sunglasses (.sundetail-*) · Contact lenses (.clp-*)
+   Similar products (.pc-*) · Product description / specs
+
+   NOTE: rules written with :is(.eyedetail-x, .sundetail-x) are generated from a
+   single source so the two frame pages stay visually identical.
+========================================================================== */
+
+/* ---------- SHARED SURFACE ---------- */
+html body:not(#lm) :is(:is(.eyedetail-page, .sundetail-page), .clp-page) {
+  background: var(--lm-ivory);
+  color: var(--lm-ink-2);
+  font-family: var(--lm-font-text);
+}
+html body:not(#lm) :is(:is(.eyedetail-container, .sundetail-container), .clp-container) {
+  width: min(calc(100% - 2 * var(--lm-gutter)), var(--lm-container));
+}
+html body:not(#lm) :is(:is(.eyedetail-breadcrumb, .sundetail-breadcrumb), .clp-breadcrumb) {
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--lm-faint);
+}
+html body:not(#lm) :is(:is(.eyedetail-breadcrumb, .sundetail-breadcrumb), .clp-breadcrumb) a {
+  color: var(--lm-muted);
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) :is(:is(.eyedetail-breadcrumb, .sundetail-breadcrumb), .clp-breadcrumb) a:hover {
+  color: var(--lm-teal);
+}
+html body:not(#lm) :is(:is(.eyedetail-breadcrumb, .sundetail-breadcrumb) span:last-child) {
+  color: var(--lm-ink);
+}
+
+/* ---------- GALLERY ---------- */
+html body:not(#lm) :is(:is(.eyedetail-main-image, .sundetail-main-image), .clp-image-card) {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-img-bg);
+  overflow: hidden;
+}
+html body:not(#lm) :is(:is(.eyedetail-main-image, .sundetail-main-image) > img, .clp-product-image) {
+  mix-blend-mode: multiply;
+  transition: transform var(--lm-dur-img) var(--lm-ease-out);
+}
+@media (hover: hover) {
+  html body:not(#lm) :is(:is(.eyedetail-main-image, .sundetail-main-image):not(.zoomed):hover > img, .clp-image-card:hover .clp-product-image) {
+    transform: scale(1.04);
+  }
+}
+html body:not(#lm) :is(:is(.eyedetail-badge, .sundetail-badge), .clp-pack-badge) {
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+  font-family: var(--lm-font-ui);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+html body:not(#lm) :is(:is(.eyedetail-image-heart, .sundetail-image-heart), .clp-heart) {
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 253, 249, 0.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--lm-shadow-1);
+  color: var(--lm-ink);
+  transition: transform var(--lm-dur-2) var(--lm-ease-out), color var(--lm-dur-2) var(--lm-ease-soft), background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) :is(:is(.eyedetail-image-heart, .sundetail-image-heart), .clp-heart):hover {
+  transform: scale(1.08);
+  background: #fff;
+  color: var(--lm-teal);
+}
+html body:not(#lm) :is(:is(.eyedetail-image-heart, .sundetail-image-heart), .clp-heart):active {
+  transform: scale(0.92);
+}
+html body:not(#lm) :is(:is(.eyedetail-image-heart, .sundetail-image-heart).active, .clp-heart.active) {
+  color: var(--lm-sale);
+}
+html body:not(#lm) :is(:is(.eyedetail-image-heart, .sundetail-image-heart).active svg, .clp-heart.active svg) {
+  animation: lm-pop 480ms var(--lm-ease-spring);
+}
+html body:not(#lm) :is(.eyedetail-image-note, .sundetail-image-note) {
+  font-family: var(--lm-font-ui);
+  letter-spacing: 0.06em;
+}
+html body:not(#lm) :is(:is(.eyedetail-thumbnail, .sundetail-thumbnail)) {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-img-bg);
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(:is(.eyedetail-thumbnail, .sundetail-thumbnail)):hover {
+  border-color: var(--lm-line-strong);
+  transform: translateY(-2px);
+}
+html body:not(#lm) :is(:is(.eyedetail-thumbnail, .sundetail-thumbnail).active, .clp-thumbnail.active) {
+  border-color: var(--lm-ink);
+  background: var(--lm-img-bg);
+}
+html body:not(#lm) .clp-thumbnail {
+  border-radius: var(--lm-r-xs);
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) .clp-thumbnail:hover {
+  transform: translateY(-2px);
+}
+html body:not(#lm) :is(:is(.eyedetail-gallery-features, .sundetail-gallery-features), .clp-trust, :is(.eyedetail-delivery, .sundetail-delivery), :is(.eyedetail-bottom-grid, .sundetail-bottom-grid)) {
+  border-color: var(--lm-line);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+}
+html body:not(#lm) :is(:is(.eyedetail-gallery-features, .sundetail-gallery-features) svg, :is(.eyedetail-delivery-heading, .sundetail-delivery-heading) > svg, :is(.eyedetail-bottom-grid, .sundetail-bottom-grid) svg, .clp-trust svg) {
+  color: var(--lm-teal);
+}
+html body:not(#lm) :is(:is(.eyedetail-gallery-features, .sundetail-gallery-features) strong, :is(.eyedetail-bottom-grid, .sundetail-bottom-grid) strong, :is(.eyedetail-delivery-heading, .sundetail-delivery-heading) strong, .clp-trust li) {
+  font-family: var(--lm-font-ui);
+  color: var(--lm-ink);
+}
+
+/* ---------- INFO COLUMN ---------- */
+html body:not(#lm) :is(:is(.eyedetail-info, .sundetail-info) h1, .clp-right > h1) {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 1.5rem + 2.4vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: 0.005em;
+  color: var(--lm-ink);
+  text-wrap: balance;
+}
+html body:not(#lm) :is(:is(.eyedetail-info, .sundetail-info) > h3, .clp-brand-line) {
+  font-family: var(--lm-font-ui);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--lm-teal);
+}
+html body:not(#lm) :is(.eyedetail-product-meta, .sundetail-product-meta) span {
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-sand);
+  color: var(--lm-ink-2);
+  font-family: var(--lm-font-ui);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+html body:not(#lm) :is(.eyedetail-description, .sundetail-description) {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--lm-muted);
+}
+html body:not(#lm) :is(:is(.eyedetail-price, .sundetail-price), .clp-current-price) {
+  font-family: var(--lm-font-ui);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--lm-ink);
+}
+html body:not(#lm) :is(:is(.eyedetail-old-price, .sundetail-old-price), .clp-old-price) {
+  font-family: var(--lm-font-ui);
+  color: var(--lm-faint);
+}
+html body:not(#lm) :is(:is(.eyedetail-discount, .sundetail-discount), .clp-discount) {
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-sale);
+  color: #fff;
+  font-family: var(--lm-font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+html body:not(#lm) :is(:is(.eyedetail-tax, .sundetail-tax), .clp-tax) {
+  font-family: var(--lm-font-ui);
+  color: var(--lm-faint);
+}
+html body:not(#lm) :is(.eyedetail-divider, .sundetail-divider) {
+  background: var(--lm-line);
+}
+html body:not(#lm) :is(:is(.eyedetail-selection-title, .sundetail-selection-title) > span) {
+  font-family: var(--lm-font-ui);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  color: var(--lm-ink);
+}
+html body:not(#lm) :is(:is(.eyedetail-selection-title, .sundetail-selection-title) > strong, :is(.eyedetail-size-guide, .sundetail-size-guide)) {
+  font-family: var(--lm-font-ui);
+  color: var(--lm-teal);
+}
+html body:not(#lm) :is(.eyedetail-size-guide, .sundetail-size-guide) {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) :is(.eyedetail-size-guide, .sundetail-size-guide):hover {
+  color: var(--lm-ink);
+}
+
+/* selectable options: colour + size */
+html body:not(#lm) :is(:is(.eyedetail-color-option, .sundetail-color-option), :is(.eyedetail-size-list, .sundetail-size-list) > button) {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-paper);
+  color: var(--lm-ink-2);
+  font-family: var(--lm-font-ui);
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(.eyedetail-size-list, .sundetail-size-list) > button {
+  border-radius: var(--lm-r-sm);
+}
+html body:not(#lm) :is(:is(.eyedetail-color-option, .sundetail-color-option), :is(.eyedetail-size-list, .sundetail-size-list) > button):hover {
+  border-color: var(--lm-ink);
+}
+html body:not(#lm) :is(:is(.eyedetail-color-option, .sundetail-color-option), :is(.eyedetail-size-list, .sundetail-size-list) > button):active {
+  transform: scale(0.97);
+}
+html body:not(#lm) :is(.eyedetail-color-option, .sundetail-color-option).active {
+  border-color: var(--lm-ink);
+  background: var(--lm-paper);
+  color: var(--lm-ink);
+  box-shadow: 0 0 0 1px var(--lm-ink);
+}
+html body:not(#lm) :is(.eyedetail-size-list, .sundetail-size-list) > button.active {
+  border-color: var(--lm-ink);
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body:not(#lm) :is(.eyedetail-size-list, .sundetail-size-list) strong {
+  font-family: var(--lm-font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+html body:not(#lm) :is(.eyedetail-color-dot, .sundetail-color-dot) {
+  border: 1px solid rgba(24, 26, 25, 0.2);
+}
+
+/* "choose your lenses" card */
+html body:not(#lm) :is(.eyedetail-lens-card, .sundetail-lens-card) {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+  transition: border-color var(--lm-dur-3) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out), transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(.eyedetail-lens-card, .sundetail-lens-card):hover {
+  border-color: var(--lm-ink);
+  box-shadow: var(--lm-shadow-2);
+  transform: translateY(-2px);
+}
+html body:not(#lm) :is(.eyedetail-lens-card, .sundetail-lens-card).selected {
+  background: var(--lm-teal-soft);
+  border-color: var(--lm-teal);
+}
+html body:not(#lm) :is(.eyedetail-lens-icon, .sundetail-lens-icon) {
+  border-radius: 50%;
+  background: var(--lm-sand);
+  color: var(--lm-teal);
+}
+html body:not(#lm) :is(.eyedetail-lens-card, .sundetail-lens-card).selected :is(.eyedetail-lens-icon, .sundetail-lens-icon) {
+  background: var(--lm-teal);
+  color: #fff;
+}
+html body:not(#lm) :is(.eyedetail-step, .sundetail-step) {
+  font-family: var(--lm-font-ui);
+  font-size: 10px;
+  letter-spacing: var(--lm-tracking-eyebrow);
+  color: var(--lm-teal);
+}
+html body:not(#lm) :is(.eyedetail-lens-card, .sundetail-lens-card) h3 {
+  font-family: var(--lm-font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--lm-ink);
+}
+html body:not(#lm) :is(.eyedetail-lens-arrow, .sundetail-lens-arrow) {
+  color: var(--lm-ink);
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(.eyedetail-lens-card, .sundetail-lens-card):hover :is(.eyedetail-lens-arrow, .sundetail-lens-arrow) {
+  transform: translateX(6px);
+}
+
+/* quantity + primary buy button */
+html body:not(#lm) :is(:is(.eyedetail-quantity, .sundetail-quantity)) {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-paper);
+}
+html body:not(#lm) :is(:is(.eyedetail-quantity, .sundetail-quantity) button) {
+  color: var(--lm-ink);
+  transition: background-color var(--lm-dur-1) var(--lm-ease-soft), color var(--lm-dur-1) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out);
+}
+html body:not(#lm) :is(:is(.eyedetail-quantity, .sundetail-quantity) button):hover {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body:not(#lm) :is(:is(.eyedetail-quantity, .sundetail-quantity) button):active {
+  transform: scale(0.9);
+}
+html body:not(#lm) :is(:is(.eyedetail-quantity, .sundetail-quantity) span) {
+  font-family: var(--lm-font-ui);
+  font-variant-numeric: tabular-nums;
+}
+html body:not(#lm) :is(:is(.eyedetail-cart-button, .sundetail-cart-button), .clp-add-cart, :is(.eyedetail-panel-footer, .sundetail-panel-footer) button, :is(.eyedetail-not-found, .sundetail-not-found) a, .clp-not-found a) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-teal);
+  color: #fff;
+  font-family: var(--lm-font-ui);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  transition: color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(:is(.eyedetail-cart-button, .sundetail-cart-button), .clp-add-cart)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--lm-ink);
+  transform: translate3d(0, 101%, 0);
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(:is(.eyedetail-cart-button, .sundetail-cart-button), .clp-add-cart):hover {
+  background: var(--lm-teal);
+}
+html body:not(#lm) :is(:is(.eyedetail-cart-button, .sundetail-cart-button), .clp-add-cart):hover::before {
+  transform: translate3d(0, 0, 0);
+}
+html body:not(#lm) :is(:is(.eyedetail-cart-button, .sundetail-cart-button), .clp-add-cart):active {
+  transform: scale(0.99);
+}
+html body:not(#lm) :is(:is(.eyedetail-cart-button, .sundetail-cart-button), .clp-add-cart) :is(strong, span) {
+  font-family: var(--lm-font-ui);
+  letter-spacing: var(--lm-tracking-caps);
+}
+html body:not(#lm) :is(:is(.eyedetail-cart-button, .sundetail-cart-button), .clp-add-cart):focus-visible {
+  outline: 2px solid var(--lm-teal);
+  outline-offset: 3px;
+}
+html body:not(#lm) :is(.eyedetail-cart-button, .sundetail-cart-button) svg {
+  transition: transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(.eyedetail-cart-button, .sundetail-cart-button):hover svg {
+  transform: translateX(3px) rotate(-6deg);
+}
+html body:not(#lm) :is(.eyedetail-wishlist-button, .sundetail-wishlist-button) {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-xs);
+  background: transparent;
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), border-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) :is(.eyedetail-wishlist-button, .sundetail-wishlist-button):hover,
+html body:not(#lm) :is(.eyedetail-wishlist-button, .sundetail-wishlist-button).active {
+  border-color: var(--lm-ink);
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+
+/* pincode */
+html body:not(#lm) :is(.eyedetail-pincode, .sundetail-pincode) {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-ivory);
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(.eyedetail-pincode, .sundetail-pincode):focus-within {
+  border-color: var(--lm-teal);
+  box-shadow: var(--lm-ring);
+}
+html body:not(#lm) :is(.eyedetail-pincode, .sundetail-pincode) input:focus-visible {
+  outline: none;
+}
+html body:not(#lm) :is(.eyedetail-pincode, .sundetail-pincode) button {
+  font-family: var(--lm-font-ui);
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  color: var(--lm-teal);
+}
+html body:not(#lm) :is(.eyedetail-delivery-message, .sundetail-delivery-message).ok {
+  color: var(--lm-ok);
+}
+
+/* ---------- SIDE PANELS / MODALS ---------- */
+html body:not(#lm) :is(.eyedetail-overlay, .sundetail-overlay) {
+  background: var(--lm-overlay);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+html body:not(#lm) :is(:is(.eyedetail-lens-panel, .sundetail-lens-panel), :is(.eyedetail-modal, .sundetail-modal)) {
+  background: var(--lm-ivory);
+  box-shadow: -24px 0 60px -20px rgba(24, 26, 25, 0.4);
+}
+html body:not(#lm) :is(:is(.eyedetail-panel-header, .sundetail-panel-header) h2, :is(.eyedetail-panel-header, .sundetail-panel-header) h3, :is(.eyedetail-modal, .sundetail-modal) h2) {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+  color: var(--lm-ink);
+}
+html body:not(#lm) :is(:is(.eyedetail-panel-close, .sundetail-panel-close), :is(.eyedetail-modal-close, .sundetail-modal-close)) {
+  border-radius: 50%;
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) :is(:is(.eyedetail-panel-close, .sundetail-panel-close), :is(.eyedetail-modal-close, .sundetail-modal-close)):hover {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+  transform: rotate(90deg);
+}
+html body:not(#lm) :is(.eyedetail-toast, .sundetail-toast),
+html body:not(#lm) .clp-toast {
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+  font-family: var(--lm-font-ui);
+  letter-spacing: 0.04em;
+  box-shadow: var(--lm-shadow-3);
+}
+
+/* ---------- CONTACT-LENS PRESCRIPTION FORM ---------- */
+html body:not(#lm) .clp-rx-banner {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-sand);
+}
+html body:not(#lm) .clp-rx-banner-text strong,
+html body:not(#lm) .clp-eye-card-head h3,
+html body:not(#lm) .clp-upload-done-text strong,
+html body:not(#lm) .clp-prescriber-toggle strong,
+html body:not(#lm) .clp-power-title {
+  font-family: var(--lm-font-display);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+}
+html body:not(#lm) .clp-rx-banner-text strong {
+  font-size: 1.3rem;
+}
+html body:not(#lm) .clp-eye-card-head h3 {
+  font-size: 1.5rem;
+}
+html body:not(#lm) .clp-rx-action {
+  font-family: var(--lm-font-ui);
+  font-weight: 500;
+  color: var(--lm-teal);
+  transition: color var(--lm-dur-2) var(--lm-ease-soft), background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) .clp-rx-action.active {
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body:not(#lm) .clp-rx-action.active:hover {
+  background: var(--lm-teal-deep);
+}
+html body:not(#lm) .clp-eye-card {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+  transition: border-color var(--lm-dur-3) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) .clp-eye-card:focus-within {
+  border-color: var(--lm-line-strong);
+  box-shadow: var(--lm-shadow-2);
+}
+html body:not(#lm) .clp-field-label {
+  font-family: var(--lm-font-ui);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  color: var(--lm-ink);
+}
+html body:not(#lm) .clp-pill {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-ivory);
+  font-family: var(--lm-font-ui);
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out), background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) .clp-pill:hover,
+html body:not(#lm) .clp-pill:focus {
+  border-color: var(--lm-ink);
+  background: #fff;
+}
+html body:not(#lm) .clp-pill:focus-visible {
+  box-shadow: var(--lm-ring);
+}
+html body:not(#lm) .clp-quantity {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  overflow: hidden;
+  background: var(--lm-ivory);
+}
+html body:not(#lm) .clp-quantity button {
+  background: transparent;
+  color: var(--lm-ink);
+  transition: background-color var(--lm-dur-1) var(--lm-ease-soft), color var(--lm-dur-1) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out);
+}
+html body:not(#lm) .clp-quantity button:hover:not(:disabled) {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body:not(#lm) .clp-quantity button:active:not(:disabled) {
+  transform: scale(0.88);
+}
+html body:not(#lm) .clp-same-box {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-xs);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), border-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) .clp-same-check input:checked + .clp-same-box {
+  background: var(--lm-ink);
+  border-color: var(--lm-ink);
+}
+html body:not(#lm) .clp-switch input:checked + span {
+  background: var(--lm-teal);
+}
+html body:not(#lm) .clp-switch span,
+html body:not(#lm) .clp-switch span::after {
+  transition: background-color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-spring);
+}
+html body:not(#lm) .clp-eye-dot.right {
+  background: var(--lm-teal);
+}
+html body:not(#lm) .clp-eye-dot.left {
+  background: var(--lm-brass);
+}
+html body:not(#lm) .clp-power-pop {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-md);
+  background: var(--lm-paper);
+  box-shadow: var(--lm-shadow-3);
+  animation: lm-menu-col 260ms var(--lm-ease-out) both;
+}
+html body:not(#lm) .clp-power-head {
+  background: var(--lm-sand);
+}
+html body:not(#lm) .clp-power-head span {
+  font-family: var(--lm-font-display);
+  color: var(--lm-ink);
+}
+html body:not(#lm) .clp-power-row button.active {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body:not(#lm) .clp-power-row button:hover,
+html body:not(#lm) .clp-power-zero:hover {
+  background: var(--lm-sand);
+}
+html body:not(#lm) .clp-upload-area label {
+  border: 1px dashed var(--lm-line-strong);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-ivory);
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) .clp-upload-area label:hover {
+  border-color: var(--lm-teal);
+  background: var(--lm-teal-soft);
+}
+html body:not(#lm) .clp-prescriber-grid {
+  border: 1px dashed var(--lm-line-strong);
+  border-radius: var(--lm-r-sm);
+}
+html body:not(#lm) .clp-prescriber-grid input {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-ivory);
+  font-family: var(--lm-font-ui);
+  transition: border-color var(--lm-dur-2) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) .clp-prescriber-grid input:focus {
+  border-color: var(--lm-teal);
+  box-shadow: var(--lm-ring);
+}
+html body:not(#lm) .clp-cta-bar {
+  background: var(--lm-paper);
+  border-top: 1px solid var(--lm-line);
+  box-shadow: 0 -18px 40px -24px rgba(24, 26, 25, 0.35);
+}
+html body:not(#lm) .clp-add-cart {
+  height: 58px;
+}
+
+/* ---------- CART DRAWER (contact-lens drawer + site-wide drawer) ---------- */
+html body:not(#lm) .clp-cart-overlay {
+  background: var(--lm-overlay);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+html body:not(#lm) .clp-cart-drawer {
+  background: var(--lm-ivory);
+  box-shadow: -24px 0 60px -20px rgba(24, 26, 25, 0.4);
+  transition-timing-function: var(--lm-ease-in-out);
+}
+html body:not(#lm) .clp-cart-drawer-header {
+  border-bottom: 1px solid var(--lm-line);
+  background: var(--lm-ivory);
+}
+html body:not(#lm) .clp-cart-drawer-header h2 {
+  font-family: var(--lm-font-display);
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: var(--lm-ink);
+}
+html body:not(#lm) .clp-cart-drawer-tick {
+  background: var(--lm-teal);
+  border-radius: 50%;
+}
+html body:not(#lm) .clp-cart-drawer-count {
+  border-radius: var(--lm-r-pill);
+  background: var(--lm-sand);
+  color: var(--lm-ink);
+  font-family: var(--lm-font-ui);
+}
+html body:not(#lm) .clp-cart-close {
+  border-radius: 50%;
+  background: var(--lm-sand);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) .clp-cart-close:hover {
+  background: var(--lm-ink);
+  color: var(--lm-ivory);
+  transform: rotate(90deg);
+}
+html body:not(#lm) .clp-cart-drawer-body {
+  background: transparent;
+}
+html body:not(#lm) .clp-drawer-item {
+  border: 1px solid var(--lm-line);
+  border-radius: var(--lm-r-sm);
+  background: var(--lm-paper);
+  transition: border-color var(--lm-dur-3) var(--lm-ease-soft), box-shadow var(--lm-dur-3) var(--lm-ease-out);
+}
+html body:not(#lm) .clp-drawer-item.latest {
+  animation: lm-rise 560ms var(--lm-ease-out) both;
+}
+html body:not(#lm) .clp-drawer-image {
+  border-radius: var(--lm-r-xs);
+  background: var(--lm-img-bg);
+}
+html body:not(#lm) .clp-drawer-image img {
+  mix-blend-mode: multiply;
+}
+html body:not(#lm) .clp-drawer-brand {
+  font-family: var(--lm-font-ui);
+  font-size: 10.5px;
+  letter-spacing: var(--lm-tracking-eyebrow);
+  text-transform: uppercase;
+}
+html body:not(#lm) .clp-drawer-product,
+html body:not(#lm) .clp-drawer-product-info strong {
+  font-family: var(--lm-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--lm-ink);
+}
+html body:not(#lm) .clp-drawer-price,
+html body:not(#lm) .clp-drawer-item-total,
+html body:not(#lm) .clp-drawer-subtotal {
+  font-family: var(--lm-font-ui);
+  font-weight: 600;
+  color: var(--lm-ink);
+}
+html body:not(#lm) .clp-drawer-discount {
+  background: var(--lm-teal-soft);
+  color: var(--lm-teal-deep);
+  border-radius: var(--lm-r-xs);
+  font-family: var(--lm-font-ui);
+  font-weight: 600;
+}
+html body:not(#lm) .saving {
+  color: var(--lm-ok);
+}
+html body:not(#lm) .clp-drawer-remove {
+  font-family: var(--lm-font-ui);
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) .clp-drawer-remove:hover {
+  color: var(--lm-sale);
+}
+html body:not(#lm) .clp-cart-drawer-footer {
+  border-top: 1px solid var(--lm-line);
+  background: var(--lm-paper);
+  box-shadow: 0 -18px 40px -26px rgba(24, 26, 25, 0.3);
+}
+html body:not(#lm) .clp-view-cart,
+html body:not(#lm) .clp-continue-shopping {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--lm-r-xs);
+  font-family: var(--lm-font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  transition: color var(--lm-dur-3) var(--lm-ease-soft), background-color var(--lm-dur-3) var(--lm-ease-soft), border-color var(--lm-dur-3) var(--lm-ease-soft), transform var(--lm-dur-1) var(--lm-ease-out);
+}
+html body:not(#lm) .clp-view-cart:active,
+html body:not(#lm) .clp-continue-shopping:active {
+  transform: scale(0.985);
+}
+
+/* ---------- DESCRIPTION / SPECS / ACCORDIONS ---------- */
+html body:not(#lm) .pd {
+  --pd-accent: var(--lm-teal);
+  --pd-accent-dark: var(--lm-teal-deep);
+  --pd-heading: var(--lm-ink);
+  --pd-title: var(--lm-ink);
+  --pd-text: var(--lm-muted);
+  --pd-label: var(--lm-faint);
+  --pd-value: var(--lm-ink);
+  --pd-rule: var(--lm-line);
+  --pd-bg: var(--lm-sand);
+  border-top: 0;
+  font-family: var(--lm-font-text);
+}
+html body:not(#lm) .pd-eyebrow {
+  font-family: var(--lm-font-ui);
+  letter-spacing: var(--lm-tracking-eyebrow);
+}
+html body:not(#lm) .pd-heading {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: 0.005em;
+}
+html body:not(#lm) .pd-item-title,
+html body:not(#lm) .pd-trigger {
+  font-family: var(--lm-font-ui);
+  letter-spacing: 0.02em;
+}
+html body:not(#lm) .pd-trigger {
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) .pd-trigger:hover {
+  color: var(--lm-teal);
+}
+html body:not(#lm) .pd-spec {
+  font-family: var(--lm-font-ui);
+}
+
+/* bottom reassurance strip */
+html body:not(#lm) :is(.eyedetail-bottom-features, .sundetail-bottom-features) {
+  background: var(--lm-ivory);
+  border-top: 1px solid var(--lm-line);
+}
+html body:not(#lm) :is(.eyedetail-bottom-grid, .sundetail-bottom-grid) {
+  border: 0;
+  background: transparent;
+}
+
+/* ---------- SIMILAR PRODUCTS CAROUSEL ---------- */
+html body:not(#lm) .pc-title {
+  font-family: var(--lm-font-display);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 1.3rem + 2.2vw, 3rem);
+  line-height: 1.04;
+  color: var(--lm-ink);
+}
+html body:not(#lm) .pc-viewall {
+  font-family: var(--lm-font-ui);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: var(--lm-tracking-caps);
+  text-transform: uppercase;
+  color: var(--lm-ink);
+  transition: color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) .pc-viewall:hover {
+  color: var(--lm-teal);
+}
+html body:not(#lm) .pc-arrow {
+  border: 1px solid var(--lm-line-strong);
+  border-radius: 50%;
+  background: var(--lm-paper);
+  color: var(--lm-ink);
+  transition: background-color var(--lm-dur-2) var(--lm-ease-soft), color var(--lm-dur-2) var(--lm-ease-soft), border-color var(--lm-dur-2) var(--lm-ease-soft), transform var(--lm-dur-2) var(--lm-ease-out);
+}
+html body:not(#lm) .pc-arrow:hover:not(:disabled) {
+  background: var(--lm-ink);
+  border-color: var(--lm-ink);
+  color: var(--lm-ivory);
+}
+html body:not(#lm) .pc-arrow:active:not(:disabled) {
+  transform: scale(0.93);
+}
+html body:not(#lm) .pc-dot {
+  height: 3px;
+  border-radius: 0;
+  transition: width var(--lm-dur-3) var(--lm-ease-out), background-color var(--lm-dur-2) var(--lm-ease-soft);
+}
+html body:not(#lm) .pc-dot.is-active {
+  background: var(--lm-ink);
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  html body:not(#lm) :is(:is(.eyedetail-info, .sundetail-info) h1, .clp-right > h1) {
+    font-size: clamp(2rem, 1.6rem + 2vw, 2.6rem);
+  }
+  html body:not(#lm) :is(:is(.eyedetail-sticky-bar, .sundetail-sticky-bar)) {
+    background: var(--lm-paper);
+    border-top: 1px solid var(--lm-line);
+    box-shadow: 0 -18px 40px -24px rgba(24, 26, 25, 0.35);
+  }
+  html body:not(#lm) :is(:is(.eyedetail-size-list, .sundetail-size-list) > button, :is(.eyedetail-color-option, .sundetail-color-option), .clp-pill) {
+    min-height: 44px;
+  }
+}

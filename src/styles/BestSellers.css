@@ -1,0 +1,765 @@
+
+/* ==========================================
+   GLOBAL
+========================================== */
+.bestseller-section,
+.bestseller-section * {
+  box-sizing: border-box;
+}
+.bestseller-section {
+  width: 100%;
+  padding: 48px 0 32px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.06)),
+    url("/images/bestsellerbackground.png") center / cover no-repeat;
+  font-family: "Assistant", sans-serif;
+}
+.bestseller-container {
+  position: relative;
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ==========================================
+   HEADING
+========================================== */
+.bestseller-heading {
+  margin: 0 0 28px;
+  color: #111111;
+  text-align: center;
+  font-family: "Jost", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   TABS
+========================================== */
+.bestseller-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 230px;
+  height: 44px;
+  margin: 0 auto 32px;
+  padding: 4px;
+  border-radius: 25px;
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+.bestseller-tabs button {
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  color: #111111;
+  font-family: "Assistant", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.bestseller-tabs button.active {
+  background: #1b6b6a;
+  color: #ffffff;
+}
+
+/* ==========================================
+   SLIDER
+   (side padding gives the ribbon room to overhang the card)
+========================================== */
+.bestseller-slider-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+
+
+/* .bestseller-slider {
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+  width: 100%;
+  margin: 0;
+  padding: 14px 8px 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+} */
+
+
+
+.bestseller-slider {
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+  width: 100%;
+  margin: 0;
+  padding: 14px 8px 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* horizontal slider ke end pe page scroll/back-swipe na atke */
+  overscroll-behavior-x: contain;
+  /* dono direction allowed: left-right slider, up-down page */
+  touch-action: pan-x pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+
+
+.bestseller-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================
+   CARD  (overflow visible so the ribbon can overhang)
+========================================== */
+.bestseller-card {
+  position: relative;
+  display: flex;
+  flex: 0 0 calc((100% - 54px) / 4);
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid #dce7e6;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ==========================================
+   IMAGE
+========================================== */
+.bestseller-image-wrapper {
+  position: relative;
+  flex: 0 0 auto;
+  width: calc(100% - 22px);
+  height: 160px;
+  margin: 10px 11px 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #f5f7f7;
+}
+.bestseller-image-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.bestseller-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  mix-blend-mode: multiply;
+  transition: transform 0.3s ease;
+}
+
+/* ==========================================
+   DISCOUNT RIBBON  (big number, small % + OFF, folded tail)
+========================================== */
+.bestseller-discount {
+  position: absolute;
+  top: 18px;
+  left: -6px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 11px 6px 9px;
+  border-radius: 8px 16px 16px 4px;
+  background: linear-gradient(135deg, #f3212d, #c90012);
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(160, 20, 30, 0.25);
+  font-family: "Jost", sans-serif;
+  line-height: 1;
+  pointer-events: none;
+}
+/* folded tail under the ribbon */
+.bestseller-discount::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 0;
+  border-top: 6px solid #7a0010;
+  border-right: 6px solid transparent;
+}
+.discount-number {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  font-family: "Jost", sans-serif;
+}
+.discount-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1px;
+  margin-top: 1px;
+}
+.discount-unit i {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 0.9;
+}
+.discount-unit em {
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.3px;
+}
+
+/* ==========================================
+   WISHLIST HEART
+   (outline SVG heart; same shape when active, just red filled)
+========================================== */
+.bestseller-wishlist {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 4;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d9d9d9;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.bestseller-wishlist svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  overflow: visible;
+}
+
+.bestseller-wishlist svg path {
+  fill: none;
+  stroke: #111111;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition:
+    fill 0.2s ease,
+    stroke 0.2s ease;
+}
+
+.bestseller-wishlist:hover {
+  transform: scale(1.06);
+  border-color: #1b6b6a;
+}
+
+.bestseller-wishlist.active svg path {
+  fill: #e91d25;
+  stroke: #e91d25;
+}
+
+.bestseller-wishlist:focus-visible {
+  outline: 2px solid #1b6b6a;
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   SIZE BADGE
+========================================== */
+.bestseller-size {
+  position: absolute;
+  right: 9px;
+  bottom: 9px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #1b6b6a;
+  font-family: "Assistant", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ==========================================
+   INFO
+========================================== */
+.bestseller-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 11px 13px 13px;
+}
+.bestseller-brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  margin-bottom: 4px;
+}
+.bestseller-brand {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: #77817f;
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bestseller-original {
+  flex-shrink: 0;
+  color: #16854b;
+  font-family: "Assistant", sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.bestseller-product-name {
+  display: -webkit-box;
+  min-height: 0;
+  margin: 0 0 5px;
+  overflow: hidden;
+  color: #252b2a;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.28;
+  text-decoration: none;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.bestseller-product-name:hover {
+  color: #1b6b6a;
+}
+.bestseller-type {
+  margin: 0 0 7px;
+  color: #8a9290;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.bestseller-material {
+  color: #1b6b6a;
+}
+
+/* ==========================================
+   RATING
+========================================== */
+.bestseller-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+  color: #333333;
+  font-family: "Assistant", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.bestseller-rating strong {
+  font-weight: 700;
+}
+.rating-star {
+  color: #f0a400;
+  font-size: 15px;
+}
+.review-count {
+  color: #8b9290;
+  font-size: 11px;
+}
+
+/* ==========================================
+   PRICE + COLOURS
+========================================== */
+.bestseller-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+}
+.bestseller-price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.current-price {
+  color: #d5222c;
+  font-family: "Jost", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.old-price {
+  color: #858d8b;
+  font-family: "Jost", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+.bestseller-colors {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 7px;
+}
+.product-color {
+  position: relative;
+  display: block;
+  flex: 0 0 17px;
+  width: 17px;
+  height: 17px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+}
+.product-color.selected::after {
+  position: absolute;
+  inset: -4px;
+  border: 1.5px solid #1b6b6a;
+  border-radius: 50%;
+  content: "";
+}
+
+/* ==========================================
+   SAVINGS
+========================================== */
+.bestseller-saving {
+  align-self: flex-start;
+  margin-top: 7px;
+  color: #16854b;
+  font-family: "Jost", sans-serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* ==========================================
+   VIEW PRODUCT BUTTON  (now a link to the product page)
+========================================== */
+.bestseller-view-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 40px;
+  margin-top: auto;
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 30px;
+  background: #1b6b6a;
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+}
+.bestseller-view-btn:hover {
+  background: #155756;
+}
+.bestseller-view-btn:active {
+  transform: scale(0.98);
+}
+.bestseller-view-btn:focus-visible {
+  outline: 2px solid #1b6b6a;
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   ARROWS
+========================================== */
+.bestseller-slider-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #dedede;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+.bestseller-slider-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+.bestseller-prev {
+  left: -45px;
+}
+.bestseller-next {
+  right: -45px;
+}
+
+/* ==========================================
+   DOTS
+========================================== */
+.bestseller-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+.bestseller-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 24px;
+}
+.bestseller-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 99px;
+  background: #aaaaaa;
+  cursor: pointer;
+  transition: width 0.25s ease, background-color 0.25s ease;
+}
+.bestseller-dot.active {
+  width: 23px;
+  background: #1b6b6a;
+}
+
+/* ==========================================
+   DESKTOP HOVER
+========================================== */
+@media (hover: hover) and (pointer: fine) {
+  .bestseller-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  }
+  .bestseller-card:hover .bestseller-image {
+    transform: scale(1.025);
+  }
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+@media (max-width: 1024px) {
+  .bestseller-container {
+    padding: 0 42px;
+  }
+  .bestseller-card {
+    flex-basis: calc((100% - 36px) / 3);
+  }
+  .bestseller-prev {
+    left: -34px;
+  }
+  .bestseller-next {
+    right: -34px;
+  }
+}
+
+/* ==========================================
+   SMALL TABLET
+========================================== */
+@media (max-width: 768px) {
+  .bestseller-section {
+    padding: 36px 0 30px;
+  }
+  .bestseller-container {
+    padding: 0 34px;
+  }
+  .bestseller-heading {
+    font-size: 28px;
+  }
+  .bestseller-tabs {
+    margin-bottom: 23px;
+  }
+  .bestseller-slider {
+    gap: 14px;
+  }
+  .bestseller-card {
+    flex-basis: calc((100% - 14px) / 2);
+  }
+  .bestseller-image-wrapper {
+    height: 170px;
+  }
+  .bestseller-prev {
+    left: -28px;
+  }
+  .bestseller-next {
+    right: -28px;
+  }
+  .bestseller-brand {
+    font-size: 12px;
+  }
+  .bestseller-original {
+    font-size: 10px;
+  }
+  .bestseller-product-name {
+    font-size: 15px;
+  }
+  .current-price {
+    font-size: 18px;
+  }
+  .bestseller-colors {
+    gap: 5px;
+  }
+  .product-color {
+    flex-basis: 14px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ==========================================
+   MOBILE
+   (one card per view, so no side padding / overhang here)
+========================================== */
+@media (max-width: 520px) {
+  .bestseller-section {
+    padding: 28px 0 26px;
+  }
+  .bestseller-container {
+    padding: 0 20px;
+  }
+  .bestseller-heading {
+    margin-bottom: 18px;
+    font-size: 24px;
+  }
+  .bestseller-tabs {
+    width: 205px;
+    height: 40px;
+    margin-bottom: 20px;
+  }
+  .bestseller-tabs button {
+    font-size: 14px;
+  }
+  .bestseller-slider {
+    gap: 0 !important;
+    padding: 14px 0 10px;
+    scroll-snap-type: x mandatory;
+  }
+  .bestseller-card {
+    flex: 0 0 100% !important;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 20px;
+    scroll-snap-align: start;
+  }
+  .bestseller-discount {
+    top: 16px;
+    left: 0;
+    border-radius: 0 16px 16px 4px;
+  }
+  .bestseller-discount::after {
+    display: none;
+  }
+  .bestseller-image-wrapper {
+    height: 210px;
+  }
+  .bestseller-info {
+    padding: 12px 13px 13px;
+  }
+  .bestseller-brand {
+    font-size: 13px;
+  }
+  .bestseller-original {
+    font-size: 11px;
+  }
+  .bestseller-product-name {
+    font-size: 16px;
+  }
+  .bestseller-type {
+    font-size: 12px;
+  }
+  .current-price {
+    font-size: 21px;
+  }
+  .old-price {
+    font-size: 13px;
+  }
+  .bestseller-view-btn {
+    min-height: 41px;
+    font-size: 14px;
+  }
+  .bestseller-prev {
+    left: -16px;
+  }
+  .bestseller-next {
+    right: -16px;
+  }
+}
+
+/* ==========================================
+   VERY SMALL MOBILE
+========================================== */
+@media (max-width: 360px) {
+  .bestseller-container {
+    padding: 0 17px;
+  }
+  .bestseller-image-wrapper {
+    height: 190px;
+  }
+  .bestseller-product-name {
+    font-size: 15px;
+  }
+  .current-price {
+    font-size: 19px;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .bestseller-card,
+  .bestseller-image,
+  .bestseller-dot,
+  .bestseller-slider-arrow,
+  .bestseller-view-btn,
+  .bestseller-wishlist,
+  .bestseller-wishlist svg path {
+    transition: none;
+  }
+}

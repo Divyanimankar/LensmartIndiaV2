@@ -1,0 +1,663 @@
+/* =========================================================
+   Products toolbar — result count + sort, and the Filters
+   button row shown on tablet / mobile. Same teal theme as
+   productFilter.css. Classes start with "pt-".
+========================================================= */
+
+.pt-bar {
+  --pt-accent: #1b6b6a;
+  --pt-accent-dark: #145958;
+  --pt-tint: #eaf3f2;
+  --pt-line: #dbe6e4;
+  --pt-outline: #bcd2cf;
+  --pt-text: #263232;
+  --pt-muted: #6b7978;
+
+  width: 100%;
+  padding: 0 15px; /* same side padding as .all-products-content-section */
+  background: #ffffff;
+  font-family: "Assistant", sans-serif;
+  color: var(--pt-text);
+}
+
+.pt-bar * {
+  box-sizing: border-box;
+}
+
+.pt-inner {
+  width: 100%;
+  max-width: 1440px; /* same as .all-products-layout */
+  margin: 0 auto;
+  padding: 18px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--pt-line);
+}
+
+/* ---------- count ---------- */
+
+.pt-count {
+  margin: 0;
+  color: var(--pt-muted);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.pt-count strong {
+  color: var(--pt-text);
+  font-weight: 700;
+}
+
+/* ---------- sort dropdown (SortDropdown.jsx) ---------- */
+
+.sd {
+  --sd-accent: #1b6b6a;
+  --sd-tint: #eaf3f2;
+  --sd-tint-soft: #f4f9f8;
+  --sd-outline: #bcd2cf;
+  --sd-text: #263232;
+  --sd-muted: #6b7978;
+
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Assistant", sans-serif;
+}
+
+.sd *,
+.sd *::before,
+.sd *::after {
+  box-sizing: border-box;
+}
+
+.sd-label {
+  color: var(--sd-muted);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sd-control {
+  position: relative;
+}
+
+.sd-button {
+  min-width: 200px;
+  height: 44px;
+  padding: 0 14px 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1.5px solid var(--sd-outline);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--sd-text);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.sd-button:hover,
+.sd-control.is-open .sd-button {
+  border-color: var(--sd-accent);
+  background: var(--sd-tint-soft);
+}
+
+.sd-button:focus-visible {
+  outline: 0;
+  border-color: var(--sd-accent);
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.2);
+}
+
+.sd-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sd-chevron {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--sd-tint);
+  color: var(--sd-accent);
+  transition: transform 0.2s ease;
+}
+
+.sd-chevron svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sd-control.is-open .sd-chevron {
+  transform: rotate(180deg);
+}
+
+.sd-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 50;
+  min-width: max(100%, 230px);
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid #dbe6e4;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 14px 36px rgba(20, 60, 59, 0.18);
+  transform-origin: top right;
+  animation: sd-pop 0.16s ease;
+}
+
+.sd-menu:focus {
+  outline: 0;
+}
+
+.sd-option {
+  min-height: 44px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-radius: 10px;
+  color: var(--sd-text);
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.sd-option.is-active {
+  background: var(--sd-tint-soft);
+}
+
+.sd-option.is-selected {
+  background: var(--sd-tint);
+  color: var(--sd-accent);
+  font-weight: 700;
+}
+
+.sd-tick {
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+
+.sd-tick svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes sd-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sd-menu {
+    animation: none;
+  }
+
+  .sd-chevron,
+  .sd-button {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   FLOATING FILTERS BUTTON — tablet and mobile only.
+   It sits at the very end of .all-products-main with
+   position: sticky, so it floats at the bottom of the screen
+   while the products scroll, then comes to rest at the end
+   of the products grid.
+========================================================= */
+
+.floating-filter-bar {
+  display: none;
+}
+
+.floating-filter-button {
+  min-height: 52px;
+  padding: 0 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 999px;
+  background: #1b6b6a;
+  color: #ffffff;
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow:
+    0 10px 26px rgba(20, 60, 59, 0.35),
+    0 2px 6px rgba(20, 60, 59, 0.2);
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.floating-filter-button:hover {
+  background: #145958;
+}
+
+.floating-filter-button:active {
+  transform: scale(0.97);
+}
+
+.floating-filter-button:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: -6px;
+}
+
+.floating-filter-button svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.floating-filter-badge {
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1b6b6a;
+  font-family: "Assistant", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   TABLET (the sidebar is replaced by the slide-in drawer)
+========================================================= */
+
+@media (max-width: 1100px) {
+  .pt-bar {
+    padding: 0 20px;
+  }
+
+  .pt-inner {
+    padding: 14px 0;
+  }
+
+  .floating-filter-bar {
+    position: sticky;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    z-index: 40;
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    pointer-events: none; /* only the button itself is clickable */
+  }
+}
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+@media (max-width: 768px) {
+  .pt-bar {
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 599px) {
+  .pt-inner {
+    padding: 12px 0;
+    gap: 10px;
+  }
+
+  .pt-count {
+    font-size: 14px;
+  }
+
+  /* "Showing 1–12 of" is dropped, leaving "68 products" */
+  .pt-range {
+    display: none;
+  }
+
+  /* label folds into the button's accessible name only */
+  .sd-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .sd-button {
+    min-width: 0;
+    width: 178px;
+    height: 42px;
+    padding: 0 10px 0 14px;
+    font-size: 14px;
+  }
+
+  .sd-menu {
+    min-width: 220px;
+  }
+
+  .sd-option {
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 420px) {
+  .pt-bar {
+    padding: 0 8px;
+  }
+}
+
+/* =========================================================
+   FLUSH VARIANT — used inside an existing page container
+   (sunglasses / eyeglasses), which already has its own
+   side padding, so the bar adds none.
+========================================================= */
+
+.pt-bar.pt-bar--flush {
+  padding: 0;
+}
+
+
+/* Eyeglasses mobile toolbar
+.eyeglasses-mobile-toolbar {
+  display: none;
+} */
+
+/* Eyeglasses toolbar */
+.eyeglasses-mobile-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;   /* desktop: sort right side */
+  gap: 10px;
+}
+
+.eyeglasses-mobile-sort {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* desktop pe sidebar hai, to Filters button nahi chahiye */
+.eyeglasses-inline-filter {
+  display: none;
+}
+
+.eyeglasses-inline-filter {
+  display: none;
+}
+
+
+
+/* tablet + mobile: Filters button dikhao (sidebar hidden hota hai) */
+@media (max-width: 1100px) {
+  .eyeglasses-mobile-toolbar {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .eyeglasses-inline-filter {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 42px;
+    padding: 0 14px;
+    border: 1px solid #1b6b6a;
+    border-radius: 24px;
+    background: #1b6b6a;
+    color: #ffffff;
+    font-family: "Jost", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .eyeglasses-inline-filter svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .eyeglasses-inline-filter-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #1b6b6a;
+    font-size: 11px;
+    font-weight: 700;
+  }
+}
+
+
+/* Mobile layout */
+@media (max-width: 767px) {
+  .eyeglasses-page .pt-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px 10px;
+  }
+
+  .eyeglasses-page .pt-count {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .eyeglasses-mobile-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .eyeglasses-inline-filter {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 42px;
+    padding: 0 14px;
+    border: 1px solid #1b6b6a;
+    border-radius: 24px;
+    background: #1b6b6a;
+    color: #ffffff;
+    font-family: "Jost", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .eyeglasses-inline-filter svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .eyeglasses-inline-filter-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #1b6b6a;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .eyeglasses-mobile-sort {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .eyeglasses-mobile-sort > * {
+    max-width: 100%;
+  }
+
+  /* Remove the old bottom-floating filter button */
+  .eyeglasses-page .floating-filter-bar {
+    display: none !important;
+  }
+}
+
+
+/* Mobile collection toolbar */
+/* .mobile-toolbar-controls {
+  display: none;
+} */
+
+.mobile-toolbar-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;   /* desktop pe sort right side */
+  gap: 12px;
+}
+
+/* Filters button desktop pe nahi chahiye (sidebar hai) */
+.collection-mobile-filter {
+  display: none;
+}
+
+
+@media (max-width: 767px) {
+  .pt-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px 10px;
+  }
+
+  .pt-count {
+    width: 100%;
+    margin: 0;
+  }
+
+  .mobile-toolbar-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .collection-mobile-filter {
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  .collection-mobile-filter .floating-filter-button {
+    position: static;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .mobile-toolbar-controls > *:last-child {
+    min-width: 0;
+  }
+
+  .sunglasses-page .floating-filter-bar,
+  .all-products-page .floating-filter-bar {
+    display: none;
+  }
+}
+
+/* Keep mobile Filters button size consistent across collection pages */
+@media (max-width: 767px) {
+  .sunglasses-page .collection-mobile-filter .floating-filter-button,
+  .all-products-page .collection-mobile-filter .floating-filter-button {
+    /* width: 92px;
+    min-width: 92px; */
+    height: 42px;
+    min-height: 42px;
+    padding: 0 12px;
+    margin: 0;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 24px;
+  }
+
+  .sunglasses-page .collection-mobile-filter .floating-filter-button svg,
+  .all-products-page .collection-mobile-filter .floating-filter-button svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+}

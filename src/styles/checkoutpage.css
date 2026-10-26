@@ -1,0 +1,1030 @@
+
+/* =========================================================
+   TOKENS
+========================================================= */
+
+.lmi-checkout-page {
+  --teal: #1b6b6a;
+  --teal-dark: #155756;
+  --teal-soft: #edf6f5;
+  --teal-bg: #f1f6f5;
+  --ink: #161616;
+  --text: #3a3a3a;
+  --muted: #777777;
+  --line: #e3e7e6;
+  --red: #e11d2e;
+
+  width: 100%;
+  min-height: 65vh;
+  background: #ffffff;
+  color: var(--text);
+  font-family: "Assistant", sans-serif;
+}
+
+.lmi-checkout-page *,
+.lmi-checkout-page *::before,
+.lmi-checkout-page *::after {
+  box-sizing: border-box;
+}
+
+.lmi-checkout-page button,
+.lmi-checkout-page input,
+.lmi-checkout-page select {
+  font-family: inherit;
+}
+
+.lmi-checkout-page :focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.lmi-co-loading {
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.lmi-co-section {
+  width: 100%;
+  padding: 26px 0 80px;
+}
+
+.lmi-co-container {
+  width: min(calc(100% - 64px), 1400px);
+  margin: 0 auto;
+}
+
+.lmi-co-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 30px;
+  align-items: start;
+}
+
+.lmi-co-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.lmi-co-side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 20px;
+}
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+.lmi-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.lmi-breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.lmi-breadcrumb a:hover {
+  color: var(--teal);
+}
+
+/* =========================================================
+   TITLE + STEPS
+========================================================= */
+
+.lmi-co-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.lmi-co-title h1 {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 37px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.lmi-co-title p {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.lmi-steps {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lmi-steps li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.lmi-steps li span {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 12px;
+  background: #fff;
+}
+
+.lmi-steps li span svg {
+  width: 18px;
+  height: 18px;
+}
+
+.lmi-steps li.active,
+.lmi-steps li.done {
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.lmi-steps li.active span,
+.lmi-steps li.done span {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+
+.lmi-steps li.line {
+  width: 50px;
+  height: 1px;
+  background: var(--line);
+}
+
+.lmi-steps li.line.done {
+  background: var(--teal);
+}
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.lmi-co-card {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.lmi-co-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.lmi-co-card-head h2 {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.lmi-co-required {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.lmi-co-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+}
+
+.lmi-co-divider {
+  height: 1px;
+  margin: 30px 0;
+  background: var(--line);
+}
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
+.lmi-field {
+  min-width: 0;
+  margin-bottom: 22px;
+}
+
+.lmi-field label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.lmi-field input,
+.lmi-field select {
+  width: 100%;
+  min-width: 0;
+  height: 54px;
+  padding: 0 18px;
+  border: 1px solid #c9cecd;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lmi-field input::placeholder {
+  color: #9aa1a0;
+}
+
+.lmi-field input:focus,
+.lmi-field select:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.12);
+}
+
+.lmi-field input.readonly {
+  background: #fafbfb;
+  border-color: var(--line);
+  color: var(--ink);
+  cursor: default;
+}
+
+.lmi-field input.readonly:focus {
+  box-shadow: none;
+  border-color: var(--line);
+}
+
+.lmi-field.has-error input,
+.lmi-field.has-error select,
+.lmi-field.has-error .lmi-input-prefix {
+  border-color: var(--red);
+}
+
+.lmi-field.has-error input:focus,
+.lmi-field.has-error select:focus {
+  box-shadow: 0 0 0 3px rgba(225, 29, 46, 0.1);
+}
+
+.lmi-field-error {
+  margin: 8px 0 0;
+  color: var(--red);
+  font-size: 12.5px;
+}
+
+.lmi-field-hint {
+  margin: -6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- mobile with +91 ---------- */
+
+.lmi-input-prefix {
+  display: flex;
+  align-items: center;
+  height: 54px;
+  border: 1px solid #c9cecd;
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lmi-input-prefix:focus-within {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(27, 107, 106, 0.12);
+}
+
+.lmi-input-prefix span {
+  padding: 0 4px 0 18px;
+  color: #9aa1a0;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.lmi-field .lmi-input-prefix input {
+  height: 100%;
+  padding-left: 12px;
+  border: 0;
+  border-radius: 0 12px 12px 0;
+  background: transparent;
+}
+
+.lmi-field .lmi-input-prefix input:focus {
+  box-shadow: none;
+}
+
+/* ---------- select ---------- */
+
+.lmi-select {
+  position: relative;
+}
+
+.lmi-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 46px;
+  color: #9aa1a0;
+  cursor: pointer;
+}
+
+.lmi-select select.filled {
+  color: var(--ink);
+}
+
+.lmi-select select option {
+  color: var(--ink);
+}
+
+.lmi-select svg {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+/* ---------- checkbox ---------- */
+
+.lmi-check {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  color: var(--ink);
+  font-size: 15px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lmi-check input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.lmi-check-box {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #b9c2c1;
+  border-radius: 6px;
+  background: #fff;
+  color: transparent;
+  transition: all 0.2s ease;
+}
+
+.lmi-check-box svg {
+  width: 16px;
+  height: 16px;
+}
+
+.lmi-check input:checked + .lmi-check-box {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+
+.lmi-check input:focus-visible + .lmi-check-box {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   DELIVERY METHOD BOX
+========================================================= */
+
+.lmi-delivery-box {
+  padding: 24px 26px;
+  border-radius: 14px;
+  background: var(--teal-bg);
+}
+
+.lmi-delivery-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--teal);
+}
+
+.lmi-delivery-top > svg {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+}
+
+.lmi-delivery-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.lmi-delivery-text strong {
+  display: block;
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.lmi-delivery-text p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.lmi-delivery-price {
+  color: var(--teal);
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.lmi-delivery-note {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+/* =========================================================
+   ORDER SUMMARY
+========================================================= */
+
+.lmi-summary {
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.lmi-summary h2 {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.lmi-sum-items {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.lmi-sum-item-top {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.lmi-sum-thumb {
+  width: 110px;
+  height: 110px;
+  flex: 0 0 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f7f8f8;
+  overflow: hidden;
+}
+
+.lmi-sum-thumb img {
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  display: block;
+}
+
+.lmi-sum-info {
+  min-width: 0;
+}
+
+.lmi-sum-info h3 {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.lmi-sum-meta {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.lmi-sum-price {
+  margin: 6px 0 0;
+  color: var(--red);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.lmi-sum-boxes {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ---------- mini prescription table ---------- */
+
+.lmi-mini-rx {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #f6f8f8;
+}
+
+.lmi-mini-row {
+  display: grid;
+  align-items: center;
+  column-gap: 8px;
+  padding: 7px 0;
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.lmi-mini-head {
+  padding-top: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.lmi-mini-eye {
+  font-weight: 500;
+}
+
+.lmi-mini-row .strong {
+  font-weight: 500;
+}
+
+.lmi-mini-row:last-child {
+  padding-bottom: 0;
+}
+
+/* ---------- lines + rows ---------- */
+
+.lmi-summary-line {
+  height: 1px;
+  margin: 24px 0;
+  background: var(--line);
+}
+
+.lmi-sum-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.lmi-sum-row:last-of-type {
+  margin-bottom: 0;
+}
+
+.lmi-sum-row strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.lmi-sum-row.green,
+.lmi-sum-row.green strong {
+  color: var(--teal);
+}
+
+.lmi-sum-row.bold,
+.lmi-sum-row.bold strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.lmi-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.lmi-total-row span {
+  font-family: "Jost", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.lmi-total-row strong {
+  font-family: "Jost", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--red);
+}
+
+.lmi-save-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: var(--teal-bg);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.lmi-save-box b {
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.lmi-save-box svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  color: var(--teal);
+}
+
+.lmi-tax-text {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ---------- continue to payment ---------- */
+
+.lmi-pay-button {
+  width: 100%;
+  height: 50px;
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--teal);
+  color: #fff;
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.lmi-pay-button svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.lmi-pay-button:hover {
+  background: var(--teal-dark);
+}
+
+.lmi-pay-button:hover svg {
+  transform: translateX(3px);
+}
+
+.lmi-secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.lmi-secure svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- back to cart ---------- */
+
+.lmi-back {
+
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--teal);
+  font-family: "Jost", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.lmi-back svg {
+  width: 20px;
+  height: 20px;
+}
+
+.lmi-back:hover {
+  background: var(--teal);
+  color: #fff;
+}
+
+/* =========================================================
+   LARGE LAPTOP
+========================================================= */
+
+@media (max-width: 1280px) {
+  .lmi-co-layout {
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 24px;
+  }
+
+  .lmi-co-card {
+    padding: 26px;
+  }
+
+  .lmi-summary {
+    padding: 26px;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  .lmi-co-container {
+    width: calc(100% - 40px);
+  }
+
+  .lmi-co-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lmi-co-side {
+    position: static;
+  }
+
+  .lmi-co-title h1 {
+    font-size: 31px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .lmi-co-section {
+    padding: 18px 0 60px;
+  }
+
+  .lmi-co-container {
+    width: calc(100% - 28px);
+  }
+
+  .lmi-breadcrumb {
+    margin-bottom: 18px;
+  }
+
+  .lmi-co-top {
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+
+  .lmi-co-title h1 {
+    font-size: 27px;
+  }
+
+  .lmi-co-title p {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+
+  .lmi-steps {
+    width: 100%;
+    margin-top: 18px;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .lmi-steps li {
+    font-size: 12px;
+    gap: 7px;
+  }
+
+  .lmi-steps li span {
+    width: 30px;
+    height: 30px;
+  }
+
+  .lmi-steps li.line {
+    flex: 1;
+    width: auto;
+    min-width: 12px;
+  }
+
+  .lmi-co-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .lmi-co-card-head {
+    margin-bottom: 18px;
+  }
+
+  .lmi-co-card-head h2 {
+    font-size: 22px;
+  }
+
+  .lmi-co-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lmi-field {
+    margin-bottom: 18px;
+  }
+
+  .lmi-field label {
+    font-size: 14px;
+  }
+
+  .lmi-field input,
+  .lmi-field select,
+  .lmi-input-prefix {
+    height: 52px;
+    font-size: 14px;
+  }
+
+  .lmi-field-hint {
+    font-size: 12.5px;
+  }
+
+  .lmi-co-divider {
+    margin: 24px 0;
+  }
+
+  .lmi-check {
+    font-size: 14px;
+  }
+
+  .lmi-delivery-box {
+    padding: 18px 16px;
+  }
+
+  .lmi-delivery-top {
+    gap: 12px;
+  }
+
+  .lmi-delivery-text strong {
+    font-size: 16px;
+  }
+
+  .lmi-delivery-text p,
+  .lmi-delivery-note {
+    font-size: 12.5px;
+  }
+
+  .lmi-summary {
+    padding: 22px 18px;
+    border-radius: 16px;
+  }
+
+  .lmi-summary h2 {
+    font-size: 22px;
+  }
+
+  .lmi-sum-thumb {
+    width: 88px;
+    height: 88px;
+    flex-basis: 88px;
+  }
+
+  .lmi-sum-info h3 {
+    font-size: 18px;
+  }
+
+  .lmi-sum-meta {
+    font-size: 12.5px;
+  }
+
+  .lmi-mini-rx {
+    padding: 12px;
+    overflow-x: auto;
+  }
+
+  .lmi-mini-row {
+    min-width: 300px;
+    font-size: 12.5px;
+  }
+
+  .lmi-sum-row {
+    font-size: 13px;
+  }
+
+  .lmi-total-row strong {
+    font-size: 28px;
+  }
+
+  .lmi-pay-button {
+    height: 56px;
+    font-size: 15px;
+  }
+
+  .lmi-back {
+    height: 54px;
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+  .lmi-co-container {
+    width: calc(100% - 20px);
+  }
+
+  .lmi-co-title h1 {
+    font-size: 23px;
+  }
+
+  .lmi-sum-thumb {
+    width: 72px;
+    height: 76px;
+    flex-basis: 72px;
+  }
+
+  .lmi-sum-info h3 {
+    font-size: 16px;
+  }
+
+  .lmi-delivery-price {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .lmi-checkout-page * {
+    transition: none !important;
+  }
+}

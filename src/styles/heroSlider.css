@@ -1,0 +1,245 @@
+
+/* ==========================================
+   HERO SLIDER
+========================================== */
+
+.hero-slider {
+  width: 100%;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* ==========================================
+   SLIDER STAGE
+========================================== */
+
+.hero-slider-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.62 / 1;
+  overflow: hidden;
+  background: #f1ece4;
+  touch-action: pan-y;
+}
+
+/* ==========================================
+   SLIDES
+========================================== */
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s ease, visibility 0s linear 0.7s;
+}
+
+.hero-slide.is-active {
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s ease, visibility 0s;
+}
+
+.hero-slide picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.hero-slide:focus-visible {
+  outline: 3px solid #1b6b6a;
+  outline-offset: -6px;
+}
+
+/* ==========================================
+   NAVIGATION ARROWS
+========================================== */
+
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+  padding: 0;
+
+  border: 1px solid rgba(27, 107, 106, 0.14);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.94);
+  color: #111111;
+
+  cursor: pointer;
+  opacity: 1;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+
+  transform: translateY(-50%);
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hero-arrow svg {
+  display: block;
+  flex-shrink: 0;
+  width: 21px;
+  height: 21px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-prev {
+  left: 16px;
+}
+
+.hero-next {
+  right: 16px;
+}
+
+.hero-arrow:hover {
+  background: #1b6b6a;
+  color: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.16);
+}
+
+.hero-arrow:active {
+  transform: translateY(-50%) scale(0.96);
+}
+
+.hero-arrow:focus-visible,
+.hero-dot:focus-visible {
+  outline: 3px solid #1b6b6a;
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   SLIDE DOTS
+========================================== */
+
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  z-index: 11;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 7px 12px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+
+  transform: translateX(-50%);
+}
+
+.hero-dot {
+  appearance: none;
+  width: 9px;
+  height: 9px;
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: rgba(27, 107, 106, 0.35);
+  cursor: pointer;
+
+  transition: background-color 0.25s ease, width 0.25s ease;
+}
+
+.hero-dot:hover {
+  background: rgba(27, 107, 106, 0.65);
+}
+
+.hero-dot.active {
+  width: 26px;
+  background: #1b6b6a;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 768px) {
+  .hero-slider-stage {
+    aspect-ratio: 0.56 / 1;
+  }
+
+  .hero-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hero-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-prev {
+    left: 8px;
+  }
+
+  .hero-next {
+    right: 8px;
+  }
+
+  .hero-dots {
+    bottom: 10px;
+    gap: 7px;
+    padding: 6px 10px;
+  }
+
+  .hero-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .hero-dot.active {
+    width: 22px;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-slide.is-active,
+  .hero-arrow,
+  .hero-dot {
+    transition: none;
+  }
+}

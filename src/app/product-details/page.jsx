@@ -1,0 +1,8 @@
+import SiteLayout from '@/components/SiteLayout';
+import Newsletter from '@/components/Newsletter';
+import Breadcrumb from '@/components/Breadcrumb';
+import ProductGrid from '@/components/ProductGrid';
+import { products } from '@/data/products';
+
+export const metadata={title:'Product Details'};
+export default function Page(){return <SiteLayout><><Breadcrumb current="Product Details"/><section className="container productDetail"><div className="productGallery"><div className="bigProductBox">Aspire Air</div></div><div className="productInfo"><span className="pill">Best Seller</span><h1>Aspire Air Monthly 3 Pack</h1><div className="rating">★★★★★ <span>(24 reviews)</span></div><div className="price"><b>₹649</b><del>₹699</del></div><p className="muted">Comfortable monthly contact lenses designed for clear everyday vision.</p><div className="optionGroup"><label>Power</label><select><option>Select power</option><option>-1.00</option><option>-1.50</option><option>-2.00</option></select></div><div className="optionGroup"><label>Quantity</label><input type="number" defaultValue="1" min="1"/></div><div className="buyRow"><a className="btn" href="/cart">Add to Cart</a><a className="btn" href="/checkout">Buy Now</a></div></div></section><section className="container descriptionBox"><h2>Product Details</h2><p>Soft monthly contact lenses with breathable material and a smooth fit. Replace according to the schedule recommended by your eye care professional.</p></section><section className="container"><h2 className="sectionTitle">YOU MAY ALSO LIKE</h2><ProductGrid products={products.slice(0,4)}/></section><Newsletter/></></SiteLayout>}

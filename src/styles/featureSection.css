@@ -1,0 +1,261 @@
+.feature-section {
+  width: 100%;
+  padding: 25px 5%;
+  /* background: #f5f0e5; */
+  background: rgb(245, 245, 245);
+  overflow: hidden;
+}
+
+.feature-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px;
+  align-items: stretch;
+}
+
+.feature-card {
+  min-width: 0;
+  text-align: center;
+  padding: 5px 12px 10px;
+  border-radius: 12px;
+  transition:
+    background-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.feature-card:hover {
+  background-color: rgba(27, 107, 106, 0.045);
+  transform: translateY(-4px);
+}
+
+/* Animated icon */
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 8px;
+  color: rgb(27, 107, 106);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  transition:
+    color 0.3s ease,
+    transform 0.35s ease;
+}
+
+.feature-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+
+/* Individual icon animations */
+.shipping-icon svg {
+  animation: shippingPulse 3s ease-in-out infinite;
+}
+
+.customize-icon svg {
+  animation: clockRotate 8s linear infinite;
+}
+
+.payment-icon svg {
+  animation: paymentFloat 3s ease-in-out infinite;
+}
+
+.support-icon svg {
+  animation: supportFloat 2.8s ease-in-out infinite;
+}
+
+/* Hover interactions */
+.feature-card:hover .feature-icon {
+  color: #155957;
+  transform: scale(1.12);
+}
+
+.feature-card:hover .shipping-icon svg {
+  animation: lightningStrike 0.6s ease-in-out;
+}
+
+.feature-card:hover .customize-icon svg {
+  animation: clockRotate 2s linear infinite;
+}
+
+.feature-card:hover .payment-icon svg {
+  animation: paymentFloat 0.7s ease-in-out infinite;
+}
+
+.feature-card:hover .support-icon svg {
+  animation: supportBounce 0.65s ease-in-out;
+}
+
+/* Typography */
+.feature-card h3 {
+  margin: 0 0 6px;
+  color: rgb(27, 107, 106);
+  font-family: "Jost", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  transition: color 0.3s ease;
+}
+
+.feature-card p {
+  max-width: 290px;
+  margin: 0 auto;
+  color: #625c53;
+  font-family: "Assistant", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.feature-card:hover h3 {
+  color: #104b49;
+}
+
+/* Keyframes */
+@keyframes shippingPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes lightningStrike {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.2) rotate(-8deg);
+  }
+  65% {
+    transform: scale(0.95) rotate(5deg);
+  }
+}
+
+@keyframes clockRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes paymentFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes supportFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes supportBounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-5px) scale(1.08);
+  }
+  70% {
+    transform: translateY(1px) scale(0.98);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .feature-section {
+    padding: 30px 4%;
+  }
+
+  .feature-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px 20px;
+  }
+
+  .feature-card p {
+    max-width: 320px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .feature-section {
+    padding: 25px 15px;
+  }
+
+  .feature-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 10px;
+  }
+
+  .feature-card {
+    padding: 8px 5px;
+  }
+
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+
+  .feature-card h3 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .feature-card p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 360px) {
+  .feature-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .feature-card p {
+    max-width: 280px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .feature-card,
+  .feature-icon,
+  .feature-icon svg,
+  .feature-card h3 {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .feature-card:hover {
+    transform: none;
+  }
+}

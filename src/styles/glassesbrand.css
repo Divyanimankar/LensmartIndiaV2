@@ -1,0 +1,82 @@
+
+
+.brand-slider {
+  width: 100%;
+  padding: 20px 0px 20px;
+  background: #fff;
+
+}
+
+.brand-slider__title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  font-family: "jost", "sans-serif";
+  line-height: 1.2;
+  letter-spacing: 1px;
+ 
+}
+
+/* Upar-neeche padding taaki hover zoom aur shadow kat-ke na dikhe */
+.brand-slider__viewport {
+  overflow: hidden;
+  padding: 24px 0;
+}
+
+.brand-slider__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: brand-scroll linear infinite;
+}
+
+/* Har brand ka card - sabka same width & height */
+.brand-slider__item {
+  flex: 0 0 210px;
+  width: 210px;
+  height: 115px;
+  margin-right: 24px;         /* cards ke beech ka gap */
+  padding: 22px 26px;         /* logo ke charo taraf khali jagah */
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #e6ebee;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Cursor le jaane par halka zoom + soft shadow */
+.brand-slider__item:hover {
+  transform: scale(1.08);
+  border-color: #cfe0e3;
+  box-shadow: 0 10px 24px rgba(31, 90, 99, 0.15);
+  position: relative;
+  z-index: 2;
+}
+
+/* Logo card ke andar center me, poora clear */
+.brand-slider__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+@keyframes brand-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (max-width: 768px) {
+  .brand-slider__item {
+    flex: 0 0 150px;
+    width: 150px;
+    height: 85px;
+    margin-right: 16px;
+    padding: 16px 18px;
+  }
+  .brand-slider__title { font-size: 22px; }
+}

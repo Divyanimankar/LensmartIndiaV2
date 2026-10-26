@@ -1,0 +1,1647 @@
+.shipping-page {
+  --ship-teal: #1b6b6a;
+  --ship-dark: #173e3d;
+  --ship-ink: #192b2c;
+  --ship-muted: #6c7977;
+  --ship-line: #e3ece8;
+  --ship-soft: #f5f9f7;
+
+  /* spacing tokens */
+  --gutter: clamp(18px, 5vw, 32px); /* left/right page margin */
+  --section-y: clamp(44px, 6vw, 68px); /* top/bottom of each section */
+  --head-gap: clamp(22px, 3.5vw, 32px); /* section heading -> content */
+  --eyebrow-gap: 12px; /* eyebrow -> heading */
+  --title-gap: 10px; /* heading -> paragraph */
+  --action-gap: 20px; /* paragraph -> button/link */
+
+  overflow-x: hidden;
+  overflow-x: clip;
+  background: #fff;
+  color: var(--ship-ink);
+  font-family: "Assistant", sans-serif;
+}
+
+.shipping-page *,
+.shipping-page *::before,
+.shipping-page *::after {
+  box-sizing: border-box;
+}
+
+.shipping-page a {
+  text-decoration: none;
+}
+
+.shipping-page button {
+  font: inherit;
+}
+
+/* zero-specificity reset so the spacing rules below always win */
+.shipping-page :where(h1, h2, h3, p, ol) {
+  margin: 0;
+}
+
+.shipping-page :where(ol, ul) {
+  padding: 0;
+  list-style: none;
+}
+
+.shipping-page :where(h1, h2, h3) {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.shipping-page :where(p) {
+  color: var(--ship-muted);
+  line-height: 1.65;
+}
+
+.shipping-container {
+  width: min(1120px, calc(100% - 2 * var(--gutter)));
+  margin-inline: auto;
+}
+
+/* Shared heading rhythm: eyebrow -> title -> paragraph */
+.shipping-eyebrow {
+  display: block;
+  margin-bottom: var(--eyebrow-gap);
+  color: var(--ship-teal);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+}
+
+.shipping-heading h2,
+.shipping-timeline-heading h2,
+.shipping-faq-intro h2 {
+  margin-bottom: var(--title-gap);
+  font-size: clamp(29px, 4vw, 42px);
+  line-height: 1.15;
+}
+
+.shipping-heading h2 span,
+.shipping-timeline-heading h2 span,
+.shipping-faq-intro h2 span,
+.shipping-hero-copy h1 span {
+  color: var(--ship-teal);
+}
+
+.shipping-heading {
+  max-width: 650px;
+  margin-bottom: var(--head-gap);
+}
+
+.shipping-heading > p,
+.shipping-timeline-heading > p,
+.shipping-faq-intro > p {
+  max-width: 500px;
+  font-size: 14px;
+}
+
+.shipping-faq-intro > p {
+  margin-bottom: var(--action-gap);
+}
+
+/* =========================================================
+   Hero
+   ========================================================= */
+
+.shipping-hero {
+  position: relative;
+  background:
+    radial-gradient(
+      ellipse at 80% 42%,
+      rgba(211, 234, 227, 0.65),
+      transparent 38%
+    ),
+    linear-gradient(115deg, #fff 35%, #f3f9f6);
+}
+
+.shipping-hero-inner {
+  display: grid;
+  width: min(1120px, calc(100% - 2 * var(--gutter)));
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(20px, 3vw, 32px);
+  margin-inline: auto;
+  padding-block: clamp(28px, 4vw, 44px);
+}
+
+.shipping-hero-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.shipping-hero-copy h1 br {
+  display: none;
+}
+
+.shipping-hero-copy h1 span {
+  display: block;
+}
+
+.shipping-hero-copy h1 {
+  margin-bottom: 12px;
+  font-size: clamp(36px, 5.5vw, 68px);
+  line-height: 1.05;
+}
+
+.shipping-hero-copy > p {
+  max-width: 430px;
+  margin-bottom: var(--action-gap);
+  font-size: 16px;
+}
+
+.shipping-primary-btn,
+.shipping-support-btn {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 0 22px;
+  border: 1px solid var(--ship-teal);
+  border-radius: 4px;
+  background: var(--ship-teal);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.shipping-primary-btn span,
+.shipping-support-btn span {
+  font-size: 17px;
+  transition: transform 0.25s ease;
+}
+
+.shipping-hero-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin-top: 18px;
+}
+
+.shipping-hero-points > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #52635f;
+  font-size: 13px;
+}
+
+.shipping-mini-icon {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 1px solid #a6cfc0;
+  border-radius: 50%;
+  color: var(--ship-teal);
+}
+
+/* ---------- Hero visual: order tracker ---------- */
+
+.shipping-hero-art {
+  position: relative;
+  display: grid;
+  min-width: 0;
+  place-items: center;
+  padding-block: 38px; /* free space for the two floating chips */
+  isolation: isolate;
+}
+
+.shipping-art-circle {
+  position: absolute;
+  z-index: -2;
+  width: min(300px, 80%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #e0f0e9;
+}
+
+.shipping-art-ring {
+  position: absolute;
+  z-index: -1;
+  width: 95%;
+  height: 76%;
+  border: 1px solid rgba(27, 107, 106, 0.18);
+  border-radius: 50%;
+  transform: rotate(-24deg);
+}
+
+.shipping-track-card {
+  width: min(380px, 94%);
+  padding: 20px 22px 18px;
+  border: 1px solid #dcebe4;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 22px 55px rgba(23, 62, 61, 0.12);
+  animation: shipping-float 5s ease-in-out infinite;
+}
+
+.shipping-track-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.shipping-track-label {
+  color: #6c8984;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.shipping-track-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #e6f4ec;
+  color: var(--ship-teal);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.shipping-track-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3f9c80;
+}
+
+.shipping-track-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-block: 22px 18px;
+}
+
+.shipping-track-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+/* line that joins this step to the previous one */
+.shipping-track-step:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 50%;
+  width: 100%;
+  height: 2px;
+  background: #dbe7e1;
+  transform-origin: left;
+}
+
+.shipping-track-step.is-done::before,
+.shipping-track-step.is-current::before {
+  background: var(--ship-teal);
+  animation: shipping-line 0.5s ease both;
+  animation-delay: calc(var(--i) * 0.3s);
+}
+
+.shipping-track-dot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 2px solid #cfe0d8;
+  border-radius: 50%;
+  background: #fff;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.shipping-track-step.is-done .shipping-track-dot {
+  border-color: var(--ship-teal);
+  background: var(--ship-teal);
+}
+
+.shipping-track-step.is-current .shipping-track-dot {
+  border-color: var(--ship-teal);
+  box-shadow: 0 0 0 4px #dcefe8;
+}
+
+.shipping-track-name {
+  color: var(--ship-ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.shipping-track-step.is-pending .shipping-track-name {
+  color: var(--ship-muted);
+  font-weight: 500;
+}
+
+.shipping-track-foot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ship-line);
+}
+
+.shipping-track-foot svg {
+  flex-shrink: 0;
+  width: 46px;
+  height: auto;
+}
+
+.shipping-track-foot p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* floating chips sit in the free space above and below the card */
+
+.shipping-chip {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid #dcebe4;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(23, 62, 61, 0.08);
+}
+
+.shipping-chip-top {
+  top: 0;
+  right: 0;
+  padding: 8px 11px;
+  color: var(--ship-teal);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.shipping-pin-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #56a58e;
+  box-shadow: 0 0 0 4px #e5f3ec;
+}
+
+.shipping-chip-bottom {
+  bottom: 0;
+  left: 0;
+  padding: 8px 12px 8px 9px;
+}
+
+.shipping-chip-icon {
+  display: grid;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e6f4ec;
+  color: var(--ship-teal);
+  font-size: 14px;
+}
+
+.shipping-chip-bottom strong,
+.shipping-chip-bottom small {
+  display: block;
+}
+
+.shipping-chip-bottom strong {
+  color: var(--ship-dark);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.shipping-chip-bottom small {
+  color: var(--ship-muted);
+  font-size: 11px;
+}
+
+.shipping-hero-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 17px;
+  padding: 12px var(--gutter);
+  border-top: 1px solid rgba(27, 107, 106, 0.1);
+  color: #718780;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-align: center;
+}
+
+.shipping-strip-line {
+  width: 28px;
+  height: 1px;
+  background: #a9cabe;
+}
+
+@keyframes shipping-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes shipping-line {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* =========================================================
+   Delivery steps
+   ========================================================= */
+
+.shipping-process {
+  padding-block: var(--section-y);
+  scroll-margin-top: 72px;
+}
+
+.shipping-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(20px, 2.5vw, 28px);
+}
+
+.shipping-step {
+  min-width: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--ship-line);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.shipping-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.shipping-step-icon {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  border-radius: 50%;
+  background: #edf6f2;
+  color: var(--ship-teal);
+  font-size: 23px;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.shipping-step-number {
+  color: #8fa29b;
+  font-family: "Jost", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.shipping-step h3,
+.shipping-benefit-card h3 {
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.shipping-step p,
+.shipping-benefit-card p {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* =========================================================
+   Benefits
+   ========================================================= */
+
+.shipping-benefits {
+  padding-block: var(--section-y);
+  background: var(--ship-soft);
+}
+
+.shipping-benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.shipping-benefit-card {
+  padding: 20px 18px;
+  border: 1px solid #e6eeea;
+  border-radius: 5px;
+  background: #fff;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.shipping-benefit-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 14px;
+  place-items: center;
+  border-radius: 50%;
+  background: #eaf5f0;
+  color: var(--ship-teal);
+  font-size: 23px;
+}
+
+.shipping-benefit-card h3 {
+  font-size: 17px;
+}
+
+/* =========================================================
+   Delivery estimate
+   ========================================================= */
+
+.shipping-timeline {
+  padding-block: var(--section-y);
+}
+
+.shipping-timeline-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 22px clamp(28px, 5vw, 56px);
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid #e0ece6;
+  border-radius: 6px;
+  background:
+    radial-gradient(
+      circle at 95% 5%,
+      rgba(208, 233, 222, 0.42),
+      transparent 35%
+    ),
+    #f8fbf9;
+}
+
+.shipping-timeline-heading {
+  max-width: 400px;
+}
+
+.shipping-timeline-heading h2 {
+  font-size: clamp(28px, 3.5vw, 38px);
+}
+
+.shipping-timeline-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 16px;
+  border: 1px solid #e0ebe5;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.shipping-timeline-note > span {
+  display: grid;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 1px solid #a9cec0;
+  border-radius: 50%;
+  color: var(--ship-teal);
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+
+.shipping-timeline-note p {
+  font-size: 14px;
+}
+
+.shipping-timeline-bottom {
+  display: flex;
+  grid-column: 1 / -1;
+  align-items: flex-start;
+  gap: 11px;
+  padding-top: 16px;
+  border-top: 1px solid #e1ebe5;
+}
+
+.shipping-timeline-dot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: #62a28b;
+}
+
+.shipping-timeline-bottom p {
+  font-size: 13px;
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+
+.shipping-faq {
+  padding-block: var(--section-y);
+  background: #f7faf8;
+}
+
+.shipping-faq-layout {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  align-items: start;
+  gap: clamp(28px, 6vw, 72px);
+}
+
+.shipping-text-link {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--ship-ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.shipping-text-link span {
+  color: var(--ship-teal);
+  transition: transform 0.25s ease;
+}
+
+.shipping-faq-list {
+  min-width: 0;
+  border-top: 1px solid #dfe8e3;
+}
+
+.shipping-faq-item {
+  border-bottom: 1px solid #dfe8e3;
+}
+
+.shipping-page .shipping-faq-question {
+  display: flex;
+  width: 100%;
+  min-height: 58px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border: 0;
+  background: transparent;
+  color: var(--ship-ink);
+  text-align: left;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.shipping-faq-toggle {
+  display: grid;
+  flex-shrink: 0;
+  width: 29px;
+  height: 29px;
+  place-items: center;
+  border: 1px solid #cfdfd7;
+  border-radius: 50%;
+  color: var(--ship-teal);
+  font-size: 21px;
+  font-weight: 400;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.shipping-faq-item.is-open .shipping-faq-toggle {
+  transform: rotate(180deg);
+  border-color: var(--ship-teal);
+  background: var(--ship-teal);
+  color: #fff;
+}
+
+.shipping-faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.3s ease,
+    opacity 0.25s ease;
+}
+
+.shipping-faq-answer > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.shipping-faq-answer p {
+  padding-bottom: 0;
+  font-size: 14px;
+  line-height: 1.75;
+  transition: padding-bottom 0.3s ease;
+}
+
+.shipping-faq-item.is-open .shipping-faq-answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.shipping-faq-item.is-open .shipping-faq-answer p {
+  padding-bottom: 16px;
+}
+
+/* =========================================================
+   Support banner
+   ========================================================= */
+
+.shipping-support {
+  padding-block: calc(var(--section-y) * 0.6);
+}
+
+.shipping-support-inner {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: clamp(20px, 3vw, 28px);
+  border: 1px solid #deebe4;
+  border-radius: 5px;
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(202, 231, 217, 0.4),
+      transparent 36%
+    ),
+    #f5faf7;
+}
+
+.shipping-support-symbol {
+  display: grid;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border: 1px solid #b6d5c7;
+  border-radius: 50%;
+  color: var(--ship-teal);
+  font-size: 24px;
+}
+
+.shipping-support-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.shipping-support-copy .shipping-eyebrow {
+  margin-bottom: 6px;
+}
+
+.shipping-support-copy h2 {
+  margin-bottom: 6px;
+  font-size: clamp(23px, 3vw, 30px);
+  line-height: 1.2;
+}
+
+.shipping-support-copy p {
+  font-size: 14px;
+}
+
+.shipping-support-btn {
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   Hover only where hover exists; keyboard focus everywhere
+   ========================================================= */
+
+@media (hover: hover) {
+  .shipping-primary-btn:hover,
+  .shipping-support-btn:hover {
+    transform: translateY(-2px);
+    background: var(--ship-dark);
+  }
+
+  .shipping-primary-btn:hover span,
+  .shipping-support-btn:hover span,
+  .shipping-text-link:hover span {
+    transform: translate(3px, -2px);
+  }
+
+  .shipping-step:hover {
+    transform: translateY(-4px);
+    border-color: var(--ship-teal);
+  }
+
+  .shipping-step:hover .shipping-step-icon {
+    background: var(--ship-teal);
+    color: #fff;
+  }
+
+  .shipping-benefit-card:hover {
+    transform: translateY(-3px);
+    border-color: #c7ded4;
+    box-shadow: 0 14px 30px rgba(23, 62, 61, 0.05);
+  }
+}
+
+.shipping-page a:focus-visible,
+.shipping-page button:focus-visible {
+  outline: 3px solid #56a58e;
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   Tablet
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .shipping-steps,
+  .shipping-benefit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .shipping-steps {
+    row-gap: 28px;
+  }
+}
+
+/* single column layouts from here */
+@media (max-width: 820px) {
+  .shipping-hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .shipping-hero-copy > p {
+    max-width: 480px;
+  }
+
+  .shipping-hero-art {
+    width: 100%;
+    max-width: 460px;
+    margin-inline: auto;
+  }
+
+  .shipping-timeline-inner,
+  .shipping-faq-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .shipping-timeline-bottom {
+    grid-column: auto;
+  }
+
+  .shipping-support-inner {
+    flex-wrap: wrap;
+  }
+
+  .shipping-support-copy {
+    flex-basis: calc(100% - 80px);
+  }
+
+  .shipping-support-btn {
+    margin-left: 74px;
+  }
+}
+
+/* =========================================================
+   Mobile
+   ========================================================= */
+
+@media (max-width: 560px) {
+  .shipping-page {
+    --eyebrow-gap: 10px;
+    --action-gap: 18px;
+  }
+
+  .shipping-hero-copy h1 {
+    font-size: clamp(34px, 10vw, 46px);
+  }
+
+  .shipping-hero-copy > p {
+    font-size: 15px;
+  }
+
+  .shipping-primary-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .shipping-hero-art {
+    padding-block: 34px;
+  }
+
+  .shipping-track-card {
+    width: 100%;
+    padding: 18px 16px 16px;
+  }
+
+  .shipping-track-name {
+    font-size: 11px;
+  }
+
+  .shipping-track-foot svg {
+    width: 40px;
+  }
+
+  .shipping-chip-top {
+    font-size: 9px;
+  }
+
+  .shipping-hero-strip {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .shipping-strip-line {
+    display: none;
+  }
+
+  .shipping-steps,
+  .shipping-benefit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shipping-steps {
+    gap: 22px;
+  }
+
+  .shipping-step-top {
+    margin-bottom: 10px;
+  }
+
+  .shipping-benefit-grid {
+    gap: 10px;
+  }
+
+  /* benefit cards become compact rows instead of tall boxes */
+  .shipping-benefit-card {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    column-gap: 14px;
+    padding: 16px;
+  }
+
+  .shipping-benefit-icon {
+    grid-row: span 2;
+    margin-bottom: 0;
+  }
+
+  .shipping-timeline-inner {
+    gap: 16px;
+    padding: 18px 16px;
+  }
+
+  .shipping-support-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px 16px;
+  }
+
+  .shipping-support-symbol {
+    width: 44px;
+    height: 44px;
+  }
+
+  .shipping-support-copy {
+    flex-basis: auto;
+  }
+
+  .shipping-support-btn {
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
+  }
+}
+
+/* small phones */
+@media (max-width: 360px) {
+  .shipping-art-ring {
+    display: none;
+  }
+
+  .shipping-track-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .shipping-track-status {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  .shipping-chip-bottom small {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shipping-page *,
+  .shipping-page *::before,
+  .shipping-page *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   SHIPPING PAGE — IMPROVED FONT SIZES
+   Desktop, Tablet & Mobile
+   Add this block at the END of shipping.css
+   ========================================================= */
+
+/* Base readability */
+.shipping-page {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Eyebrow labels */
+.shipping-page .shipping-eyebrow {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Section headings */
+.shipping-page .shipping-heading h2,
+.shipping-page .shipping-timeline-heading h2,
+.shipping-page .shipping-faq-intro h2 {
+  font-size: clamp(32px, 3.5vw, 44px);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.shipping-page .shipping-timeline-heading h2 {
+  font-size: clamp(30px, 3.2vw, 40px);
+}
+
+/* Section descriptions */
+.shipping-page .shipping-heading > p,
+.shipping-page .shipping-timeline-heading > p,
+.shipping-page .shipping-faq-intro > p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Hero heading */
+.shipping-page .shipping-hero-copy h1 {
+  font-size: clamp(40px, 5.2vw, 70px);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.shipping-page .shipping-hero-copy > p {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* Hero benefits */
+.shipping-page .shipping-hero-points > div {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.shipping-page .shipping-mini-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+/* Buttons and links */
+.shipping-page .shipping-primary-btn,
+.shipping-page .shipping-support-btn {
+  min-height: 50px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.shipping-page .shipping-primary-btn span,
+.shipping-page .shipping-support-btn span {
+  font-size: 20px;
+}
+
+.shipping-page .shipping-text-link {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Hero order tracker */
+.shipping-page .shipping-track-card {
+  padding: 24px;
+}
+
+.shipping-page .shipping-track-label {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.shipping-page .shipping-track-status {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.shipping-page .shipping-track-dot {
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+}
+
+.shipping-page .shipping-track-name {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.shipping-page .shipping-track-foot p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.shipping-page .shipping-chip-top {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.shipping-page .shipping-chip-bottom strong {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.shipping-page .shipping-chip-bottom small {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.shipping-page .shipping-chip-icon {
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+}
+
+/* Hero information strip */
+.shipping-page .shipping-hero-strip {
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.1em;
+}
+
+/* Delivery steps */
+.shipping-page .shipping-step-number {
+  font-size: 16px;
+}
+
+.shipping-page .shipping-step h3 {
+  margin-bottom: 8px;
+  font-size: 21px;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+.shipping-page .shipping-step p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.shipping-page .shipping-step-icon {
+  width: 54px;
+  height: 54px;
+  font-size: 25px;
+}
+
+/* Benefits cards */
+.shipping-page .shipping-benefit-card {
+  padding: 24px 20px;
+}
+
+.shipping-page .shipping-benefit-card h3 {
+  margin-bottom: 8px;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+.shipping-page .shipping-benefit-card p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.shipping-page .shipping-benefit-icon {
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+}
+
+/* Delivery estimate */
+.shipping-page .shipping-timeline-note p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.shipping-page .shipping-timeline-note > span {
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+}
+
+.shipping-page .shipping-timeline-bottom p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* FAQ */
+.shipping-page .shipping-faq-question {
+  min-height: 64px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.shipping-page .shipping-faq-toggle {
+  width: 32px;
+  height: 32px;
+  font-size: 23px;
+}
+
+.shipping-page .shipping-faq-answer p {
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+/* Support section */
+.shipping-page .shipping-support-copy h2 {
+  font-size: clamp(25px, 2.8vw, 32px);
+  line-height: 1.3;
+}
+
+.shipping-page .shipping-support-copy p {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.shipping-page .shipping-support-symbol {
+  width: 56px;
+  height: 56px;
+  font-size: 26px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .shipping-page .shipping-hero-copy h1 {
+    font-size: clamp(38px, 5.5vw, 54px);
+  }
+
+  .shipping-page .shipping-heading h2,
+  .shipping-page .shipping-faq-intro h2 {
+    font-size: clamp(30px, 4vw, 38px);
+  }
+
+  .shipping-page .shipping-step h3,
+  .shipping-page .shipping-benefit-card h3 {
+    font-size: 20px;
+  }
+
+  .shipping-page .shipping-step p,
+  .shipping-page .shipping-benefit-card p {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+  .shipping-page {
+    --eyebrow-gap: 10px;
+    --action-gap: 18px;
+  }
+
+  .shipping-page .shipping-eyebrow {
+    font-size: 12px;
+  }
+
+  .shipping-page .shipping-hero-copy h1 {
+    font-size: clamp(36px, 9vw, 46px);
+    line-height: 1.15;
+  }
+
+  .shipping-page .shipping-hero-copy > p {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .shipping-page .shipping-heading h2,
+  .shipping-page .shipping-timeline-heading h2,
+  .shipping-page .shipping-faq-intro h2 {
+    font-size: clamp(29px, 7.5vw, 35px);
+    line-height: 1.25;
+  }
+
+  .shipping-page .shipping-heading > p,
+  .shipping-page .shipping-timeline-heading > p,
+  .shipping-page .shipping-faq-intro > p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .shipping-page .shipping-primary-btn,
+  .shipping-page .shipping-support-btn {
+    min-height: 50px;
+    font-size: 16px;
+  }
+
+  .shipping-page .shipping-hero-points > div {
+    font-size: 15px;
+  }
+
+  /* Keep tracker readable without horizontal overflow */
+  .shipping-page .shipping-track-card {
+    padding: 18px 14px;
+  }
+
+  .shipping-page .shipping-track-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .shipping-page .shipping-track-status {
+    gap: 5px;
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  .shipping-page .shipping-track-steps {
+    margin-block: 20px 16px;
+  }
+
+  .shipping-page .shipping-track-step {
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .shipping-page .shipping-track-name {
+    font-size: 12px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .shipping-page .shipping-track-foot p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .shipping-page .shipping-chip-top {
+    font-size: 11px;
+  }
+
+  .shipping-page .shipping-chip-bottom strong {
+    font-size: 13px;
+  }
+
+  .shipping-page .shipping-chip-bottom small {
+    font-size: 12px;
+  }
+
+  .shipping-page .shipping-hero-strip {
+    font-size: 12px;
+    letter-spacing: 0.07em;
+  }
+
+  /* Delivery steps */
+  .shipping-page .shipping-step h3 {
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  .shipping-page .shipping-step p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  /* Benefits remain compact rows */
+  .shipping-page .shipping-benefit-card {
+    grid-template-columns: 46px minmax(0, 1fr);
+    column-gap: 14px;
+    padding: 18px 15px;
+  }
+
+  .shipping-page .shipping-benefit-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 23px;
+  }
+
+  .shipping-page .shipping-benefit-card h3 {
+    font-size: 19px;
+    line-height: 1.4;
+  }
+
+  .shipping-page .shipping-benefit-card p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* Timeline */
+  .shipping-page .shipping-timeline-inner {
+    gap: 18px;
+    padding: 20px 16px;
+  }
+
+  .shipping-page .shipping-timeline-note {
+    gap: 11px;
+    padding: 14px;
+  }
+
+  .shipping-page .shipping-timeline-note p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .shipping-page .shipping-timeline-bottom p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  /* FAQ */
+  .shipping-page .shipping-faq-question {
+    min-height: 62px;
+    gap: 12px;
+    padding-block: 14px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .shipping-page .shipping-faq-toggle {
+    width: 30px;
+    height: 30px;
+    font-size: 22px;
+  }
+
+  .shipping-page .shipping-faq-answer p {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  /* Support */
+  .shipping-page .shipping-support-inner {
+    gap: 14px;
+    padding: 20px 16px;
+  }
+
+  .shipping-page .shipping-support-symbol {
+    width: 46px;
+    height: 46px;
+    font-size: 23px;
+  }
+
+  .shipping-page .shipping-support-copy h2 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .shipping-page .shipping-support-copy p {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .shipping-page .shipping-text-link {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .shipping-page .shipping-hero-copy h1 {
+    font-size: 34px;
+  }
+
+  .shipping-page .shipping-hero-copy > p {
+    font-size: 16px;
+  }
+
+  .shipping-page .shipping-heading h2,
+  .shipping-page .shipping-timeline-heading h2,
+  .shipping-page .shipping-faq-intro h2 {
+    font-size: 28px;
+  }
+
+  .shipping-page .shipping-track-card {
+    padding-inline: 10px;
+  }
+
+  .shipping-page .shipping-track-name {
+    font-size: 11px;
+  }
+
+  .shipping-page .shipping-track-foot p {
+    font-size: 13px;
+  }
+
+  .shipping-page .shipping-faq-question {
+    font-size: 15px;
+  }
+
+  .shipping-page .shipping-benefit-card h3 {
+    font-size: 18px;
+  }
+
+  .shipping-page .shipping-benefit-card p {
+    font-size: 15px;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .shipping-page *,
+  .shipping-page *::before,
+  .shipping-page *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* FINAL FAQ ICON ALIGNMENT FIX */
+.shipping-page .shipping-faq-item .shipping-faq-question {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.shipping-page .shipping-faq-item .shipping-faq-toggle {
+  display: inline-flex !important;
+  flex: 0 0 34px !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+
+  font-family: Arial, sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  text-align: center !important;
+
+  border-radius: 50%;
+  transform: none !important;
+}
+
+.shipping-page .shipping-faq-item.is-open .shipping-faq-toggle {
+  transform: none !important;
+}
+
+@media (max-width: 560px) {
+  .shipping-page .shipping-faq-item .shipping-faq-question {
+    gap: 10px !important;
+    padding: 14px 0 !important;
+    min-height: 62px !important;
+  }
+
+  .shipping-page .shipping-faq-item .shipping-faq-toggle {
+    flex-basis: 32px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 21px !important;
+  }
+}
