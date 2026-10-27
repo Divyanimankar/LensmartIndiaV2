@@ -90,7 +90,8 @@
 
 .updatedAbout-Intro h1 {
   margin: 0;
-  font-family: "Jost", sans-serif;
+  /* font-family: "Jost", sans-serif; */
+  font-family: var(--lm-font-display);
   font-size: 54px;
   font-weight: 600;
   line-height: 1.12;
@@ -213,7 +214,8 @@
 
 .updatedAbout-Focus-Head h2 {
   margin: 0 0 10px;
-  font-family: "Jost", sans-serif;
+  /* font-family: "Jost", sans-serif; */
+font-family: var(--lm-font-display);
   font-size: 38px;
   font-weight: 600;
   line-height: 1.2;
@@ -408,7 +410,7 @@
 
 .updatedAbout-Vm-Col h2 {
   margin: 0;
-  font-family: "Jost", sans-serif;
+ font-family: var(--lm-font-display);
   font-size: 30px;
   font-weight: 600;
   line-height: 1.2;
