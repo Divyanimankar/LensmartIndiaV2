@@ -242,6 +242,8 @@
 
 .shape-arrow {
   position: absolute;
+   top: calc(50% + 2px) !important;
+
 
   top: 43%;
 
@@ -553,11 +555,11 @@
   }
 
   .shape-prev {
-    left: -28px;
+    left: -15px;
   }
 
   .shape-next {
-    right: -28px;
+    right: -15px;
   }
 
   .perfect-shape-dots {

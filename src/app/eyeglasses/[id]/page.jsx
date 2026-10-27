@@ -8,9 +8,7 @@ import SimilarProduct from "@/components/SimilarProduct";
 import BrandProduct from "@/components/BrandProduct";
 import ProductDescription from "@/components/ProductDescription";
 
-
 import ProductNotFound from "@/components/ProductNotFound";
-
 
 /* =========================================================
    PRODUCT DATA
@@ -31,26 +29,10 @@ const products = [
     description:
       "A clean and comfortable rectangle frame designed for everyday wear.",
     colors: [
-      {
-        name: "Black",
-        value: "#222222",
-        image: "/images/eyeglass1.png",
-      },
-      {
-        name: "Brown",
-        value: "#795548",
-        image: "/images/eyeglass1.png",
-      },
-      {
-        name: "Tortoise",
-        value: "#8b5e3c",
-        image: "/images/eyeglass1.png",
-      },
-      {
-        name: "Gold",
-        value: "#c8a951",
-        image: "/images/eyeglass1.png",
-      },
+      { name: "Black", value: "#222222", image: "/images/eyeglass1.png" },
+      { name: "Brown", value: "#795548", image: "/images/eyeglass1.png" },
+      { name: "Tortoise", value: "#8b5e3c", image: "/images/eyeglass1.png" },
+      { name: "Gold", value: "#c8a951", image: "/images/eyeglass1.png" },
     ],
     images: [
       "/images/eyeglass1.png",
@@ -73,26 +55,10 @@ const products = [
     description:
       "A lightweight round frame with a modern and elegant everyday look.",
     colors: [
-      {
-        name: "Brown",
-        value: "#795548",
-        image: "/images/eyeglass2.png",
-      },
-      {
-        name: "Black",
-        value: "#222222",
-        image: "/images/eyeglass2.png",
-      },
-      {
-        name: "Gold",
-        value: "#c8a951",
-        image: "/images/eyeglass2.png",
-      },
-      {
-        name: "Crystal",
-        value: "#eeeeee",
-        image: "/images/eyeglass2.png",
-      },
+      { name: "Brown", value: "#795548", image: "/images/eyeglass2.png" },
+      { name: "Black", value: "#222222", image: "/images/eyeglass2.png" },
+      { name: "Gold", value: "#c8a951", image: "/images/eyeglass2.png" },
+      { name: "Crystal", value: "#eeeeee", image: "/images/eyeglass2.png" },
     ],
     images: [
       "/images/eyeglass2.png",
@@ -115,21 +81,9 @@ const products = [
     description:
       "A modern square frame with a simple design for everyday styling.",
     colors: [
-      {
-        name: "Black",
-        value: "#222222",
-        image: "/images/eyeglass3.png",
-      },
-      {
-        name: "Blue",
-        value: "#315c9e",
-        image: "/images/eyeglass3.png",
-      },
-      {
-        name: "Silver",
-        value: "#b7b7b7",
-        image: "/images/eyeglass3.png",
-      },
+      { name: "Black", value: "#222222", image: "/images/eyeglass3.png" },
+      { name: "Blue", value: "#315c9e", image: "/images/eyeglass3.png" },
+      { name: "Silver", value: "#b7b7b7", image: "/images/eyeglass3.png" },
     ],
     images: [
       "/images/eyeglass3.png",
@@ -152,26 +106,10 @@ const products = [
     description:
       "An elegant cat-eye frame created for a stylish and contemporary look.",
     colors: [
-      {
-        name: "Tortoise",
-        value: "#8b5e3c",
-        image: "/images/eyeglass4.png",
-      },
-      {
-        name: "Black",
-        value: "#222222",
-        image: "/images/eyeglass4.png",
-      },
-      {
-        name: "Brown",
-        value: "#795548",
-        image: "/images/eyeglass4.png",
-      },
-      {
-        name: "Gold",
-        value: "#c8a951",
-        image: "/images/eyeglass4.png",
-      },
+      { name: "Tortoise", value: "#8b5e3c", image: "/images/eyeglass4.png" },
+      { name: "Black", value: "#222222", image: "/images/eyeglass4.png" },
+      { name: "Brown", value: "#795548", image: "/images/eyeglass4.png" },
+      { name: "Gold", value: "#c8a951", image: "/images/eyeglass4.png" },
     ],
     images: [
       "/images/eyeglass4.png",
@@ -194,21 +132,9 @@ const products = [
     description:
       "A lightweight flexible frame designed for comfortable everyday use.",
     colors: [
-      {
-        name: "Blue",
-        value: "#315c9e",
-        image: "/images/eyeglass5.png",
-      },
-      {
-        name: "Black",
-        value: "#222222",
-        image: "/images/eyeglass5.png",
-      },
-      {
-        name: "Crystal",
-        value: "#eeeeee",
-        image: "/images/eyeglass5.png",
-      },
+      { name: "Blue", value: "#315c9e", image: "/images/eyeglass5.png" },
+      { name: "Black", value: "#222222", image: "/images/eyeglass5.png" },
+      { name: "Crystal", value: "#eeeeee", image: "/images/eyeglass5.png" },
     ],
     images: [
       "/images/eyeglass5.png",
@@ -231,21 +157,9 @@ const products = [
     description:
       "A clean oval frame with a lightweight construction and modern finish.",
     colors: [
-      {
-        name: "Crystal",
-        value: "#eeeeee",
-        image: "/images/eyeglass6.png",
-      },
-      {
-        name: "Brown",
-        value: "#795548",
-        image: "/images/eyeglass6.png",
-      },
-      {
-        name: "Black",
-        value: "#222222",
-        image: "/images/eyeglass6.png",
-      },
+      { name: "Crystal", value: "#eeeeee", image: "/images/eyeglass6.png" },
+      { name: "Brown", value: "#795548", image: "/images/eyeglass6.png" },
+      { name: "Black", value: "#222222", image: "/images/eyeglass6.png" },
     ],
     images: [
       "/images/eyeglass6.png",
@@ -268,21 +182,9 @@ const products = [
     description:
       "A geometric metal frame with a minimal and contemporary design.",
     colors: [
-      {
-        name: "Gold",
-        value: "#c8a951",
-        image: "/images/eyeglass7.png",
-      },
-      {
-        name: "Silver",
-        value: "#b7b7b7",
-        image: "/images/eyeglass7.png",
-      },
-      {
-        name: "Black",
-        value: "#222222",
-        image: "/images/eyeglass7.png",
-      },
+      { name: "Gold", value: "#c8a951", image: "/images/eyeglass7.png" },
+      { name: "Silver", value: "#b7b7b7", image: "/images/eyeglass7.png" },
+      { name: "Black", value: "#222222", image: "/images/eyeglass7.png" },
     ],
     images: [
       "/images/eyeglass7.png",
@@ -305,21 +207,9 @@ const products = [
     description:
       "A classic aviator-inspired optical frame with a lightweight metal design.",
     colors: [
-      {
-        name: "Silver",
-        value: "#b7b7b7",
-        image: "/images/eyeglass8.png",
-      },
-      {
-        name: "Gold",
-        value: "#c8a951",
-        image: "/images/eyeglass8.png",
-      },
-      {
-        name: "Black",
-        value: "#222222",
-        image: "/images/eyeglass8.png",
-      },
+      { name: "Silver", value: "#b7b7b7", image: "/images/eyeglass8.png" },
+      { name: "Gold", value: "#c8a951", image: "/images/eyeglass8.png" },
+      { name: "Black", value: "#222222", image: "/images/eyeglass8.png" },
     ],
     images: [
       "/images/eyeglass8.png",
@@ -342,21 +232,9 @@ const products = [
     description:
       "A minimal round frame with a clean profile and lightweight feel.",
     colors: [
-      {
-        name: "Gold",
-        value: "#c8a951",
-        image: "/images/eyeglass9.png",
-      },
-      {
-        name: "Black",
-        value: "#222222",
-        image: "/images/eyeglass9.png",
-      },
-      {
-        name: "Silver",
-        value: "#b7b7b7",
-        image: "/images/eyeglass9.png",
-      },
+      { name: "Gold", value: "#c8a951", image: "/images/eyeglass9.png" },
+      { name: "Black", value: "#222222", image: "/images/eyeglass9.png" },
+      { name: "Silver", value: "#b7b7b7", image: "/images/eyeglass9.png" },
     ],
     images: [
       "/images/eyeglass9.png",
@@ -365,7 +243,6 @@ const products = [
     ],
   },
 ];
-
 
 /* =========================================================
    ICONS
@@ -408,7 +285,6 @@ const RefreshIcon = () => (
   </svg>
 );
 
-
 const CloseIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <path d="M6 6l12 12M18 6 6 18" />
@@ -429,35 +305,119 @@ const LensIcon = () => (
 );
 
 /* =========================================================
-   LENS OPTIONS (placeholder prices - replace with your own)
+   LENS FLOW DATA (placeholder prices - replace with your own)
 ========================================================= */
-const lensOptions = [
+
+const lensPackages = {
+  "with-power": [
+    {
+      id: "anti-glare-premium",
+      name: "Anti-Glare Premium",
+      note: "Double-side anti-glare · Scratch resistant",
+      price: 799,
+      tag: "Popular",
+    },
+    {
+      id: "blu-plus",
+      name: "BLU+",
+      note: "Blue-light protection · Everyday screen comfort",
+      price: 1199,
+    },
+    {
+      id: "blu-plus-thin",
+      name: "BLU+ Thin",
+      note: "Blue-light protection with thinner lenses",
+      price: 1799,
+    },
+  ],
+  "zero-power": [
+    {
+      id: "premium-zero",
+      name: "Lens Package Premium",
+      note: "Clear vision with premium anti-glare coating",
+      price: 599,
+    },
+    {
+      id: "blu-plus-zero",
+      name: "BLU+",
+      note: "Blue-light protection for screens",
+      price: 899,
+    },
+    {
+      id: "blu-plus-thin-zero",
+      name: "BLU+ Thin",
+      note: "Thinner blue-light lenses",
+      price: 1399,
+    },
+  ],
+  progressive: [
+    {
+      id: "progressive-normal",
+      name: "Normal View Progressive",
+      note: "Progressive vision for everyday use",
+      price: 1999,
+    },
+    {
+      id: "progressive-normal-wide",
+      name: "Normal View Progressive Wide",
+      note: "Wider viewing area for daily comfort",
+      price: 2499,
+    },
+    {
+      id: "progressive-thin-wide",
+      name: "Thin Wide Corridor Progressive",
+      note: "Thin lens with a wider progressive corridor",
+      price: 3499,
+    },
+  ],
+  "frame-only": [
+    {
+      id: "frame-only",
+      name: "Frame Only",
+      note: "Buy the frame now and add lenses later",
+      price: 0,
+    },
+  ],
+};
+
+const lensTypes = [
   {
-    id: "frame-only",
-    name: "Frame Only",
-    note: "Buy the frame now and add lenses later.",
-    price: 0,
+    id: "with-power",
+    title: "With Power",
+    note: "Positive, negative or cylindrical prescription",
+    badge: "Most common",
   },
   {
     id: "zero-power",
-    name: "Zero Power Blue Cut",
-    note: "Screen protection with no prescription power.",
-    price: 399,
-    tag: "Popular",
-  },
-  {
-    id: "single-vision",
-    name: "Single Vision",
-    note: "For near or distance vision with your power.",
-    price: 799,
+    title: "Zero Power",
+    note: "Blue-light protection without prescription power",
   },
   {
     id: "progressive",
-    name: "Progressive",
-    note: "Seamless multifocal lenses for all distances.",
-    price: 1999,
+    title: "Progressive / Bifocals",
+    note: "Two powers in one lens for multiple distances",
+  },
+  {
+    id: "frame-only",
+    title: "Frame Only",
+    note: "Buy the frame now and add lenses later",
   },
 ];
+
+/* in lens types ko eye power step chahiye */
+const POWER_TYPES = ["with-power", "progressive"];
+
+const getLensPackages = (type) =>
+  lensPackages[type] || lensPackages["frame-only"];
+
+const getLensPackage = (type, id) =>
+  getLensPackages(type).find((item) => item.id === id) ||
+  getLensPackages(type)[0];
+
+const defaultPrescription = {
+  right: { sph: "", cyl: "", axis: "", add: "" },
+  left: { sph: "", cyl: "", axis: "", add: "" },
+};
 
 const sizeGuide = [
   { size: "S", lens: "49 mm", bridge: "18 mm", temple: "138 mm" },
@@ -483,10 +443,20 @@ export default function EyeglassesProductPage() {
   const [pincode, setPincode] = useState("");
   const [deliveryMessage, setDeliveryMessage] = useState("");
 
-  /* NEW UI STATE */
+  /* LENS FLOW STATE */
   const [lensOpen, setLensOpen] = useState(false);
   const [selectedLens, setSelectedLens] = useState(null);
   const [draftLens, setDraftLens] = useState("frame-only");
+  const [lensStep, setLensStep] = useState(1);
+  const [draftPowerType, setDraftPowerType] = useState("frame-only");
+  const [powerMethod, setPowerMethod] = useState("");
+  const [prescriptionFile, setPrescriptionFile] = useState(null);
+  const [prescription, setPrescription] = useState(defaultPrescription);
+  const [powerLater, setPowerLater] = useState(false);
+  const [samePrescription, setSamePrescription] = useState(false);
+  const [eyeEnabled, setEyeEnabled] = useState({ right: true, left: true });
+
+  /* OTHER UI STATE */
   const [guideOpen, setGuideOpen] = useState(false);
   const [zoomed, setZoomed] = useState(false);
   const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
@@ -589,19 +559,9 @@ export default function EyeglassesProductPage() {
      NOT FOUND
   ========================================================= */
 
-  // if (!product) {
-  //   return (
-  //     <div className="eyedetail-not-found">
-  //       <h1>Product Not Found</h1>
-  //       <p>This eyeglasses product is not available.</p>
-  //       <Link href="/eyeglasses">Back to Eyeglasses</Link>
-  //     </div>
-  //   );
-  // }
-
   if (!product) {
-  return <ProductNotFound category="eyeglasses" />;
-}
+    return <ProductNotFound category="eyeglasses" />;
+  }
 
   /* =========================================================
      DISCOUNT
@@ -631,23 +591,128 @@ export default function EyeglassesProductPage() {
   };
 
   /* =========================================================
-     LENS DRAWER
+     LENS DRAWER FLOW
   ========================================================= */
 
+  const requiresEyePower = POWER_TYPES.includes(draftPowerType);
+
   const openLens = () => {
-    setDraftLens(selectedLens ? selectedLens.id : "frame-only");
+    setDraftLens(selectedLens?.id || "frame-only");
+    setDraftPowerType(selectedLens?.powerType || "frame-only");
+    setLensStep(1);
+
+    const savedLater = selectedLens?.powerMethod === "later";
+    setPowerLater(savedLater);
+    setPowerMethod(savedLater ? "" : selectedLens?.powerMethod || "");
+    setPrescriptionFile(null);
+
+    if (selectedLens?.prescription) setPrescription(selectedLens.prescription);
+    setSamePrescription(Boolean(selectedLens?.samePrescription));
+    setEyeEnabled(selectedLens?.eyeEnabled || { right: true, left: true });
+
     setLensOpen(true);
   };
 
+  const choosePowerType = (type) => {
+    setDraftPowerType(type);
+    setPowerMethod("");
+    setPrescriptionFile(null);
+    setPowerLater(false);
+
+    const firstPackage = getLensPackages(type)[0];
+    setDraftLens(firstPackage.id);
+    setLensStep(type === "frame-only" ? 1 : 2);
+  };
+
+  const updatePrescription = (eye, field, value) => {
+    setPrescription((current) => {
+      const updatedEye = { ...current[eye], [field]: value };
+      const next = { ...current, [eye]: updatedEye };
+
+      if (samePrescription && eye === "right") next.left = { ...updatedEye };
+
+      return next;
+    });
+  };
+
   const applyLens = () => {
-    const option = lensOptions.find((item) => item.id === draftLens);
+    const option = getLensPackage(draftPowerType, draftLens);
+    if (!option) return;
+
+    if (requiresEyePower && !powerLater && !powerMethod) {
+      setLensStep(3);
+      setToast(
+        "Enter your prescription, upload it, or choose Submit Power Later."
+      );
+      return;
+    }
+
+    if (requiresEyePower && !powerLater && powerMethod === "manual") {
+      const enabledEyes = Object.keys(eyeEnabled).filter(
+        (eye) => eyeEnabled[eye]
+      );
+
+      const hasPower = enabledEyes.some((eye) =>
+        Object.values(prescription[eye]).some(
+          (value) => String(value).trim() !== ""
+        )
+      );
+
+      if (!hasPower) {
+        setToast("Please enter eye power for at least one enabled eye.");
+        setLensStep(3);
+        return;
+      }
+    }
+
+    if (
+      requiresEyePower &&
+      !powerLater &&
+      powerMethod === "upload" &&
+      !prescriptionFile
+    ) {
+      setToast("Please choose a prescription file.");
+      setLensStep(3);
+      return;
+    }
 
     setSelectedLens(
-      option && option.id !== "frame-only"
-        ? { id: option.id, name: option.name, price: option.price }
-        : null
+      option.id === "frame-only"
+        ? null
+        : {
+            id: option.id,
+            name: option.name,
+            price: option.price,
+            powerType: draftPowerType,
+            powerMethod: powerLater ? "later" : powerMethod,
+            prescription:
+              requiresEyePower && powerMethod === "manual"
+                ? prescription
+                : null,
+            prescriptionFileName: prescriptionFile?.name || "",
+            samePrescription,
+            eyeEnabled,
+          }
     );
+
     setLensOpen(false);
+    setToast("Lens selection saved.");
+  };
+
+  const continueLensFlow = () => {
+    if (lensStep === 1) {
+      if (draftPowerType === "frame-only") applyLens();
+      else setLensStep(2);
+      return;
+    }
+
+    if (lensStep === 2) {
+      if (requiresEyePower) setLensStep(3);
+      else applyLens();
+      return;
+    }
+
+    applyLens();
   };
 
   /* =========================================================
@@ -710,7 +775,8 @@ export default function EyeglassesProductPage() {
   ========================================================= */
 
   const sameBrand = (a, b) =>
-    String(a || "").trim().toLowerCase() === String(b || "").trim().toLowerCase();
+    String(a || "").trim().toLowerCase() ===
+    String(b || "").trim().toLowerCase();
 
   /* shape the page's product into what LensesProductCard expects */
   const toCardProduct = (item) => ({
@@ -738,14 +804,16 @@ export default function EyeglassesProductPage() {
     .map(({ item }) => toCardProduct(item));
 
   const brandProducts = products
-    .filter((item) => item.id !== product.id && sameBrand(item.brand, product.brand))
+    .filter(
+      (item) => item.id !== product.id && sameBrand(item.brand, product.brand)
+    )
     .map(toCardProduct);
 
   const isProductWishlisted = (item) =>
     wishlist.some(
       (saved) =>
         Number(saved.id) === Number(item.id) &&
-        saved.productType === "eyeglasses",
+        saved.productType === "eyeglasses"
     );
 
   const toggleCardWishlist = (item) => {
@@ -758,13 +826,14 @@ export default function EyeglassesProductPage() {
       const id = Number(item.id);
 
       const exists = list.some(
-        (entry) => Number(entry.id) === id && entry.productType === "eyeglasses",
+        (entry) =>
+          Number(entry.id) === id && entry.productType === "eyeglasses"
       );
 
       const updated = exists
         ? list.filter(
             (entry) =>
-              !(Number(entry.id) === id && entry.productType === "eyeglasses"),
+              !(Number(entry.id) === id && entry.productType === "eyeglasses")
           )
         : [
             ...list,
@@ -793,138 +862,73 @@ export default function EyeglassesProductPage() {
      ADD TO CART
   ========================================================= */
 
-//   const addToCart = () => {
-//     try {
-//       const savedCart =
-//         JSON.parse(localStorage.getItem("lensmartCart")) || [];
+  const addToCart = () => {
+    try {
+      const savedCart =
+        JSON.parse(localStorage.getItem("lensmartCart")) || [];
 
-//       const lensId = selectedLens ? selectedLens.id : null;
+      const lensId = selectedLens ? selectedLens.id : null;
 
-//       const existingIndex = savedCart.findIndex(
-//         (item) =>
-//           item.id === product.id &&
-//           item.productType === "eyeglasses" &&
-//           item.selectedColor === selectedColor &&
-//           item.selectedSize === selectedSize &&
-//           ((item.selectedLens && item.selectedLens.id) || null) === lensId
-//       );
+      // frame + lens ki price (1 piece)
+      const unitPrice = product.price + lensPrice;
+      const unitOldPrice = product.oldPrice + lensPrice;
 
-//       const updatedCart = [...savedCart];
+      const existingIndex = savedCart.findIndex(
+        (item) =>
+          item.id === product.id &&
+          item.productType === "eyeglasses" &&
+          item.selectedColor === selectedColor &&
+          item.selectedSize === selectedSize &&
+          ((item.selectedLens && item.selectedLens.id) || null) === lensId
+      );
 
-//       if (existingIndex !== -1) {
-//         updatedCart[existingIndex] = {
-//           ...updatedCart[existingIndex],
-//           quantity:
-//             Number(updatedCart[existingIndex].quantity || 1) + quantity,
-//         };
-//       } else {
-//         brand: product.brand,
-//         updatedCart.push({
-//           id: product.id,
-//           productType: "eyeglasses",
-//           name: product.name,
-//           category: "Eyeglasses",
-//           image: selectedImage || product.images[0],
-//           // price: product.price,
-//           // oldPrice: product.oldPrice,
+      const updatedCart = [...savedCart];
 
+      if (existingIndex !== -1) {
+        // purana item hataya, taaki naya data ke saath sabse last me jaye (latest)
+        const old = updatedCart.splice(existingIndex, 1)[0];
 
-//            price: product.price + lensPrice,
-//     oldPrice: product.oldPrice + lensPrice,
+        updatedCart.push({
+          ...old,
+          brand: product.brand,
+          price: unitPrice, // price bhi refresh
+          oldPrice: unitOldPrice,
+          framePrice: product.price,
+          lensPrice,
+          selectedLens,
+          quantity: Number(old.quantity || 1) + quantity,
+        });
+      } else {
+        updatedCart.push({
+          id: product.id,
+          productType: "eyeglasses",
+          brand: product.brand,
+          name: product.name,
+          category: "Eyeglasses",
+          image: selectedImage || product.images[0],
+          price: unitPrice,
+          oldPrice: unitOldPrice,
+          framePrice: product.price,
+          lensPrice,
+          selectedColor,
+          selectedSize,
+          selectedLens,
+          quantity,
+          link: `/eyeglasses/${product.id}`,
+        });
+      }
 
-//      framePrice: product.price,
-//     lensPrice,
+      localStorage.setItem("lensmartCart", JSON.stringify(updatedCart));
 
-//           selectedColor,
-//           selectedSize,
-//           selectedLens,
-//           quantity,
-//           link: `/eyeglasses/${product.id}`,
-//         });
-//       }
+      window.dispatchEvent(new Event("cartUpdated"));
+      window.dispatchEvent(new Event("openCartDrawer"));
 
-//       localStorage.setItem("lensmartCart", JSON.stringify(updatedCart));
-
-//       window.dispatchEvent(new Event("cartUpdated"));
-
-//       window.dispatchEvent(
-//   new CustomEvent("openCartDrawer", {
-//     detail: { key: `eyeglasses-${product.id}` }, // sunglasses me "sunglasses-..."
-//   }),
-// );
-
-//       setToast("Product added to cart.");
-//     } catch (error) {
-//       console.error("Cart error:", error);
-//     }
-//   };
-
-
-const addToCart = () => {
-  try {
-    const savedCart =
-      JSON.parse(localStorage.getItem("lensmartCart")) || [];
-
-    const lensId = selectedLens ? selectedLens.id : null;
-
-    // frame + lens ki price (1 piece)
-    const unitPrice = product.price + lensPrice;
-    const unitOldPrice = product.oldPrice + lensPrice;
-
-    const existingIndex = savedCart.findIndex(
-      (item) =>
-        item.id === product.id &&
-        item.productType === "eyeglasses" &&
-        item.selectedColor === selectedColor &&
-        item.selectedSize === selectedSize &&
-        ((item.selectedLens && item.selectedLens.id) || null) === lensId
-    );
-
-    const updatedCart = [...savedCart];
-
-    if (existingIndex !== -1) {
-      // purana item hataya, taaki naya data ke saath sabse last me jaye (latest)
-      const old = updatedCart.splice(existingIndex, 1)[0];
-
-      updatedCart.push({
-        ...old,
-        brand: product.brand,
-        price: unitPrice,           // price bhi refresh
-        oldPrice: unitOldPrice,
-        framePrice: product.price,
-        lensPrice,
-        quantity: Number(old.quantity || 1) + quantity,
-      });
-    } else {
-      updatedCart.push({
-        id: product.id,
-        productType: "eyeglasses",
-        brand: product.brand,
-        name: product.name,
-        category: "Eyeglasses",
-        image: selectedImage || product.images[0],
-        price: unitPrice,
-        oldPrice: unitOldPrice,
-        framePrice: product.price,
-        lensPrice,
-        selectedColor,
-        selectedSize,
-        selectedLens,
-        quantity,
-        link: `/eyeglasses/${product.id}`,
-      });
+      setToast("Product added to cart.");
+    } catch (error) {
+      console.error("Cart error:", error);
     }
+  };
 
-    localStorage.setItem("lensmartCart", JSON.stringify(updatedCart));
-
-    window.dispatchEvent(new Event("cartUpdated"));
-    window.dispatchEvent(new Event("openCartDrawer"));
-
-    setToast("Product added to cart.");
-  } catch (error) {
-    console.error("Cart error:", error);
-  }
-};
   /* =========================================================
      PINCODE
   ========================================================= */
@@ -1215,17 +1219,6 @@ const addToCart = () => {
                 </button>
               </div>
 
-              {/* <button
-                type="button"
-                className={`eyedetail-wishlist-button ${
-                  isWishlisted ? "active" : ""
-                }`}
-                onClick={toggleWishlist}
-              >
-                <HeartIcon />
-                {isWishlisted ? "Added to Wishlist" : "Add to Wishlist"}
-              </button> */}
-
               {/* DELIVERY */}
 
               <div className="eyedetail-delivery">
@@ -1392,34 +1385,497 @@ const addToCart = () => {
           </button>
         </div>
 
-        <div className="eyedetail-panel-body">
-          {lensOptions.map((option) => (
+        {/* STEP INDICATOR */}
+
+        <div
+          className="eyedetail-panel-steps"
+          aria-label="Lens selection progress"
+        >
+          {[
+            { number: 1, label: "Lens Type" },
+            { number: 2, label: "Lens Package" },
+            { number: 3, label: "Eye Power" },
+          ].map((step) => (
             <button
               type="button"
-              key={option.id}
-              className={`eyedetail-lens-option ${
-                draftLens === option.id ? "active" : ""
-              }`}
-              onClick={() => setDraftLens(option.id)}
-              aria-pressed={draftLens === option.id}
+              key={step.number}
+              className={
+                lensStep === step.number
+                  ? "active"
+                  : lensStep > step.number
+                  ? "complete"
+                  : ""
+              }
+              onClick={() => {
+                if (step.number === 1) setLensStep(1);
+                else if (step.number === 2 && draftPowerType !== "frame-only")
+                  setLensStep(2);
+                else if (step.number === 3 && requiresEyePower && lensStep >= 2)
+                  setLensStep(3);
+              }}
+              disabled={
+                (step.number === 2 && draftPowerType === "frame-only") ||
+                (step.number === 3 && (!requiresEyePower || lensStep < 2))
+              }
             >
-              <span className="eyedetail-radio" />
-
-              <span className="eyedetail-lens-option-text">
-                <strong>
-                  {option.name}
-                  {option.tag && <em>{option.tag}</em>}
-                </strong>
-                <small>{option.note}</small>
-              </span>
-
-              <b>
-                {option.price
-                  ? `+ ₹${option.price.toLocaleString("en-IN")}`
-                  : "Free"}
-              </b>
+              <span>{lensStep > step.number ? "✓" : step.number}</span>
+              {step.label}
             </button>
           ))}
+        </div>
+
+        <div className="eyedetail-panel-body">
+          {/* STEP 1 - LENS TYPE */}
+
+          {lensStep === 1 && (
+            <section className="eyedetail-flow-section">
+              <h4>Select your lens type</h4>
+
+              {lensTypes.map((type) => (
+                <button
+                  type="button"
+                  key={type.id}
+                  className={`eyedetail-flow-option ${
+                    draftPowerType === type.id ? "active" : ""
+                  }`}
+                  onClick={() => choosePowerType(type.id)}
+                >
+                  <span className="eyedetail-radio" />
+                  <span className="eyedetail-flow-copy">
+                    <strong>
+                      {type.title} {type.badge && <em>{type.badge}</em>}
+                    </strong>
+                    <small>{type.note}</small>
+                  </span>
+                  <span className="eyedetail-flow-arrow">›</span>
+                </button>
+              ))}
+
+              <div className="eyedetail-flow-actions">
+                <button
+                  type="button"
+                  className="eyedetail-secondary-button"
+                  onClick={() => setLensOpen(false)}
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="button"
+                  className="eyedetail-primary-button"
+                  onClick={() =>
+                    draftPowerType === "frame-only"
+                      ? applyLens()
+                      : setLensStep(2)
+                  }
+                >
+                  Continue
+                </button>
+              </div>
+            </section>
+          )}
+
+          {/* STEP 2 - LENS PACKAGE */}
+
+          {lensStep === 2 && (
+            <section className="eyedetail-flow-section">
+              <h4>Choose your lens package</h4>
+
+              <p className="eyedetail-flow-hint">
+                {lensTypes.find((type) => type.id === draftPowerType)?.title}.
+                Choose a package below.
+              </p>
+
+              {getLensPackages(draftPowerType).map((option) => (
+                <button
+                  type="button"
+                  key={option.id}
+                  className={`eyedetail-lens-option ${
+                    draftLens === option.id ? "active" : ""
+                  }`}
+                  onClick={() => setDraftLens(option.id)}
+                  aria-pressed={draftLens === option.id}
+                >
+                  <span className="eyedetail-radio" />
+
+                  <span className="eyedetail-lens-option-text">
+                    <strong>
+                      {option.name} {option.tag && <em>{option.tag}</em>}
+                    </strong>
+                    <small>{option.note}</small>
+                  </span>
+
+                  <b>
+                    {option.price
+                      ? `+ ₹${option.price.toLocaleString("en-IN")}`
+                      : "Free"}
+                  </b>
+                </button>
+              ))}
+
+              <div className="eyedetail-flow-actions">
+                <button
+                  type="button"
+                  className="eyedetail-secondary-button"
+                  onClick={() => setLensStep(1)}
+                >
+                  Back
+                </button>
+
+                <button
+                  type="button"
+                  className="eyedetail-primary-button"
+                  onClick={() =>
+                    requiresEyePower ? setLensStep(3) : applyLens()
+                  }
+                >
+                  {requiresEyePower ? "Continue to Eye Power" : "Apply Package"}
+                </button>
+              </div>
+            </section>
+          )}
+
+          {/* STEP 3 - EYE POWER */}
+
+          {lensStep === 3 && (
+            <section className="eyedetail-flow-section eyedetail-eye-power-section">
+              <h4>Eye Power</h4>
+
+              <p className="eyedetail-flow-hint">
+                Add your prescription details or upload your prescription.
+              </p>
+
+              {/* MANUAL */}
+
+              <button
+                type="button"
+                className={`eyedetail-power-method ${
+                  powerMethod === "manual" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setPowerMethod(powerMethod === "manual" ? "" : "manual");
+                  setPowerLater(false);
+                }}
+              >
+                <span className="eyedetail-method-icon">Rx</span>
+                <span>
+                  <strong>Enter Power Manually</strong>
+                  <small>Enter your latest eye prescription</small>
+                </span>
+                <span
+                  className={`eyedetail-flow-arrow ${
+                    powerMethod === "manual" ? "is-open" : ""
+                  }`}
+                  aria-hidden="true"
+                />
+              </button>
+
+              {powerMethod === "manual" && (
+                <div className="eyedetail-prescription-form">
+                  <label className="eyedetail-same-prescription">
+                    <input
+                      type="checkbox"
+                      checked={samePrescription}
+                      onChange={(event) => {
+                        const checked = event.target.checked;
+                        setSamePrescription(checked);
+
+                        if (checked) {
+                          setPrescription((current) => ({
+                            ...current,
+                            left: { ...current.right },
+                          }));
+                        }
+                      }}
+                    />{" "}
+                    Same prescription for both eyes
+                  </label>
+
+                  <div className="eyedetail-eye-grid">
+                    {[
+                      {
+                        key: "right",
+                        title: "Right eye",
+                        code: "OD",
+                        dot: "#1b7773",
+                      },
+                      {
+                        key: "left",
+                        title: "Left eye",
+                        code: "OS",
+                        dot: "#dda43e",
+                      },
+                    ].map((eye) => (
+                      <div
+                        className={`eyedetail-eye-card ${
+                          !eyeEnabled[eye.key] ? "is-disabled" : ""
+                        }`}
+                        key={eye.key}
+                      >
+                        <div className="eyedetail-eye-card-head">
+                          <strong>
+                            <i style={{ background: eye.dot }} />
+                            {eye.title} <small>({eye.code})</small>
+                          </strong>
+
+                          <label className="eyedetail-switch">
+                            <input
+                              type="checkbox"
+                              checked={eyeEnabled[eye.key]}
+                              onChange={(event) =>
+                                setEyeEnabled((current) => ({
+                                  ...current,
+                                  [eye.key]: event.target.checked,
+                                }))
+                              }
+                            />
+                            <span />
+                          </label>
+                        </div>
+
+                        <div className="eyedetail-prescription-fields">
+                          <div className="eyedetail-prescription-field">
+                            <label
+                              className="eyedetail-field-label"
+                              htmlFor={`sph-${eye.key}`}
+                            >
+                              SPH / Power
+                            </label>
+                            <select
+                              id={`sph-${eye.key}`}
+                              value={prescription[eye.key].sph}
+                              disabled={!eyeEnabled[eye.key]}
+                              onChange={(event) =>
+                                updatePrescription(
+                                  eye.key,
+                                  "sph",
+                                  event.target.value
+                                )
+                              }
+                            >
+                              <option value="">Select</option>
+                              {Array.from({ length: 81 }, (_, i) =>
+                                (8 - i * 0.25).toFixed(2)
+                              ).map((value) => (
+                                <option key={value} value={value}>
+                                  {Number(value) > 0 ? `+${value}` : value}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+
+                          <div className="eyedetail-prescription-field">
+                            <label
+                              className="eyedetail-field-label"
+                              htmlFor={`cyl-${eye.key}`}
+                            >
+                              CYL
+                            </label>
+                            <select
+                              id={`cyl-${eye.key}`}
+                              value={prescription[eye.key].cyl}
+                              disabled={!eyeEnabled[eye.key]}
+                              onChange={(event) =>
+                                updatePrescription(
+                                  eye.key,
+                                  "cyl",
+                                  event.target.value
+                                )
+                              }
+                            >
+                              <option value="">Select</option>
+                              {[
+                                "-0.75",
+                                "-1.00",
+                                "-1.25",
+                                "-1.50",
+                                "-1.75",
+                                "-2.00",
+                                "-2.25",
+                                "-2.50",
+                                "-2.75",
+                              ].map((v) => (
+                                <option key={v}>{v}</option>
+                              ))}
+                            </select>
+                          </div>
+
+                          <div className="eyedetail-prescription-field">
+                            <label
+                              className="eyedetail-field-label"
+                              htmlFor={`axis-${eye.key}`}
+                            >
+                              AXIS
+                            </label>
+                            <select
+                              id={`axis-${eye.key}`}
+                              value={prescription[eye.key].axis}
+                              disabled={!eyeEnabled[eye.key]}
+                              onChange={(event) =>
+                                updatePrescription(
+                                  eye.key,
+                                  "axis",
+                                  event.target.value
+                                )
+                              }
+                            >
+                              <option value="">Select</option>
+                              {Array.from({ length: 18 }, (_, i) =>
+                                String((i + 1) * 10)
+                              ).map((v) => (
+                                <option key={v}>{v}</option>
+                              ))}
+                            </select>
+                          </div>
+
+                          <div className="eyedetail-prescription-field">
+                            <label
+                              className="eyedetail-field-label"
+                              htmlFor={`add-${eye.key}`}
+                            >
+                              ADD
+                            </label>
+                            <select
+                              id={`add-${eye.key}`}
+                              value={prescription[eye.key].add}
+                              disabled={!eyeEnabled[eye.key]}
+                              onChange={(event) =>
+                                updatePrescription(
+                                  eye.key,
+                                  "add",
+                                  event.target.value
+                                )
+                              }
+                            >
+                              <option value="">Select</option>
+                              {["Low", "Medium", "High"].map((v) => (
+                                <option key={v}>{v}</option>
+                              ))}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {samePrescription && (
+                    <p className="eyedetail-form-note">
+                      Right-eye values are copied to the left eye when you
+                      enable this option.
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* UPLOAD */}
+
+              <button
+                type="button"
+                className={`eyedetail-power-method ${
+                  powerMethod === "upload" ? "active" : ""
+                }`}
+                onClick={() => {
+                  setPowerMethod(powerMethod === "upload" ? "" : "upload");
+                  setPowerLater(false);
+                }}
+              >
+                <span className="eyedetail-method-icon">↑</span>
+                <span>
+                  <strong>Upload Prescription</strong>
+                  <small>Upload your prescription image or PDF</small>
+                </span>
+                <span
+                  className={`eyedetail-flow-arrow ${
+                    powerMethod === "upload" ? "is-open" : ""
+                  }`}
+                  aria-hidden="true"
+                />
+              </button>
+
+              {powerMethod === "upload" && (
+                <div className="eyedetail-upload-box">
+                  <input
+                    id="eyedetail-prescription-file"
+                    className="eyedetail-file-input"
+                    type="file"
+                    accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf"
+                    onChange={(event) =>
+                      setPrescriptionFile(event.target.files?.[0] || null)
+                    }
+                  />
+
+                  <label
+                    className="eyedetail-upload-dropzone"
+                    htmlFor="eyedetail-prescription-file"
+                  >
+                    <span
+                      className="eyedetail-upload-illustration"
+                      aria-hidden="true"
+                    >
+                      ↑
+                    </span>
+                    <strong>
+                      {prescriptionFile
+                        ? "Prescription selected"
+                        : "Upload your prescription"}
+                    </strong>
+                    <span className="eyedetail-upload-filename">
+                      {prescriptionFile
+                        ? prescriptionFile.name
+                        : "Choose a JPG, PNG or PDF file"}
+                    </span>
+                    <span className="eyedetail-upload-cta">
+                      {prescriptionFile ? "Choose another file" : "Browse files"}
+                    </span>
+                  </label>
+
+                  <small>
+                    Supported formats: JPG, PNG or PDF. Please upload a clear,
+                    readable prescription.
+                  </small>
+                </div>
+              )}
+
+              {/* SUBMIT LATER */}
+
+              <button
+                type="button"
+                className={`eyedetail-power-method ${
+                  powerLater ? "active" : ""
+                }`}
+                onClick={() => {
+                  setPowerLater(true);
+                  setPowerMethod("");
+                  setPrescriptionFile(null);
+                }}
+              >
+                <span className="eyedetail-method-icon">15</span>
+                <span>
+                  <strong>Submit Power Later within 15 days</strong>
+                  <small>After placing your order</small>
+                </span>
+                <span className="eyedetail-flow-arrow">›</span>
+              </button>
+
+              <div className="eyedetail-flow-actions">
+                <button
+                  type="button"
+                  className="eyedetail-secondary-button"
+                  onClick={() => setLensStep(2)}
+                >
+                  Back
+                </button>
+
+                <button
+                  type="button"
+                  className="eyedetail-primary-button"
+                  onClick={applyLens}
+                >
+                  Save Lens Selection
+                </button>
+              </div>
+            </section>
+          )}
         </div>
 
         <div className="eyedetail-panel-footer">
@@ -1429,13 +1885,15 @@ const addToCart = () => {
               ₹
               {(
                 product.price +
-                (lensOptions.find((item) => item.id === draftLens)?.price || 0)
+                (getLensPackage(draftPowerType, draftLens)?.price || 0)
               ).toLocaleString("en-IN")}
             </strong>
           </div>
 
-          <button type="button" onClick={applyLens}>
-            Apply
+          <button type="button" onClick={continueLensFlow}>
+            {lensStep === 3 || (lensStep === 2 && !requiresEyePower)
+              ? "Apply"
+              : "Continue"}
           </button>
         </div>
       </aside>

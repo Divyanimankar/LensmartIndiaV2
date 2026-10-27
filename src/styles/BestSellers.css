@@ -20,7 +20,7 @@
   width: 100%;
   max-width: 1220px;
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 64px;
 }
 
 /* ==========================================
@@ -102,7 +102,7 @@
   gap: 18px;
   width: 100%;
   margin: 0;
-  padding: 14px 8px 10px;
+  padding: 14px 0px 10px;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-behavior: auto;
@@ -509,9 +509,28 @@
 /* ==========================================
    ARROWS
 ========================================== */
+/* .bestseller-slider-arrow {
+  position: absolute;
+   top: calc(50% + 2px);
+ 
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #dedede;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transform: translateY(-50%);
+} */
+
 .bestseller-slider-arrow {
   position: absolute;
-  top: 50%;
+  top: calc(50% + 2px);
   z-index: 30;
   display: grid;
   place-items: center;
@@ -526,15 +545,16 @@
   cursor: pointer;
   transform: translateY(-50%);
 }
+
 .bestseller-slider-arrow svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 .bestseller-prev {
-  left: -45px;
+  left: -54px;
 }
 .bestseller-next {
-  right: -45px;
+  right: -54px;
 }
 
 /* ==========================================
@@ -591,10 +611,10 @@
     flex-basis: calc((100% - 36px) / 3);
   }
   .bestseller-prev {
-    left: -34px;
+    left: -48px;
   }
   .bestseller-next {
-    right: -34px;
+    right: -48px;
   }
 }
 
@@ -624,10 +644,10 @@
     height: 170px;
   }
   .bestseller-prev {
-    left: -28px;
+    left: -48px;
   }
   .bestseller-next {
-    right: -28px;
+    right: -48px;
   }
   .bestseller-brand {
     font-size: 12px;
@@ -723,12 +743,27 @@
     min-height: 41px;
     font-size: 14px;
   }
-  .bestseller-prev {
-    left: -16px;
-  }
-  .bestseller-next {
-    right: -16px;
-  }
+  .bestseller-slider-arrow {
+  top: 150px;
+  width: 38px;
+  height: 38px;
+  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+.bestseller-slider-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+.bestseller-prev {
+  left: 8px;
+}
+.bestseller-next {
+  right: 8px;
+}
+.bestseller-image {
+  padding: 0 26px;
+}
 }
 
 /* ==========================================
@@ -747,6 +782,9 @@
   .current-price {
     font-size: 19px;
   }
+  .bestseller-slider-arrow {
+  top: 140px;
+}
 }
 
 /* ==========================================

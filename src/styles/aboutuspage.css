@@ -1,9 +1,8 @@
-
 /* =========================================================
    BASE
 ========================================================= */
 
-.about-page {
+.updatedAbout-Page {
   --teal: #1b6b6a;
   --teal-soft: #edf6f5;
   --ink: #161d1d;
@@ -17,13 +16,13 @@
   font-family: "Assistant", sans-serif;
 }
 
-.about-page *,
-.about-page *::before,
-.about-page *::after {
+.updatedAbout-Page *,
+.updatedAbout-Page *::before,
+.updatedAbout-Page *::after {
   box-sizing: border-box;
 }
 
-.about-page svg {
+.updatedAbout-Page svg {
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -31,7 +30,7 @@
   stroke-linejoin: round;
 }
 
-.about-container {
+.updatedAbout-Container {
   width: min(calc(100% - 76px), 1100px);
   margin: 0 auto;
 }
@@ -41,15 +40,15 @@
    BANNER
 ========================================================= */
 
-.about-banner {
+.updatedAbout-Banner {
   width: 100%;
-  height: 65vh;
+  height: 65vh !important;
   min-height: 300px;
   overflow: hidden;
   background: #0b393b;
 }
 
-.about-banner-image {
+.updatedAbout-Banner-Image {
   display: block;
   width: 100%;
   height: 100%;
@@ -62,16 +61,16 @@
    INTRO
 ========================================================= */
 
-.about-intro {
+.updatedAbout-Intro {
   padding: 50px 0 10px;
 }
 
-.about-intro-inner {
+.updatedAbout-Intro-Inner {
   max-width: 900px;
   text-align: center;
 }
 
-.about-label {
+.updatedAbout-Label {
   display: inline-flex;
   align-items: center;
   gap: 14px;
@@ -82,14 +81,14 @@
   letter-spacing: 2.2px;
 }
 
-.about-label i {
+.updatedAbout-Label i {
   width: 34px;
   height: 1px;
   background: var(--teal);
   opacity: 0.55;
 }
 
-.about-intro h1 {
+.updatedAbout-Intro h1 {
   margin: 0;
   font-family: "Jost", sans-serif;
   font-size: 54px;
@@ -99,12 +98,12 @@
   color: var(--ink);
 }
 
-.about-intro h1 span {
+.updatedAbout-Intro h1 span {
   display: block;
 }
 
 /* brand name: teal with a soft highlight underline */
-.about-intro h1 em {
+.updatedAbout-Intro h1 em {
   position: relative;
   z-index: 0;
   display: inline-block;
@@ -113,7 +112,7 @@
   color: var(--teal);
 }
 
-.about-intro h1 em::after {
+.updatedAbout-Intro h1 em::after {
   content: "";
   position: absolute;
   left: -6px;
@@ -125,7 +124,7 @@
   z-index: -1;
 }
 
-/* .about-heading-line {
+/* .updatedAbout-Heading-Line {
   margin: 28px auto 32px;
   display: flex;
   align-items: center;
@@ -133,22 +132,22 @@
   gap: 12px;
 }
 
-.about-heading-line::before,
-.about-heading-line::after {
+.updatedAbout-Heading-Line::before,
+.updatedAbout-Heading-Line::after {
   content: "";
   width: 46px;
   height: 1px;
   background: var(--line);
 }
 
-.about-heading-line i {
+.updatedAbout-Heading-Line i {
   width: 9px;
   height: 9px;
   background: var(--teal);
   transform: rotate(45deg);
 } */
 
-.about-lead {
+.updatedAbout-Lead {
   max-width: 780px;
   margin: 20px auto 38px;
   color: var(--ink);
@@ -158,14 +157,14 @@
   line-height: 1.6;
 }
 
-.about-two-col {
+.updatedAbout-Two-Col {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
   text-align: left;
 }
 
-.about-two-col p {
+.updatedAbout-Two-Col p {
   margin: 0;
   padding: 24px 26px;
   border-left: 3px solid var(--teal);
@@ -181,7 +180,7 @@
    CUSTOMER FOCUS  (bento cards)
 ========================================================= */
 
-.about-focus {
+.updatedAbout-Focus {
   position: relative;
   padding: 80px 0 84px;
   background:
@@ -190,7 +189,7 @@
   overflow: hidden;
 }
 
-.about-focus-ring {
+.updatedAbout-Focus-Ring {
   position: absolute;
   width: 360px;
   height: 360px;
@@ -203,16 +202,16 @@
   pointer-events: none;
 }
 
-.about-focus .about-container {
+.updatedAbout-Focus .updatedAbout-Container {
   position: relative;
 }
 
-.about-focus-head {
+.updatedAbout-Focus-Head {
   margin-bottom: 44px;
   text-align: center;
 }
 
-.about-focus-head h2 {
+.updatedAbout-Focus-Head h2 {
   margin: 0 0 10px;
   font-family: "Jost", sans-serif;
   font-size: 38px;
@@ -221,18 +220,18 @@
   color: var(--ink);
 }
 
-.about-focus-head h2 em {
+.updatedAbout-Focus-Head h2 em {
   font-style: normal;
   color: var(--teal);
 }
 
-.about-focus-head p {
+.updatedAbout-Focus-Head p {
   margin: 0;
   color: var(--muted);
   font-size: 16px;
 }
 
-.about-focus-grid {
+.updatedAbout-Focus-Grid {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -241,7 +240,7 @@
   gap: 18px;
 }
 
-.about-focus-card {
+.updatedAbout-Focus-Card {
   position: relative;
   grid-column: span 2;
   min-height: 210px;
@@ -259,13 +258,13 @@
 }
 
 /* two wide cards on top, three on the bottom */
-.about-focus-card:nth-child(1),
-.about-focus-card:nth-child(2) {
+.updatedAbout-Focus-Card:nth-child(1),
+.updatedAbout-Focus-Card:nth-child(2) {
   grid-column: span 3;
   min-height: 230px;
 }
 
-.about-focus-num {
+.updatedAbout-Focus-Num {
   position: absolute;
   top: 14px;
   right: 22px;
@@ -277,7 +276,7 @@
   pointer-events: none;
 }
 
-.about-focus-icon {
+.updatedAbout-Focus-Icon {
   width: 56px;
   height: 56px;
   display: flex;
@@ -289,12 +288,12 @@
   transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 
-.about-focus-icon svg {
+.updatedAbout-Focus-Icon svg {
   width: 27px;
   height: 27px;
 }
 
-.about-focus-card strong {
+.updatedAbout-Focus-Card strong {
   position: relative;
   max-width: 320px;
   font-family: "Jost", sans-serif;
@@ -304,7 +303,7 @@
 }
 
 /* animated underline bar */
-.about-focus-bar {
+.updatedAbout-Focus-Bar {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -316,20 +315,20 @@
   transition: transform 0.4s ease;
 }
 
-.about-focus-card:hover {
+.updatedAbout-Focus-Card:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(10, 51, 51, 0.14);
 }
 
-.about-focus-card:hover .about-focus-bar {
+.updatedAbout-Focus-Card:hover .updatedAbout-Focus-Bar {
   transform: scaleX(1);
 }
 
-.about-focus-card:hover .about-focus-icon {
+.updatedAbout-Focus-Card:hover .updatedAbout-Focus-Icon {
   transform: rotate(-8deg) scale(1.08);
 }
 
-.about-focus-card:hover .about-focus-icon {
+.updatedAbout-Focus-Card:hover .updatedAbout-Focus-Icon {
   background: var(--teal);
   color: #ffffff;
 }
@@ -340,12 +339,12 @@
    VISION + MISSION  (two columns)
 ========================================================= */
 
-.about-values-section {
+.updatedAbout-Values-Section {
   padding: 60px 0 30px;
   background: #ffffff;
 }
 
-.about-vm-panel {
+.updatedAbout-Vm-Panel {
   max-width: 1000px;
   margin: 0 auto;
   display: grid;
@@ -357,27 +356,27 @@
   overflow: hidden;
 }
 
-.about-vm-col {
+.updatedAbout-Vm-Col {
   padding: 52px 48px 56px;
   transition: background 0.3s ease;
 }
 
-.about-vm-col + .about-vm-col {
+.updatedAbout-Vm-Col + .updatedAbout-Vm-Col {
   border-left: 1px solid var(--line);
 }
 
-.about-vm-col:hover {
+.updatedAbout-Vm-Col:hover {
   background: #f7fbfb;
 }
 
-.about-vm-top {
+.updatedAbout-Vm-Top {
   margin-bottom: 26px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.about-vm-icon {
+.updatedAbout-Vm-Icon {
   width: 56px;
   height: 56px;
   display: flex;
@@ -389,17 +388,17 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-.about-vm-icon svg {
+.updatedAbout-Vm-Icon svg {
   width: 26px;
   height: 26px;
 }
 
-.about-vm-col:hover .about-vm-icon {
+.updatedAbout-Vm-Col:hover .updatedAbout-Vm-Icon {
   background: var(--teal);
   color: #ffffff;
 }
 
-.about-vm-num {
+.updatedAbout-Vm-Num {
   font-family: "Jost", sans-serif;
   font-size: 44px;
   font-weight: 600;
@@ -407,7 +406,7 @@
   color: rgba(27, 107, 106, 0.14);
 }
 
-.about-vm-col h2 {
+.updatedAbout-Vm-Col h2 {
   margin: 0;
   font-family: "Jost", sans-serif;
   font-size: 30px;
@@ -416,7 +415,7 @@
   color: var(--ink);
 }
 
-.about-vm-rule {
+.updatedAbout-Vm-Rule {
   display: block;
   width: 38px;
   height: 3px;
@@ -426,11 +425,11 @@
   transition: width 0.35s ease;
 }
 
-.about-vm-col:hover .about-vm-rule {
+.updatedAbout-Vm-Col:hover .updatedAbout-Vm-Rule {
   width: 64px;
 }
 
-.about-vm-col p {
+.updatedAbout-Vm-Col p {
   margin: 0;
   color: var(--muted);
   font-size: 16.5px;
@@ -443,19 +442,19 @@
 ========================================================= */
 
 @media (max-width: 1024px) {
-  .about-container {
+  .updatedAbout-Container {
     width: calc(100% - 48px);
   }
 
-  .about-banner {
+  .updatedAbout-Banner {
     height: 320px;
   }
 
-  .about-intro h1 {
+  .updatedAbout-Intro h1 {
     font-size: 44px;
   }
 
-  .about-lead {
+  .updatedAbout-Lead {
     font-size: 21px;
   }
 
@@ -467,38 +466,38 @@
 ========================================================= */
 
 @media (max-width: 768px) {
-  .about-container {
+  .updatedAbout-Container {
     width: calc(100% - 30px);
   }
 
-  .about-banner {
+  .updatedAbout-Banner {
     height: 230px;
     min-height: 0;
   }
 
-  .about-intro {
+  .updatedAbout-Intro {
     padding: 30px 0 30px;
   }
 
-  .about-intro h1 {
+  .updatedAbout-Intro h1 {
     font-size: 30px;
   }
 
-  /* .about-heading-line {
+  /* .updatedAbout-Heading-Line {
     margin: 18px auto 24px;
   } */
 
-  .about-lead {
+  .updatedAbout-Lead {
     margin-bottom: 26px;
     font-size: 18px;
   }
 
-  .about-two-col {
+  .updatedAbout-Two-Col {
     grid-template-columns: 1fr;
     gap: 14px;
   }
 
-  .about-two-col p {
+  .updatedAbout-Two-Col p {
     padding: 20px 20px;
     font-size: 15px;
   }
@@ -519,19 +518,19 @@
 ========================================================= */
 
 @media (max-width: 480px) {
-  .about-container {
+  .updatedAbout-Container {
     width: calc(100% - 24px);
   }
 
-  .about-banner {
+  .updatedAbout-Banner {
     height: 190px;
   }
 
-  .about-intro h1 {
+  .updatedAbout-Intro h1 {
     font-size: 26px;
   }
 
-  .about-lead {
+  .updatedAbout-Lead {
     font-size: 16.5px;
   }
 
@@ -540,21 +539,21 @@
 }
 
 @media (max-width: 1024px) {
-  .about-focus-head h2 { font-size: 33px; }
-  .about-focus-card strong { font-size: 19px; }
-  .about-focus-card { padding: 22px 20px 26px; }
+  .updatedAbout-Focus-Head h2 { font-size: 33px; }
+  .updatedAbout-Focus-Card strong { font-size: 19px; }
+  .updatedAbout-Focus-Card { padding: 22px 20px 26px; }
 }
 
 @media (max-width: 768px) {
-  .about-focus { padding: 52px 0 56px; }
-  .about-focus-head { margin-bottom: 28px; }
-  .about-focus-head h2 { font-size: 27px; }
+  .updatedAbout-Focus { padding: 52px 0 56px; }
+  .updatedAbout-Focus-Head { margin-bottom: 28px; }
+  .updatedAbout-Focus-Head h2 { font-size: 27px; }
 
-  .about-focus-grid { grid-template-columns: 1fr; gap: 12px; }
+  .updatedAbout-Focus-Grid { grid-template-columns: 1fr; gap: 12px; }
 
-  .about-focus-card,
-  .about-focus-card:nth-child(1),
-  .about-focus-card:nth-child(2) {
+  .updatedAbout-Focus-Card,
+  .updatedAbout-Focus-Card:nth-child(1),
+  .updatedAbout-Focus-Card:nth-child(2) {
     grid-column: auto;
     min-height: 0;
     flex-direction: row;
@@ -565,53 +564,53 @@
     border-radius: 18px;
   }
 
-  .about-focus-icon { flex: 0 0 48px; width: 48px; height: 48px; border-radius: 15px; }
-  .about-focus-icon svg { width: 23px; height: 23px; }
-  .about-focus-card strong { padding-right: 40px; font-size: 16.5px; }
-  .about-focus-num { top: 50%; right: 16px; transform: translateY(-50%); font-size: 40px; }
+  .updatedAbout-Focus-Icon { flex: 0 0 48px; width: 48px; height: 48px; border-radius: 15px; }
+  .updatedAbout-Focus-Icon svg { width: 23px; height: 23px; }
+  .updatedAbout-Focus-Card strong { padding-right: 40px; font-size: 16.5px; }
+  .updatedAbout-Focus-Num { top: 50%; right: 16px; transform: translateY(-50%); font-size: 40px; }
 }
 
 @media (max-width: 480px) {
-  .about-focus-head h2 { font-size: 24px; }
-  .about-focus-card strong { font-size: 15.5px; }
+  .updatedAbout-Focus-Head h2 { font-size: 24px; }
+  .updatedAbout-Focus-Card strong { font-size: 15.5px; }
 }
 
 @media (max-width: 1024px) {
-  .about-vm-col { padding: 40px 32px 44px; }
-  .about-vm-col h2 { font-size: 27px; }
-  .about-vm-col p { font-size: 15.5px; }
+  .updatedAbout-Vm-Col { padding: 40px 32px 44px; }
+  .updatedAbout-Vm-Col h2 { font-size: 27px; }
+  .updatedAbout-Vm-Col p { font-size: 15.5px; }
 }
 
 @media (max-width: 768px) {
-  .about-values-section { padding: 40px 0 24px; }
+  .updatedAbout-Values-Section { padding: 40px 0 24px; }
 
-  .about-vm-panel {
+  .updatedAbout-Vm-Panel {
     grid-template-columns: 1fr;
     border-radius: 20px;
   }
 
-  .about-vm-col + .about-vm-col {
+  .updatedAbout-Vm-Col + .updatedAbout-Vm-Col {
     border-left: 0;
     border-top: 1px solid var(--line);
   }
 
-  .about-vm-col { padding: 32px 24px 36px; }
-  .about-vm-top { margin-bottom: 20px; }
-  .about-vm-icon { width: 48px; height: 48px; }
-  .about-vm-icon svg { width: 22px; height: 22px; }
-  .about-vm-num { font-size: 36px; }
-  .about-vm-col h2 { font-size: 24px; }
-  .about-vm-col p { font-size: 15px; }
+  .updatedAbout-Vm-Col { padding: 32px 24px 36px; }
+  .updatedAbout-Vm-Top { margin-bottom: 20px; }
+  .updatedAbout-Vm-Icon { width: 48px; height: 48px; }
+  .updatedAbout-Vm-Icon svg { width: 22px; height: 22px; }
+  .updatedAbout-Vm-Num { font-size: 36px; }
+  .updatedAbout-Vm-Col h2 { font-size: 24px; }
+  .updatedAbout-Vm-Col p { font-size: 15px; }
 }
 
 @media (max-width: 480px) {
-  .about-label { gap: 10px; letter-spacing: 1.6px; font-size: 11px; }
-  .about-label i { width: 22px; }
-  .about-vm-col { padding: 28px 20px 32px; }
+  .updatedAbout-Label { gap: 10px; letter-spacing: 1.6px; font-size: 11px; }
+  .updatedAbout-Label i { width: 22px; }
+  .updatedAbout-Vm-Col { padding: 28px 20px 32px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .about-page * {
+  .updatedAbout-Page * {
     transition: none !important;
   }
 }

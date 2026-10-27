@@ -61,23 +61,23 @@ const PRIORITIES = [
 export default function AboutUsPage() {
   return (
     <SiteLayout>
-      <div className="about-page">
+      <div className="updatedAbout-Page">
 
         {/* BANNER */}
-        <section className="about-banner">
+        <section className="updatedAbout-Banner">
           <img
             src="/images/aboutusbannerNew.jpg"
             alt="Eyeglasses, sunglasses and contact lenses at LensMartIndia"
-            className="about-banner-image"
+            className="updatedAbout-Banner-Image"
           />
         </section>
 
 
         {/* INTRO */}
-        <section className="about-intro">
-          <div className="about-container about-intro-inner">
+        <section className="updatedAbout-Intro">
+          <div className="updatedAbout-Container updatedAbout-Intro-Inner">
 
-            <span className="about-label">
+            <span className="updatedAbout-Label">
               <i /> ABOUT LENSMARTINDIA <i />
             </span>
 
@@ -86,18 +86,18 @@ export default function AboutUsPage() {
               <em>with LensMartIndia</em>
             </h1>
 
-            <div className="about-heading-line" aria-hidden="true">
+            <div className="updatedAbout-Heading-Line" aria-hidden="true">
               <i />
             </div>
 
-            <p className="about-lead">
+            <p className="updatedAbout-Lead">
               At LensMartIndia, we believe eyewear shopping should be simple,
               comfortable and convenient. We make it easy for you to explore
               eyeglasses, sunglasses and contact lenses through one clean
               online shopping experience.
             </p>
 
-            {/* <div className="about-two-col">
+            {/* <div className="updatedAbout-Two-Col">
               <p>
                 Our goal is to make buying eyewear easier by providing clear
                 product information, simple navigation and a carefully
@@ -116,23 +116,23 @@ export default function AboutUsPage() {
         </section>
 
  {/* VISION & MISSION */}
-        <section className="about-values-section">
-          <div className="about-container">
-            <div className="about-vm-panel">
+        <section className="updatedAbout-Values-Section">
+          <div className="updatedAbout-Container">
+            <div className="updatedAbout-Vm-Panel">
 
-              <article className="about-vm-col">
-                <div className="about-vm-top">
-                  <div className="about-vm-icon">
+              <article className="updatedAbout-Vm-Col">
+                <div className="updatedAbout-Vm-Top">
+                  <div className="updatedAbout-Vm-Icon">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
                       <circle cx="12" cy="12" r="3" />
                     </svg>
                   </div>
-                  <span className="about-vm-num">01</span>
+                  <span className="updatedAbout-Vm-Num">01</span>
                 </div>
 
                 <h2>Our Vision</h2>
-                <span className="about-vm-rule" aria-hidden="true" />
+                <span className="updatedAbout-Vm-Rule" aria-hidden="true" />
 
                 <p>
                   To create a simple and dependable online destination where
@@ -141,9 +141,9 @@ export default function AboutUsPage() {
                 </p>
               </article>
 
-              <article className="about-vm-col">
-                <div className="about-vm-top">
-                  <div className="about-vm-icon">
+              <article className="updatedAbout-Vm-Col">
+                <div className="updatedAbout-Vm-Top">
+                  <div className="updatedAbout-Vm-Icon">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <circle cx="12" cy="12" r="9" />
                       <circle cx="12" cy="12" r="5" />
@@ -151,11 +151,11 @@ export default function AboutUsPage() {
                       <path d="m15 9 5-5" />
                     </svg>
                   </div>
-                  <span className="about-vm-num">02</span>
+                  <span className="updatedAbout-Vm-Num">02</span>
                 </div>
 
                 <h2>Our Mission</h2>
-                <span className="about-vm-rule" aria-hidden="true" />
+                <span className="updatedAbout-Vm-Rule" aria-hidden="true" />
 
                 <p>
                   To make eyewear shopping easier through clear information,
@@ -171,27 +171,27 @@ export default function AboutUsPage() {
         
 
         {/* CUSTOMER FOCUS */}
-        <section className="about-focus">
-          <span className="about-focus-ring" aria-hidden="true" />
+        <section className="updatedAbout-Focus">
+          <span className="updatedAbout-Focus-Ring" aria-hidden="true" />
 
-          <div className="about-container">
+          <div className="updatedAbout-Container">
 
-            <div className="about-focus-head">
-              <span className="about-label">OUR PROMISE</span>
+            <div className="updatedAbout-Focus-Head">
+              <span className="updatedAbout-Label">OUR PROMISE</span>
               <h2>
                 Your Shopping Experience <em>Comes First</em>
               </h2>
               <p>At LensMartIndia, we are focused on:</p>
             </div>
 
-            <ul className="about-focus-grid">
+            <ul className="updatedAbout-Focus-Grid">
               {PRIORITIES.map((item, i) => (
-                <li className="about-focus-card" key={item.text}>
-                  <span className="about-focus-num" aria-hidden="true">
+                <li className="updatedAbout-Focus-Card" key={item.text}>
+                  <span className="updatedAbout-Focus-Num" aria-hidden="true">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
-                  <span className="about-focus-icon">
+                  <span className="updatedAbout-Focus-Icon">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       {item.icon}
                     </svg>
@@ -199,7 +199,7 @@ export default function AboutUsPage() {
 
                   <strong>{item.text}</strong>
 
-                  <span className="about-focus-bar" aria-hidden="true" />
+                  <span className="updatedAbout-Focus-Bar" aria-hidden="true" />
                 </li>
               ))}
             </ul>
@@ -209,23 +209,23 @@ export default function AboutUsPage() {
 
 
         {/* VISION & MISSION */}
-        {/* <section className="about-values-section">
-          <div className="about-container">
-            <div className="about-vm-panel">
+        {/* <section className="updatedAbout-Values-Section">
+          <div className="updatedAbout-Container">
+            <div className="updatedAbout-Vm-Panel">
 
-              <article className="about-vm-col">
-                <div className="about-vm-top">
-                  <div className="about-vm-icon">
+              <article className="updatedAbout-Vm-Col">
+                <div className="updatedAbout-Vm-Top">
+                  <div className="updatedAbout-Vm-Icon">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
                       <circle cx="12" cy="12" r="3" />
                     </svg>
                   </div>
-                  <span className="about-vm-num">01</span>
+                  <span className="updatedAbout-Vm-Num">01</span>
                 </div>
 
                 <h2>Our Vision</h2>
-                <span className="about-vm-rule" aria-hidden="true" />
+                <span className="updatedAbout-Vm-Rule" aria-hidden="true" />
 
                 <p>
                   To create a simple and dependable online destination where
@@ -234,9 +234,9 @@ export default function AboutUsPage() {
                 </p>
               </article>
 
-              <article className="about-vm-col">
-                <div className="about-vm-top">
-                  <div className="about-vm-icon">
+              <article className="updatedAbout-Vm-Col">
+                <div className="updatedAbout-Vm-Top">
+                  <div className="updatedAbout-Vm-Icon">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                       <circle cx="12" cy="12" r="9" />
                       <circle cx="12" cy="12" r="5" />
@@ -244,11 +244,11 @@ export default function AboutUsPage() {
                       <path d="m15 9 5-5" />
                     </svg>
                   </div>
-                  <span className="about-vm-num">02</span>
+                  <span className="updatedAbout-Vm-Num">02</span>
                 </div>
 
                 <h2>Our Mission</h2>
-                <span className="about-vm-rule" aria-hidden="true" />
+                <span className="updatedAbout-Vm-Rule" aria-hidden="true" />
 
                 <p>
                   To make eyewear shopping easier through clear information,

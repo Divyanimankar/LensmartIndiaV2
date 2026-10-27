@@ -208,7 +208,7 @@
   font-size: clamp(1.5rem, 3vw, 2.1rem);
   line-height: 1.15;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: #fff !important;
 }
 
 .blog-featured-excerpt {
@@ -1223,4 +1223,181 @@
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ------------------------------------------------------------
+   Link resets (cards ab <Link> hain, <button> nahi)
+   ------------------------------------------------------------ */
+a.blog-featured,
+a.blog-card-media,
+a.blog-card-link,
+.blog-card-title a {
+  text-decoration: none;
+}
+
+a.blog-featured {
+  color: inherit;
+}
+
+.blog-card-title a {
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.blog-card-title a:hover {
+  color: var(--blog-teal);
+}
+
+/* ------------------------------------------------------------
+   Blog detail page (/blog/[slug]) — full page layout
+   ------------------------------------------------------------ */
+.blog-article-page {
+  padding-bottom: 0;
+}
+
+.blog-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
+  font-family: var(--blog-font-heading);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--blog-teal);
+  text-decoration: none;
+  transition:
+    gap 0.25s,
+    color 0.25s;
+}
+
+.blog-back:hover {
+  gap: 9px;
+  color: var(--blog-ink);
+}
+
+/* Full-width hero */
+.blog-article-hero {
+  width: min(1180px, 100% - 48px);
+  border-radius: 15px;
+  margin: auto;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(340px, 42vw, 480px);
+  overflow: hidden;
+  background: var(--blog-ink);
+}
+
+.blog-article-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-article-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100% - 48px);
+  margin-inline: auto;
+  padding: 90px 0 40px;
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+}
+
+.blog-article-hero-inner h1 {
+  max-width: 880px;
+  /* font-family: var(--blog-font-heading); */
+  font-family: var(--lm-font-display);
+  font-size: clamp(1.7rem, 3.8vw, 2.9rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+
+/* Article text column */
+.blog-article-body {
+  width: min(780px, 100% - 48px);
+  margin: 0 auto;
+  padding: 30px 0 64px;
+}
+
+.blog-article-body .blog-modal-para {
+  font-size: 1.12rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .blog-article-hero-inner {
+    padding: 80px 0 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-article-hero {
+    min-height: 360px;
+  }
+
+  .blog-article-hero-inner {
+    width: calc(100% - 32px);
+    padding: 70px 0 24px;
+  }
+
+  .blog-article-body {
+    width: calc(100% - 32px);
+    padding: 22px 0 48px;
+  }
+
+  .blog-article-body .blog-modal-para {
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+}
+
+/* ------------------------------------------------------------
+   Blog card — andar ka gap kam + title font fix
+   ------------------------------------------------------------ */
+.blog-page .blog-card-copy {
+  gap: 6px;
+  padding: 16px 19px 18px;
+}
+
+.blog-page .blog-card-cat {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.blog-page .blog-card-title {
+  margin: 0;
+  padding: 0;
+  line-height: 1.28;
+}
+
+/* Link ab <a> hai, isliye font/color site ke global style se na bigde */
+.blog-page .blog-card-title a {
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-page .blog-card-title a:hover {
+  color: var(--blog-teal);
+}
+
+.blog-page .blog-card-excerpt {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.blog-page .blog-card-meta {
+  margin: 0;
+  padding-top: 4px;
+}
+
+.blog-page .blog-card-link {
+  margin: 4px 0 0;
+  line-height: 1.2;
 }
