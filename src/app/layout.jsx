@@ -23,13 +23,36 @@ import "../styles/lm/footer.css";
 import "../styles/lm/states.css";
 import "../styles/lm/ux.css";
 
+// export const metadata = {
+//   title: "LensMartIndia",
+//   description: "Contact lenses online in India",
+//   icons: {
+//     icon: "/favicon2.png",
+//   },
+// };
+
+
 export const metadata = {
-  title: "LensMartIndia",
-  description: "Contact lenses online in India",
+  metadataBase: new URL("https://lensmartindia.com"),
+
+  title: {
+    default: "LensMartIndia | Contact Lenses, Eyeglasses & Sunglasses",
+    template: "%s | LensMartIndia",
+  },
+
+  description:
+    "Shop contact lenses, eyeglasses and sunglasses online at LensMartIndia. Explore trusted brands and find eyewear for your everyday needs.",
+
   icons: {
     icon: "/favicon2.png",
   },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
+
 
 export const viewport = {
   themeColor: "#faf6ee",

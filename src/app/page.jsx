@@ -23,11 +23,24 @@ import LensBestseller from "@/components/LensBestseller";
 import FeatureSection from "@/components/FeatureSection";
 import GlassesBrand from "@/components/GlassesBrand";
 
+// export const metadata = {
+//   title: "LensMartIndia - Contact Lenses Online",
+//   description:
+//     "Shop genuine contact lenses from trusted brands at LensMartIndia.",
+// };
+
+
 export const metadata = {
-  title: "LensMartIndia - Contact Lenses Online",
+  title: "Contact Lenses, Eyeglasses & Sunglasses Online",
   description:
-    "Shop genuine contact lenses from trusted brands at LensMartIndia.",
+    "Shop contact lenses, eyeglasses and sunglasses online at LensMartIndia. Explore trusted eyewear brands and find styles for your everyday needs.",
+  alternates: {
+    canonical: "/",
+  },
 };
+
+
+
 
 export default function HomePage() {
   return (

@@ -11,6 +11,9 @@ import "../../styles/allProducts.css";
    HELPERS
 ========================================= */
 
+
+
+
 const getProductPrice = (product) =>
   Number(product.price ?? product.salePrice ?? 0);
 

@@ -16,6 +16,13 @@ import { useProductFilters } from "../../hooks/useProductFilters";
 import "../../styles/allProducts.css";
 import "../../styles/productsToolbar.css";
 
+
+// -------------------- Meta data-------------------------
+
+
+
+
+
 const SORT_OPTIONS = [
   { value: "featured", label: "Featured" },
   { value: "best-selling", label: "Best selling" },

@@ -2,11 +2,29 @@ import SiteLayout from "@/components/SiteLayout";
 import Newsletter from "@/components/Newsletter";
 import "../../styles/aboutuspage.css";
 
+// export const metadata = {
+//   title: "About Us | LensMartIndia",
+//   description:
+//     "Learn about LensMartIndia and our commitment to a simple, transparent and convenient eyewear shopping experience.",
+// };
+
 export const metadata = {
-  title: "About Us | LensMartIndia",
+  title: "About Us",
   description:
     "Learn about LensMartIndia and our commitment to a simple, transparent and convenient eyewear shopping experience.",
+  alternates: {
+    canonical: "/about-us",
+  },
+  openGraph: {
+    title: "About Us",
+    description:
+      "Learn about LensMartIndia and explore contact lenses, eyeglasses and sunglasses through a convenient online shopping experience.",
+    url: "https://lensmartindia.com/about-us",
+    type: "website",
+  },
 };
+
+
 
 const PRIORITIES = [
   {
