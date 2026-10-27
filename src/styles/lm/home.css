@@ -912,7 +912,7 @@ html body .exclusive-view-all::before {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--lm-ink);
+  /* background: var(--lm-ink); */
   transform: translate3d(0, 101%, 0);
   transition: transform var(--lm-dur-3) var(--lm-ease-out);
 }

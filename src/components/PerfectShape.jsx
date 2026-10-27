@@ -700,6 +700,7 @@ export default function PerfectShape() {
                 />
               </div>
 
+              {/* Desktop / tablet arrows (mobile par CSS se hidden) */}
               <button
                 type="button"
                 className="shape-arrow shape-prev"
@@ -733,20 +734,51 @@ export default function PerfectShape() {
         </div>
         </div>
 
-        {/* ACTIVE SHAPE */}
-        {!fallback && (
+        {/* ACTIVE SHAPE  (mobile par arrows is pill ke dono taraf aate hain) */}
+        {/* {!fallback && (
           <div className="ps-active">
+            <button
+              type="button"
+              className="ps-nav ps-nav-prev"
+              onClick={() => apiRef.current.prev()}
+              aria-label={`Previous ${categoryLabel} shape`}
+            >
+              ‹
+            </button>
+
             <Link
               key={`${category}-${activeShape.id}`}
               // href={activeShape.link}
-               href={`/${category}`}
+              href={`/${category}`}
               className="ps-active-link"
             >
               <span className="ps-active-name">{activeShape.name}</span>
               <span className="ps-active-text">Shop {categoryLabel}</span>
             </Link>
+
+            <button
+              type="button"
+              className="ps-nav ps-nav-next"
+              onClick={() => apiRef.current.next()}
+              aria-label={`Next ${categoryLabel} shape`}
+            >
+              ›
+            </button>
           </div>
-        )}
+        )} */}
+        {!fallback && (
+  <div className="ps-active">
+    <Link
+      key={`${category}-${activeShape.id}`}
+      // href={activeShape.link}
+      href={`/${category}`}
+      className="ps-active-link"
+    >
+      <span className="ps-active-name">{activeShape.name}</span>
+      <span className="ps-active-text">Shop {categoryLabel}</span>
+    </Link>
+  </div>
+)}
 
         {/* EXACTLY 5 DOTS */}
         {!fallback && (

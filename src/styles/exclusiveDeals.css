@@ -454,34 +454,38 @@
   /* HEADER */
 
   .exclusive-deals-header {
-    min-height: 38px;
-
-    margin-bottom: 16px;
-
-    justify-content: space-between;
-  }
+  min-height: 38px;
+  margin-bottom: 16px;
+  justify-content: space-between;
+  gap: 10px;
+}
 
 
   .exclusive-deals-heading {
-    font-size: 21px;
-
-    text-align: left;
-  }
-
+  font-size: 20px;
+  text-align: left;
+  white-space: nowrap;
+}
 
   /* VIEW ALL */
 
-  .exclusive-view-all {
-    position: static;
+  html body .exclusive-view-all {
+  position: static !important;
+  flex-shrink: 0;
+  height: 32px !important;
+  padding: 0 12px !important;
+  gap: 4px;
+  font-size: 11px !important;
+  letter-spacing: 0.4px !important;
+  line-height: 1;
+  white-space: nowrap;
+  transform: none !important;
+}
 
-    height: 31px;
-
-    padding: 0 11px;
-
-    font-size: 11px;
-
-    transform: none;
-  }
+html body .exclusive-view-all span {
+  font-size: 16px;
+  line-height: 1;
+}
 
 
   /* ARROWS */
@@ -526,17 +530,14 @@
 
 
   .exclusive-deals-heading {
-    font-size: 19px;
-  }
+  font-size: 18px;
+}
 
-
-  .exclusive-view-all {
-    height: 29px;
-
-    padding: 0 9px;
-
-    font-size: 10px;
-  }
+html body .exclusive-view-all {
+  height: 30px !important;
+  padding: 0 10px !important;
+  font-size: 10px !important;
+}
 
 
   .exclusive-arrow {
@@ -560,6 +561,6 @@
 
 
   .exclusive-deals-heading {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
