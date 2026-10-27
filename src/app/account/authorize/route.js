@@ -35,8 +35,7 @@ export async function GET(req) {
   if (!r.ok) return fail();
   const t = await r.json();
 
-  // const res = NextResponse.redirect(new URL("/my-account", SITE_URL));
-  const res = NextResponse.redirect(new URL("/", SITE_URL));
+  const res = NextResponse.redirect(new URL("/my-account", SITE_URL));
   res.cookies.set("sh_access", t.access_token, cookieOpts(t.expires_in));
   res.cookies.set("sh_refresh", t.refresh_token, cookieOpts(60 * 60 * 24 * 30));
   res.cookies.set("sh_id_token", t.id_token, cookieOpts(60 * 60 * 24 * 30));
