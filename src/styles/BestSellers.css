@@ -801,3 +801,33 @@
     transition: none;
   }
 }
+
+
+/* Fix slider arrows on iPad Mini and small tablets */
+@media (min-width: 521px) and (max-width: 768px) {
+  .bestseller-section .bestseller-slider-wrapper {
+    position: relative;
+    overflow: visible;
+  }
+
+  .bestseller-section .bestseller-slider-arrow {
+    width: 36px;
+    height: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+  }
+
+  .bestseller-section .bestseller-prev {
+    left: -24px;
+  }
+
+  .bestseller-section .bestseller-next {
+    right: -24px;
+  }
+
+  .bestseller-section .bestseller-slider-arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+}
