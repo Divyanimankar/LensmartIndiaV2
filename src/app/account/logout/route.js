@@ -4,8 +4,6 @@ import { LOGOUT_URL, SITE_URL } from "@/lib/shopify-auth";
 export async function GET(req) {
   const idToken = req.cookies.get("sh_id_token")?.value;
 
-  // Shopify rejects logout without id_token ("Invalid id_token").
-  // So only go to Shopify when we have it, otherwise just clear and go home.
   let target;
   if (idToken) {
     target = new URL(LOGOUT_URL);
