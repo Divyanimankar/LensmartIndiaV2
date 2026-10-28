@@ -50,9 +50,11 @@ html body .catalog-hero {
 html body .catalog-hero h1,
 html body .catalog-hero .catalog-hero-title {
   font-family: var(--lm-font-display);
-  font-weight: 500;
-  font-size: clamp(20px, 2vw + 1rem, 28px);
-  line-height: 1;
+  font-weight: 600;
+  /* font-size: clamp(20px, 2vw + 1rem, 28px); */
+  font-size: clamp(28px, 5vw + 8px, 50px);
+  line-height: 1.15;
+  overflow-wrap: break-word;
   letter-spacing: 0.005em;
 }
 html body .catalog-hero-eyebrow {
