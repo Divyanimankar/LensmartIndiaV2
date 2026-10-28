@@ -58,6 +58,21 @@ const mod = (n, m) => ((n % m) + m) % m;
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
 /* ==========================================
+   ARROW ICON
+   Text arrow (‹ ›) font par depend karta tha aur
+   circle ke andar off-center dikhta tha.
+   SVG chevron hamesha perfect center me rehta hai.
+========================================== */
+
+function Chevron({ direction }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d={direction === "left" ? "M15 5 8 12l7 7" : "m9 5 7 7-7 7"} />
+    </svg>
+  );
+}
+
+/* ==========================================
    SHADERS
 ========================================== */
 
@@ -651,87 +666,87 @@ export default function PerfectShape() {
           aria-labelledby={`ps-tab-${category}`}
           className="ps-panel"
         >
-        {/* SLIDER */}
-        <div
-          className="perfect-shape-slider-wrapper"
-          onPointerEnter={(e) => {
-            if (e.pointerType === "mouse") {
-              hoverPausedRef.current = true;
-            }
-          }}
-          onPointerLeave={() => {
-            hoverPausedRef.current = false;
-          }}
-        >
-          {fallback ? (
-            <div className="ps-fallback">
-              {shapes.map((shape) => (
-                <Link
-                  key={`${category}-${shape.id}`}
-                  href={shape.link}
-                  className="ps-fallback-item"
-                >
-                  <span className="ps-fallback-circle">
-                    <img
-                      src={shape.image}
-                      alt={`${shape.name} ${categoryLabel}`}
-                      loading="lazy"
-                    />
-                  </span>
-                  <span className="ps-fallback-name">{shape.name}</span>
-                </Link>
-              ))}
-            </div>
-          ) : (
-            <>
-              <div
-                key={category}
-                ref={stageRef}
-                className="ps-stage"
-                tabIndex={0}
-                role="group"
-                aria-roledescription="carousel"
-                aria-label={`${categoryLabel} shapes`}
-              >
-                <canvas
-                  ref={canvasRef}
-                  className="ps-canvas"
-                  aria-hidden="true"
-                />
-              </div>
-
-              {/* Desktop / tablet arrows (mobile par CSS se hidden) */}
-              <button
-                type="button"
-                className="shape-arrow shape-prev"
-                onClick={() => apiRef.current.prev()}
-                aria-label={`Previous ${categoryLabel} shape`}
-              >
-                ‹
-              </button>
-
-              <button
-                type="button"
-                className="shape-arrow shape-next"
-                onClick={() => apiRef.current.next()}
-                aria-label={`Next ${categoryLabel} shape`}
-              >
-                ›
-              </button>
-
-              {/* Real links for keyboard / screen readers / SEO */}
-              <ul className="ps-sr-only">
+          {/* SLIDER */}
+          <div
+            className="perfect-shape-slider-wrapper"
+            onPointerEnter={(e) => {
+              if (e.pointerType === "mouse") {
+                hoverPausedRef.current = true;
+              }
+            }}
+            onPointerLeave={() => {
+              hoverPausedRef.current = false;
+            }}
+          >
+            {fallback ? (
+              <div className="ps-fallback">
                 {shapes.map((shape) => (
-                  <li key={`${category}-${shape.id}`}>
-                    <Link href={shape.link}>
-                      Shop {shape.name} {categoryLabel}
-                    </Link>
-                  </li>
+                  <Link
+                    key={`${category}-${shape.id}`}
+                    href={shape.link}
+                    className="ps-fallback-item"
+                  >
+                    <span className="ps-fallback-circle">
+                      <img
+                        src={shape.image}
+                        alt={`${shape.name} ${categoryLabel}`}
+                        loading="lazy"
+                      />
+                    </span>
+                    <span className="ps-fallback-name">{shape.name}</span>
+                  </Link>
                 ))}
-              </ul>
-            </>
-          )}
-        </div>
+              </div>
+            ) : (
+              <>
+                <div
+                  key={category}
+                  ref={stageRef}
+                  className="ps-stage"
+                  tabIndex={0}
+                  role="group"
+                  aria-roledescription="carousel"
+                  aria-label={`${categoryLabel} shapes`}
+                >
+                  <canvas
+                    ref={canvasRef}
+                    className="ps-canvas"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                {/* Arrows: sabhi screens par container ki side padding ke andar */}
+                <button
+                  type="button"
+                  className="shape-arrow shape-prev"
+                  onClick={() => apiRef.current.prev()}
+                  aria-label={`Previous ${categoryLabel} shape`}
+                >
+                  <Chevron direction="left" />
+                </button>
+
+                <button
+                  type="button"
+                  className="shape-arrow shape-next"
+                  onClick={() => apiRef.current.next()}
+                  aria-label={`Next ${categoryLabel} shape`}
+                >
+                  <Chevron direction="right" />
+                </button>
+
+                {/* Real links for keyboard / screen readers / SEO */}
+                <ul className="ps-sr-only">
+                  {shapes.map((shape) => (
+                    <li key={`${category}-${shape.id}`}>
+                      <Link href={shape.link}>
+                        Shop {shape.name} {categoryLabel}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
         </div>
 
         {/* ACTIVE SHAPE  (mobile par arrows is pill ke dono taraf aate hain) */}
@@ -767,18 +782,18 @@ export default function PerfectShape() {
           </div>
         )} */}
         {!fallback && (
-  <div className="ps-active">
-    <Link
-      key={`${category}-${activeShape.id}`}
-      // href={activeShape.link}
-      href={`/${category}`}
-      className="ps-active-link"
-    >
-      <span className="ps-active-name">{activeShape.name}</span>
-      <span className="ps-active-text">Shop {categoryLabel}</span>
-    </Link>
-  </div>
-)}
+          <div className="ps-active">
+            <Link
+              key={`${category}-${activeShape.id}`}
+              // href={activeShape.link}
+              href={`/${category}`}
+              className="ps-active-link"
+            >
+              <span className="ps-active-name">{activeShape.name}</span>
+              <span className="ps-active-text">Shop {categoryLabel}</span>
+            </Link>
+          </div>
+        )}
 
         {/* EXACTLY 5 DOTS */}
         {!fallback && (

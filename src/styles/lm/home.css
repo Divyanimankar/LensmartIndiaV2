@@ -1112,7 +1112,7 @@ html body .updatedbestseller-count {
    BRANDS WE CARRY (marquee)
 ========================================================================== */
 html body .brand-slider {
-  padding: var(--lm-section-y) 0;
+  /* padding: var(--lm-section-y) 0; */
   background: var(--lm-paper);
   border-top: 1px solid var(--lm-line);
   border-bottom: 1px solid var(--lm-line);

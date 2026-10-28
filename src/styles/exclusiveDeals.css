@@ -1,10 +1,23 @@
-
-
 /* ==========================================
    SECTION
 ========================================== */
 
 .exclusive-deals-section {
+  /* ---- ARROW SYSTEM ----
+     --ex-arrow : arrow circle ka size (Best Seller slider jaisa:
+                  46px desktop, 38px tablet, 34px mobile)
+     --ex-inset : arrow ki doori slider ke kinare se (slider ke ANDAR)
+
+     Arrow slider-wrapper ke andar card ke upar baithta hai,
+     isliye container ka padding kuch bhi ho, arrow screen se
+     bahar nahi jata aur cut nahi hota. */
+  --ex-arrow: 46px;
+  --ex-inset: 14px;
+
+  /* arrow colors (Best Seller slider jaise) */
+  --ex-arrow-bg: #fffdf9;
+  --ex-arrow-hover: #1a1a1a;
+
   width: 100%;
   padding: 38px 0 28px;
 
@@ -242,72 +255,151 @@
 
 
 /* ==========================================
-   ARROWS
+   ARROWS  (prev / next)
+
+   Selector .exclusive-deals-section .exclusive-arrow
+   + !important: global `button` rules (min-width / min-height)
+   ya doosri CSS arrow ko bada karke screen se bahar
+   na dhakel sake.
+
+   Style BestSeller / PerfectShape arrows jaisa:
+   white circle, #e1e1e1 border, soft shadow, hover par teal.
 ========================================== */
 
-.exclusive-arrow {
-  position: absolute;
+.exclusive-deals-section .exclusive-arrow {
+  position: absolute !important;
 
-  top: 50%;
+  top: 50% !important;
+  bottom: auto !important;
 
   z-index: 50;
 
-  width: 44px;
-  height: 44px;
+  /* size lock */
+  width: var(--ex-arrow) !important;
+  height: var(--ex-arrow) !important;
+  min-width: var(--ex-arrow) !important;
+  min-height: var(--ex-arrow) !important;
+  max-width: var(--ex-arrow) !important;
+  max-height: var(--ex-arrow) !important;
+  flex: none;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 
-  border: none;
+  border: 1px solid #e1e1e1;
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--ex-arrow-bg);
 
-  color: #333333;
+  color: #111111;
 
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.16);
 
+  box-sizing: border-box;
+  overflow: visible;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  /* agar JSX me text arrow (‹ ›) ho to */
   font-family: Arial, sans-serif;
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 1;
 
   cursor: pointer;
 
-  transform: translateY(-50%);
+  -webkit-tap-highlight-color: transparent;
+
+  transform: translateY(-50%) !important;
 
   transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 
-.exclusive-prev {
-  left: 12px;
+/* tap area bada (touch par easy ho) */
+.exclusive-deals-section .exclusive-arrow::after {
+  content: "";
+
+  position: absolute;
+  inset: -6px;
+
+  border-radius: 50%;
 }
 
 
-.exclusive-next {
-  right: 12px;
+.exclusive-deals-section .exclusive-prev {
+  left: var(--ex-inset) !important;
+  right: auto !important;
 }
 
 
-.exclusive-arrow:hover {
-  background: #1b6b6a;
+.exclusive-deals-section .exclusive-next {
+  right: var(--ex-inset) !important;
+  left: auto !important;
+}
+
+
+/* SVG chevron (JSX me svg ho to): perfect center */
+.exclusive-deals-section .exclusive-arrow svg {
+  display: block;
+
+  width: 46%;
+  height: 46%;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  pointer-events: none;
+}
+
+
+/* hover sirf un devices par jahan real hover hota hai
+   (touch par hover chipak jata tha) */
+@media (hover: hover) {
+  .exclusive-deals-section .exclusive-arrow:hover {
+    background: var(--ex-arrow-hover);
+    border-color: var(--ex-arrow-hover);
+
+    color: #ffffff;
+
+    transform: translateY(-50%) scale(1.05) !important;
+  }
+}
+
+
+.exclusive-deals-section .exclusive-arrow:active {
+  background: var(--ex-arrow-hover);
+  border-color: var(--ex-arrow-hover);
+
   color: #ffffff;
 
-  transform: translateY(-50%) scale(1.05);
+  transform: translateY(-50%) scale(0.95) !important;
 }
 
 
-.exclusive-arrow:focus-visible,
+.exclusive-deals-section .exclusive-arrow:focus-visible,
 .exclusive-deal-dot:focus-visible {
   outline: 2px solid #1b6b6a;
   outline-offset: 2px;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .exclusive-deals-section .exclusive-arrow {
+    transition: none;
+  }
 }
 
 
@@ -363,6 +455,17 @@
 }
 
 
+/* ==========================================================
+   RESPONSIVE  (desktop -> tablet -> mobile)
+
+   Arrow size / slider ke kinare se doori:
+     Desktop  (>1024) : 46px / 14px
+     Tablet   (<=1024): 38px / 12px
+     Tablet   (<=768) : 38px / 10px
+     Mobile   (<=600) : 34px /  8px
+     Mobile   (<=400) : 34px /  6px
+   ========================================================== */
+
 /* ==========================================
    TABLET
 ========================================== */
@@ -370,6 +473,9 @@
 @media (max-width: 1024px) {
 
   .exclusive-deals-section {
+    --ex-arrow: 38px;
+    --ex-inset: 12px;
+
     padding: 32px 0 25px;
   }
 
@@ -396,6 +502,12 @@
 
 @media (max-width: 768px) {
 
+  .exclusive-deals-section {
+    --ex-arrow: 38px;
+    --ex-inset: 10px;
+  }
+
+
   .exclusive-deals-container {
     padding: 0 22px;
   }
@@ -403,24 +515,6 @@
 
   .exclusive-deals-heading {
     font-size: 24px;
-  }
-
-
-  .exclusive-arrow {
-    width: 38px;
-    height: 38px;
-
-    font-size: 22px;
-  }
-
-
-  .exclusive-prev {
-    left: 8px;
-  }
-
-
-  .exclusive-next {
-    right: 8px;
   }
 }
 
@@ -440,7 +534,15 @@
 @media (max-width: 600px) {
 
   .exclusive-deals-section {
+    --ex-arrow: 34px;
+    --ex-inset: 8px;
+
     padding: 26px 0 22px;
+  }
+
+
+  .exclusive-deals-section .exclusive-arrow {
+    font-size: 22px;
   }
 
 
@@ -454,57 +556,39 @@
   /* HEADER */
 
   .exclusive-deals-header {
-  min-height: 38px;
-  margin-bottom: 16px;
-  justify-content: space-between;
-  gap: 10px;
-}
+    min-height: 38px;
+    margin-bottom: 16px;
+    justify-content: space-between;
+    gap: 10px;
+  }
 
 
   .exclusive-deals-heading {
-  font-size: 20px;
-  text-align: left;
-  white-space: nowrap;
-}
+    font-size: 20px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
 
   /* VIEW ALL */
 
   html body .exclusive-view-all {
-  position: static !important;
-  flex-shrink: 0;
-  height: 32px !important;
-  padding: 0 12px !important;
-  gap: 4px;
-  font-size: 11px !important;
-  letter-spacing: 0.4px !important;
-  line-height: 1;
-  white-space: nowrap;
-  transform: none !important;
-}
-
-html body .exclusive-view-all span {
-  font-size: 16px;
-  line-height: 1;
-}
-
-
-  /* ARROWS */
-
-  .exclusive-arrow {
-    width: 34px;
-    height: 34px;
-
-    font-size: 21px;
+    position: static !important;
+    flex-shrink: 0;
+    height: 32px !important;
+    padding: 0 12px !important;
+    gap: 4px;
+    font-size: 11px !important;
+    letter-spacing: 0.4px !important;
+    line-height: 1;
+    white-space: nowrap;
+    transform: none !important;
   }
 
 
-  .exclusive-prev {
-    left: 4px;
-  }
-
-
-  .exclusive-next {
-    right: 4px;
+  html body .exclusive-view-all span {
+    font-size: 16px;
+    line-height: 1;
   }
 
 
@@ -524,27 +608,26 @@ html body .exclusive-view-all span {
 
 @media (max-width: 400px) {
 
+  .exclusive-deals-section {
+    --ex-arrow: 34px;
+    --ex-inset: 6px;
+  }
+
+
   .exclusive-deals-container {
     padding: 0 12px;
   }
 
 
   .exclusive-deals-heading {
-  font-size: 18px;
-}
-
-html body .exclusive-view-all {
-  height: 30px !important;
-  padding: 0 10px !important;
-  font-size: 10px !important;
-}
+    font-size: 18px;
+  }
 
 
-  .exclusive-arrow {
-    width: 31px;
-    height: 31px;
-
-    font-size: 19px;
+  html body .exclusive-view-all {
+    height: 30px !important;
+    padding: 0 10px !important;
+    font-size: 10px !important;
   }
 }
 
