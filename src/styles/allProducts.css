@@ -1,4 +1,3 @@
-
 /* =========================================================
    GLOBAL
 ========================================================= */
@@ -704,12 +703,12 @@ body {
 
 .all-product-manufacturer {
   color: rgb(17, 17, 17);
-    font-family: Jost, sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-    margin: 0px 0px 2px;
+  font-family: Jost, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin: 0px 0px 2px;
 }
 
 /* =========================================================
@@ -818,7 +817,7 @@ body {
 }
 
 /* =========================================================
-   PAGINATION
+   PAGINATION (SQUARE BUTTONS)
 ========================================================= */
 
 .all-products-pagination {
@@ -830,6 +829,13 @@ body {
   justify-content: center;
   gap: 7px;
   border-top: 1px solid #eeeeee;
+  
+}
+
+.all-products-pagination :hover{
+   border-color: #1b6b6a !important;
+  transform: translateY(0px) !important;
+
 }
 
 .pagination-number,
@@ -841,16 +847,17 @@ body {
   align-items: center;
   justify-content: center;
   border: 1px solid #d5d5d5;
-  border-radius: 4px;
+  border-radius: 10px !important; /* square corners */
   background: #ffffff;
   color: #222222;
   font-size: 13px;
   cursor: pointer;
+  
 }
 
 .pagination-number.active {
-  border-color: #1b6b6a;
-  background: #1b6b6a;
+  border-color: #1b6b6a !important;
+  background: #1b6b6a !important;
   color: #ffffff;
 }
 
@@ -1270,8 +1277,6 @@ body {
   }
 }
 
-
-
 /* =========================================================
    RESPONSIVE PRODUCT CARD REFINEMENT
    Append-safe overrides for .all-product-card
@@ -1448,6 +1453,10 @@ body {
 
 /* Mobile */
 @media (max-width: 768px) {
+
+  .catalog-hero h1{
+      padding-top: 5vh;
+  }
   .all-products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
@@ -1628,10 +1637,49 @@ body {
   }
 }
 
-
-
 .catalog-hero { padding: 32px 20px 12px; max-width: 1400px; margin: 0 auto; }
 .catalog-hero h1 { font-size: 28px; margin: 8px 0 4px; }
 .catalog-hero p { color: #666; margin: 0; }
 .catalog-breadcrumb { font-size: 13px; color: #777; }
 .catalog-breadcrumb a { color: inherit; text-decoration: none; }
+
+/* =========================================================
+   FINAL OVERRIDE: SQUARE PAGINATION
+   Keep this block at the very end of the file.
+========================================================= */
+
+/* .all-products-pagination .pagination-number,
+.all-products-pagination .pagination-arrow {
+  border-radius: 0 !important;
+} */
+
+.pagination-dots {
+  min-width: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #777777;
+  font-size: 14px;
+  user-select: none;
+}
+
+/* Mobile: keep all pagination buttons on one line */
+@media (max-width: 480px) {
+  .all-products-pagination {
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+
+  .all-products-pagination .pagination-number,
+  .all-products-pagination .pagination-arrow {
+    width: 32px;
+    height: 32px;
+    min-width: 0;
+    flex: 0 0 auto;
+    font-size: 12px;
+  }
+
+  .pagination-dots {
+    min-width: 12px;
+  }
+}
