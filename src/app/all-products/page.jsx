@@ -16,7 +16,12 @@ import { useProductFilters } from "../../hooks/useProductFilters";
 import "../../styles/allProducts.css";
 import "../../styles/productsToolbar.css";
 
+
 // -------------------- Meta data-------------------------
+
+
+
+
 
 const SORT_OPTIONS = [
   { value: "featured", label: "Featured" },
@@ -31,32 +36,6 @@ const FILTER_QUERY_KEYS = [
   "schedule",
   "manufacturer",
 ];
-
-// Square pagination buttons (inline so no other CSS can override it)
-const SQUARE_BUTTON_STYLE = { borderRadius: 0 };
-
-// Compact page list, e.g. 1 ... 4 5 6 ... 12 (keeps pagination on one line on mobile)
-const getPageNumbers = (current, total) => {
-  if (total <= 5) return Array.from({ length: total }, (_, i) => i + 1);
-
-  const pages = [1];
-
-  if (current > 3) pages.push("...");
-
-  for (
-    let p = Math.max(2, current - 1);
-    p <= Math.min(total - 1, current + 1);
-    p++
-  ) {
-    pages.push(p);
-  }
-
-  if (current < total - 2) pages.push("...");
-
-  pages.push(total);
-
-  return pages;
-};
 
 function AllProductsContent() {
   const searchParams = useSearchParams();
@@ -283,7 +262,7 @@ function AllProductsContent() {
               }
             />
 
-            {/* PAGINATION (square buttons) */}
+            {/* PAGINATION */}
             {totalPages > 1 && (
               <nav
                 className="all-products-pagination"
@@ -292,7 +271,6 @@ function AllProductsContent() {
                 <button
                   type="button"
                   className="pagination-arrow"
-                  style={SQUARE_BUTTON_STYLE}
                   disabled={currentPage === 1}
                   onClick={() => goToPage(currentPage - 1)}
                   aria-label="Previous page"
@@ -300,39 +278,30 @@ function AllProductsContent() {
                   ‹
                 </button>
 
-                {getPageNumbers(currentPage, totalPages).map((page, index) =>
-                  page === "..." ? (
-                    <span
-                      key={`dots-${index}`}
-                      className="pagination-dots"
-                      aria-hidden="true"
-                    >
-                      …
-                    </span>
-                  ) : (
-                    <button
-                      type="button"
-                      key={page}
-                      style={SQUARE_BUTTON_STYLE}
-                      className={
-                        currentPage === page
-                          ? "pagination-number active"
-                          : "pagination-number"
-                      }
-                      aria-current={
-                        currentPage === page ? "page" : undefined
-                      }
-                      onClick={() => goToPage(page)}
-                    >
-                      {page}
-                    </button>
-                  ),
-                )}
+                {Array.from(
+                  { length: totalPages },
+                  (_, index) => index + 1,
+                ).map((page) => (
+                  <button
+                    type="button"
+                    key={page}
+                    className={
+                      currentPage === page
+                        ? "pagination-number active"
+                        : "pagination-number"
+                    }
+                    aria-current={
+                      currentPage === page ? "page" : undefined
+                    }
+                    onClick={() => goToPage(page)}
+                  >
+                    {page}
+                  </button>
+                ))}
 
                 <button
                   type="button"
                   className="pagination-arrow"
-                  style={SQUARE_BUTTON_STYLE}
                   disabled={currentPage === totalPages}
                   onClick={() => goToPage(currentPage + 1)}
                   aria-label="Next page"
