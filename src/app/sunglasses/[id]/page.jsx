@@ -1091,7 +1091,7 @@ export default function SunglassesProductPage() {
 
       {/* BOTTOM FEATURES */}
 
-      <section className="sundetail-bottom-features">
+      {/* <section className="sundetail-bottom-features">
         <div className="sundetail-container">
           <div className="sundetail-bottom-grid">
             <div>
@@ -1119,7 +1119,7 @@ export default function SunglassesProductPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* SIMILAR PRODUCTS */}
 

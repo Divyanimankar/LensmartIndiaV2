@@ -252,7 +252,8 @@
   text-transform: uppercase;
 }
 .eyedetail-product-meta {
-  margin: 14px 0 0;
+  /* margin: 14px 0 0; */
+  margin: 0px 0px 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;

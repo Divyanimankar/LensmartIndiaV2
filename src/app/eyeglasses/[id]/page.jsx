@@ -1277,7 +1277,7 @@ export default function EyeglassesProductPage() {
 
       {/* BOTTOM FEATURES */}
 
-      <section className="eyedetail-bottom-features">
+      {/* <section className="eyedetail-bottom-features">
         <div className="eyedetail-container">
           <div className="eyedetail-bottom-grid">
             <div>
@@ -1305,7 +1305,7 @@ export default function EyeglassesProductPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* SIMILAR PRODUCTS */}
 
