@@ -82,7 +82,9 @@ button.scrollTopBtn:focus-visible {
 @media (max-width: 640px) {
   button.scrollTopBtn {
     right: 16px;
-    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    /* bottom: calc(16px + env(safe-area-inset-bottom, 0px)); */
+    bottom: calc(100px - 25px);
+
     width: 44px;
     height: 44px;
     min-width: 44px;

@@ -125,10 +125,11 @@
 }
 
 .dh-ten {
-  font-size: 6em;
-  font-weight: 800;
+  font-size: 4em;
+  font-weight: 600;
   line-height: 0.8;
   letter-spacing: -0.05em;
+  font-family: "Jost", sans-serif;
 }
 
 .dh-tail {

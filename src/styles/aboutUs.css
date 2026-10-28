@@ -28,7 +28,7 @@
 .about-stage {
   position: relative;
   overflow: hidden;
-  max-width: 1400px;
+  /* max-width: 1400px; */
   height: clamp(380px, 35.7vw, 500px);
   margin: 0 auto;
   background: #ffffff;

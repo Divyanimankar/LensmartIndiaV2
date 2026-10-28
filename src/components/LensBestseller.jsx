@@ -17,7 +17,9 @@ import "../styles/BestSeller.css";
 import { allProducts } from "../data/allProducts";
 
 const AUTO_PLAY_DELAY = 3000;
-const BEST_SELLER_LIMIT = 12;
+
+// "Best Sellers" tab band hai, isliye ye limit abhi use nahi ho rahi
+// const BEST_SELLER_LIMIT = 12;
 
 /* ==========================================
    3D STAGE SETTINGS (world units)
@@ -37,11 +39,14 @@ const EXIT_DISTANCE = 1.2; // how far the front card flies out to the left
   ("Daily Disposable" -> "daily")
 */
 const TABS = [
-  ["all", "Best Sellers"],
+  // ["all", "Best Sellers"],   // <-- commented: Best Sellers tab hata diya
   ["daily", "Daily"],
   ["weekly", "Weekly"],
   ["monthly", "Monthly"],
 ];
+
+// Default active tab (ab Daily)
+const DEFAULT_TAB = "daily";
 
 const mod = (n, m) => ((n % m) + m) % m;
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -53,41 +58,20 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 ========================================== */
 
 // Sirf wahi products jinki selling price maujood hai
-// const availableProducts = allProducts.filter(
-//   (product) => product.price !== null && product.price !== undefined
-// );
-
-
-
-// const matchesTab = (product, tab) => {
-//   if (tab === "all") return true;
-
-//   const schedule = String(product.replacementSchedule || "")
-//     .trim()
-//     .toLowerCase();
-
-//   return schedule.startsWith(tab);
-// };
-
-
-
-
-
-
-// Sirf wahi products jinki selling price maujood hai
 const availableProducts = allProducts.filter(
   (product) => product.price !== null && product.price !== undefined
 );
 
-// "Best Sellers" tab me sirf itne products
-// const BEST_SELLER_LIMIT = 12;
+/* ---- BEST SELLER LOGIC (commented) ----
 
 const BEST_SELLER_IDS = new Set(
   availableProducts.slice(0, BEST_SELLER_LIMIT).map((product) => product.id)
 );
 
+---------------------------------------- */
+
 const matchesTab = (product, tab) => {
-  if (tab === "all") return BEST_SELLER_IDS.has(product.id);
+  // if (tab === "all") return BEST_SELLER_IDS.has(product.id);
 
   const schedule = String(product.replacementSchedule || "")
     .trim()
@@ -95,10 +79,6 @@ const matchesTab = (product, tab) => {
 
   return schedule.startsWith(tab);
 };
-
-
-
-
 
 // Har tab me kitne products hain
 const TAB_COUNTS = TABS.reduce((acc, [key]) => {
@@ -202,7 +182,8 @@ const shadowFragmentShader = /* glsl */ `
 export default function BestSellers() {
   const router = useRouter();
 
-  const [activeTab, setActiveTab] = useState("all");
+  // Daily tab default active
+  const [activeTab, setActiveTab] = useState(DEFAULT_TAB);
   const [activeIdx, setActiveIdx] = useState(0);
   const [wishlist, setWishlist] = useState([]);
   const [fallback, setFallback] = useState(false);
@@ -266,11 +247,10 @@ export default function BestSellers() {
       matchesTab(product, activeTab)
     );
 
-
-  // "Best Sellers" tab par sirf pehle 12 products
-  const visibleProducts =
-    activeTab === "all" ? filtered.slice(0, BEST_SELLER_LIMIT) : filtered;
-
+    /* ---- BEST SELLER LIMIT (commented) ----
+    const visibleProducts =
+      activeTab === "all" ? filtered.slice(0, BEST_SELLER_LIMIT) : filtered;
+    ---------------------------------------- */
 
     return filtered.map((product) => {
       const hasDiscount =
