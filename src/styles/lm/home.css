@@ -76,7 +76,7 @@ html body .hero-arrow svg {
 /* progress dots: segmented lines that fill while the slide is shown */
 html body .hero-dots {
   left: clamp(16px, 4vw, 56px);
-  bottom: clamp(14px, 2.2vw, 30px);
+  bottom: clamp(20px, 2.2vw, 30px);
   transform: none;
   gap: 8px;
   padding: 0;
@@ -177,7 +177,7 @@ html body .hero-counter span:last-child {
   }
   html body .hero-counter {
     right: 16px;
-    bottom: 10px;
+    bottom: 20px;
     font-size: 1.05rem;
   }
 }

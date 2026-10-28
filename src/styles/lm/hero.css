@@ -397,7 +397,7 @@ html body .hero-pause:focus-visible { outline: 2px solid var(--lm-ink); outline-
   html body .hero-slide[data-tone="eye"] .hero-depth--mid { top: 2%; right: auto; height: calc(var(--hv) * 0.96); left: calc(50% - var(--hv) * 0.36); }
   html body .hero-slide[data-tone="sun"] .hero-cutout { left: -4%; bottom: 6%; width: 62%; }
   html body .hero-slide[data-tone="eye"] .hero-cutout { left: -4%; bottom: 8%; width: 60%; }
-  html body .hero-pause { right: 112px; bottom: 4px; width: 40px; height: 40px; }
+  html body .hero-pause { right: 112px; bottom: 15px; width: 40px; height: 40px; }
   html body .hero-rim { inset: -10px; }
 }
 
