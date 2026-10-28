@@ -242,7 +242,7 @@ function ContactLensesContent() {
                   ‹
                 </button>
 
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                {/* {Array.from({ length: totalPages }, (_, i) => i + 1).map(
                   (page) => (
                     <button
                       type="button"
@@ -258,7 +258,25 @@ function ContactLensesContent() {
                       {page}
                     </button>
                   ),
-                )}
+                )} */}
+
+                <div className="pagination-numbers">
+  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+    <button
+      type="button"
+      key={page}
+      className={
+        currentPage === page
+          ? "pagination-number active"
+          : "pagination-number"
+      }
+      aria-current={currentPage === page ? "page" : undefined}
+      onClick={() => goToPage(page)}
+    >
+      {page}
+    </button>
+  ))}
+</div>
 
                 <button
                   type="button"

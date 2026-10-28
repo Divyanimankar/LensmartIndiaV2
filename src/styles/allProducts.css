@@ -1,4 +1,3 @@
-
 /* =========================================================
    GLOBAL
 ========================================================= */
@@ -510,7 +509,9 @@ body {
   border-radius: 15px;
   background: #ffffff;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.055);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .all-product-card:hover {
@@ -600,7 +601,9 @@ body {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.95);
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
 .all-product-wishlist:hover {
@@ -704,12 +707,12 @@ body {
 
 .all-product-manufacturer {
   color: rgb(17, 17, 17);
-    font-family: Jost, sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-    margin: 0px 0px 2px;
+  font-family: Jost, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  margin: 0px 0px 2px;
 }
 
 /* =========================================================
@@ -841,7 +844,7 @@ body {
   align-items: center;
   justify-content: center;
   border: 1px solid #d5d5d5;
-  border-radius: 4px;
+  border-radius: 10px;
   background: #ffffff;
   color: #222222;
   font-size: 13px;
@@ -1133,7 +1136,9 @@ body {
     background: rgba(0, 0, 0, 0.52);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.25s ease, visibility 0.25s ease;
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s ease;
   }
 
   .mobile-filter-overlay.open {
@@ -1270,8 +1275,6 @@ body {
   }
 }
 
-
-
 /* =========================================================
    RESPONSIVE PRODUCT CARD REFINEMENT
    Append-safe overrides for .all-product-card
@@ -1294,7 +1297,10 @@ body {
   border-radius: 15px;
   background: #fff;
   box-shadow: 0 3px 14px rgba(17, 17, 17, 0.045);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 .all-product-card:hover {
@@ -1628,10 +1634,156 @@ body {
   }
 }
 
+.catalog-hero {
+  padding: 32px 20px 12px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.catalog-hero h1 {
+  font-size: 28px;
+  margin: 8px 0 4px;
+}
+.catalog-hero p {
+  color: #666;
+  margin: 0;
+}
+.catalog-breadcrumb {
+  font-size: 13px;
+  color: #777;
+}
+.catalog-breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
 
+/* =========================================
+   CONTACT LENSES PAGINATION
+   (same look as the eyeglasses pagination)
+   Paste at the VERY END of styles/allProducts.css
+========================================= */
 
-.catalog-hero { padding: 32px 20px 12px; max-width: 1400px; margin: 0 auto; }
-.catalog-hero h1 { font-size: 28px; margin: 8px 0 4px; }
-.catalog-hero p { color: #666; margin: 0; }
-.catalog-breadcrumb { font-size: 13px; color: #777; }
-.catalog-breadcrumb a { color: inherit; text-decoration: none; }
+.all-products-page .all-products-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 48px 0 0;
+  padding-top: 40px;
+  border-top: 1px solid #e9e3d6;
+}
+
+.all-products-page .all-products-pagination .pagination-arrow,
+.all-products-page .all-products-pagination .pagination-number {
+  width: 42px;
+  height: 42px;
+  /* min-width: 52px; */
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e9e3d6;
+  font-family: "Assistant", sans-serif;
+  border-radius: 10px;
+  background: #fffdf9;
+  color: #1c1c1c;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: none;
+  transition: 0.25s ease;
+  /* transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease; */
+}
+
+.all-products-page .all-products-pagination .pagination-arrow {
+  font-size: 24px;
+  color: #6b6b6b;
+}
+
+.all-products-page
+  .all-products-pagination
+  .pagination-arrow:hover:not(:disabled),
+.all-products-page
+  .all-products-pagination
+  .pagination-number:hover:not(.active) {
+  border-color: #1b6a6a;
+  color: #1b6a6a;
+  background: #fffdf9;
+}
+
+.all-products-page .all-products-pagination .pagination-number.active {
+  background: #1b6a6a;
+  border-color: #1b6a6a;
+  color: #ffffff;
+}
+
+.all-products-page .all-products-pagination .pagination-arrow:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.all-products-page .all-products-pagination button:focus-visible {
+  outline: 2px solid #1b6a6a;
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .all-products-page .all-products-pagination {
+    gap: 8px;
+    margin-top: 32px;
+    padding-top: 28px;
+  }
+
+  .all-products-page .all-products-pagination .pagination-arrow,
+  .all-products-page .all-products-pagination .pagination-number {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    font-size: 16px;
+  }
+}
+
+.all-products-page .all-products-pagination .pagination-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .all-products-page .all-products-pagination {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .all-products-page .all-products-pagination .pagination-numbers {
+    /* flex: 1; */
+    min-width: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .all-products-page
+    .all-products-pagination
+    .pagination-numbers::-webkit-scrollbar {
+    display: none;
+  }
+
+  .all-products-page .all-products-pagination .pagination-arrow,
+  .all-products-page .all-products-pagination .pagination-number {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 15px;
+  }
+}
