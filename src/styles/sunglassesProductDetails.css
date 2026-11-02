@@ -1266,3 +1266,19 @@
     padding: 0 22px;
   }
 }
+
+.sundetail-main-image img,
+.sundetail-thumbnail img {
+  mix-blend-mode: multiply;
+  background: transparent;
+}
+
+.sundetail-thumbnail {
+  background: #f1ece0; /* main image box ke beige se match karo */
+}
+
+.sundetail-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
