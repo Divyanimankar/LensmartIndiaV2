@@ -302,8 +302,6 @@
 //   ),
 // ];
 
-
-
 /* =========================================
    SUNGLASSES PRODUCT DATA
    p(id, brand, rating, reviews, name, category, shape,
@@ -313,6 +311,49 @@
    To switch the card image when a colour is picked, add
    an `images` object, e.g. images: { Black: "/images/a.png" }
 ========================================= */
+
+// const p = (
+//   id,
+//   brand,
+//   rating,
+//   reviews,
+//   name,
+//   category,
+//   shape,
+//   colors,
+//   material,
+//   frameSize,
+//   price,
+//   oldPrice,
+//   image,
+//   badge,
+//   bestseller,
+// ) => ({
+//   id,
+//   brand,
+//   rating,
+//   reviews,
+//   name,
+//   category,
+//   shape,
+//   colors,
+//   material,
+//   frameSize,
+//   price,
+//   oldPrice,
+//   image,
+//   badge,
+//   bestseller,
+// });
+
+
+
+const createSlug = (name) =>
+  name
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 
 const p = (
   id,
@@ -332,6 +373,7 @@ const p = (
   bestseller,
 ) => ({
   id,
+  slug: createSlug(name),
   brand,
   rating,
   reviews,
@@ -347,6 +389,8 @@ const p = (
   badge,
   bestseller,
 });
+
+
 
 export const sunglassesProducts = [
   /* ---------- IDEE ---------- */
@@ -579,24 +623,44 @@ export const sunglassesProducts = [
     "",
     false,
   ),
-  p(
-    14,
-    "FILA",
-    4.7,
-    109,
-    "Performance SFIB13",
-    "Men",
-    "Geometric",
-    ["Black"],
-    "TR90",
-    "L",
-    9900, // TODO: price not in Excel
-    12900,
-    "https://filaeyewear.com/media/lm2bk4zd/sfib13_u28v_1.webp?mode=boxpad&quality=100&width=640&height=384&bgcolor=fff&rnd=133995735644370000",
-    "New",
-    false,
-  ),
 
+  // ------------------------ old----------------------
+  // p(
+  //   14,
+  //   "FILA",
+  //   4.7,
+  //   109,
+  //   "Performance SFIB13",
+  //   "Men",
+  //   "Geometric",
+  //   ["Black"],
+  //   "TR90",
+  //   "L",
+  //   9900, // TODO: price not in Excel
+  //   12900,
+  //   "https://filaeyewear.com/media/lm2bk4zd/sfib13_u28v_1.webp?mode=boxpad&quality=100&width=640&height=384&bgcolor=fff&rnd=133995735644370000",
+  //   "New",
+  //   false,
+  // ),
+
+  // ---------------------------NEW -------------
+p(
+  14,
+  "FILA",
+  4.7,
+  109,
+  "Performance SFIB13",
+  "Men",
+  "Geometric",
+  ["Black"],
+  "TR90",
+  "L",
+  9900,
+  12900,
+  "/images/fila.jpg",
+  "New",
+  false,
+),
   /* ---------- GUESS ---------- */
   p(
     15,
