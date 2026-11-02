@@ -6,8 +6,8 @@ import Link from "next/link";
 import ProductGrid from "@/components/ProductGrid";
 import ProductFilter from "@/components/ProductFilter";
 import SortDropdown from "@/components/SortDropdown";
-import BrandSlider from "@/components/BrandSlider";
-
+// import BrandSlider from "@/components/BrandSlider";
+import GlassesBrand from "@/components/GlassesBrand";
 import { useProductFilters } from "@/hooks/useProductFilters";
 import { createSlug } from "@/lib/slug";
 import {
@@ -237,7 +237,7 @@ function GlassesContent({ category, group, slug }) {
         productLabel="Product"
       />
 
-      <BrandSlider />
+      <GlassesBrand />
     </div>
   );
 }

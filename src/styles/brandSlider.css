@@ -46,10 +46,10 @@
 
 .brand-section-heading h2 {
   margin: 0 0 10px;
+font-family: var(--lm-font-display);
+  /* font-family: "Jost", sans-serif; */
 
-  font-family: "Jost", sans-serif;
-
-  font-size: 32px;
+  font-size: 52px;
   font-weight: 600;
 
   line-height: 1.1;
