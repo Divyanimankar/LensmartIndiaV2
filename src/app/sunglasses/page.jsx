@@ -15,7 +15,7 @@ import { useProductFilters } from "../../hooks/useProductFilters";
 
 import { sunglassesProducts as products } from "../../data/sunglassesProducts";
 
-
+import BrandsWeCarry from "../../components/BrandsWeCarry";
 import GlassesBrand from "@/components/GlassesBrand";
 import "../../styles/sunglasses.css";
 import "../../styles/productsToolbar.css";
@@ -288,7 +288,7 @@ function SunglassesContent() {
         productLabel="Product"
       />
 
-      <GlassesBrand />
+      <BrandsWeCarry />
     </div>
   );
 }

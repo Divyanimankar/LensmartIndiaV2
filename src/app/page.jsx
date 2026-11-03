@@ -22,6 +22,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import LensBestseller from "@/components/LensBestseller";
 import FeatureSection from "@/components/FeatureSection";
 import GlassesBrand from "@/components/GlassesBrand";
+import BrandsWeCarry from "@/components/BrandsWeCarry";
 
 // export const metadata = {
 //   title: "LensMartIndia - Contact Lenses Online",
@@ -96,8 +97,8 @@ export default function HomePage() {
           Glasses Brands
       ========================================== */}
 
-     <GlassesBrand />
-
+     {/* <GlassesBrand /> */}
+         <BrandsWeCarry />
         
 
       {/* ==========================================

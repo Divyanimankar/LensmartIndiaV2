@@ -14,6 +14,7 @@ import { EYEGLASSES_FILTERS } from "../../data/filterConfig";
 import { useProductFilters } from "../../hooks/useProductFilters";
 import { eyeglassesProducts as products } from "../../data/eyeglassesProducts";
 import GlassesBrand from "../../components/GlassesBrand";
+import BrandsWeCarry from "../../components/BrandsWeCarry";
 import "../../styles/eyeglasses.css";
 import "../../styles/productsToolbar.css";
 import "../../styles/productListing.css";
@@ -312,7 +313,8 @@ useEffect(() => {
         productLabel="Product"
       />
 
-      <GlassesBrand />
+      {/* <GlassesBrand /> */}
+      <BrandsWeCarry />
     </div>
   );
 }
