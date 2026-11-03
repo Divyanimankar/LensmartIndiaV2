@@ -10,6 +10,7 @@ import SortDropdown from "@/components/SortDropdown";
 import GlassesBrand from "@/components/GlassesBrand";
 import { useProductFilters } from "@/hooks/useProductFilters";
 import { createSlug } from "@/lib/slug";
+import BrandsWeCarry from "@/components/BrandsWeCarry";
 import {
   CATALOGS,
   GROUPS,
@@ -237,7 +238,8 @@ function GlassesContent({ category, group, slug }) {
         productLabel="Product"
       />
 
-      <GlassesBrand />
+      {/* <GlassesBrand /> */}
+      <BrandsWeCarry />
     </div>
   );
 }
