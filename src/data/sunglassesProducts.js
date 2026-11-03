@@ -368,7 +368,7 @@ const p = (
   frameSize,
   price,
   oldPrice,
-  image,
+  images,
   badge,
   bestseller,
 ) => ({
@@ -385,12 +385,16 @@ const p = (
   frameSize,
   price,
   oldPrice,
-  image,
+
+  // Collection page main image
+  image: images[0],
+
+  // Product details gallery images
+  images,
+
   badge,
   bestseller,
 });
-
-
 
 export const sunglassesProducts = [
   /* ---------- IDEE ---------- */
@@ -407,7 +411,11 @@ export const sunglassesProducts = [
     "M",
     4560,
     5900,
-    "https://idee-eyewear.com/cdn/shop/files/IDS3344C1SG_3.jpg?v=1783141228&width=1400",
+    [
+      "/sunGlasses/1-1.webp",
+      "/sunGlasses/1-2.webp",
+      "/sunGlasses/1-3.webp",
+    ],
     "New",
     false,
   ),
@@ -424,7 +432,11 @@ export const sunglassesProducts = [
     "M",
     4800,
     6200,
-    "https://idee-eyewear.com/cdn/shop/files/IDS3392C1SG_3.jpg?v=1782999163&width=1400",
+    [
+      "/sunGlasses/2-1.webp",
+      "/sunGlasses/2-2.webp",
+      "/sunGlasses/2-3.webp",
+    ],
     "",
     false,
   ),
@@ -441,7 +453,11 @@ export const sunglassesProducts = [
     "M",
     4200,
     5500,
-    "https://idee-eyewear.com/cdn/shop/files/IDS3352C1SG_3.jpg?v=1782998590&width=1400",
+    [
+      "/sunGlasses/3-1.webp",
+      "/sunGlasses/3-2.webp",
+      "/sunGlasses/3-3.webp",
+    ],
     "",
     false,
   ),
@@ -460,7 +476,11 @@ export const sunglassesProducts = [
     "XS",
     2025,
     2600,
-    "https://cdn.shopify.com/s/files/1/0555/9808/8321/files/IDSY670C1SG_2.jpg?width=600",
+    [
+      "/sunGlasses/4-1.webp",
+      "/sunGlasses/4-2.webp",
+      "/sunGlasses/4-3.webp",
+    ],
     "",
     false,
   ),
@@ -477,7 +497,11 @@ export const sunglassesProducts = [
     "XS",
     1925,
     2500,
-    "https://cdn.shopify.com/s/files/1/0555/9808/8321/files/IDSY659C3SG_2.jpg?width=600",
+    [
+      "/sunGlasses/5-1.webp",
+      "/sunGlasses/5-2.webp",
+      "/sunGlasses/5-3.webp",
+    ],
     "",
     false,
   ),
@@ -496,7 +520,11 @@ export const sunglassesProducts = [
     "M",
     2760,
     3600,
-    "https://www.iruseyewear.com/cdn/shop/files/IRS1445C1SG_3.jpg",
+    [
+      "/sunGlasses/6-1.webp",
+      "/sunGlasses/6-2.webp",
+      "/sunGlasses/6-3.webp",
+    ],
     "Popular",
     true,
   ),
@@ -513,7 +541,11 @@ export const sunglassesProducts = [
     "M",
     1800,
     2300,
-    "https://www.iruseyewear.com/cdn/shop/files/IRS1391C1SG_3.jpg",
+    [
+      "/sunGlasses/7-1.webp",
+      "/sunGlasses/7-2.webp",
+      "/sunGlasses/7-3.webp",
+    ],
     "",
     false,
   ),
@@ -530,7 +562,11 @@ export const sunglassesProducts = [
     "S",
     2040,
     2700,
-    "https://www.iruseyewear.com/cdn/shop/files/IRS1188C3SG_3.jpg",
+    [
+      "/sunGlasses/8-1.webp",
+      "/sunGlasses/8-2.webp",
+      "/sunGlasses/8-3.webp",
+    ],
     "",
     false,
   ),
@@ -549,7 +585,11 @@ export const sunglassesProducts = [
     "M",
     12900, // TODO: price not in Excel
     16800,
-    "https://cdn.shopify.com/s/files/1/0634/3888/1014/files/SPL890W_20509Y_01_2000x@2x.png?v=1788968169",
+    [
+      "/sunGlasses/9-1.webp",
+      "/sunGlasses/9-2.webp",
+      "/sunGlasses/9-3.webp",
+    ],
     "",
     false,
   ),
@@ -566,7 +606,11 @@ export const sunglassesProducts = [
     "M",
     13900, // TODO: price not in Excel
     18100,
-    "https://cdn.shopify.com/s/files/1/0634/3888/1014/files/SPLV36_20700Y_01_1000x@2x.png?v=1788969435",
+    [
+      "/sunGlasses/10-1.webp",
+      "/sunGlasses/10-2.webp",
+      "/sunGlasses/10-3.webp",
+    ],
     "Best Seller",
     true,
   ),
@@ -583,7 +627,11 @@ export const sunglassesProducts = [
     "L",
     14900, // TODO: price not in Excel
     19400,
-    "https://cdn.shopify.com/s/files/1/0634/3888/1014/files/SPLQ65_20722B_01_500x@2x.png?v=1788968288",
+    [
+      "/sunGlasses/11-1.webp",
+      "/sunGlasses/11-2.webp",
+      "/sunGlasses/11-3.webp",
+    ],
     "",
     false,
   ),
@@ -602,7 +650,11 @@ export const sunglassesProducts = [
     "M",
     8900, // TODO: price not in Excel
     11600,
-    "https://filaeyewear.com/media/mxqn25iq/sfif14_700p_001.jpg?mode=boxpad&quality=100&width=640&height=384&bgcolor=fff&rnd=134335166408800000",
+    [
+      "/sunGlasses/12-1.jpg",
+      "/sunGlasses/12-2.jpg",
+      "/sunGlasses/12-3.jpg",
+    ],
     "",
     false,
   ),
@@ -619,31 +671,15 @@ export const sunglassesProducts = [
     "M",
     9400, // TODO: price not in Excel
     12200,
-    "https://filaeyewear.com/media/huoa2utm/sfid23_509p_001.jpg?mode=boxpad&quality=100&width=640&height=384&bgcolor=fff&rnd=134335166145900000",
+    [
+      "/sunGlasses/13-1.jpg",
+      "/sunGlasses/13-2.jpg",
+      "/sunGlasses/13-3.jpg",
+    ],
     "",
     false,
   ),
 
-  // ------------------------ old----------------------
-  // p(
-  //   14,
-  //   "FILA",
-  //   4.7,
-  //   109,
-  //   "Performance SFIB13",
-  //   "Men",
-  //   "Geometric",
-  //   ["Black"],
-  //   "TR90",
-  //   "L",
-  //   9900, // TODO: price not in Excel
-  //   12900,
-  //   "https://filaeyewear.com/media/lm2bk4zd/sfib13_u28v_1.webp?mode=boxpad&quality=100&width=640&height=384&bgcolor=fff&rnd=133995735644370000",
-  //   "New",
-  //   false,
-  // ),
-
-  // ---------------------------NEW -------------
 p(
   14,
   "FILA",
@@ -657,7 +693,11 @@ p(
   "L",
   9900,
   12900,
-  "/images/fila.jpg",
+  [
+    "/sunGlasses/14-1.webp",
+    "/sunGlasses/14-2.webp",
+    "/sunGlasses/14-3.webp",
+  ],
   "New",
   false,
 ),
@@ -675,7 +715,11 @@ p(
     "M",
     7160,
     9300,
-    "https://www.rkumar.in/cdn/shop/files/GUS002455252FSG_3_ba84af76-7f4d-4465-92f9-f562ba28eb8b.jpg?v=1772940061",
+    [
+      "/sunGlasses/15-1.webp",
+      "/sunGlasses/15-2.webp",
+      "/sunGlasses/15-3.webp",
+    ],
     "Trending",
     true,
   ),
@@ -692,7 +736,11 @@ p(
     "M",
     6792,
     8800,
-    "https://www.rkumar.in/cdn/shop/files/GUS002505652FSG_3_ec33dd19-ed2f-4e8b-84ff-8945c35dd880.jpg?v=1772940086",
+    [
+      "/sunGlasses/16-1.webp",
+      "/sunGlasses/16-2.webp",
+      "/sunGlasses/16-3.webp",
+    ],
     "",
     false,
   ),
@@ -709,7 +757,11 @@ p(
     "L",
     6384,
     8300,
-    "https://www.rkumar.in/cdn/shop/files/GUS001676002BSG_2_88f7ee2d-2a80-4756-8070-50ac0145d00b.jpg?v=1772920991",
+    [
+      "/sunGlasses/17-1.webp",
+      "/sunGlasses/17-2.webp",
+      "/sunGlasses/17-3.webp",
+    ],
     "",
     false,
   ),
@@ -728,7 +780,10 @@ p(
     "M",
     12990, // TODO: price not in Excel
     16900,
-    "https://images.furla.com/public/edited/jpg/sunglasses/furla-sunglasses/havana/WD00218_AX0116_4401_AN000_M1.jpg",
+    [
+      "/sunGlasses/18-1.jpg",
+      "/sunGlasses/18-2.jpg",
+    ],
     "New",
     false,
   ),
@@ -745,7 +800,10 @@ p(
     "M",
     13490, // TODO: price not in Excel
     17500,
-    "https://images.furla.com/public/edited/jpg/sunglasses/furla-sunglasses/ciliegia-d/WD00199_AX0116_4401_CGQ00_M1.jpg",
+    [
+      "/sunGlasses/19-1.jpg",
+      "/sunGlasses/19-2.jpg",
+    ],
     "",
     false,
   ),
@@ -762,7 +820,11 @@ p(
     "M",
     11990, // TODO: price not in Excel
     15600,
-    "https://images.furla.com/public/edited/jpg/sunglasses/furla-sunglasses/nero/WD00154_AX0116_4401_O6000_M1.jpg",
+    [
+      "/sunGlasses/20-1.webp",
+      "/sunGlasses/20-2.webp",
+      "/sunGlasses/20-3.webp",
+    ],
     "",
     false,
   ),
@@ -781,7 +843,11 @@ p(
     "M",
     545,
     710,
-    "https://www.robertocavalli.com/dw/image/v2/BGDG_PRD/on/demandware.static/-/Sites-50/default/dw9301dc6f/images/zoom/VALD15ID255D9933_ECOM_STILL.JPG?sw=1536&sh=2304",
+    [
+      "/sunGlasses/21-1.jpeg",
+      "/sunGlasses/21-2.jpeg",
+      "/sunGlasses/21-3.jpeg",
+    ],
     "",
     false,
   ),
@@ -798,7 +864,11 @@ p(
     "L",
     455,
     590,
-    "https://www.robertocavalli.com/dw/image/v2/BGDG_PRD/on/demandware.static/-/Sites-50/default/dw502de8ea/images/zoom/VALD07ID245D9889_ECOM_STILL.JPG?sw=1536&sh=2304",
+    [
+      "/sunGlasses/22-1.avif",
+      "/sunGlasses/22-2.webp",
+      "/sunGlasses/22-3.webp",
+    ],
     "",
     false,
   ),
@@ -815,7 +885,11 @@ p(
     "M",
     455,
     590,
-    "https://www.robertocavalli.com/dw/image/v2/BGDG_PRD/on/demandware.static/-/Sites-50/default/dw961e3780/images/zoom/VALD13ID251D9894_ECOM_STILL.JPG?sw=1536&sh=2304",
+    [
+      "/sunGlasses/23-1.webp",
+      "/sunGlasses/23-2.webp",
+      "/sunGlasses/23-3.webp",
+    ],
     "",
     false,
   ),
@@ -834,7 +908,9 @@ p(
     "M",
     46000,
     59800,
-    "https://objects-prod.cdn.chopard.com/q_auto,f_auto,dpr_2/e_trim/w_iw,h_ih,c_lpad,g_center/c_pad,ar_1:1,w_1116,e_sharpen:60/ProductsAssets/Web/95221-0837_01.png",
+    [
+      "/sunGlasses/24-1.webp",
+    ],
     "",
     false,
   ),
@@ -851,7 +927,9 @@ p(
     "M",
     74000,
     96200,
-    "https://objects-prod.cdn.chopard.com/q_auto,f_auto,dpr_2/e_trim/w_iw,h_ih,c_lpad,g_center/c_pad,ar_1:1,w_1116,e_sharpen:60/ProductsAssets/Web/95221-0840_01.png",
+    [
+      "/sunGlasses/25-1.webp",
+    ],
     "",
     false,
   ),
@@ -868,7 +946,11 @@ p(
     "M",
     89000,
     115700,
-    "https://objects-prod.cdn.chopard.com/q_auto,f_auto,dpr_2/e_trim/w_iw,h_ih,c_lpad,g_center/c_pad,ar_1:1,w_1116,e_sharpen:60/ProductsAssets/Web/95221-0853_01.png",
+    [
+      "/sunGlasses/26-1.jpg",
+      "/sunGlasses/26-2.webp",
+      "/sunGlasses/26-3.webp",
+    ],
     "Trending",
     true,
   ),
@@ -887,7 +969,11 @@ p(
     "M",
     38500,
     50100,
-    "https://moscot.com/cdn/shop/files/lemtosh-sun-color-cognac-pos-2.jpg?v=1790340471&width=1100",
+    [
+      "/sunGlasses/27-1.webp",
+      "/sunGlasses/27-2.webp",
+      "/sunGlasses/27-3.webp",
+    ],
     "Best Seller",
     true,
   ),
@@ -904,7 +990,10 @@ p(
     "M",
     34800,
     45200,
-    "https://moscot.com/cdn/shop/products/bummi-sun-color-grey-fade-pos-2_e288c62f-88b7-4890-afab-c14df8635c34.jpg?v=1691333769&width=1100",
+    [
+      "/sunGlasses/28-1.webp",
+      "/sunGlasses/28-2.webp",
+    ],
     "",
     false,
   ),
@@ -921,7 +1010,10 @@ p(
     "M",
     39500,
     51400,
-    "https://moscot.com/cdn/shop/files/minyan-sun-color-dark-green-pos-2.jpg?v=1785858395&width=1100",
+    [
+      "/sunGlasses/29-1.webp",
+      "/sunGlasses/29-2.webp",
+    ],
     "",
     false,
   ),

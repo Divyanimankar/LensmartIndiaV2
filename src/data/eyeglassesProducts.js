@@ -712,7 +712,17 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 3050,
     oldPrice: 4000,
-    image: "https://idee-eyewear.com/cdn/shop/files/ID2504C1FR_3.jpg?v=1782998144&width=1100",
+
+    // Collection page main image
+    image: "/eyeGlasses/1-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/1-1.webp",
+      "/eyeGlasses/1-2.webp",
+      "/eyeGlasses/1-3.webp",
+    ],
+
     badge: "New",
     bestseller: false,
   },
@@ -729,7 +739,15 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 3050,
     oldPrice: 4000,
-    image: "https://idee-eyewear.com/cdn/shop/files/ID2502C1FR_3.jpg?v=1782998100&width=1100",
+    // Collection page main image
+    image: "/eyeGlasses/2-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/2-1.webp",
+      "/eyeGlasses/2-2.webp",
+      "/eyeGlasses/2-3.webp",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -746,7 +764,15 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 3725,
     oldPrice: 4800,
-    image: "https://idee-eyewear.com/cdn/shop/files/ID2500C1FR_3.jpg?v=1782998063&width=1100",
+    // Collection page main image
+    image: "/eyeGlasses/3-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/3-1.webp",
+      "/eyeGlasses/3-2.webp",
+      "/eyeGlasses/3-3.webp",
+    ],
     badge: "Popular",
     bestseller: true,
   },
@@ -765,7 +791,15 @@ const rawEyeglassesProducts = [
     frameSize: "XS",
     price: 1780,
     oldPrice: 2300,
-    image: "https://idee-eyewear.com/cdn/shop/files/IDY688C1FR_3.jpg?v=1782999732&width=1100",
+    // Collection page main image
+    image: "/eyeGlasses/4-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/4-1.webp",
+      "/eyeGlasses/4-2.webp",
+      "/eyeGlasses/4-3.webp",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -782,7 +816,15 @@ const rawEyeglassesProducts = [
     frameSize: "XS",
     price: 1780,
     oldPrice: 2300,
-    image: "https://idee-eyewear.com/cdn/shop/files/IDY690C1FR_3.jpg?v=1782999764&width=1100",
+    // Collection page main image
+    image: "/eyeGlasses/5-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/5-1.webp",
+      "/eyeGlasses/5-2.webp",
+      "/eyeGlasses/5-3.webp",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -799,7 +841,15 @@ const rawEyeglassesProducts = [
     frameSize: "XS",
     price: 2100,
     oldPrice: 2700,
-    image: "https://idee-eyewear.com/cdn/shop/files/IDY686C1FR_3.jpg?v=1782999699&width=1100",
+    // Collection page main image
+    image: "/eyeGlasses/6-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/6-1.webp",
+      "/eyeGlasses/6-2.webp",
+      "/eyeGlasses/6-3.webp",
+    ],
     badge: "New",
     bestseller: false,
   },
@@ -818,7 +868,15 @@ const rawEyeglassesProducts = [
     frameSize: "S",
     price: 1675,
     oldPrice: 2200,
-    image: "https://www.iruseyewear.com/cdn/shop/files/IR2006C7FR_3.jpg?v=1733220961&width=713",
+    // Collection page main image
+    image: "/eyeGlasses/7-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/7-1.webp",
+      "/eyeGlasses/7-2.webp",
+      "/eyeGlasses/7-3.webp",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -835,7 +893,15 @@ const rawEyeglassesProducts = [
     frameSize: "S",
     price: 1375,
     oldPrice: 1800,
-    image: "https://www.iruseyewear.com/cdn/shop/files/IR2014C2FR_3.jpg?v=1733218078&width=713",
+    // Collection page main image
+    image: "/eyeGlasses/8-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/8-1.webp",
+      "/eyeGlasses/8-2.webp",
+      "/eyeGlasses/8-3.webp",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -852,7 +918,15 @@ const rawEyeglassesProducts = [
     frameSize: "S",
     price: 1675,
     oldPrice: 2200,
-    image: "https://www.iruseyewear.com/cdn/shop/files/IR2022C2FR_3.jpg?v=1733218180&width=713",
+    // Collection page main image
+    image: "/eyeGlasses/9-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/9-1.webp",
+      "/eyeGlasses/9-2.webp",
+      "/eyeGlasses/9-3.webp",
+    ],
     badge: "Popular",
     bestseller: true,
   },
@@ -871,7 +945,15 @@ const rawEyeglassesProducts = [
     frameSize: "L",
     price: 3325,
     oldPrice: 4300,
-    image: "https://images-static.nykaa.com/media/catalog/product/7/a/7a93f95VFI825K54840FR_1.jpg",
+    // Collection page main image
+    image: "/eyeGlasses/10-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/10-1.avif",
+      "/eyeGlasses/10-2.avif",
+      "/eyeGlasses/10-3.avif",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -888,7 +970,15 @@ const rawEyeglassesProducts = [
     frameSize: "S",
     price: 3535,
     oldPrice: 4600,
-    image: "https://images-static.nykaa.com/media/catalog/product/7/a/7a93f95VFI011K50L89FR_1.jpg",
+    // Collection page main image
+    image: "/eyeGlasses/11-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/11-1.avif",
+      "/eyeGlasses/11-2.avif",
+      "/eyeGlasses/11-3.avif",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -905,7 +995,15 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 3955,
     oldPrice: 5100,
-    image: "https://images-static.nykaa.com/media/catalog/product/7/a/7a93f95VFI401K53531FR_1.jpg",
+    // Collection page main image
+    image: "/eyeGlasses/12-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/12-1.avif",
+      "/eyeGlasses/12-2.avif",
+      "/eyeGlasses/12-3.avif",
+    ],
     badge: "New",
     bestseller: false,
   },
@@ -924,7 +1022,15 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 6668,
     oldPrice: 8700,
-    image: "https://images-static.nykaa.com/media/catalog/product/2/7/273d914GUEAB00029615_1.jpg",
+    // Collection page main image
+    image: "/eyeGlasses/13-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/13-1.avif",
+      "/eyeGlasses/13-2.jxl",
+      "/eyeGlasses/13-3.jxl",
+    ],
     badge: "Trending",
     bestseller: true,
   },
@@ -941,7 +1047,15 @@ const rawEyeglassesProducts = [
     frameSize: "L",
     price: 5765,
     oldPrice: 7500,
-    image: "https://images-static.nykaa.com/media/catalog/product/2/7/273d914GUEAB00029602_1.jpg",
+    // Collection page main image
+    image: "/eyeGlasses/14-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/14-1.avif",
+      "/eyeGlasses/14-2.jxl",
+      "/eyeGlasses/14-3.jxl",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -958,7 +1072,15 @@ const rawEyeglassesProducts = [
     frameSize: "L",
     price: 7371,
     oldPrice: 9600,
-    image: "https://images-static.nykaa.com/media/catalog/product/2/7/273d914GUEAB00029658_1.jpg",
+    // Collection page main image
+    image: "/eyeGlasses/15-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/15-1.avif",
+      "/eyeGlasses/15-2.webp",
+      "/eyeGlasses/15-3.webp",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -977,7 +1099,15 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 9621,
     oldPrice: 12500,
-    image: "https://www.smartbuyglasses.co.in/image4/2/674/744673_1783570259440.jpg?width=900&height=450&q=90",
+    // Collection page main image
+    image: "/eyeGlasses/16-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/16-1.avif",
+      "/eyeGlasses/16-2.avif",
+      "/eyeGlasses/16-3.avif",
+    ],
     badge: "New",
     bestseller: false,
   },
@@ -994,7 +1124,15 @@ const rawEyeglassesProducts = [
     frameSize: "S",
     price: 6556,
     oldPrice: 8500,
-    image: "https://www.smartbuyglasses.co.in/image4/2/674/721623_1756792531672.jpg?width=900&height=450&q=90",
+    // Collection page main image
+    image: "/eyeGlasses/17-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/17-1.webp",
+      "/eyeGlasses/17-2.avif",
+      "/eyeGlasses/17-3.avif",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -1011,7 +1149,15 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 7280,
     oldPrice: 9500,
-    image: "https://www.smartbuyglasses.co.in/image4/2/674/766280_1780367500294.jpg?width=900&height=450&q=90",
+    // Collection page main image
+    image: "/eyeGlasses/18-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/18-1.avif",
+      "/eyeGlasses/18-2.avif",
+      "/eyeGlasses/18-3.webp",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -1030,7 +1176,15 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 12720,
     oldPrice: 16500,
-    image: "https://himalayaoptical.com/cdn/shop/files/VFU729538FCYFR_2_1024x1024.jpg?v=1751615206",
+    // Collection page main image
+    image: "/eyeGlasses/19-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/19-1.avif",
+      "/eyeGlasses/19-2.avif",
+      "/eyeGlasses/19-3.avif",
+    ],
     badge: "New",
     bestseller: false,
   },
@@ -1047,7 +1201,15 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 13360,
     oldPrice: 17400,
-    image: "https://himalayaoptical.com/cdn/shop/files/VFU724539AHFR_2_1024x1024.jpg?v=1751615199",
+    // Collection page main image
+    image: "/eyeGlasses/20-1.jpg",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/20-1.jpg",
+      "/eyeGlasses/20-2.jpg",
+      "/eyeGlasses/20-3.jpg",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -1064,7 +1226,15 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 11680,
     oldPrice: 15200,
-    image: "https://himalayaoptical.com/cdn/shop/files/VFU726558FCFR_2_1024x1024.jpg?v=1751615202",
+    // Collection page main image
+    image: "/eyeGlasses/21-1.jpg",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/21-1.jpg",
+      "/eyeGlasses/21-2.jpg",
+      "/eyeGlasses/21-3.jpg",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -1083,7 +1253,15 @@ const rawEyeglassesProducts = [
     frameSize: "M",
     price: 8174,
     oldPrice: 10600,
-    image: "https://www.smartbuyglasses.co.in/image4/2/244/699030_1790820718891.jpg?width=900&height=450&q=90",
+    // Collection page main image
+    image: "/eyeGlasses/22-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/22-1.avif",
+      "/eyeGlasses/22-2.avif",
+      "/eyeGlasses/22-3.avif",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -1100,7 +1278,13 @@ const rawEyeglassesProducts = [
     frameSize: "L",
     price: 13744,
     oldPrice: 17900,
-    image: "https://www.smartbuyglasses.co.in/image4/2/244/715215_1744171332514.jpg?width=900&height=450&q=90",
+    // Collection page main image
+    image: "/eyeGlasses/23-1.webp",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/23-1.webp",
+    ],
     badge: "",
     bestseller: false,
   },
@@ -1117,7 +1301,15 @@ const rawEyeglassesProducts = [
     frameSize: "L",
     price: 15851,
     oldPrice: 20600,
-    image: "https://www.smartbuyglasses.co.in/image4/2/244/677315_1713232686004.jpg?width=900&height=450&q=90",
+    // Collection page main image
+    image: "/eyeGlasses/24-1.avif",
+
+    // Product details gallery images
+    images: [
+      "/eyeGlasses/24-1.avif",
+      "/eyeGlasses/24-2.webp",
+      "/eyeGlasses/24-3.webp",
+    ],
     badge: "Trending",
     bestseller: true,
   },
