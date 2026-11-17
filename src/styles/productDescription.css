@@ -256,3 +256,26 @@
     gap: 2px;
   }
 }
+
+.pd-richtext ul,
+.pd-richtext ol { margin: 0; padding-left: 20px; }
+.pd-richtext li { margin: 0 0 8px; line-height: 1.7; color: #555; }
+.pd-richtext p { margin: 0 0 10px; line-height: 1.7; color: #555; }
+
+/* labelled paragraphs (Lens Compatibility, Care & Maintenance) */
+.pd-blocks {
+  display: grid;
+  gap: 14px;
+}
+
+.pd-block-title {
+  margin: 0 0 4px;
+  color: var(--pd-label);
+  font-family: "Assistant", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.pd-block .pd-text {
+  color: var(--pd-value);
+}

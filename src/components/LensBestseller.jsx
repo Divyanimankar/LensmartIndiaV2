@@ -13,8 +13,9 @@ import { useRouter } from "next/navigation";
 import * as THREE from "three";
 import "../styles/BestSeller.css";
 
-// Use your existing product data
-import { allProducts } from "../data/allProducts";
+/* Products now come from Shopify:
+   - pass them as a prop:  <BestSellers products={products} />
+   - or pass nothing: they are loaded from /api/contact-lenses */
 
 const AUTO_PLAY_DELAY = 3000;
 
@@ -57,16 +58,11 @@ const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
    product.replacementSchedule me hai
 ========================================== */
 
-// Sirf wahi products jinki selling price maujood hai
-const availableProducts = allProducts.filter(
-  (product) => product.price !== null && product.price !== undefined
-);
-
 /* ---- BEST SELLER LOGIC (commented) ----
 
 const BEST_SELLER_IDS = new Set(
   availableProducts.slice(0, BEST_SELLER_LIMIT).map((product) => product.id)
-);
+); // (needs availableProducts - see inside the component)
 
 ---------------------------------------- */
 
@@ -80,11 +76,11 @@ const matchesTab = (product, tab) => {
   return schedule.startsWith(tab);
 };
 
-// Har tab me kitne products hain
-const TAB_COUNTS = TABS.reduce((acc, [key]) => {
-  acc[key] = availableProducts.filter((p) => matchesTab(p, key)).length;
-  return acc;
-}, {});
+/* Shopify images: ask the CDN for a smaller file (the 3D tile is small) */
+const sizedImage = (src) =>
+  typeof src === "string" && src.includes("cdn.shopify.com")
+    ? `${src}${src.includes("?") ? "&" : "?"}width=800`
+    : src;
 
 // 1059 -> "1,059"  (paise hata kar, Indian format)
 const formatINR = (value) =>
@@ -179,8 +175,54 @@ const shadowFragmentShader = /* glsl */ `
   }
 `;
 
-export default function BestSellers() {
+export default function BestSellers({ products: productsProp }) {
   const router = useRouter();
+
+  /* =========================================
+     PRODUCTS FROM SHOPIFY
+     null = still loading
+  ========================================= */
+
+  const [fetched, setFetched] = useState(null);
+
+  useEffect(() => {
+    if (productsProp) return;
+
+    let cancelled = false;
+
+    fetch("/api/contact-lenses")
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .then((data) => {
+        if (!cancelled) setFetched(Array.isArray(data) ? data : []);
+      })
+      .catch((error) => {
+        console.error("Bestseller products error:", error);
+        if (!cancelled) setFetched([]);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [productsProp]);
+
+  const sourceProducts = productsProp || fetched;
+  const loading = sourceProducts === null;
+
+  // Sirf wahi products jinki selling price maujood hai
+  const availableProducts = useMemo(
+    () => (sourceProducts || []).filter((product) => Number(product.price) > 0),
+    [sourceProducts]
+  );
+
+  // Har tab me kitne products hain
+  const tabCounts = useMemo(
+    () =>
+      TABS.reduce((acc, [key]) => {
+        acc[key] = availableProducts.filter((p) => matchesTab(p, key)).length;
+        return acc;
+      }, {}),
+    [availableProducts]
+  );
 
   // Daily tab default active
   const [activeTab, setActiveTab] = useState(DEFAULT_TAB);
@@ -238,6 +280,16 @@ export default function BestSellers() {
     };
   }, []);
 
+  /* default tab khali ho to pehla bhara hua tab chuno */
+
+  useEffect(() => {
+    if (loading || tabCounts[activeTab] > 0) return;
+
+    const first = TABS.find(([key]) => tabCounts[key] > 0);
+
+    if (first) setActiveTab(first[0]);
+  }, [loading, tabCounts, activeTab]);
+
   /* =========================================
      FILTER + UI DATA
   ========================================= */
@@ -270,7 +322,7 @@ export default function BestSellers() {
         ...product,
 
         // Convert imported Next.js image object to actual URL
-        imageSrc: product.image?.src || product.image,
+        imageSrc: sizedImage(product.image?.src || product.image),
 
         // 42  (badge me "42%" + "OFF" alag-alag dikhte hain)
         discountPercent,
@@ -281,10 +333,11 @@ export default function BestSellers() {
         rating: product.rating ?? 4.8,
         reviews: product.reviewCount ?? product.reviews ?? 95,
 
-        link: `/contact-lenses/${product.id}`,
+        // Shopify handle, e.g. /contact-lenses/acuvue-vita-6-pack
+        link: `/contact-lenses/${product.slug || product.id}`,
       };
     });
-  }, [activeTab]);
+  }, [activeTab, availableProducts]);
 
   const total = displayProducts.length;
 
@@ -330,6 +383,7 @@ export default function BestSellers() {
     const shadowGeometry = new THREE.PlaneGeometry(CARD_W * 0.95, 0.2);
 
     const loader = new THREE.TextureLoader();
+    loader.setCrossOrigin("anonymous"); // Shopify CDN images in WebGL
     const maxAniso = renderer.capabilities.getMaxAnisotropy();
 
     /* ---------- TEXTURE CACHE ---------- */
@@ -946,7 +1000,8 @@ export default function BestSellers() {
               image: product.image,
               price: product.price,
               oldPrice: product.oldPrice,
-              link: `/contact-lenses/${productId}`,
+              slug: product.slug || "",
+              link: `/contact-lenses/${product.slug || productId}`,
             },
           ];
 
@@ -994,7 +1049,7 @@ export default function BestSellers() {
           aria-label="Filter contact lenses"
         >
           {TABS.map(([key, label]) => {
-            const count = TAB_COUNTS[key];
+            const count = tabCounts[key];
 
             return (
               <button
@@ -1110,6 +1165,11 @@ export default function BestSellers() {
                   className="updatedbestseller-product-name"
                 >
                   {product.name}
+                  {product.pack && (
+                    <span className="updatedbestseller-title-pack">
+                      {" "}({product.pack})
+                    </span>
+                  )}
                 </Link>
 
                 {/* TAGS: Color · Monthly Disposable · Spherical */}
@@ -1185,7 +1245,9 @@ export default function BestSellers() {
               </div>
             ) : (
               <p className="updatedbestseller-empty">
-                No products available for this category.
+                {loading
+                  ? "Loading products..."
+                  : "No products available for this category."}
               </p>
             )}
 

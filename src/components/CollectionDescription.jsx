@@ -12,7 +12,21 @@ import "../styles/collectionDescription.css";
    products: the page's FULL product list (not the filtered
              one), used to build the brand / manufacturer list
 
-   Layout:  intro  ->  brands / manufacturers  ->  FAQ
+   OPTIONAL (Shopify collection):
+   title:            collection title  -> replaces the heading
+   descriptionHtml:  collection description (HTML) -> replaces
+                     the intro + details paragraphs
+   If they are empty / not passed, the text from
+   data/collectionContent.js is used as before.
+
+   OPTIONAL (page specific content):
+   override:  object that replaces fields of the base content
+              (name, heading, intro, details, faqs, brandsHeading,
+              brandsNote, brandField, brandType, unit)
+   url:       path of the page, used in the JSON-LD
+              (example: "/lens-type/daily")
+
+   Layout:  intro  ->  FAQ  ->  brands / manufacturers
 
    SEO:
    - real, crawlable text (nothing hidden behind JS)
@@ -51,12 +65,18 @@ export default function CollectionDescription({
   type,
   products = [],
   headingLevel = 2,
+  title,
+  descriptionHtml,
+  override = {}, // NEW (1/3)
+  url, // NEW (1/3)
 }) {
-  const content = COLLECTION_CONTENT[type];
+  const base = COLLECTION_CONTENT[type]; // NEW (2/3)
 
-  if (!content) {
+  if (!base) {
     return null;
   }
+
+  const content = { ...base, ...override }; // NEW (2/3)
 
   const {
     name,
@@ -73,6 +93,34 @@ export default function CollectionDescription({
 
   const brands = getBrands(products, brandField);
 
+  /* Shopify description (if any) wins over the static text.
+     If it starts with a heading (<h1>..<h6>), that heading becomes the big
+     title on the left and the rest becomes the paragraphs. */
+  const stripTags = (text) =>
+    text
+      .replace(/<[^>]*>/g, " ")
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/\s+/g, " ")
+      .trim();
+
+  const fullHtml = String(descriptionHtml || "").trim();
+  const headMatch = fullHtml.match(/^\s*<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/i);
+
+  const htmlHeading = headMatch ? stripTags(headMatch[2]) : "";
+  const shopifyHtml = headMatch
+    ? fullHtml.slice(headMatch[0].length).trim()
+    : fullHtml;
+
+  const pageHeading = htmlHeading || String(title || "").trim() || heading;
+  const plainDescription = shopifyHtml
+    ? stripTags(shopifyHtml)
+    : `${intro} ${details}`;
+
   const Heading = `h${headingLevel}`;
   const SubHeading = `h${Math.min(headingLevel + 1, 6)}`;
   const headingId = `collection-desc-${type}`;
@@ -83,9 +131,9 @@ export default function CollectionDescription({
     "@graph": [
       {
         "@type": "CollectionPage",
-        name: heading,
-        description: `${intro} ${details}`,
-        ...(SITE_URL && { url: `${SITE_URL}/${type}` }),
+        name: pageHeading,
+        description: plainDescription,
+        ...(SITE_URL && { url: `${SITE_URL}${url || `/${type}`}` }), // NEW (3/3)
         isPartOf: { "@type": "WebSite", name: "LensMartIndia" },
       },
       ...(brands.length > 0
@@ -118,13 +166,20 @@ export default function CollectionDescription({
 
       <header className="collection-desc__intro">
         <Heading id={headingId} className="collection-desc__title">
-          {heading}
+          {pageHeading}
         </Heading>
 
-        <div className="collection-desc__intro-copy">
-          <p>{intro}</p>
-          <p>{details}</p>
-        </div>
+        {shopifyHtml ? (
+          <div
+            className="collection-desc__intro-copy"
+            dangerouslySetInnerHTML={{ __html: shopifyHtml }}
+          />
+        ) : (
+          <div className="collection-desc__intro-copy">
+            <p>{intro}</p>
+            <p>{details}</p>
+          </div>
+        )}
       </header>
 
       {/* 2. FAQ */}

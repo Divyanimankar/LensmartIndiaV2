@@ -10,7 +10,7 @@ import BrandSlider from "@/components/BrandSlider";
 
 import { CONTACT_LENS_FILTERS } from "@/data/filterConfig";
 import { useProductFilters } from "@/hooks/useProductFilters";
-import { getProductsFor, getDisplayName } from "@/lib/catalog";
+import { filterProductsFor, displayNameFor } from "@/lib/catalog"; // NEW (1/2)
 import { findLensType } from "@/lib/lensTypes";
 
 import "@/styles/allProducts.css";
@@ -32,91 +32,61 @@ const TITLES = {
 
 const PER_PAGE = 12;
 
-function CatalogContent({ type, slug }) {
+// NEW (2/2): products ab prop se aate hain (Shopify, server page se)
+function CatalogContent({ type, slug, description, products = [] }) {
   const [sortBy, setSortBy] = useState("featured");
   const [page, setPage] = useState(1);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
-  const name = getDisplayName(type, slug);
+  const name = displayNameFor(products, type, slug);
 
   // Is page ke products hi filter ka base hain
-  const baseProducts = useMemo(() => getProductsFor(type, slug), [type, slug]);
+  const baseProducts = useMemo(
+    () => filterProductsFor(products, type, slug),
+    [products, type, slug],
+  );
 
   const filters = useProductFilters(CONTACT_LENS_FILTERS, baseProducts);
-  // Lens-type page par us type ka filter lock rahega (sirf wahi option dikhega)
-const lensType = type === "lens-type" ? findLensType(slug) : null;
 
-// Har page par uska apna filter lock rahega (sirf wahi option, tick ke saath)
-const lock = useMemo(() => {
-  if (type === "lens-type") {
-    const lt = findLensType(slug);
-    return lt ? { key: lt.group, value: lt.value } : null;
-  }
-  if (type === "brand") return { key: "brand", value: name };
-  if (type === "manufacturer") return { key: "manufacturer", value: name };
-  return null;
-}, [type, slug, name]);
+  // Har page par uska apna filter lock rahega (sirf wahi option, tick ke saath)
+  const lock = useMemo(() => {
+    if (type === "lens-type") {
+      const lt = findLensType(slug);
+      return lt ? { key: lt.group, value: lt.value } : null;
+    }
+    if (type === "brand") return { key: "brand", value: name };
+    if (type === "manufacturer") return { key: "manufacturer", value: name };
+    return null;
+  }, [type, slug, name]);
 
-const view = useMemo(() => {
-  if (!lock || !lock.value) return filters;
+  const view = useMemo(() => {
+    if (!lock || !lock.value) return filters;
 
-  const same = (a, b) =>
-    String(a).toLowerCase().trim() === String(b).toLowerCase().trim();
+    const same = (a, b) =>
+      String(a).toLowerCase().trim() === String(b).toLowerCase().trim();
 
-  let groupFound = false;
-  let lockedOption = lock.value;
+    let groupFound = false;
+    let lockedOption = lock.value;
 
-  const groups = filters.groups.map((g) => {
-    if (g.key !== lock.key) return g;
-    groupFound = true;
-    lockedOption = g.options?.find((o) => same(o, lock.value)) ?? lock.value;
-    return { ...g, options: [lockedOption], searchable: false };
-  });
+    const groups = filters.groups.map((g) => {
+      if (g.key !== lock.key) return g;
+      groupFound = true;
+      lockedOption = g.options?.find((o) => same(o, lock.value)) ?? lock.value;
+      return { ...g, options: [lockedOption], searchable: false };
+    });
 
-  // filter group config mein nahi mila to kuch mat badlo
-  if (!groupFound) return filters;
+    // filter group config mein nahi mila to kuch mat badlo
+    if (!groupFound) return filters;
 
-  return {
-    ...filters,
-    groups,
-    selected: { ...filters.selected, [lock.key]: [lockedOption] },
-    toggle: (key, option) => {
-      if (key !== lock.key) filters.toggle(key, option);
-    },
-  };
-}, [filters, lock]);
-
-
-// const view = useMemo(() => {
-//   if (!lensType) return filters;
-
-//   const { group: lockedKey, value } = lensType;
-//   const same = (a, b) =>
-//     String(a).toLowerCase().trim() === String(b).toLowerCase().trim();
-
-//   let lockedOption = null;
-
-//   const groups = filters.groups.map((g) => {
-//     if (g.key !== lockedKey) return g;
-//     lockedOption = g.options?.find((o) => same(o, value)) ?? null;
-//     return lockedOption
-//       ? { ...g, options: [lockedOption], searchable: false }
-//       : g;
-//   });
-
-//   // group ya option config mein nahi mila to kuch mat badlo
-//   if (!lockedOption) return filters;
-
-//   return {
-//     ...filters,
-//     groups,
-//     selected: { ...filters.selected, [lockedKey]: [lockedOption] },
-//     toggle: (key, option) => {
-//       if (key !== lockedKey) filters.toggle(key, option);
-//     },
-//   };
-// }, [filters, lensType]);
-
+    return {
+      ...filters,
+      groups,
+      selected: { ...filters.selected, [lock.key]: [lockedOption] },
+      toggle: (key, option) => {
+        if (key !== lock.key) filters.toggle(key, option);
+      },
+    };
+  }, [filters, lock]);
 
   useEffect(() => {
     setPage(1);
@@ -126,7 +96,9 @@ const view = useMemo(() => {
     const result = [...filters.filteredProducts];
 
     if (sortBy === "best-selling")
-      result.sort((a, b) => Number(Boolean(b.bestseller)) - Number(Boolean(a.bestseller)));
+      result.sort(
+        (a, b) => Number(Boolean(b.bestseller)) - Number(Boolean(a.bestseller)),
+      );
     if (sortBy === "price-low-high")
       result.sort((a, b) => Number(a.price || 0) - Number(b.price || 0));
     if (sortBy === "price-high-low")
@@ -166,7 +138,8 @@ const view = useMemo(() => {
     <div className="all-products-page">
       <section className="catalog-hero">
         <nav className="catalog-breadcrumb" aria-label="Breadcrumb">
-          <Link href="/">Home</Link> / <Link href="/all-products">Contact Lenses</Link> /{" "}
+          <Link href="/">Home</Link> /{" "}
+          <Link href="/all-products">Contact Lenses</Link> /{" "}
           <span>{name}</span>
         </nav>
         <h1>{TITLES[type](name)}</h1>
@@ -226,19 +199,45 @@ const view = useMemo(() => {
             />
 
             {totalPages > 1 && (
-              <nav className="all-products-pagination" aria-label="Product pagination">
-                <button type="button" className="pagination-arrow"
-                  disabled={page === 1} onClick={() => goToPage(page - 1)}>‹</button>
+              <nav
+                className="all-products-pagination"
+                aria-label="Product pagination"
+              >
+                <button
+                  type="button"
+                  className="pagination-arrow"
+                  disabled={page === 1}
+                  onClick={() => goToPage(page - 1)}
+                >
+                  ‹
+                </button>
 
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                  <button type="button" key={p}
-                    className={page === p ? "pagination-number active" : "pagination-number"}
-                    aria-current={page === p ? "page" : undefined}
-                    onClick={() => goToPage(p)}>{p}</button>
-                ))}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (p) => (
+                    <button
+                      type="button"
+                      key={p}
+                      className={
+                        page === p
+                          ? "pagination-number active"
+                          : "pagination-number"
+                      }
+                      aria-current={page === p ? "page" : undefined}
+                      onClick={() => goToPage(p)}
+                    >
+                      {p}
+                    </button>
+                  ),
+                )}
 
-                <button type="button" className="pagination-arrow"
-                  disabled={page === totalPages} onClick={() => goToPage(page + 1)}>›</button>
+                <button
+                  type="button"
+                  className="pagination-arrow"
+                  disabled={page === totalPages}
+                  onClick={() => goToPage(page + 1)}
+                >
+                  ›
+                </button>
               </nav>
             )}
 
@@ -256,6 +255,8 @@ const view = useMemo(() => {
         productLabel="Product"
       />
 
+      {description}
+
       <BrandSlider />
     </div>
   );
@@ -263,7 +264,13 @@ const view = useMemo(() => {
 
 export default function CatalogPage(props) {
   return (
-    <Suspense fallback={<div className="all-products-page"><p>Loading...</p></div>}>
+    <Suspense
+      fallback={
+        <div className="all-products-page">
+          <p>Loading...</p>
+        </div>
+      }
+    >
       {/* key: page badalne par filter selection reset ho jaye */}
       <CatalogContent key={`${props.type}-${props.slug}`} {...props} />
     </Suspense>

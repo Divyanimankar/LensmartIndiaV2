@@ -350,7 +350,7 @@
 }
 .bestseller-product-name {
   display: -webkit-box;
-  min-height: 0;
+    min-height: calc(1.28em * 2);
   margin: 0 0 5px;
   overflow: hidden;
   color: #252b2a;
@@ -830,4 +830,46 @@
     width: 18px;
     height: 18px;
   }
+}
+
+/* Photo ka background aur frame ek hi colour */
+.bestseller-image-wrapper {
+  background: #efe1c8;
+}
+
+.bestseller-image {
+  object-fit: cover;
+  mix-blend-mode: normal;
+}
+
+/* Product name ke neeche ka gap hatao */
+.bestseller-product-name {
+  min-height: 0;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+/* Mobile par photo ke side ki patti hatao */
+@media (max-width: 520px) {
+  .bestseller-image {
+    padding: 0;
+  }
+}
+
+/* Price ek line mein, colour dots 4 se zyada nahi */
+.bestseller-price {
+  flex-wrap: nowrap;
+}
+
+/* View product button hamesha card ke neeche, ek hi line mein */
+.bestseller-card .bestseller-info {
+  flex: 1 1 auto;
+}
+
+.bestseller-card .bestseller-view-btn {
+  margin-top: auto;
+}
+
+.bestseller-card .bestseller-saving {
+  min-height: 20px;
 }

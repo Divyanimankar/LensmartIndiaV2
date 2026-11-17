@@ -101,6 +101,7 @@
 /* Jost for product name, pricing, discount and View Product CTA */
 .lm-card .lm-title,
 .lm-card .lm-title a,
+.lm-card .lm-title-pack, 
 .lm-card .lm-now,
 .lm-card .lm-now--request,
 .lm-card .lm-mrp,
@@ -640,6 +641,7 @@
   -webkit-box-orient: vertical;
 
   overflow: hidden;
+   min-height: 2.5em; 
 
 }
 
@@ -651,6 +653,15 @@
 
   transition: color 0.2s;
 
+}
+
+/* pack size: same font, size and weight as the product name */
+.lm-card .lm-title-pack {
+  font-size: inherit;
+  font-family: var(--lm-font-display);
+  font-weight: inherit;
+  line-height: inherit;
+  white-space: nowrap;   /* "(2 Pack)" beech se na toote */
 }
 
 /* makes the whole card clickable through the title link */
@@ -1289,4 +1300,35 @@
 
   }
 
+}
+
+/* ===== Card image: photo poore dabbe ko bhare, alag box na dikhe ===== */
+.lm-img {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+}
+
+.lm-img img {
+  object-fit: cover;
+  object-position: center;
+  mix-blend-mode: normal;
+}
+
+/* phone / narrow card: neeche chips ki patti ke liye thodi jagah chhodo */
+@media (max-width: 640px) {
+  .lm-img {
+    width: 100%;
+    height: 78%;
+    margin: 0;
+  }
+}
+
+@container lmcard (max-width: 260px) {
+  .lm-img {
+    width: 100%;
+    height: 78%;
+    margin: 0;
+  }
 }

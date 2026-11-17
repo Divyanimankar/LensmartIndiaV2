@@ -1229,7 +1229,7 @@ const contactLensBrands = [
   "Lacelle",
   "MyDay",
   "Optima",
-  "Precision1",
+  "Precision",
   "Proclear",
   "PureVision",
   "SofLens",
@@ -1741,6 +1741,7 @@ export default function Navbar() {
   const isSunglassesActive =
     pathname === "/sunglasses" || pathname.startsWith("/sunglasses/");
   const isContactLensActive =
+    pathname === "/contact-lenses" ||
     pathname === "/all-products" ||
     pathname.startsWith("/all-products/") ||
     pathname.startsWith("/contact-lenses/") ||

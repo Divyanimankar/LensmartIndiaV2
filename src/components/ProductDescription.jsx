@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import RichText from "@/components/RichText";
 import "../styles/productDescription.css";
 
 /* =========================================================
@@ -51,12 +52,20 @@ const filled = (value) =>
 function buildContact({ product, storeName, lensKind, scheduleLabel, packLabel }) {
   const name = product.name;
 
+  /* Shopify metaobject "Contact Lenses Product Details" first,
+     old values as fallback when a product has no metaobject linked */
+  const d = product.details || {};
+
   const specs = [
-    ["Replacement Schedule", scheduleLabel],
-    ["Lens Type", lensKind],
-    ["Lenses per Box", packLabel],
-    ["Brand", product.brand],
-    ["Manufacturer", product.manufacturer],
+    ["Replacement Schedule", d.replacement_schedule || scheduleLabel],
+    ["Lens Type", d.lens_type || lensKind],
+    ["Lenses per Box", d.lenses_per_box || packLabel],
+    ["Material", d.material],
+    ["Water Content", d.water_content],
+    ["Base Curve", d.base_curve],
+    ["Diameter", d.diameter],
+    ["Brand", d.brand || product.brand],
+    ["Manufacturer", d.manufacturer || product.manufacturer],
   ];
 
   return {
@@ -81,11 +90,15 @@ function buildContact({ product, storeName, lensKind, scheduleLabel, packLabel }
     ],
     sections: [
       { id: "details", title: "Product Details", specs },
-      {
-        id: "order",
-        title: "How to Order",
-        text: "Enter your prescription for the right and left eye, choose the number of boxes for each eye, and add the product to your cart. Make sure the selected values match your contact lens prescription.",
-      },
+      ...(filled(product.designedFor)
+        ? [
+            {
+              id: "designed-for",
+              title: "Contacts Designed For",
+              richText: product.designedFor,
+            },
+          ]
+        : []),
       {
         id: "shipping",
         title: "Shipping & Returns",
@@ -98,7 +111,17 @@ function buildContact({ product, storeName, lensKind, scheduleLabel, packLabel }
 function buildGlasses({ product, productType, storeName, selectedSize }) {
   const isSun = productType === "sunglasses";
   const noun = isSun ? "sunglasses" : "eyeglasses";
-  const fit = SIZE_NAMES[product.frameSize] || product.frameSize;
+  const sizeKey = selectedSize || product.frameSize;
+  const fit = SIZE_NAMES[sizeKey] || sizeKey;
+
+  /* extra data from Shopify (sunglasses): frame details, lens, care */
+  const fd = product.frameDetails || {};
+  const mm = (value) => (filled(value) ? `${value} mm` : "");
+  const lens = product.lensCompatibility;
+  const care = product.care;
+  const hasLens = isSun && lens && (lens.info || (lens.types || []).length);
+  const hasCare =
+    isSun && care && (care.cleaning || care.maintenance || care.storage);
 
   /* "This Rectangle frame from VOGUE is made of Acetate." — only the parts we have */
   const facts = [
@@ -133,7 +156,11 @@ function buildGlasses({ product, productType, storeName, selectedSize }) {
           ["Material", product.material],
           ["Shape", product.shape],
           ["Fit", fit],
-          ["Gender", product.category],
+          ["Gender", fd.gender || product.category],
+          ["Frame Type", fd.type],
+          ["Lens Width", mm(fd.lensWidth)],
+          ["Bridge Width", mm(fd.bridgeWidth)],
+          ["Temple Length", mm(fd.templeLength)],
         ],
       },
       {
@@ -148,18 +175,46 @@ function buildGlasses({ product, productType, storeName, selectedSize }) {
           "Choose the frame size that feels comfortable for you."
         ),
       },
-      {
-        id: "care",
-        title: "Care Instructions",
-        text: isSun
-          ? "Keep your sunglasses in a protective case and clean the lenses with a soft microfiber cloth."
-          : "Keep your eyewear in a protective case and clean the lenses with a soft microfiber cloth.",
-      },
-      {
-        id: "shipping",
-        title: "Shipping & Returns",
-        text: "Check delivery by pincode above. Easy replacement is available subject to store policy.",
-      },
+      hasLens
+        ? {
+            id: "lens",
+            title: "Lens Compatibility",
+            blocks: [
+              [
+                "Prescription lenses",
+                lens.prescriptionCompatible
+                  ? "Yes, prescription lenses can be fitted in this frame."
+                  : "Prescription lenses are not available for this frame.",
+              ],
+              [
+                "Compatible lens types",
+                (lens.types || []).join(", "),
+              ],
+              ["Lens information", lens.info],
+            ],
+          }
+        : {
+            id: "care",
+            title: "Care Instructions",
+            text: isSun
+              ? "Keep your sunglasses in a protective case and clean the lenses with a soft microfiber cloth."
+              : "Keep your eyewear in a protective case and clean the lenses with a soft microfiber cloth.",
+          },
+      hasCare
+        ? {
+            id: "maintenance",
+            title: "Care & Maintenance",
+            blocks: [
+              ["Cleaning", care.cleaning],
+              ["Maintenance", care.maintenance],
+              ["Storage", care.storage],
+            ],
+          }
+        : {
+            id: "shipping",
+            title: "Shipping & Returns",
+            text: "Check delivery by pincode above. Easy replacement is available subject to store policy.",
+          },
     ],
   };
 }
@@ -257,6 +312,21 @@ export default function ProductDescription({
                           </div>
                         ))}
                       </dl>
+                    ) : section.blocks ? (
+                      <div className="pd-blocks">
+                        {section.blocks
+                          .filter(([, value]) => filled(value))
+                          .map(([label, value]) => (
+                            <div className="pd-block" key={label}>
+                              <h4 className="pd-block-title">{label}</h4>
+                              <p className="pd-text">{value}</p>
+                            </div>
+                          ))}
+                      </div>
+                    ) : section.richText ? (
+                      <div className="pd-richtext">
+                        <RichText value={section.richText} />
+                      </div>
                     ) : (
                       <p className="pd-text">{section.text}</p>
                     )}

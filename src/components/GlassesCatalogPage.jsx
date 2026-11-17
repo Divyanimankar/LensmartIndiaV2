@@ -33,17 +33,17 @@ const SORT_OPTIONS = [
 
 const PER_PAGE = 12;
 
-function GlassesContent({ category, group, slug }) {
+function GlassesContent({ category, group, slug, products }) {
   const cat = CATALOGS[category];
-  const { pre, name, post } = getHeadingParts(category, group, slug);
+  const { pre, name, post } = getHeadingParts(category, group, slug, products);
 
   const [sortBy, setSortBy] = useState("featured");
   const [page, setPage] = useState(1);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   const baseProducts = useMemo(
-    () => getProductsFor(category, group, slug),
-    [category, group, slug],
+    () => getProductsFor(category, group, slug, products),
+    [category, group, slug, products],
   );
 
   const filters = useProductFilters(cat.filters, baseProducts);
@@ -197,6 +197,7 @@ function GlassesContent({ category, group, slug }) {
             <ProductGrid
               products={current}
               productType={cat.productType}
+              getHref={(product) => `/${category}/${product.slug}`}
               emptyState={
                 <div className="all-products-empty">
                   <h2>No products found</h2>

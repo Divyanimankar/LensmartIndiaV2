@@ -234,7 +234,7 @@ export default function Footer() {
               </li>
 
               <li>
-                <Link href="all-products">Contact Lenses</Link>
+                <Link href="/all-products">Contact Lenses</Link>
               </li>
 
               <li>

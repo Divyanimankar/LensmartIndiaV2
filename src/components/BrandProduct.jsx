@@ -110,14 +110,13 @@ export default function BrandProduct({
     const canPrev = left > 2;
     const canNext = left < maxScroll - 2;
 
-    const pages = maxScroll <= 2 ? 1 : Math.ceil(slides.length / perPage);
+    /* ek position = ek card; maxScroll tak kitne card-steps hain */
+const pages =
+  maxScroll <= 2 ? 1 : Math.ceil((maxScroll - 2) / (step || 1)) + 1;
 
-    const page = !canNext
-      ? pages - 1
-      : Math.min(
-          pages - 1,
-          Math.max(0, Math.round(left / (perPage * (step || 1)))),
-        );
+const page = !canNext
+  ? pages - 1
+  : Math.min(pages - 1, Math.max(0, Math.round(left / (step || 1))));
 
     /* slides that are mostly visible */
     const box = el.getBoundingClientRect();
@@ -219,20 +218,23 @@ export default function BrandProduct({
     });
   };
 
-  const goBy = (direction) => {
-    const el = viewportRef.current;
-    const next = measure();
-    if (!el || !next) return;
+  /* ek click = sirf ek card aage / peeche */
+const goBy = (direction) => {
+  const el = viewportRef.current;
+  const next = measure();
+  if (!el || !next) return;
 
-    scrollToLeft(el.scrollLeft + direction * next.perPage * next.step);
-  };
+  /* abhi ke card ke snap point se ek step, taaki drift na ho */
+  const current = Math.round(el.scrollLeft / (next.step || 1));
+  scrollToLeft((current + direction) * next.step);
+};
 
-  const goToPage = (index) => {
-    const next = measure();
-    if (!next) return;
+const goToPage = (index) => {
+  const next = measure();
+  if (!next) return;
 
-    scrollToLeft(index * next.perPage * next.step);
-  };
+  scrollToLeft(index * next.step);
+};
 
   const onKeyDown = (event) => {
     /* only when the row itself has focus, not a link or button inside it */

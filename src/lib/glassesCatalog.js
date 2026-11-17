@@ -81,21 +81,26 @@ const getMatcher = (group, slug) => {
   return (p) => valuesOf(p, fields).some((v) => accepted.includes(v));
 };
 
-export const getProductsFor = (category, group, slug) => {
+/* `products` (optional): a list from Shopify. When it is not given the
+   old static list of that catalog is used (eyeglasses still use it). */
+export const getProductsFor = (category, group, slug, products) => {
   if (!CATALOGS[category] || !GROUPS[group]) return [];
-  return CATALOGS[category].products.filter(getMatcher(group, slug));
+  const list = products ?? CATALOGS[category].products;
+  return list.filter(getMatcher(group, slug));
 };
 
-export const getTitle = (category, group, slug) => {
+export const getTitle = (category, group, slug, products) => {
   if (group === "brand") {
-    return getProductsFor(category, group, slug)[0]?.brand ?? titleCase(slug);
+    return (
+      getProductsFor(category, group, slug, products)[0]?.brand ?? titleCase(slug)
+    );
   }
   return TITLES[slug] ?? titleCase(slug);
 };
 
-export const getHeadingParts = (category, group, slug) => {
+export const getHeadingParts = (category, group, slug, products) => {
   const cat = CATALOGS[category].name;
-  const name = getTitle(category, group, slug);
+  const name = getTitle(category, group, slug, products);
   if (group === "category") {
     return SPECIAL[slug]
       ? { pre: "", name, post: ` in ${cat}` }

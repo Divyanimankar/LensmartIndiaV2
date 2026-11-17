@@ -3,31 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAnimatedClose } from "@/lib/motion";
+import { getCachedCart, removeCartItem } from "@/lib/cartClient";
 import "../styles/contactLensProductDetails.css"; // drawer ki clp-cart-* styles yahin hain
 // import "../styles/cartDrawer.css";
 
-// const keyOf = (item) => `${item.productType || "item"}-${item.id}`;
-
-const keyOf = (item) =>
-  [
-    item.productType || "item",
-    item.id,
-    item.selectedColor || "",
-    item.selectedSize || "",
-    item.selectedLens?.id || "",
-  ].join("-");
-
+/* har cart item ki key Shopify route se aati hai (item.key) */
+const keyOf = (item) => item.key;
 
 const inr = (v) => `₹${Number(v || 0).toLocaleString("en-IN")}`;
 
-const readCart = () => {
-  try {
-    const saved = JSON.parse(localStorage.getItem("lensmartCart")) || [];
-    return Array.isArray(saved) ? saved : [];
-  } catch {
-    return [];
-  }
-};
+const readCart = () => getCachedCart();
 
 export default function CartDrawer() {
   const [open, setOpen] = useState(false);
@@ -48,7 +33,7 @@ export default function CartDrawer() {
     const onOpen = () => {
   cancelClose();
   const cart = readCart();
-  setItems([...cart].reverse());
+  setItems([...cart]);
   setLatestKey(cart.length ? keyOf(cart[cart.length - 1]) : "");
   setOpen(cart.length > 0);
 };
@@ -70,13 +55,15 @@ export default function CartDrawer() {
     };
   }, [open]);
 
-  const removeItem = (key) => {
-    const updated = readCart().filter((i) => keyOf(i) !== key);
-    localStorage.setItem("lensmartCart", JSON.stringify(updated));
-    window.dispatchEvent(new Event("cartUpdated"));
-    const next = [...updated].reverse();
-    setItems(next);
-    if (next.length === 0) setOpen(false);
+  const removeItem = async (key) => {
+    try {
+      const data = await removeCartItem(key);
+      const next = [...(data.items || [])];
+      setItems(next);
+      if (next.length === 0) setOpen(false);
+    } catch (error) {
+      console.error("Cart remove error:", error);
+    }
   };
 
   if (!open || items.length === 0) return null;

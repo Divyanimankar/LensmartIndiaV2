@@ -4833,3 +4833,29 @@
     max-height: 220px;
   }
 }
+
+/* Eyeglasses cards: title ke neeche ka gap hatao */
+.eyeglasses-page .lm-card .lm-title {
+  min-height: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+}
+
+/* Eyeglasses cards: photo ka background aur frame ek hi colour */
+.eyeglasses-page .lm-media {
+  background: #ebddc7;
+}
+
+.eyeglasses-page .lm-img {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.eyeglasses-page .lm-img img {
+  object-fit: cover;
+  mix-blend-mode: normal;
+}

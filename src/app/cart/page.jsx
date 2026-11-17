@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import SiteLayout from "@/components/SiteLayout";
 import "../../styles/cartpage.css";
+import {
+  getCachedCart,
+  refreshCart,
+  updateBoxes,
+  removeCartItem,
+  getCheckoutUrl,
+} from "@/lib/cartClient";
 
 /* =========================================================
    CONFIG
@@ -73,17 +80,8 @@ const TagIcon = () => (
 
 const money = (value) => `₹${Math.round(Number(value) || 0).toLocaleString("en-IN")}`;
 
-// const getCartItemKey = (item) => `${item.productType || "product"}-${item.id}`;
-
-
-const getCartItemKey = (item) =>
-  [
-    item.productType || "item",
-    item.id,
-    item.selectedColor || item.color || "",
-    item.selectedSize || item.size || "",
-    item.selectedLens?.id || item.selectedLens?.name || "",
-  ].join("-");
+/* key Shopify route se aati hai */
+const getCartItemKey = (item) => item.key;
 
 const getSelectedOptions = (item) => {
   const options = [
@@ -171,88 +169,67 @@ export default function CartPage() {
   const [coupon, setCoupon] = useState("");
   const [couponMessage, setCouponMessage] = useState("");
 
+  const [busy, setBusy] = useState(false);
+  const [cartError, setCartError] = useState("");
+  const [checkingOut, setCheckingOut] = useState(false);
+
   /* =======================================================
      LOAD CART
   ======================================================= */
 
   useEffect(() => {
     const loadCart = () => {
-      try {
-        const savedCart = JSON.parse(localStorage.getItem("lensmartCart")) || [];
+      const normalized = getCachedCart().map((item) => ({
+        ...item,
+        price: getItemPrice(item),
+        quantity: getItemQuantity(item),
+      }));
 
-        const normalized = Array.isArray(savedCart)
-          ? savedCart.map((item) => ({
-              ...item,
-              price: getItemPrice(item),
-              quantity: getItemQuantity(item),
-            }))
-          : [];
-
-        setCartItems(normalized);
-      } catch (error) {
-        console.error("Error loading cart:", error);
-        setCartItems([]);
-      } finally {
-        setCartLoaded(true);
-      }
+      setCartItems(normalized);
     };
 
+    /* pehle turant copy dikhao, phir Shopify se latest lao */
     loadCart();
 
     window.addEventListener("cartUpdated", loadCart);
-    window.addEventListener("storage", loadCart);
 
-    return () => {
-      window.removeEventListener("cartUpdated", loadCart);
-      window.removeEventListener("storage", loadCart);
-    };
+    refreshCart()
+      .catch(() => {})
+      .finally(() => setCartLoaded(true));
+
+    return () => window.removeEventListener("cartUpdated", loadCart);
   }, []);
 
   /* =======================================================
-     SAVE CART
+     CHANGE BOXES (per eye, or whole item)
   ======================================================= */
 
-  const saveCart = (updatedCart) => {
-    setCartItems(updatedCart);
+  const runCartAction = async (task) => {
+    if (busy) return;
+    setBusy(true);
+    setCartError("");
 
     try {
-      localStorage.setItem("lensmartCart", JSON.stringify(updatedCart));
-      window.dispatchEvent(new Event("cartUpdated"));
+      await task();
     } catch (error) {
-      console.error("Error saving cart:", error);
+      setCartError(error.message || "Cart error. Please try again.");
+    } finally {
+      setBusy(false);
     }
   };
 
-  /* =======================================================
-     CHANGE BOXES (per eye, or whole item for old cart data)
-  ======================================================= */
-
   const changeBoxes = (targetItem, side, delta) => {
-    const targetKey = getCartItemKey(targetItem);
+    const eyeKey = side === "right" ? "rightEye" : "leftEye";
 
-    const updatedCart = cartItems.map((item) => {
-      if (getCartItemKey(item) !== targetKey) return item;
+    const current =
+      side === "all"
+        ? Number(targetItem.quantity) || 1
+        : Number(targetItem[eyeKey]?.quantity) || 1;
 
-      let next = { ...item };
+    const next = Math.max(1, current + delta);
+    if (next === current) return;
 
-      if (side === "all") {
-        next.quantity = Math.max(1, (Number(item.quantity) || 1) + delta);
-        return next;
-      }
-
-      const eyeKey = side === "right" ? "rightEye" : "leftEye";
-      const eye = item[eyeKey] || {};
-
-      next[eyeKey] = {
-        ...eye,
-        quantity: Math.max(1, (Number(eye.quantity) || 1) + delta),
-      };
-
-      next.quantity = getItemQuantity(next);
-      return next;
-    });
-
-    saveCart(updatedCart);
+    runCartAction(() => updateBoxes(targetItem.key, side, next));
   };
 
   /* =======================================================
@@ -260,8 +237,7 @@ export default function CartPage() {
   ======================================================= */
 
   const removeItem = (targetItem) => {
-    const targetKey = getCartItemKey(targetItem);
-    saveCart(cartItems.filter((item) => getCartItemKey(item) !== targetKey));
+    runCartAction(() => removeCartItem(targetItem.key));
   };
 
   /* =======================================================
@@ -292,16 +268,31 @@ export default function CartPage() {
       so we show the list reversed)
   ======================================================= */
 
-  const displayItems = [...cartItems].reverse();
+  const displayItems = [...cartItems];
 
   /* =======================================================
      ACTIONS
   ======================================================= */
 
-  const handleCheckout = (event) => {
+  const handleCheckout = async (event) => {
+    event.preventDefault();
+
     if (!agreed) {
-      event.preventDefault();
       setTermsError(true);
+      return;
+    }
+
+    if (checkingOut) return;
+
+    setCheckingOut(true);
+    setCartError("");
+
+    try {
+      const checkoutUrl = await getCheckoutUrl();
+      window.location.href = checkoutUrl;
+    } catch (error) {
+      setCartError(error.message || "Could not start checkout. Please try again.");
+      setCheckingOut(false);
     }
   };
 
@@ -610,7 +601,7 @@ export default function CartPage() {
                                       <button
                                         type="button"
                                         onClick={() => changeBoxes(item, row.side, -1)}
-                                        disabled={qty <= 1}
+                                        disabled={qty <= 1 || busy}
                                         aria-label={`Decrease ${row.label} boxes`}
                                       >
                                         −
@@ -621,6 +612,7 @@ export default function CartPage() {
                                       <button
                                         type="button"
                                         onClick={() => changeBoxes(item, row.side, 1)}
+                                        disabled={busy}
                                         aria-label={`Increase ${row.label} boxes`}
                                       >
                                         +
@@ -797,12 +789,15 @@ export default function CartPage() {
                       </p>
                     )}
 
+                    {cartError && <p className="lmi-terms-error">{cartError}</p>}
+
                     <Link
-                      href="/checkout"
+                      href="/cart"
                       className="lmi-checkout-button"
                       onClick={handleCheckout}
+                      aria-disabled={checkingOut || busy}
                     >
-                      Proceed to checkout
+                      {checkingOut ? "Opening secure checkout..." : "Proceed to checkout"}
                       <ArrowRight />
                     </Link>
 

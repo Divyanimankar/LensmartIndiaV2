@@ -431,10 +431,15 @@ export default function LensesProductCard({
       </div>
 
       <h3 className="lm-title">
-        <Link href={href} title={product.name}>
-          {product.name}
-        </Link>
-      </h3>
+  <Link href={href} title={product.name}>
+    {product.name}
+    {type === "contact-lenses" && (product.packSize || product.pack) && (
+      <span className="lm-title-pack">
+        {" "}({product.packSize || product.pack})
+      </span>
+    )}
+  </Link>
+</h3>
 
       {metaParts.length > 0 && (
         <p className="lm-meta">

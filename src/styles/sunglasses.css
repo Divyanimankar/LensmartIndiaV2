@@ -1205,3 +1205,30 @@
     transition: none;
   }
 }
+
+
+/* sunglasses cards: product name on one line, no empty gap below it */
+.sunglasses-page .lm-card .lm-title {
+  min-height: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+}
+
+/* Sunglasses cards: photo ka background aur frame ek hi colour */
+.sunglasses-page .lm-media {
+  background: #e6d9c4;
+}
+
+.sunglasses-page .lm-img {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.sunglasses-page .lm-img img {
+  object-fit: cover;
+  mix-blend-mode: normal;
+}
