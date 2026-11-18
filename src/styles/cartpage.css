@@ -1601,3 +1601,172 @@
     font-size: 10.5px;
   }
 }
+
+/* =========================================
+   CART ITEM HEADER — LARGER TEXT
+   (add at the very end of the file)
+========================================= */
+
+/* ---------- Desktop / Tablet ---------- */
+
+.lmi-item-head {
+  gap: 20px;
+  padding: 22px;
+}
+
+.lmi-item-image {
+  flex: 0 0 130px;
+  width: 130px;
+  height: 116px;
+}
+
+.lmi-item-brand {
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+}
+
+.lmi-item-name {
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.lmi-item-meta {
+  margin: 7px 0;
+  font-size: 15px;
+}
+
+.lmi-selected-options {
+  gap: 8px;
+  margin: 10px 0 12px;
+}
+
+.lmi-selected-option {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.lmi-item-price {
+  gap: 8px 10px;
+  margin-top: 8px;
+}
+
+.lmi-item-price strong {
+  font-size: 26px;
+}
+
+.lmi-item-price del {
+  font-size: 14px;
+}
+
+.lmi-per-box {
+  font-size: 14px;
+}
+
+.lmi-off {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.lmi-remove {
+  font-size: 13px;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 600px) {
+  .lmi-item-head {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .lmi-item-image {
+    flex: 0 0 92px;
+    width: 92px;
+    height: 92px;
+  }
+
+  .lmi-item-brand {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+
+  .lmi-item-name {
+    font-size: 18px;
+  }
+
+  .lmi-item-meta {
+    margin: 4px 0;
+    font-size: 13px;
+  }
+
+  .lmi-selected-options {
+    gap: 6px;
+    margin: 7px 0 9px;
+  }
+
+  .lmi-selected-option {
+    padding: 5px 9px;
+    font-size: 12px;
+  }
+
+  .lmi-item-price {
+    gap: 6px 8px;
+  }
+
+  .lmi-item-price strong {
+    font-size: 22px;
+  }
+
+  .lmi-item-price del,
+  .lmi-per-box {
+    font-size: 12.5px;
+  }
+
+  .lmi-off {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+}
+
+/* ---------- Very small phones ---------- */
+
+@media (max-width: 380px) {
+  .lmi-item-image {
+    flex-basis: 80px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .lmi-item-name {
+    font-size: 16px;
+  }
+
+  .lmi-item-price strong {
+    font-size: 20px;
+  }
+}
+
+/* =========================================
+   FIX: product name override
+========================================= */
+
+.lmi-item-card .lmi-item-info .lmi-item-title .lmi-item-name,
+.lmi-item-card .lmi-item-info a.lmi-item-name {
+  font-size: 24px !important;
+  line-height: 1.25 !important;
+}
+
+@media (max-width: 600px) {
+  .lmi-item-card .lmi-item-info .lmi-item-title .lmi-item-name,
+  .lmi-item-card .lmi-item-info a.lmi-item-name {
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .lmi-item-card .lmi-item-info .lmi-item-title .lmi-item-name,
+  .lmi-item-card .lmi-item-info a.lmi-item-name {
+    font-size: 16px !important;
+  }
+}

@@ -86,7 +86,8 @@ const discFragmentShader = /* glsl */ `
     float disc = 1.0 - smoothstep(1.0 - edge, 1.0, r);
     float rim = smoothstep(0.965 - edge, 0.965, r);
 
-    vec3 face = srgb(vec3(0.961));
+    /* eyeglasses wale halke grey (#efefef) jaisa, sab discs par same */
+    vec3 face = srgb(vec3(0.937));
     face *= 1.0 - 0.05 * r * r;
 
     /* photo poori disc me fit hoti hai (kat-ti nahi). Photo ke bahar ka hissa
@@ -101,11 +102,23 @@ const discFragmentShader = /* glsl */ `
 
     vec4 t = texture2D(uMap, clamp(uv2, 0.0, 1.0));
 
-    vec3 tex = (t.rgb - 0.5) * 1.04 + 0.5;
+    /* photo ka apna background (kone ka rang) pehchano, phir use "hata do":
+       background wala hissa disc ke halke grey jaisa ho jata hai, chashma aur
+       uski parchhai waisi hi rehti hai. Isse beige aur grey, dono photos ek jaise dikhte hain. */
+    vec4 c1 = texture2D(uMap, vec2(0.03, 0.03));
+    vec4 c2 = texture2D(uMap, vec2(0.97, 0.03));
+    vec4 c3 = texture2D(uMap, vec2(0.03, 0.97));
+    vec4 c4 = texture2D(uMap, vec2(0.97, 0.97));
 
-    /* photo ka transparent hissa disc ke halke rang par dikhta hai
-       (alpha ke bina green / kaala kachra dikhta tha) */
-    vec3 col = mix(face, tex, t.a * uLoaded);
+    float wSum = c1.a + c2.a + c3.a + c4.a;
+    vec3 bg = wSum > 0.01
+      ? (c1.rgb * c1.a + c2.rgb * c2.a + c3.rgb * c3.a + c4.rgb * c4.a) / wSum
+      : vec3(1.0);
+
+    vec3 ratio = clamp(t.rgb / max(bg, vec3(0.05)), 0.0, 1.0);
+
+    /* transparent hissa face par, baaki face * ratio */
+    vec3 col = mix(face, face * ratio, t.a * uLoaded);
 
     vec3 rimColor = mix(
       srgb(vec3(1.0)),

@@ -1,82 +1,46 @@
 import Link from "next/link";
 import "../../styles/search.css";
 
-import {
-  getContactLensProducts,
-  getSunglassesProducts,
-} from "@/lib/shopify-products";
+import { searchProducts } from "@/lib/search";
+import SearchResults from "@/components/SearchResults";
 
 /* search results always come fresh from the URL ?q= */
 export const dynamic = "force-dynamic";
 
-const norm = (text) =>
-  String(text || "")
-    .toLowerCase()
-    .replace(/[^a-z0-9+&]+/g, " ")
-    .trim();
+export const metadata = {
+  title: "Search | LensMartIndia",
+  robots: { index: false, follow: true },
+};
 
-/* smaller Shopify CDN image for the result cards */
-const sized = (url, width = 400) =>
-  url && url.includes("cdn.shopify.com")
-    ? `${url}${url.includes("?") ? "&" : "?"}width=${width}`
-    : url;
-
-const money = (value) =>
-  `₹${Number(value || 0).toLocaleString("en-IN")}`;
-
-/* every word typed must be found somewhere in the product text */
-const matches = (text, words) => words.every((word) => text.includes(word));
-
-function toResult(product, kind) {
-  const isSun = kind === "sunglasses";
-
-  return {
-    key: `${kind}-${product.slug}`,
-    kind: isSun ? "Sunglasses" : "Contact Lenses",
-    href: `/${isSun ? "sunglasses" : "contact-lenses"}/${product.slug}`,
-    name: product.name,
-    pack: product.pack || "",
-    brand: product.brand,
-    image: sized(product.image),
-    price: product.price,
-    oldPrice: product.oldPrice,
-    text: norm(
-      isSun
-        ? [product.name, product.brand, product.shape, product.material, product.category, "sunglasses"]
-        : [
-            product.name,
-            product.pack,
-            product.brand,
-            product.manufacturer,
-            product.type,
-            product.replacementSchedule,
-            "contact lenses",
-          ].join(" "),
-    ),
-  };
-}
+const TABS = [
+  { id: "all", label: "All" },
+  { id: "eyeglasses", label: "Eyeglasses" },
+  { id: "sunglasses", label: "Sunglasses" },
+  { id: "contact-lenses", label: "Contact Lenses" },
+];
 
 export default async function SearchPage({ searchParams }) {
   const params = await searchParams;
-  const rawQuery = Array.isArray(params?.q) ? params.q[0] : params?.q;
-  const query = String(rawQuery || "").trim();
-  const words = norm(query).split(" ").filter(Boolean);
+  const first = (v) => (Array.isArray(v) ? v[0] : v);
+
+  const query = String(first(params?.q) || "").trim();
+  const requested = String(first(params?.type) || "all");
+  const type = TABS.some((t) => t.id === requested) ? requested : "all";
 
   let results = [];
+  let counts = { all: 0, eyeglasses: 0, sunglasses: 0, "contact-lenses": 0 };
+  let failed = false;
 
-  if (words.length) {
-    const [lenses, sunglasses] = await Promise.all([
-      getContactLensProducts(),
-      getSunglassesProducts(),
-    ]);
-
-    results = [
-      ...lenses.map((p) => toResult(p, "contact-lenses")),
-      ...sunglasses.map((p) => toResult(p, "sunglasses")),
-    ]
-      .filter((item) => matches(item.text, words))
-      .slice(0, 60);
+  if (query) {
+    try {
+      ({ results, counts } = await searchProducts(query, { type, limit: 60 }));
+    } catch {
+      failed = true;
+    }
   }
+
+  const tabHref = (id) =>
+    `/search?q=${encodeURIComponent(query)}${id === "all" ? "" : `&type=${id}`}`;
 
   return (
     <section className="search-page">
@@ -86,53 +50,35 @@ export default async function SearchPage({ searchParams }) {
         {query ? (
           <>
             Results for: <strong>{query}</strong>
-            {results.length > 0 && ` (${results.length})`}
+            {counts.all > 0 && ` (${counts.all})`}
           </>
         ) : (
           "Type a brand, frame or lens name in the search box."
         )}
       </p>
 
-      {results.length > 0 ? (
-        <div className="search-results">
-          {results.map((product) => (
+      {query && counts.all > 0 && (
+        <nav className="search-tabs" aria-label="Filter results by product type">
+          {TABS.filter((t) => t.id === "all" || counts[t.id] > 0).map((t) => (
             <Link
-              href={product.href}
-              className="search-result-card"
-              key={product.key}
+              key={t.id}
+              href={tabHref(t.id)}
+              className={`search-tab ${type === t.id ? "is-active" : ""}`}
             >
-              {product.image && (
-                <span className="search-result-image">
-                  <img src={product.image} alt={product.name} loading="lazy" />
-                </span>
-              )}
-
-              <span className="search-result-kind">{product.kind}</span>
-
-              <h2>
-                {product.name}
-                {product.pack && (
-                  <span className="search-result-pack"> ({product.pack})</span>
-                )}
-              </h2>
-
-              <p>{product.brand}</p>
-
-              {product.price > 0 && (
-                <p className="search-result-price">
-                  <strong>{money(product.price)}</strong>
-                  {product.oldPrice > product.price && (
-                    <s>{money(product.oldPrice)}</s>
-                  )}
-                </p>
-              )}
+              {t.label} <span>{counts[t.id]}</span>
             </Link>
           ))}
-        </div>
+        </nav>
+      )}
+
+      {results.length > 0 ? (
+        <SearchResults results={results} />
       ) : (
         query && (
           <p className="no-results">
-            No products found for &quot;{query}&quot;
+            {failed
+              ? "Search is not working right now. Please try again."
+              : `No products found for "${query}"`}
           </p>
         )
       )}
