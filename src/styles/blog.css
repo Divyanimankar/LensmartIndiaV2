@@ -32,7 +32,7 @@
   background: transparent;
   color: var(--blog-ink);
   font-family: var(--blog-font-text);
-  padding: clamp(36px, 6vw, 54px) 0 clamp(0px, 8vw, 0px);
+  padding: clamp(36px, 6vw, 54px) 0 56px;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
@@ -982,6 +982,7 @@
 @media (max-width: 768px) {
   .blog-page {
     --blog-nav-offset: 100px;
+    padding-bottom: 44px;
   }
 
   .blog-wrap {
@@ -1019,6 +1020,7 @@
     --blog-nav-offset: 84px;
     --blog-radius-lg: 20px;
     --blog-radius-md: 16px;
+    padding-bottom: 32px;
   }
 
   .blog-wrap {
@@ -1093,7 +1095,8 @@
 
   /* Pagination: chhoti screen par bhi ek line mein */
   .blog-pagination {
-    margin-top: 34px;
+    margin-top: 26px;
+    margin-bottom: 0;
     gap: 8px;
   }
 

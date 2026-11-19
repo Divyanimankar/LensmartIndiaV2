@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { POSTS, formatDate, getCta } from "../../../data/blogData";
+import { getCta } from "../../../lib/blog-config";
+import { formatPostDate } from "../../../lib/format-date";
+import { getPostBySlug, shopifyImage, imageSrcSet, SITE_URL, BLOG_REVALIDATE } from "../../../lib/shopify-blog";
 import {
   Avatar,
   CalendarIcon,
@@ -10,27 +12,59 @@ import {
 } from "../../../components/BlogShared";
 
 import "../../../styles/blog.css";
+import "../../../styles/blog-article-content.css";
 
-export function generateStaticParams() {
-  return POSTS.map((p) => ({ slug: p.slug }));
-}
+// Rendered on every request (BLOG_REVALIDATE = 0 in lib/shopify-blog.js), so new or edited
+// articles show up on refresh. If you set BLOG_REVALIDATE > 0, add generateStaticParams back.
+export const revalidate = BLOG_REVALIDATE;
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = POSTS.find((p) => p.slug === slug);
+  const post = await getPostBySlug(slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt };
+  const image = post.imageUrl ? shopifyImage(post.imageUrl, 1200) : undefined;
+  return {
+    title: post.seoTitle,
+    description: post.seoDescription,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title: post.seoTitle,
+      description: post.seoDescription,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      type: "article",
+      publishedTime: post.publishedAt,
+      authors: [post.author],
+      ...(image ? { images: [{ url: image, alt: post.imageAlt }] } : {}),
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }) {
   const { slug } = await params;
-  const post = POSTS.find((p) => p.slug === slug);
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
-  const cta = getCta(post.category);
+  const cta = getCta(post.group);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.seoDescription,
+    datePublished: post.publishedAt,
+    author: { "@type": "Person", name: post.author },
+    image: post.imageUrl ? [shopifyImage(post.imageUrl, 1200)] : undefined,
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+  };
 
   return (
     <section className="blog-page blog-article-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
+
       <div className="blog-wrap">
         <Link href="/blog" className="blog-back">
           <ChevronLeftIcon size={16} /> Back to journal
@@ -39,8 +73,17 @@ export default async function BlogPostPage({ params }) {
 
       {/* Full-width hero */}
       <header className="blog-article-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={post.imageUrl} alt={post.imageAlt} />
+        {post.imageUrl && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={shopifyImage(post.imageUrl, 1600)}
+            srcSet={imageSrcSet(post.imageUrl, [800, 1200, 1600, 2000])}
+            sizes="100vw"
+            alt={post.imageAlt}
+            fetchPriority="high"
+            decoding="async"
+          />
+        )}
         <span className="blog-modal-veil" />
         <div className="blog-article-hero-inner">
           <span className="blog-chip blog-chip-solid">{post.category}</span>
@@ -59,7 +102,7 @@ export default async function BlogPostPage({ params }) {
           <span className="blog-dot" aria-hidden="true" />
           <span className="blog-modal-date">
             <CalendarIcon size={14} />
-            {formatDate(post.publishedAt)}
+            {formatPostDate(post.publishedAt)}
           </span>
           <span className="blog-dot" aria-hidden="true" />
           <span className="blog-modal-date">
@@ -68,19 +111,18 @@ export default async function BlogPostPage({ params }) {
           </span>
         </div>
 
-        {post.body.split("\n\n").map((para, i) => (
-          <p key={i} className="blog-modal-para">
-            {para}
-          </p>
-        ))}
+        {/* Shopify rich-text body. <p> tags get the existing .blog-modal-para class. */}
+        <div className="blog-article-html" dangerouslySetInnerHTML={{ __html: post.bodyHtml }} />
 
-        <div className="blog-modal-tags">
-          {post.tags.map((t) => (
-            <span key={t} className="blog-chip">
-              {t}
-            </span>
-          ))}
-        </div>
+        {post.tags.length > 0 && (
+          <div className="blog-modal-tags">
+            {post.tags.map((t) => (
+              <span key={t} className="blog-chip">
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
 
         <div className="blog-modal-cta">
           <p>{cta.text}</p>

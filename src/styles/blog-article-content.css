@@ -1,0 +1,57 @@
+/* Extra styles ONLY for elements that Shopify's rich-text editor can output inside an article
+   (headings, lists, images, quotes, links). The old static posts were paragraphs only, so
+   blog.css has no rules for these. Everything is scoped to .blog-article-html, so it cannot
+   affect any existing blog page styling. Tweak freely to match your theme. */
+
+.blog-article-html { display: contents; }
+
+.blog-article-body .blog-article-html h2,
+.blog-article-body .blog-article-html h3,
+.blog-article-body .blog-article-html h4 {
+  margin: 1.8em 0 0.6em;
+  line-height: 1.25;
+  color: inherit;
+}
+.blog-article-body .blog-article-html h2 { font-size: 1.6em; }
+.blog-article-body .blog-article-html h3 { font-size: 1.3em; }
+.blog-article-body .blog-article-html h4 { font-size: 1.1em; }
+
+.blog-article-body .blog-article-html ul,
+.blog-article-body .blog-article-html ol {
+  margin: 0 0 1.2em;
+  padding-left: 1.4em;
+  line-height: 1.7;
+}
+.blog-article-body .blog-article-html li { margin-bottom: 0.4em; }
+
+.blog-article-body .blog-article-html img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.2em 0;
+}
+
+.blog-article-body .blog-article-html blockquote {
+  margin: 1.4em 0;
+  padding: 0.2em 1.2em;
+  border-left: 4px solid currentColor;
+  opacity: 0.85;
+}
+
+.blog-article-body .blog-article-html a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-article-body .blog-article-html table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2em 0;
+}
+.blog-article-body .blog-article-html th,
+.blog-article-body .blog-article-html td {
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
