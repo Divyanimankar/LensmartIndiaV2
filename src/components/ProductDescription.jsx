@@ -114,14 +114,14 @@ function buildGlasses({ product, productType, storeName, selectedSize }) {
   const sizeKey = selectedSize || product.frameSize;
   const fit = SIZE_NAMES[sizeKey] || sizeKey;
 
-  /* extra data from Shopify (sunglasses): frame details, lens, care */
+  /* extra data from Shopify (sunglasses + eyeglasses): frame details, lens, care */
   const fd = product.frameDetails || {};
   const mm = (value) => (filled(value) ? `${value} mm` : "");
   const lens = product.lensCompatibility;
   const care = product.care;
-  const hasLens = isSun && lens && (lens.info || (lens.types || []).length);
+  const hasLens = lens && (lens.info || (lens.types || []).length);
   const hasCare =
-    isSun && care && (care.cleaning || care.maintenance || care.storage);
+    care && (care.cleaning || care.maintenance || care.storage);
 
   /* "This Rectangle frame from VOGUE is made of Acetate." — only the parts we have */
   const facts = [

@@ -981,7 +981,7 @@ export default function EyeglassesProductPage({
 
               {/* LENS CTA - OPENS DRAWER / FLOATING WINDOW */}
 
-              <button
+              {/* <button
                 type="button"
                 className={`eyedetail-lens-card ${selectedLens ? "selected" : ""}`}
                 onClick={openLens}
@@ -1004,7 +1004,7 @@ export default function EyeglassesProductPage({
                 </span>
 
                 <span className="eyedetail-lens-arrow">→</span>
-              </button>
+              </button> */}
 
               {/* QUANTITY + CART */}
 

@@ -198,6 +198,8 @@ function GlassesContent({ category, group, slug, products }) {
               products={current}
               productType={cat.productType}
               getHref={(product) => `/${category}/${product.slug}`}
+              defaultRating={4.8}
+              defaultReviews={95}
               emptyState={
                 <div className="all-products-empty">
                   <h2>No products found</h2>

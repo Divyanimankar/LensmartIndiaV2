@@ -217,6 +217,8 @@ useEffect(() => {
                     products={currentProducts}
                     productType="eyeglasses"
                     getHref={(product) => `/eyeglasses/${product.slug}`}
+                    defaultRating={4.8}
+                    defaultReviews={95}
                   />
 
                   {totalPages > 1 && (

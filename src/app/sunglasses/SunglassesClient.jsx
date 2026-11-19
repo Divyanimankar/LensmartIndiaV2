@@ -192,6 +192,8 @@ function SunglassesContent({ products }) {
                     products={currentProducts}
                     productType="sunglasses"
                     getHref={(product) => `/sunglasses/${product.slug}`}
+                    defaultRating={4.8}
+                    defaultReviews={95}
                   />
 
                   {totalPages > 1 && (

@@ -72,7 +72,11 @@ export default function SearchResults({ results }) {
       {results.map((item) => (
         <LensesProductCard
           key={item.key}
-          product={item.card}
+          product={{
+            ...item.card,
+            rating: item.card.rating ?? 4.8,
+            reviews: item.card.reviews ?? 95,
+          }}
           productType={item.type}
           href={item.href}
           isWishlisted={wishlist.some((entry) => same(entry, item))}

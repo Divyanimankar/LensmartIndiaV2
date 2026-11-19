@@ -248,40 +248,22 @@ const CATEGORY_RULES = [
   ["Kids", /\b(kids?|children|junior)\b/i],
 ];
 
-
 const SIZE_MAP = {
-  "extra small": "XS",
-  xs: "XS",
-  small: "S",
-  s: "S",
-  medium: "M",
-  m: "M",
-  large: "L",
-  l: "L",
-  "extra large": "XL",
-  xl: "XL",
+  "extra small": "XS", xs: "XS",
+  small: "S", s: "S",
+  medium: "M", m: "M",
+  large: "L", l: "L",
+  "extra large": "XL", xl: "XL",
 };
 
 export function simplifySizes(values) {
   const out = [];
-
-  (values || []).forEach((value) => {
-    const original = String(value || "").trim();
-    if (!original) return;
-
-    const normalized = original.toLowerCase();
-    const mapped = SIZE_MAP[normalized];
-
-    const size = mapped || original;
-
-    if (!out.includes(size)) {
-      out.push(size);
-    }
+  (values || []).forEach((v) => {
+    const size = SIZE_MAP[String(v).trim().toLowerCase()];
+    if (size && !out.includes(size)) out.push(size);
   });
-
   return out;
 }
-
 
 export function mapSunglass(node) {
   const base = mapProduct(node);
@@ -324,7 +306,6 @@ export function mapSunglass(node) {
     frameSize: frameSizes[0] || "",
     frameSizes,
 
-    rating: 0,
     bestseller: base.bestseller,
     isNew: false,
     availableForSale: base.availableForSale,

@@ -67,6 +67,7 @@
   container-type: inline-size;
 
   container-name: lmcard;
+  align-self: stretch;
 
   transition:
 
@@ -641,7 +642,7 @@
   -webkit-box-orient: vertical;
 
   overflow: hidden;
-   min-height: 2.5em; 
+
 
 }
 
@@ -804,7 +805,7 @@
 
   gap: 10px 12px;
 
-  margin-top: auto;
+  margin-top: 0;
 
   padding: 4px 2px 0;
 
@@ -988,7 +989,7 @@
 
   min-height: 40px;
 
-  margin-top: 6px;
+  margin-top: auto;
 
   padding: 0 12px;
 
@@ -1149,6 +1150,7 @@
     flex-direction: column;
 
     align-items: flex-start;
+    margin-top: 0;
 
     gap: 6px;
 
@@ -1331,4 +1333,40 @@
     height: 78%;
     margin: 0;
   }
+}
+
+/* detail page ke "svg { fill: none }" rule se star ka fill na hate */
+.lm-card .lm-rating svg {
+  fill: currentColor;
+  stroke: none;
+} 
+
+/* ===== Saari cards barabar height, button hamesha sabse neeche =====
+   (!important isliye ki kisi page ki CSS isko dobara na badle) */
+.pg-item {
+  display: flex;
+}
+
+.pg-item > .lm-card {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 100%;
+}
+
+.lm-card {
+  align-self: stretch;
+}
+
+.lm-card > .lm-buy {
+  margin-top: 0 !important;
+}
+
+.lm-card > .lm-cta {
+  margin-top: auto !important;
+}
+
+/* khaali jagah price aur button ke beech aaye, isliye price block ke neeche
+   thoda minimum gap */
+.lm-card > .lm-buy {
+  margin-bottom: 6px;
 }

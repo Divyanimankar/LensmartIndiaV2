@@ -1768,3 +1768,117 @@
     font-size: 16px !important;
   }
 }
+
+/* =========================================================
+   CART PAGE — BIGGER TEXT
+   Is poore block ko cart CSS file ke sabse NEECHE paste karo.
+   Size badalna ho to bas yahin ke numbers badlo.
+========================================================= */
+
+/* ---------- Desktop / Tablet ---------- */
+
+.lmi-cart-page .lmi-breadcrumb { font-size: 14px; }
+
+.lmi-cart-page .lmi-cart-count { font-size: 14px; }
+.lmi-cart-page .lmi-cart-title p { font-size: 17px; }
+.lmi-cart-page .lmi-steps li { font-size: 15px; }
+.lmi-cart-page .lmi-steps li span { font-size: 14px; }
+
+.lmi-cart-page .lmi-item-brand { font-size: 13px; }
+.lmi-cart-page .lmi-item-meta { font-size: 17px; }
+.lmi-cart-page .lmi-selected-option { font-size: 15px; padding: 7px 14px; }
+.lmi-cart-page .lmi-item-price strong { font-size: 30px; }
+.lmi-cart-page .lmi-item-price del { font-size: 16px; }
+.lmi-cart-page .lmi-per-box { font-size: 16px; }
+.lmi-cart-page .lmi-off { font-size: 14px; }
+.lmi-cart-page .lmi-remove { font-size: 15px; }
+.lmi-cart-page .lmi-item-tax { font-size: 14px; }
+
+.lmi-cart-page .lmi-rx h3 { font-size: 22px; }
+.lmi-cart-page .lmi-rx-note { font-size: 14px; }
+.lmi-cart-page .lmi-rx-head { font-size: 14px; }
+.lmi-cart-page .lmi-cell { font-size: 16px; }
+.lmi-cart-page .lmi-cell-eye { font-size: 17px; }
+.lmi-cart-page .lmi-cell-spec.strong { font-size: 16px; }
+.lmi-cart-page .lmi-cell-amount { font-size: 17px; }
+.lmi-cart-page .lmi-qty span { font-size: 16px; }
+.lmi-cart-page .lmi-prescriber { font-size: 14px; }
+
+.lmi-cart-page .lmi-item-foot > span { font-size: 15px; }
+.lmi-cart-page .lmi-item-foot > strong { font-size: 24px; }
+
+.lmi-cart-page .lmi-ship-banner strong { font-size: 18px; }
+.lmi-cart-page .lmi-ship-banner p { font-size: 14px; }
+
+.lmi-cart-page .lmi-summary h2 { font-size: 30px; }
+.lmi-cart-page .lmi-summary-items { font-size: 14px; }
+.lmi-cart-page .lmi-sum-row { font-size: 17px; }
+.lmi-cart-page .lmi-coupon h3 { font-size: 20px; }
+.lmi-cart-page .lmi-coupon-row input,
+.lmi-cart-page .lmi-coupon-row button { font-size: 16px; }
+.lmi-cart-page .lmi-coupon-msg { font-size: 14px; }
+.lmi-cart-page .lmi-total-row span { font-size: 20px; }
+.lmi-cart-page .lmi-total-row strong { font-size: 28px; }
+.lmi-cart-page .lmi-save-box { font-size: 16px; }
+.lmi-cart-page .lmi-tax-text { font-size: 14px; }
+.lmi-cart-page .lmi-terms { font-size: 16px; }
+.lmi-cart-page .lmi-terms-error { font-size: 14px; }
+.lmi-cart-page .lmi-checkout-button { font-size: 18px; }
+.lmi-cart-page .lmi-secure { font-size: 14px; }
+.lmi-cart-page .lmi-continue { font-size: 18px; }
+
+.lmi-cart-page .lmi-empty-cart p { font-size: 16px; }
+.lmi-cart-page .lmi-start-shopping { font-size: 16px; }
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+  .lmi-cart-page .lmi-breadcrumb { font-size: 13px; }
+  .lmi-cart-page .lmi-cart-title p { font-size: 14px; }
+  .lmi-cart-page .lmi-steps li { font-size: 13px; }
+
+  .lmi-cart-page .lmi-item-brand { font-size: 12px; }
+  .lmi-cart-page .lmi-item-name { font-size: 19px; }
+  .lmi-cart-page .lmi-item-meta { font-size: 14px; }
+  .lmi-cart-page .lmi-selected-option { font-size: 13px; padding: 5px 10px; }
+  .lmi-cart-page .lmi-item-price strong { font-size: 24px; }
+  .lmi-cart-page .lmi-item-price del,
+  .lmi-cart-page .lmi-per-box { font-size: 13.5px; }
+  .lmi-cart-page .lmi-off { font-size: 12px; }
+  .lmi-cart-page .lmi-item-tax { font-size: 13px; }
+
+  .lmi-cart-page .lmi-rx h3 { font-size: 18px; }
+  .lmi-cart-page .lmi-rx-note { font-size: 13px; }
+  .lmi-cart-page .lmi-cell-eye { font-size: 16px; }
+  .lmi-cart-page .lmi-cell-spec { font-size: 15px; }
+  .lmi-cart-page .lmi-cell-amount { font-size: 16px; }
+  .lmi-cart-page .lmi-cell-spec::before,
+  .lmi-cart-page .lmi-cell-boxes::before,
+  .lmi-cart-page .lmi-cell-amount::before { font-size: 12px; }
+  .lmi-cart-page .lmi-prescriber { font-size: 13px; }
+
+  .lmi-cart-page .lmi-item-foot > span { font-size: 13.5px; }
+  .lmi-cart-page .lmi-item-foot > strong { font-size: 21px; }
+
+  .lmi-cart-page .lmi-ship-banner strong { font-size: 15px; }
+  .lmi-cart-page .lmi-ship-banner p { font-size: 13.5px; }
+
+  .lmi-cart-page .lmi-summary h2 { font-size: 24px; }
+  .lmi-cart-page .lmi-summary-items { font-size: 13px; }
+  .lmi-cart-page .lmi-sum-row { font-size: 15px; }
+  .lmi-cart-page .lmi-coupon h3 { font-size: 18px; }
+  .lmi-cart-page .lmi-coupon-row input,
+  .lmi-cart-page .lmi-coupon-row button { font-size: 15px; }
+  .lmi-cart-page .lmi-save-box { font-size: 15px; }
+  .lmi-cart-page .lmi-tax-text,
+  .lmi-cart-page .lmi-secure { font-size: 13px; }
+  .lmi-cart-page .lmi-terms { font-size: 14px; }
+  .lmi-cart-page .lmi-checkout-button,
+  .lmi-cart-page .lmi-continue { font-size: 16px; }
+}
+
+@media (max-width: 420px) {
+  .lmi-cart-page .lmi-item-name { font-size: 17px; }
+  .lmi-cart-page .lmi-cell-spec { font-size: 14px; }
+  .lmi-cart-page .lmi-item-price strong { font-size: 21px; }
+}

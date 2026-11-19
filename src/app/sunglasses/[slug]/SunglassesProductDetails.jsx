@@ -783,7 +783,7 @@ export default function SunglassesProductPage({
 
               {/* LENS CTA - OPENS DRAWER / FLOATING WINDOW */}
 
-              <button
+              {/* <button
                 type="button"
                 className={`sundetail-lens-card ${selectedLens ? "selected" : ""}`}
                 onClick={openLens}
@@ -808,7 +808,7 @@ export default function SunglassesProductPage({
                 </span>
 
                 <span className="sundetail-lens-arrow">→</span>
-              </button>
+              </button> */}
 
               {/* QUANTITY + CART */}
 
