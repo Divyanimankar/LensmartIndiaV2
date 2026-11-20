@@ -66,14 +66,18 @@ const BEST_SELLER_IDS = new Set(
 
 ---------------------------------------- */
 
-const matchesTab = (product, tab) => {
-  // if (tab === "all") return BEST_SELLER_IDS.has(product.id);
+const TAB_KEYWORDS = {
+  daily: ["daily", "1 day", "one day"],
+  weekly: ["week", "fortnight"],   // Weekly, Bi-Weekly, 2 Weeks, Fortnightly
+  monthly: ["month"],              // Monthly, 1 Month, Monthly Disposable
+};
 
+const matchesTab = (product, tab) => {
   const schedule = String(product.replacementSchedule || "")
     .trim()
     .toLowerCase();
 
-  return schedule.startsWith(tab);
+  return (TAB_KEYWORDS[tab] || [tab]).some((k) => schedule.includes(k));
 };
 
 /* Shopify images: ask the CDN for a smaller file (the 3D tile is small) */
