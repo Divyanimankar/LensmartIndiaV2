@@ -1,24 +1,8 @@
-import ContactLensProductDetails from "./ContactLensProductDetails";
-import {
-  getContactLensProducts,
-  getContactLensExtras,
-} from "@/lib/shopify-products";
+import { redirect } from "next/navigation";
 
-export const revalidate = 300; // refresh from Shopify every 5 minutes
-
-export default async function ContactLensPage({ params }) {
+/* Purana URL /contact-lenses/<handle>  ->  naya URL /products/<handle>
+   (testing ke baad live jaane se pehle redirect ko permanentRedirect kar dena) */
+export default async function ContactLensProductRedirect({ params }) {
   const { slug } = await params;
-  const handle = decodeURIComponent(slug);
-
-  const [products, extras] = await Promise.all([
-    getContactLensProducts(),
-    getContactLensExtras(handle),
-  ]);
-
-  /* only the product being viewed gets the extra details */
-  const merged = products.map((item) =>
-    item.slug === handle ? { ...item, ...extras } : item,
-  );
-
-  return <ContactLensProductDetails products={merged} />;
+  redirect(`/products/${slug}`);
 }

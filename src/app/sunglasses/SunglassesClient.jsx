@@ -191,7 +191,7 @@ function SunglassesContent({ products }) {
                   <ProductGrid
                     products={currentProducts}
                     productType="sunglasses"
-                    getHref={(product) => `/sunglasses/${product.slug}`}
+                    getHref={(product) => `/products/${product.slug}`}
                     defaultRating={4.8}
                     defaultReviews={95}
                   />

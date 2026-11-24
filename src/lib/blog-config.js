@@ -24,23 +24,23 @@ const CTAS = {
   Eyeglasses: {
     text: "Found your style? Browse our eyeglasses collection.",
     label: "Shop Eyeglasses",
-    href: "/eyeglasses",
+    href: "/collections/eyeglasses",
   },
   Sunglasses: {
     text: "Ready for the sun? Explore our sunglasses collection.",
     label: "Shop Sunglasses",
-    href: "/sunglasses",
+    href: "/collections/sunglasses",
   },
   "Contact Lenses": {
     text: "Need a fresh pair? Browse our contact lenses.",
     label: "Shop Contact Lenses",
-    href: "/contact-lenses",
+    href: "/collections/contact-lenses",
   },
 };
 const DEFAULT_CTA = {
   text: "Explore our full range of eyewear and contact lenses.",
   label: "Shop Now",
-  href: "/eyeglasses",
+  href: "/collections/all",
 };
 
 export function getCta(group) {

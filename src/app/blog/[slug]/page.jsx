@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCta } from "../../../lib/blog-config";
 import { formatPostDate } from "../../../lib/format-date";
-import { getPostBySlug, shopifyImage, imageSrcSet, SITE_URL, BLOG_REVALIDATE } from "../../../lib/shopify-blog";
+import { getPostBySlug, shopifyImage, imageSrcSet, SITE_URL } from "../../../lib/shopify-blog";
 import {
   Avatar,
   CalendarIcon,
@@ -14,9 +14,7 @@ import {
 import "../../../styles/blog.css";
 import "../../../styles/blog-article-content.css";
 
-// Rendered on every request (BLOG_REVALIDATE = 0 in lib/shopify-blog.js), so new or edited
-// articles show up on refresh. If you set BLOG_REVALIDATE > 0, add generateStaticParams back.
-export const revalidate = BLOG_REVALIDATE;
+export const revalidate = 60;
 export const dynamicParams = true;
 
 export async function generateMetadata({ params }) {

@@ -117,7 +117,7 @@ export default function ProductGrid({
       wishlistType: wishlistType || meta.wishlistType,
       href: getHref
         ? getHref(product)
-        : `${basePath || meta.basePath}/${product.id}`,
+        : `/products/${product.slug || product.id}`,
     };
   };
 

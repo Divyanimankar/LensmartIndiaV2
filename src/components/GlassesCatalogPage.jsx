@@ -197,7 +197,7 @@ function GlassesContent({ category, group, slug, products }) {
             <ProductGrid
               products={current}
               productType={cat.productType}
-              getHref={(product) => `/${category}/${product.slug}`}
+              getHref={(product) => `/products/${product.slug}`}
               defaultRating={4.8}
               defaultReviews={95}
               emptyState={

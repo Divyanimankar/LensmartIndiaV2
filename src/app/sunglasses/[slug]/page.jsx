@@ -1,18 +1,8 @@
-import SunglassesProductDetails from "./SunglassesProductDetails";
-import {
-  getSunglassesDetail,
-  getSunglassesProducts,
-} from "@/lib/shopify-products";
+import { redirect } from "next/navigation";
 
-export const revalidate = 300;
-
-export default async function SunglassesProductPage({ params }) {
+/* Purana URL /sunglasses/<handle>  ->  naya URL /products/<handle>
+   (testing ke baad live jaane se pehle redirect ko permanentRedirect kar dena) */
+export default async function SunglassesProductRedirect({ params }) {
   const { slug } = await params;
-
-  const [product, products] = await Promise.all([
-    getSunglassesDetail(decodeURIComponent(slug)),
-    getSunglassesProducts(),
-  ]);
-
-  return <SunglassesProductDetails product={product} products={products} />;
+  redirect(`/products/${slug}`);
 }

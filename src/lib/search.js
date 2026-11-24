@@ -80,7 +80,7 @@ function toItem(product, type) {
     key: `${type}-${product.slug}`,
     type,
     kind: meta.label,
-    href: `/${meta.path}/${product.slug}`,
+    href: `/products/${product.slug}`,
     name: product.name || "",
     pack: product.pack || "",
     brand: product.brand || "",

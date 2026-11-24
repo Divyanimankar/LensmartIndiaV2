@@ -14,9 +14,9 @@ import SearchBox from "./SearchBox";
 ========================================================= */
 
 const QUICK_LINKS = [
-  { label: "Aviator sunglasses", href: "/sunglasses/shape/aviator" },
+  { label: "Aviator sunglasses", href: "/collections/aviator-sunglasses" },
   { label: "Blue light glasses", href: "/eyeglasses/need/blue-light" },
-  { label: "Guess", href: "/sunglasses/brand/guess" },
+  { label: "Guess", href: "/collections/guess-sunglasses" },
   { label: "Reading glasses", href: "/eyeglasses/need/readers" },
   { label: "New arrivals", href: "/eyeglasses/new-arrivals" },
 ];
@@ -58,7 +58,7 @@ const eyeglassesColumns = [
     group: "category",
     param: "category",
     links: [
-      { label: "All Eyeglasses", href: "/eyeglasses", strong: true },
+      { label: "All Eyeglasses", href: "/collections/eyeglasses", strong: true },
       { label: "Women" },
       { label: "Men" },
       { label: "Kids" },
@@ -86,7 +86,7 @@ const eyeglassesColumns = [
       { label: "Furla" },
       // { label: "IDEE Young" },
       // { label: "Just Cavalli" },
-      { label: "Shop All Brands", href: "/eyeglasses", cta: true },
+      { label: "Shop All Brands", href: "/collections/eyeglasses", cta: true },
     ],
   },
 ];
@@ -107,7 +107,7 @@ const sunglassesColumns = [
     group: "category",
     param: "type",
     links: [
-      { label: "All Sunglasses", href: "/sunglasses", strong: true },
+      { label: "All Sunglasses", href: "/collections/sunglasses", strong: true },
       { label: "Women" },
       { label: "Men" },
       { label: "Kids" },
@@ -141,7 +141,7 @@ const sunglassesColumns = [
       // { label: "Roberto Cavalli" },
       // { label: "Chopard" },
       // { label: "Moscot" },
-      { label: "Shop All Brands", href: "/sunglasses", cta: true },
+      { label: "Shop All Brands", href: "/collections/sunglasses", cta: true },
     ],
   },
 ];
@@ -153,14 +153,36 @@ const sunglassesColumns = [
    - Manufacturer -> /manufacturer/[slug]
 ========================================================= */
 
-const CONTACT_PAGE = "/all-products";
+const CONTACT_PAGE = "/collections/contact-lenses";
 
 const contactHref = (param, value) =>
   `${CONTACT_PAGE}?${param}=${encodeURIComponent(value)}#products`;
 
-const brandHref = (name) => `/brands/${createSlug(name)}`;
-const manufacturerHref = (name) => `/manufacturer/${createSlug(name)}`;
-const lensTypeHref = (slug) => `/lens-type/${slug}`;
+/* "Bausch + Lomb" -> "bausch-lomb", "Johnson & Johnson" -> "johnson-johnson" */
+const collectionSlug = (name) =>
+  String(name || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+const brandHref = (name) => `/collections/${collectionSlug(name)}`;
+const manufacturerHref = (name) => `/collections/${collectionSlug(name)}`;
+/* Lens type ka naya URL: /collections/<handle>
+   (slug me daily / weekly / monthly / multifocal / toric / color dhoondta hai) */
+const LENS_COLLECTIONS = [
+  ["daily", "daily-disposable-contact-lenses"],
+  ["weekly", "weekly-disposable-contact-lenses"],
+  ["monthly", "monthly-disposable-contact-lenses"],
+  ["multifocal", "multifocal-contact-lenses"],
+  ["toric", "toric-contact-lenses"],
+  ["colo", "color-contact-lenses"],
+];
+
+const lensTypeHref = (slug) => {
+  const key = String(slug || "").toLowerCase();
+  const hit = LENS_COLLECTIONS.find(([word]) => key.includes(word));
+  return hit ? `/collections/${hit[1]}` : `/lens-type/${slug}`;
+};
 
 const contactLensBrands = [
   "Acuvue",
@@ -225,10 +247,25 @@ const getHref = (base, group, link) => {
 //   }));
 
 
+/* Sunglasses ke naye URL: /collections/womens-sunglasses, /collections/square-sunglasses,
+   /collections/guess-sunglasses ...  (next.config.mjs inhe purane pages se jodta hai) */
+const CATEGORY_NAMES = { women: "womens", men: "mens" };
+
+/* suffix: "sunglasses" ya "eyeglasses"  ->  /collections/womens-eyeglasses */
+const collectionHref = (suffix, group, link) => {
+  if (link.href) return link.href;
+  const slug = link.slug || createSlug(link.label);
+  const name = group === "category" ? CATEGORY_NAMES[slug] || slug : slug;
+  return `/collections/${name}-${suffix}`;
+};
+
 const resolveLinks = (base, column) =>
   column.links.map((link) => ({
     ...link,
-    href: getHref(base, column.group, link),
+    href:
+      (base === "/sunglasses" || base === "/eyeglasses") && column.group
+        ? collectionHref(base.slice(1), column.group, link)
+        : getHref(base, column.group, link),
   }));
 
   
@@ -682,11 +719,22 @@ export default function Navbar() {
   }, []);
 
   const isEyeglassesActive =
-    pathname === "/eyeglasses" || pathname.startsWith("/eyeglasses/");
+    pathname === "/eyeglasses" ||
+    pathname.startsWith("/eyeglasses/") ||
+    pathname === "/collections/eyeglasses" ||
+    pathname.startsWith("/collections/eyeglasses/") ||
+    (pathname.startsWith("/collections/") && pathname.endsWith("-eyeglasses"));
   const isSunglassesActive =
-    pathname === "/sunglasses" || pathname.startsWith("/sunglasses/");
+    pathname === "/sunglasses" ||
+    pathname.startsWith("/sunglasses/") ||
+    pathname === "/collections/sunglasses" ||
+    pathname.startsWith("/collections/sunglasses/") ||
+    (pathname.startsWith("/collections/") && pathname.endsWith("-sunglasses"));
   const isContactLensActive =
     pathname === "/contact-lenses" ||
+    pathname === "/collections/contact-lenses" ||
+    pathname.startsWith("/collections/contact-lenses/") ||
+    (pathname.startsWith("/collections/") && pathname.endsWith("-contact-lenses")) ||
     pathname === "/all-products" ||
     pathname.startsWith("/all-products/") ||
     pathname.startsWith("/contact-lenses/") ||
@@ -799,7 +847,7 @@ export default function Navbar() {
             }}
           >
             {renderDesktopCategory({
-              href: "/eyeglasses",
+              href: "/collections/eyeglasses",
               label: "EYEGLASSES",
               active: isEyeglassesActive,
               children: (
@@ -818,7 +866,7 @@ export default function Navbar() {
             })}
 
             {renderDesktopCategory({
-              href: "/sunglasses",
+              href: "/collections/sunglasses",
               label: "SUNGLASSES",
               active: isSunglassesActive,
               children: (

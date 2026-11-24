@@ -216,7 +216,7 @@ useEffect(() => {
                   <ProductGrid
                     products={currentProducts}
                     productType="eyeglasses"
-                    getHref={(product) => `/eyeglasses/${product.slug}`}
+                    getHref={(product) => `/products/${product.slug}`}
                     defaultRating={4.8}
                     defaultReviews={95}
                   />

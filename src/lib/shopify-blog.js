@@ -15,8 +15,8 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://lensmartind
 
 // Cache time in seconds.
 //   0   = no caching: every page load fetches fresh data from Shopify (new posts show on refresh).
-//   300 = cache for 5 minutes (faster, fewer API calls; use /api/revalidate for instant updates).
-export const BLOG_REVALIDATE = 0;
+//   60 = cache for 1 minute (faster, fewer API calls; use /api/revalidate for instant updates).
+export const BLOG_REVALIDATE = 60;
 
 const FEATURED_TAG = "featured";
 
