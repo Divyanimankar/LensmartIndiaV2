@@ -1,6 +1,5 @@
 import SiteLayout from "@/components/SiteLayout";
 import Newsletter from "@/components/Newsletter";
-import Faq from "@/components/Faq";
 import ContactForm from "@/components/ContactForm";
 import { getPageBlocks, getPageSeo } from "../../lib/pageContentBlocks";
 import "../../styles/contactuspage.css";
@@ -252,8 +251,7 @@ export default async function ContactUsPage() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <Faq />
+        
 
       </div>
     </SiteLayout>
