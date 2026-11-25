@@ -3,64 +3,29 @@ import { readCustomerMeta, writeCustomerMeta } from "@/lib/customer-api";
 
 export const dynamic = "force-dynamic";
 
-/* Wishlist customer metafield "custom.wishlist" (JSON) me.
-   GET -> { loggedIn, items }      PUT { items } -> { ok } */
-
-const parse = (value) => {
-  try {
-    const list = JSON.parse(value || "[]");
-    return Array.isArray(list) ? list : [];
-  } catch {
-    return [];
-  }
-};
-
+/* TEMPORARY debug link: /api/wishlist-debug
+   Shopify me wishlist save ho rahi hai ya nahi, aur nahi to kyu.
+   Kaam hone ke baad is poore folder ko delete kar dena. */
 export async function GET() {
-  const meta = await readCustomerMeta();
-
-  if (meta.error) {
-    return NextResponse.json({
-      loggedIn: false,
-      ...(process.env.NODE_ENV !== "production" ? { reason: meta.error } : {}),
-    });
+  const before = await readCustomerMeta();
+  if (before.error) {
+    return NextResponse.json({ step: "read", error: before.error });
   }
 
-  return NextResponse.json({ loggedIn: true, items: parse(meta.wishlist) });
-}
+  const original = before.wishlist || "[]";
+  const test = JSON.stringify([{ id: 1, name: "debug-test" }]);
 
-export async function PUT(request) {
-  let body;
-  try {
-    body = await request.json();
-  } catch {
-    return NextResponse.json({ error: "Bad request." }, { status: 400 });
-  }
+  const wrote = await writeCustomerMeta(before.id, "wishlist", "json", test);
+  const after = await readCustomerMeta();
 
-  if (!Array.isArray(body?.items)) {
-    return NextResponse.json({ error: "items must be a list." }, { status: 400 });
-  }
+  /* asli wishlist wapas rakh do */
+  const restored = await writeCustomerMeta(before.id, "wishlist", "json", original);
 
-  const meta = await readCustomerMeta();
-  if (meta.error) {
-    return NextResponse.json({ error: "Not logged in." }, { status: 401 });
-  }
-
-  const wrote = await writeCustomerMeta(
-    meta.id,
-    "wishlist",
-    "json",
-    JSON.stringify(body.items),
-  );
-
-  if (wrote.error) {
-    return NextResponse.json(
-      {
-        error: "Could not save wishlist.",
-        ...(process.env.NODE_ENV !== "production" ? { reason: wrote.error } : {}),
-      },
-      { status: 502 },
-    );
-  }
-
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({
+    customerId: before.id ? "ok" : "MISSING",
+    originalLength: original.length,
+    write: wrote,
+    readBackAfterWrite: after.error ? { error: after.error } : after.wishlist,
+    restore: restored,
+  });
 }
