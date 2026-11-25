@@ -13,6 +13,8 @@ import { useEffect, useRef } from "react";
 const KEY = "lensmartWishlist";
 const SYNCED = "lmWishlistSynced"; /* "1" = is browser ne pehle sync kar liya */
 const WAS_IN = "lmWishWasLoggedIn";
+const LASTCHG = "lmWishlistLastChange"; /* browser me aakhri badlav ka time */
+const FRESH_MS = 90 * 1000; /* Shopify ko naya data dikhane me kuch second lagte hain */
 const DIRTY = "lmWishlistDirty"; /* "1" = browser me badlav hai jo abhi server par save nahi hua */
 
 const sameItem = (a, b) =>
@@ -54,13 +56,13 @@ export default function WishlistSync() {
     };
 
     /* keepalive: page badalne / band hone par bhi request poori hoti hai */
-    const push = async (list) => {
+    const push = async (list, keepalive = false) => {
       try {
         const response = await fetch("/api/wishlist", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           credentials: "same-origin",
-          keepalive: true,
+          keepalive,
           body: JSON.stringify({ items: list }),
         });
         if (response.ok) set(DIRTY, null);
@@ -98,8 +100,14 @@ export default function WishlistSync() {
           await push(local);
           set(SYNCED, "1");
         } else if (get(SYNCED) === "1") {
-          /* server hi sahi */
-          if (JSON.stringify(server) !== JSON.stringify(local)) writeLocal(server);
+          /* Abhi-abhi browser me badlav hua ho to server ki list purani ho sakti hai
+             (Shopify ko naya data dikhane me kuch second lagte hain) -> mat mitao */
+          const recent = Date.now() - Number(get(LASTCHG) || 0) < FRESH_MS;
+
+          /* warna server hi sahi */
+          if (!recent && JSON.stringify(server) !== JSON.stringify(local)) {
+            writeLocal(server);
+          }
         } else {
           /* pehli baar: dono jodo */
           const merged = [...server];
@@ -122,6 +130,7 @@ export default function WishlistSync() {
 
       /* badlav yaad rakho, chahe abhi login check poora na hua ho */
       set(DIRTY, "1");
+      set(LASTCHG, String(Date.now()));
       if (!loggedIn.current) return;
 
       clearTimeout(timer.current);
@@ -136,7 +145,7 @@ export default function WishlistSync() {
       if (loggedIn.current && get(DIRTY) === "1") {
         clearTimeout(timer.current);
         timer.current = null;
-        push(readLocal());
+        push(readLocal(), true);
       }
     };
 
