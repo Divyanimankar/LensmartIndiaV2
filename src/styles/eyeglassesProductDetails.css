@@ -77,7 +77,7 @@
   position: relative;
   width: 100%;
   min-height: 520px;
-  padding: 50px;
+  padding: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,9 +90,11 @@
   cursor: zoom-out;
 }
 .eyedetail-main-image > img {
-  width: 92%;
+  position: static;
+  width: 100%;
+  height: auto;
   max-width: 590px;
-  max-height: 390px;
+  max-height: 420px;
   object-fit: contain;
   display: block;
   transition: transform 0.35s ease;
@@ -143,7 +145,6 @@
 }
 .eyedetail-image-heart:hover,
 .eyedetail-image-heart.active {
-  /* border-color: #1b6b6a;  */
   color: #1b6b6a;
 }
 .eyedetail-image-heart:active {
@@ -152,7 +153,6 @@
 .eyedetail-image-heart.active svg {
   fill: #e00b0b;
   stroke: #e00b0b;
-  /* color: #414040; */
   background: white;
   border-color: white;
 }
@@ -176,10 +176,11 @@
 }
 .eyedetail-thumbnail {
   height: 108px;
-  padding: 12px;
+  padding: 8px;
   border: 1.5px solid transparent;
   border-radius: 16px;
-  background: #f7f8f7;
+  background: #f5f6f5;
+  overflow: hidden;
   transition:
     border-color 0.2s ease,
     background 0.2s ease;
@@ -189,7 +190,7 @@
 }
 .eyedetail-thumbnail.active {
   border-color: #1b6b6a;
-  background: #ffffff;
+  background: #f5f6f5;
 }
 .eyedetail-thumbnail img {
   width: 100%;
@@ -252,8 +253,7 @@
   text-transform: uppercase;
 }
 .eyedetail-product-meta {
-  /* margin: 14px 0 0; */
-  margin: 0px 0px 15px;
+  margin: 0 0 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -614,7 +614,6 @@
   height: 18px;
 }
 .eyedetail-wishlist-button.active svg {
-  /* fill: #1b6b6a; */
   fill: red;
   stroke: red;
 }
@@ -753,7 +752,7 @@
 }
 
 /* =========================================================
-   OVERLAY / LENS PANEL / SIZE GUIDE / TOAST / STICKY BAR
+   OVERLAY / LENS PANEL / SIZE GUIDE / TOAST
 ========================================================= */
 .eyedetail-overlay {
   position: fixed;
@@ -834,7 +833,7 @@
   height: 18px;
 }
 
-/* [UPDATED] panel body: ab grid nahi, normal scroll area */
+/* panel body: normal scroll area */
 .eyedetail-panel-body {
   flex: 1;
   min-height: 0;
@@ -927,7 +926,7 @@
 }
 
 /* =========================================================
-   [NEW] LENS FLOW  (Step indicator, Lens Type, Package, Eye Power)
+   LENS FLOW (Step indicator, Lens Type, Package, Eye Power)
 ========================================================= */
 
 /* ---- Step indicator ---- */
@@ -1059,7 +1058,7 @@
   font-weight: 700;
 }
 
-/* Arrow (CSS chevron). ".is-open" = neeche ki taraf */
+/* Arrow (CSS chevron). ".is-open" = pointing down */
 .eyedetail-flow-arrow {
   position: relative;
   width: 20px;
@@ -1083,7 +1082,6 @@
   transform: rotate(135deg);
 }
 
-/* Package options ab grid me nahi hain, isliye gap yahan se */
 .eyedetail-flow-section > .eyedetail-lens-option {
   margin: 0 0 12px;
 }
@@ -1579,7 +1577,6 @@
   font-weight: 600;
   opacity: 0;
   pointer-events: none;
-
   transform: translate(-50%, 16px);
   transition:
     opacity 0.3s ease,
@@ -1590,7 +1587,7 @@
   transform: translate(-50%, 0);
 }
 
-/* Sticky bar (mobile only) */
+/* Sticky bar: removed from the page (kept hidden in case any old markup remains) */
 .eyedetail-sticky-bar {
   display: none;
 }
@@ -1610,7 +1607,6 @@
     min-height: 400px;
     padding: 30px;
   }
-
   .eyedetail-gallery-features {
     grid-template-columns: 1fr;
   }
@@ -1632,13 +1628,16 @@
     position: static;
   }
   .eyedetail-main-image {
-    min-height: 320px;
-    padding: 24px;
+    min-height: 280px;
+    padding: 20px;
     border-radius: 18px;
   }
+  .eyedetail-main-image > img {
+    max-height: 240px;
+  }
   .eyedetail-thumbnail {
-    height: 84px;
-    padding: 8px;
+    height: 72px;
+    padding: 6px;
   }
   .eyedetail-gallery-features {
     grid-template-columns: repeat(3, 1fr);
@@ -1657,64 +1656,8 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  .eyedetail-page {
-    padding-bottom: 78px;
-  }
 
-  .eyedetail-sticky-bar {
-    position: fixed;
-    z-index: 800;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: #ffffff;
-    border-top: 1px solid #e5e8e7;
-  }
-  .eyedetail-sticky-bar > div {
-    display: flex;
-    flex-direction: column;
-  }
-  .eyedetail-sticky-bar strong {
-    color: #1b6b6a;
-    font-family: "Jost", sans-serif;
-    font-size: 20px;
-    line-height: 1.1;
-  }
-  .eyedetail-sticky-bar small {
-    color: #8c8c8c;
-    font-size: 11px;
-  }
-  .eyedetail-sticky-bar button {
-    flex: 1;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border: 0;
-    border-radius: 14px;
-    background: #1b6b6a;
-    color: #ffffff;
-    font-family: "Jost", sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-  }
-  .eyedetail-sticky-bar svg {
-    width: 19px;
-    height: 19px;
-  }
-  .eyedetail-toast {
-    bottom: 92px;
-  }
-
-  /* [UPDATED] Mobile: lens panel ab bottom sheet hai
-     (lamba Eye Power form is me better scroll hota hai).
-     Pehle wali centred floating window chahiye to is block ko
-     purane rules se replace kar dena. */
+  /* Mobile: lens panel is a bottom sheet */
   .eyedetail-lens-panel {
     top: auto;
     left: 0;
@@ -1752,7 +1695,7 @@
     font-size: 21px;
   }
 
-  /* Eye power form: mobile par ek column */
+  /* Eye power form: single column on mobile */
   .eyedetail-eye-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1777,16 +1720,19 @@
   .eyedetail-price {
     font-size: 28px;
   }
+
+  /* Buy row: quantity, then Add to Cart, both full width (before Check delivery) */
   .eyedetail-buy-row {
     grid-template-columns: 1fr;
-  }
-  .eyedetail-cart-button {
-    display: none;
   }
   .eyedetail-quantity {
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr;
   }
+  .eyedetail-cart-button {
+    width: 100%;
+  }
+
   .eyedetail-size-list {
     gap: 6px;
   }
@@ -1911,56 +1857,4 @@
   .eyedetail-prescription-form {
     padding: 8px;
   }
-}
-.eyedetail-main-image,
-.eyedetail-thumbnail,
-.eyedetail-thumbnail.active {
-  background: #f5f6f5;
-}
-
-.eyedetail-main-image img,
-.eyedetail-thumbnail img {
-  mix-blend-mode: normal;
-  background: transparent;
-  object-fit: contain;
-}
-
-/* image ka blurred copy peeche background banta hai */
-.eyedetail-main-image::before,
-.eyedetail-thumbnail::before {
-  content: "";
-  position: absolute;
-  inset: -40px;
-  z-index: -1;
-  background: var(--img-bg) center / cover no-repeat;
-  filter: blur(28px);
-  pointer-events: none;
-}
-
-.eyedetail-main-image {
-  padding: 0;
-}
-
-.eyedetail-main-image > img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  max-width: none;
-  max-height: none;
-  object-fit: cover;
-  object-position: center;
-  mix-blend-mode: normal;
-}
-
-.eyedetail-thumbnail {
-  padding: 0;
-  overflow: hidden;
-}
-
-.eyedetail-thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  mix-blend-mode: normal;
 }
