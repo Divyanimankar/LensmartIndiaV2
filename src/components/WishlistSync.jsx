@@ -13,6 +13,7 @@ import { useEffect, useRef } from "react";
 const KEY = "lensmartWishlist";
 const SYNCED = "lmWishlistSynced"; /* "1" = is browser ne pehle sync kar liya */
 const WAS_IN = "lmWishWasLoggedIn";
+const DIRTY = "lmWishlistDirty"; /* "1" = browser me badlav hai jo abhi server par save nahi hua */
 
 const sameItem = (a, b) =>
   String(a.id) === String(b.id) && a.productType === b.productType;
@@ -52,14 +53,17 @@ export default function WishlistSync() {
       applying.current = false;
     };
 
+    /* keepalive: page badalne / band hone par bhi request poori hoti hai */
     const push = async (list) => {
       try {
-        await fetch("/api/wishlist", {
+        const response = await fetch("/api/wishlist", {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           credentials: "same-origin",
+          keepalive: true,
           body: JSON.stringify({ items: list }),
         });
+        if (response.ok) set(DIRTY, null);
       } catch {}
     };
 
@@ -89,7 +93,11 @@ export default function WishlistSync() {
         const server = Array.isArray(data.items) ? data.items : [];
         const local = readLocal();
 
-        if (get(SYNCED) === "1") {
+        if (get(DIRTY) === "1") {
+          /* browser me aisa badlav hai jo server par gaya nahi -> pehle wahi bhejo */
+          await push(local);
+          set(SYNCED, "1");
+        } else if (get(SYNCED) === "1") {
           /* server hi sahi */
           if (JSON.stringify(server) !== JSON.stringify(local)) writeLocal(server);
         } else {
@@ -110,10 +118,26 @@ export default function WishlistSync() {
 
     /* local badlav -> server par (1 sec ruk kar) */
     const onChange = () => {
-      if (applying.current || !loggedIn.current) return;
+      if (applying.current) return;
+
+      /* badlav yaad rakho, chahe abhi login check poora na hua ho */
+      set(DIRTY, "1");
+      if (!loggedIn.current) return;
 
       clearTimeout(timer.current);
-      timer.current = setTimeout(() => push(readLocal()), 1000);
+      timer.current = setTimeout(() => {
+        timer.current = null;
+        push(readLocal());
+      }, 1000);
+    };
+
+    /* page badalne / tab band hone se pehle jo baaki hai wo turant bhej do */
+    const flush = () => {
+      if (loggedIn.current && get(DIRTY) === "1") {
+        clearTimeout(timer.current);
+        timer.current = null;
+        push(readLocal());
+      }
     };
 
     const onVisible = () => {
@@ -123,10 +147,13 @@ export default function WishlistSync() {
     pull();
 
     window.addEventListener("wishlistUpdated", onChange);
+    window.addEventListener("pagehide", flush);
     document.addEventListener("visibilitychange", onVisible);
 
     return () => {
+      flush();
       clearTimeout(timer.current);
+      window.removeEventListener("pagehide", flush);
       window.removeEventListener("wishlistUpdated", onChange);
       document.removeEventListener("visibilitychange", onVisible);
     };
