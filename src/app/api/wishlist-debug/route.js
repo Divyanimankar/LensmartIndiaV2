@@ -1,31 +1,44 @@
 import { NextResponse } from "next/server";
-import { readCustomerMeta, writeCustomerMeta } from "@/lib/customer-api";
+import { customerGql } from "@/lib/customer-api";
 
 export const dynamic = "force-dynamic";
 
-/* TEMPORARY debug link: /api/wishlist-debug
-   Shopify me wishlist save ho rahi hai ya nahi, aur nahi to kyu.
-   Kaam hone ke baad is poore folder ko delete kar dena. */
+/* TEMPORARY debug link: /api/wishlist-debug  (kaam ke baad folder delete kar dena) */
 export async function GET() {
-  const before = await readCustomerMeta();
-  if (before.error) {
-    return NextResponse.json({ step: "read", error: before.error });
-  }
+  const who = await customerGql(`{ customer { id } }`);
+  if (who.error) return NextResponse.json({ step: "customer", error: who.error });
+  const id = who.data?.customer?.id;
 
-  const original = before.wishlist || "[]";
-  const test = JSON.stringify([{ id: 1, name: "debug-test" }]);
+  const sentinel = JSON.stringify([{ id: 1, name: "debug-test" }]);
 
-  const wrote = await writeCustomerMeta(before.id, "wishlist", "json", test);
-  const after = await readCustomerMeta();
+  /* 1. likho aur Shopify ka poora jawab dikhao */
+  const write = await customerGql(
+    `mutation Set($m: [MetafieldsSetInput!]!) {
+      metafieldsSet(metafields: $m) {
+        metafields { namespace key type value }
+        userErrors { field message code }
+      }
+    }`,
+    { m: [{ ownerId: id, namespace: "custom", key: "wishlist", type: "json", value: sentinel }] },
+  );
 
-  /* asli wishlist wapas rakh do */
-  const restored = await writeCustomerMeta(before.id, "wishlist", "json", original);
+  /* 2. thoda ruk kar alag-alag tarike se padho */
+  await new Promise((r) => setTimeout(r, 2500));
 
-  return NextResponse.json({
-    customerId: before.id ? "ok" : "MISSING",
-    originalLength: original.length,
-    write: wrote,
-    readBackAfterWrite: after.error ? { error: after.error } : after.wishlist,
-    restore: restored,
-  });
+  const read1 = await customerGql(`{
+    customer {
+      a: metafield(namespace: "custom", key: "wishlist") { namespace key type value }
+      b: metafields(identifiers: [{ namespace: "custom", key: "wishlist" }]) { namespace key type value }
+    }
+  }`);
+
+  /* 3. asli (purani) wishlist wapas */
+  const restore = await customerGql(
+    `mutation Set($m: [MetafieldsSetInput!]!) {
+      metafieldsSet(metafields: $m) { userErrors { message } }
+    }`,
+    { m: [{ ownerId: id, namespace: "custom", key: "wishlist", type: "json", value: "[]" }] },
+  );
+
+  return NextResponse.json({ write, read1, restoreOk: !restore.error });
 }
