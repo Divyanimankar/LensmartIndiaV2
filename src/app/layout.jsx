@@ -6,6 +6,8 @@ import ScrollToTop from "../components/ScrollToTop";
 import DiscountPopup from "@/components/DiscountPopup";
 import CartDrawer from "@/components/CartDrawer";
 import MotionProvider from "@/components/MotionProvider";
+import WishlistSync from "@/components/WishlistSync";
+import CartSync from "@/components/CartSync";
 
 /* LensMart premium design system — loaded last so it layers over the
    component stylesheets. Order matters: tokens → base → motion → surfaces. */
@@ -76,6 +78,10 @@ export default function RootLayout({ children }) {
         <a href="#main-content" className="lm-skip">
           Skip to content
         </a>
+
+        {/* login ke baad wishlist + cart ko Shopify se sync karta hai (har page par ek hi baar) */}
+        <WishlistSync />
+        <CartSync />
 
         <AnnouncementBar />
 

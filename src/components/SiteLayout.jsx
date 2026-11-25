@@ -1,12 +1,5 @@
-import WishlistSync from "@/components/WishlistSync";
-import CartSync from "@/components/CartSync";
-
+/* WishlistSync aur CartSync ab app/layout.jsx me ek hi baar chalte hain,
+   isliye yahan dobara nahi lagaye (warna do baar chalenge). */
 export default function SiteLayout({ children }) {
-  return (
-    <>
-      <WishlistSync />
-      <CartSync />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }
