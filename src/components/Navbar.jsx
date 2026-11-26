@@ -247,11 +247,11 @@ const getHref = (base, group, link) => {
 //   }));
 
 
-/* Sunglasses ke naye URL: /collections/womens-sunglasses, /collections/square-sunglasses,
+/* Sunglasses ke naye URL: /collections/women-sunglasses, /collections/square-sunglasses,
    /collections/guess-sunglasses ...  (next.config.mjs inhe purane pages se jodta hai) */
-const CATEGORY_NAMES = { women: "womens", men: "mens" };
+const CATEGORY_NAMES = {}; /* women -> women-sunglasses, men -> men-sunglasses */
 
-/* suffix: "sunglasses" ya "eyeglasses"  ->  /collections/womens-eyeglasses */
+/* suffix: "sunglasses" ya "eyeglasses"  ->  /collections/women-eyeglasses */
 const collectionHref = (suffix, group, link) => {
   if (link.href) return link.href;
   const slug = link.slug || createSlug(link.label);

@@ -28,12 +28,12 @@ const nextConfig = {
       },
       {
         source: "/sunglasses/category/women",
-        destination: "/collections/womens-sunglasses",
+        destination: "/collections/women-sunglasses",
         permanent: false,
       },
       {
         source: "/sunglasses/category/men",
-        destination: "/collections/mens-sunglasses",
+        destination: "/collections/men-sunglasses",
         permanent: false,
       },
       {
@@ -123,12 +123,12 @@ const nextConfig = {
       },
       {
         source: "/eyeglasses/category/women",
-        destination: "/collections/womens-eyeglasses",
+        destination: "/collections/women-eyeglasses",
         permanent: false,
       },
       {
         source: "/eyeglasses/category/men",
-        destination: "/collections/mens-eyeglasses",
+        destination: "/collections/men-eyeglasses",
         permanent: false,
       },
       {
@@ -209,6 +209,26 @@ const nextConfig = {
       {
         source: "/eyeglasses/brand/furla",
         destination: "/collections/furla-eyeglasses",
+        permanent: false,
+      },
+      {
+        source: "/collections/womens-sunglasses",
+        destination: "/collections/women-sunglasses",
+        permanent: false,
+      },
+      {
+        source: "/collections/mens-sunglasses",
+        destination: "/collections/men-sunglasses",
+        permanent: false,
+      },
+      {
+        source: "/collections/womens-eyeglasses",
+        destination: "/collections/women-eyeglasses",
+        permanent: false,
+      },
+      {
+        source: "/collections/mens-eyeglasses",
+        destination: "/collections/men-eyeglasses",
         permanent: false,
       },
       {
@@ -294,11 +314,11 @@ const nextConfig = {
         destination: "/lens-type/color",
       },
       {
-        source: "/collections/womens-sunglasses",
+        source: "/collections/women-sunglasses",
         destination: "/sunglasses/category/women",
       },
       {
-        source: "/collections/mens-sunglasses",
+        source: "/collections/men-sunglasses",
         destination: "/sunglasses/category/men",
       },
       {
@@ -370,11 +390,11 @@ const nextConfig = {
         destination: "/sunglasses/brand/guess",
       },
       {
-        source: "/collections/womens-eyeglasses",
+        source: "/collections/women-eyeglasses",
         destination: "/eyeglasses/category/women",
       },
       {
-        source: "/collections/mens-eyeglasses",
+        source: "/collections/men-eyeglasses",
         destination: "/eyeglasses/category/men",
       },
       {

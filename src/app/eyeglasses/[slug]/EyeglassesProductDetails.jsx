@@ -295,10 +295,6 @@ export default function EyeglassesProductPage({
   const [toast, setToast] = useState("");
   const [wishlist, setWishlist] = useState([]);
 
-  /* MOBILE STICKY BAR: sirf Care & Maintenance section tak dikhe */
-  const descriptionEndRef = useRef(null);
-  const [showStickyBar, setShowStickyBar] = useState(true);
-
   /* =========================================================
      DEFAULT VALUES
   ========================================================= */
@@ -391,33 +387,6 @@ export default function EyeglassesProductPage({
     const timer = setTimeout(() => setToast(""), 2400);
     return () => clearTimeout(timer);
   }, [toast]);
-
-  /* =========================================================
-     STICKY BAR: Care & Maintenance section tak hi dikhe
-     (hooks hamesha "if (!product) return" se pehle rakho)
-  ========================================================= */
-
-  useEffect(() => {
-    const target = descriptionEndRef.current;
-    if (!target) return;
-
-    const check = () => {
-      const rect = target.getBoundingClientRect();
-      /* description section ka neeche ka hissa screen ke andar aa gaya
-         (matlab aage Similar Products shuru) -> bar hide.
-         Bar ki height ~76px hai, isliye us hisaab se offset */
-      setShowStickyBar(rect.bottom > window.innerHeight - 76);
-    };
-
-    check();
-    window.addEventListener("scroll", check, { passive: true });
-    window.addEventListener("resize", check);
-
-    return () => {
-      window.removeEventListener("scroll", check);
-      window.removeEventListener("resize", check);
-    };
-  }, [product]);
 
   /* =========================================================
      NOT FOUND
@@ -1066,12 +1035,32 @@ export default function EyeglassesProductPage({
                   type="button"
                   className="eyedetail-cart-button"
                   onClick={addToCart}
+                  disabled={adding}
                 >
                   <CartIcon />
                   Add to Cart
                   <span className="eyedetail-cart-total">
                     · ₹{totalPrice.toLocaleString("en-IN")}
                   </span>
+                </button>
+              </div>
+
+              {/* MOBILE: sticky Add to Cart (pincode box se pehle ruk jata hai) */}
+
+              <div className="eyedetail-cta-bar">
+                <div className="eyedetail-cta-price">
+                  <strong>₹{totalPrice.toLocaleString("en-IN")}</strong>
+                  <small>Inclusive of taxes</small>
+                </div>
+
+                <button
+                  type="button"
+                  className="eyedetail-cta-button"
+                  onClick={addToCart}
+                  disabled={adding}
+                >
+                  <CartIcon />
+                  {adding ? "Adding..." : "Add to Cart"}
                 </button>
               </div>
 
@@ -1123,17 +1112,13 @@ export default function EyeglassesProductPage({
         </div>
       </section>
 
-      {/* PRODUCT INFORMATION
-          (wrapper div: iska neeche ka hissa Care & Maintenance ka end hai,
-           isi se mobile sticky bar hide hota hai) */}
+      {/* PRODUCT INFORMATION */}
 
-      <div ref={descriptionEndRef}>
-        <ProductDescription
-          productType="eyeglasses"
-          product={product}
-          selectedSize={selectedSize}
-        />
-      </div>
+      <ProductDescription
+        productType="eyeglasses"
+        product={product}
+        selectedSize={selectedSize}
+      />
 
       {/* SIMILAR PRODUCTS */}
 
@@ -1163,20 +1148,6 @@ export default function EyeglassesProductPage({
         defaultReviews={95}
       />
       */}
-
-      {/* MOBILE STICKY BAR (sirf mobile par, Care & Maintenance tak) */}
-
-      <div className={`eyedetail-sticky-bar ${showStickyBar ? "" : "is-hidden"}`}>
-        <div>
-          <strong>₹{totalPrice.toLocaleString("en-IN")}</strong>
-          <small>Inclusive of taxes</small>
-        </div>
-
-        <button type="button" onClick={addToCart}>
-          <CartIcon />
-          Add to Cart
-        </button>
-      </div>
 
       {/* OVERLAY */}
 

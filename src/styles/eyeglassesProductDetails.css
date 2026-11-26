@@ -1587,9 +1587,8 @@
   transform: translate(-50%, 0);
 }
 
-/* Sticky Add to Cart bar: desktop par hidden, sirf mobile par dikhta hai
-   (mobile rules neeche @media (max-width: 768px) mein hain) */
-.eyedetail-sticky-bar {
+/* Sticky Add to Cart: desktop par hidden, sirf mobile par dikhta hai */
+.eyedetail-cta-bar {
   display: none;
 }
 
@@ -1663,82 +1662,6 @@
   .eyedetail-bottom-grid {
     grid-template-columns: 1fr;
     gap: 16px;
-  }
-
-  /* ---- Mobile sticky Add to Cart bar ---- */
-  .eyedetail-sticky-bar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
-    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    background: #ffffff;
-    border-top: 1px solid #e5e8e7;
-    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
-    transition:
-      transform 0.25s ease,
-      opacity 0.25s ease;
-  }
-  /* Care & Maintenance ke baad bar chhup jaye */
-  .eyedetail-sticky-bar.is-hidden {
-    transform: translateY(110%);
-    opacity: 0;
-    pointer-events: none;
-  }
-  .eyedetail-sticky-bar > div {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
-  .eyedetail-sticky-bar strong {
-    color: #1b6b6a;
-    font-family: "Jost", sans-serif;
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-  .eyedetail-sticky-bar small {
-    color: #8c8c8c;
-    font-size: 11px;
-  }
-  .eyedetail-sticky-bar button {
-    height: 48px;
-    padding: 0 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    flex: 0 0 auto;
-    border: 0;
-    border-radius: 12px;
-    background: #1b6b6a;
-    color: #ffffff;
-    font-family: "Jost", sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
-  }
-  .eyedetail-sticky-bar button:active {
-    transform: scale(0.98);
-  }
-  .eyedetail-sticky-bar svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  /* Bar ke neeche content na chhupe */
-  .eyedetail-page {
-    padding-bottom: 76px;
-  }
-
-  /* Toast sticky bar ke upar dikhe */
-  .eyedetail-toast {
-    bottom: 92px;
   }
 
   /* Mobile: lens panel is a bottom sheet */
@@ -1940,5 +1863,91 @@
   }
   .eyedetail-prescription-form {
     padding: 8px;
+  }
+}
+/* =========================================================
+   MOBILE — STICKY "ADD TO CART"
+   Left: total price | Right: Add to Cart button.
+   Pincode box se pehle ruk jata hai.
+   Is block ko file ke SABSE NEECHE rakho.
+========================================================= */
+
+@media (max-width: 768px) {
+  .eyedetail-cta-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 30;
+    margin: 0 -16px 20px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    /* background: #1b6b6a; */
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .eyedetail-cta-price {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .eyedetail-cta-price strong {
+    color: #1b6b6a;
+    font-family: "Jost", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .eyedetail-cta-price small {
+    color: #8c8c8c;
+    font-size: 11px;
+  }
+
+  .eyedetail-cta-button {
+    height: 46px;
+    padding: 0 26px;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 999px;
+    background: #1b6b6a;
+    color: #ffffff;
+    font-family: "Jost", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .eyedetail-cta-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .eyedetail-cta-button:hover,
+  .eyedetail-cta-button:active {
+    background: #e9f4f3;
+  }
+
+  .eyedetail-cta-button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+  }
+
+  .eyedetail-cta-button:disabled {
+    opacity: 0.7;
+    cursor: wait;
+  }
+
+  /* toast bar ke upar dikhe */
+  .eyedetail-toast {
+    bottom: 90px;
   }
 }

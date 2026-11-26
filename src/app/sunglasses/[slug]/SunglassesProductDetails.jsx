@@ -208,10 +208,6 @@ export default function SunglassesProductPage({
   const [toast, setToast] = useState("");
   const [wishlist, setWishlist] = useState([]);
 
-  /* MOBILE STICKY BAR: sirf Care & Maintenance section tak dikhe */
-  const descriptionEndRef = useRef(null);
-  const [showStickyBar, setShowStickyBar] = useState(true);
-
   /* =========================================================
      DEFAULT VALUES
   ========================================================= */
@@ -303,33 +299,6 @@ export default function SunglassesProductPage({
     const timer = setTimeout(() => setToast(""), 2400);
     return () => clearTimeout(timer);
   }, [toast]);
-
-  /* =========================================================
-     STICKY BAR: Care & Maintenance section tak hi dikhe
-     (hooks hamesha "if (!product) return" se pehle rakho)
-  ========================================================= */
-
-  useEffect(() => {
-    const target = descriptionEndRef.current;
-    if (!target) return;
-
-    const check = () => {
-      const rect = target.getBoundingClientRect();
-      /* description section ka neeche ka hissa screen ke andar aa gaya
-         (matlab aage Similar Products shuru) -> bar hide.
-         Bar ki height ~76px hai, isliye us hisaab se offset */
-      setShowStickyBar(rect.bottom > window.innerHeight - 76);
-    };
-
-    check();
-    window.addEventListener("scroll", check, { passive: true });
-    window.addEventListener("resize", check);
-
-    return () => {
-      window.removeEventListener("scroll", check);
-      window.removeEventListener("resize", check);
-    };
-  }, [product]);
 
   /* =========================================================
      NOT FOUND
@@ -872,12 +841,32 @@ export default function SunglassesProductPage({
                   type="button"
                   className="sundetail-cart-button"
                   onClick={addToCart}
+                  disabled={adding}
                 >
                   <CartIcon />
                   Add to Cart
                   <span className="sundetail-cart-total">
                     · ₹{totalPrice.toLocaleString("en-IN")}
                   </span>
+                </button>
+              </div>
+
+              {/* MOBILE: sticky Add to Cart (pincode box se pehle ruk jata hai) */}
+
+              <div className="sundetail-cta-bar">
+                <div className="sundetail-cta-price">
+                  <strong>₹{totalPrice.toLocaleString("en-IN")}</strong>
+                  <small>Inclusive of taxes</small>
+                </div>
+
+                <button
+                  type="button"
+                  className="sundetail-cta-button"
+                  onClick={addToCart}
+                  disabled={adding}
+                >
+                  <CartIcon />
+                  {adding ? "Adding..." : "Add to Cart"}
                 </button>
               </div>
 
@@ -933,13 +922,11 @@ export default function SunglassesProductPage({
           (wrapper div: iska neeche ka hissa Care & Maintenance ka end hai,
            isi se mobile sticky bar hide hota hai) */}
 
-      <div ref={descriptionEndRef}>
-        <ProductDescription
-          productType="sunglasses"
-          product={product}
-          selectedSize={selectedSize}
-        />
-      </div>
+      <ProductDescription
+        productType="sunglasses"
+        product={product}
+        selectedSize={selectedSize}
+      />
 
       {/* SIMILAR PRODUCTS */}
 
@@ -969,20 +956,6 @@ export default function SunglassesProductPage({
         defaultReviews={95}
       />
       */}
-
-      {/* MOBILE STICKY BAR (sirf mobile par, Care & Maintenance tak) */}
-
-      <div className={`sundetail-sticky-bar ${showStickyBar ? "" : "is-hidden"}`}>
-        <div>
-          <strong>₹{totalPrice.toLocaleString("en-IN")}</strong>
-          <small>Inclusive of taxes</small>
-        </div>
-
-        <button type="button" onClick={addToCart}>
-          <CartIcon />
-          Add to Cart
-        </button>
-      </div>
 
       {/* OVERLAY */}
 
