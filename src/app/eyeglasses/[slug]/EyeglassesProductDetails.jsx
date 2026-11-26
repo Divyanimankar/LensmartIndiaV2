@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import "../../../styles/eyeglassesProductDetails.css";
 import SimilarProduct from "@/components/SimilarProduct";
@@ -295,6 +295,10 @@ export default function EyeglassesProductPage({
   const [toast, setToast] = useState("");
   const [wishlist, setWishlist] = useState([]);
 
+  /* MOBILE STICKY BAR: sirf Care & Maintenance section tak dikhe */
+  const descriptionEndRef = useRef(null);
+  const [showStickyBar, setShowStickyBar] = useState(true);
+
   /* =========================================================
      DEFAULT VALUES
   ========================================================= */
@@ -387,6 +391,33 @@ export default function EyeglassesProductPage({
     const timer = setTimeout(() => setToast(""), 2400);
     return () => clearTimeout(timer);
   }, [toast]);
+
+  /* =========================================================
+     STICKY BAR: Care & Maintenance section tak hi dikhe
+     (hooks hamesha "if (!product) return" se pehle rakho)
+  ========================================================= */
+
+  useEffect(() => {
+    const target = descriptionEndRef.current;
+    if (!target) return;
+
+    const check = () => {
+      const rect = target.getBoundingClientRect();
+      /* description section ka neeche ka hissa screen ke andar aa gaya
+         (matlab aage Similar Products shuru) -> bar hide.
+         Bar ki height ~76px hai, isliye us hisaab se offset */
+      setShowStickyBar(rect.bottom > window.innerHeight - 76);
+    };
+
+    check();
+    window.addEventListener("scroll", check, { passive: true });
+    window.addEventListener("resize", check);
+
+    return () => {
+      window.removeEventListener("scroll", check);
+      window.removeEventListener("resize", check);
+    };
+  }, [product]);
 
   /* =========================================================
      NOT FOUND
@@ -1092,13 +1123,17 @@ export default function EyeglassesProductPage({
         </div>
       </section>
 
-      {/* PRODUCT INFORMATION */}
+      {/* PRODUCT INFORMATION
+          (wrapper div: iska neeche ka hissa Care & Maintenance ka end hai,
+           isi se mobile sticky bar hide hota hai) */}
 
-      <ProductDescription
-        productType="eyeglasses"
-        product={product}
-        selectedSize={selectedSize}
-      />
+      <div ref={descriptionEndRef}>
+        <ProductDescription
+          productType="eyeglasses"
+          product={product}
+          selectedSize={selectedSize}
+        />
+      </div>
 
       {/* SIMILAR PRODUCTS */}
 
@@ -1129,9 +1164,9 @@ export default function EyeglassesProductPage({
       />
       */}
 
-      {/* MOBILE STICKY BAR */}
+      {/* MOBILE STICKY BAR (sirf mobile par, Care & Maintenance tak) */}
 
-      <div className="eyedetail-sticky-bar">
+      <div className={`eyedetail-sticky-bar ${showStickyBar ? "" : "is-hidden"}`}>
         <div>
           <strong>₹{totalPrice.toLocaleString("en-IN")}</strong>
           <small>Inclusive of taxes</small>

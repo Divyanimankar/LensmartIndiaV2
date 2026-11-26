@@ -3043,3 +3043,62 @@
   object-fit: cover;
   mix-blend-mode: normal;
 }
+/* =========================================================
+   PHONE — RIGHT / LEFT EYE HEADING (ek line, dono cards barabar)
+   Is block ko file ke SABSE NEECHE rakho.
+========================================================= */
+
+@media (max-width: 600px) {
+  .clp-eye-card-head {
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    min-height: 26px;
+    margin-bottom: 12px;
+  }
+
+  .clp-eye-card-head h3 {
+    flex: 1 1 auto;
+    min-width: 0;
+    flex-wrap: nowrap;
+    gap: 5px;
+    margin: 0;
+    font-family: "Jost", sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0 !important;
+    white-space: nowrap;
+  }
+
+  .clp-eye-card-head h3 small {
+    flex-shrink: 0;
+    font-size: 9.5px !important;
+    line-height: 1;
+  }
+
+  .clp-eye-card-head .clp-eye-dot {
+    flex-shrink: 0;
+  }
+
+  .clp-eye-card-head .clp-switch {
+    flex-shrink: 0;
+  }
+
+  /* dono cards upar se barabar shuru hon */
+  .clp-eye-cards {
+    align-items: start;
+  }
+}
+
+@media (max-width: 380px) {
+  .clp-eye-card-head h3 {
+    font-size: 12px !important;
+    gap: 4px;
+  }
+
+  .clp-eye-card-head h3 small {
+    font-size: 9px !important;
+  }
+}

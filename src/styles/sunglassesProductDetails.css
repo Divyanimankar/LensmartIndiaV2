@@ -1046,7 +1046,8 @@
   transform: translate(-50%, 0);
 }
 
-/* Sticky bar: removed from the page (kept hidden in case any old markup remains) */
+/* Sticky Add to Cart bar: desktop par hidden, sirf mobile par dikhta hai
+   (mobile rules neeche @media (max-width: 768px) mein hain) */
 .sundetail-sticky-bar {
   display: none;
 }
@@ -1116,6 +1117,91 @@
     gap: 16px;
   }
 
+  /* ---- Mobile par inline Add to Cart button hide
+          (sticky bar wala rahega) ---- */
+  .sundetail-buy-row {
+    grid-template-columns: 1fr;
+  }
+  .sundetail-buy-row .sundetail-cart-button {
+    display: none;
+  }
+
+  /* ---- Mobile sticky Add to Cart bar ---- */
+  .sundetail-sticky-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    background: #ffffff;
+    border-top: 1px solid #e3e8e7;
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
+    transition:
+      transform 0.25s ease,
+      opacity 0.25s ease;
+  }
+  /* Care & Maintenance ke baad bar chhup jaye */
+  .sundetail-sticky-bar.is-hidden {
+    transform: translateY(110%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .sundetail-sticky-bar > div {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .sundetail-sticky-bar strong {
+    color: #1b6b6a;
+    font-family: "Jost", sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .sundetail-sticky-bar small {
+    color: #8c8c8c;
+    font-size: 11px;
+  }
+  .sundetail-sticky-bar button {
+    height: 48px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: 12px;
+    background: #1b6b6a;
+    color: #ffffff;
+    font-family: "Jost", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+  .sundetail-sticky-bar button:active {
+    transform: scale(0.98);
+  }
+  .sundetail-sticky-bar svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Bar ke neeche content na chhupe */
+  .sundetail-page {
+    padding-bottom: 76px;
+  }
+
+  /* Toast sticky bar ke upar dikhe */
+  .sundetail-toast {
+    bottom: 92px;
+  }
+
   /* Mobile: lens panel becomes a centred floating window */
   .sundetail-lens-panel {
     top: 50%;
@@ -1153,7 +1239,7 @@
     font-size: 28px;
   }
 
-  /* Buy row: quantity, then Add to Cart, both full width (before Check delivery) */
+  /* Quantity full width */
   .sundetail-buy-row {
     grid-template-columns: 1fr;
   }
