@@ -853,22 +853,22 @@ export default function SunglassesProductPage({
 
               {/* MOBILE: sticky Add to Cart (pincode box se pehle ruk jata hai) */}
 
-              <div className="sundetail-cta-bar">
-                <div className="sundetail-cta-price">
-                  <strong>₹{totalPrice.toLocaleString("en-IN")}</strong>
-                  <small>Inclusive of taxes</small>
-                </div>
-
-                <button
-                  type="button"
-                  className="sundetail-cta-button"
-                  onClick={addToCart}
-                  disabled={adding}
-                >
-                  <CartIcon />
-                  {adding ? "Adding..." : "Add to Cart"}
-                </button>
-              </div>
+<div className="sundetail-cta-bar">
+  <button
+    type="button"
+    className="sundetail-cta-button"
+    onClick={addToCart}
+    disabled={adding}
+  >
+    <span className="sundetail-cta-title">
+      {adding ? "ADDING..." : "ADD TO CART"}
+    </span>
+    <span className="sundetail-cta-sub">
+      {quantity} {quantity === 1 ? "ITEM" : "ITEMS"} · ₹
+      {totalPrice.toLocaleString("en-IN")}
+    </span>
+  </button>
+</div>
 
               {/* DELIVERY */}
 

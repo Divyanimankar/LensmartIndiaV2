@@ -1871,73 +1871,52 @@
    Pincode box se pehle ruk jata hai.
    Is block ko file ke SABSE NEECHE rakho.
 ========================================================= */
+/* =========================================================
+   MOBILE — STICKY "ADD TO CART"
+   White strip, green button ke charo side white gap
+   Is block ko file ke SABSE NEECHE rakho.
+========================================================= */
 
 @media (max-width: 768px) {
+  /* white background, button ke charo side barabar gap */
   .eyedetail-cta-bar {
     position: sticky;
     bottom: 0;
     z-index: 30;
-    margin: 0 -16px 20px;
-    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    /* background: #1b6b6a; */
-    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.12);
+    display: block;
+    margin: 4px -16px 20px;
+    padding: 12px 12px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: #ffffff;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
   }
 
-  .eyedetail-cta-price {
+  /* green button */
+  .eyedetail-cta-button {
+    width: 100%;
+    min-height: 54px;
+    padding: 8px 16px;
     display: flex;
     flex-direction: column;
-    min-width: 0;
-  }
-
-  .eyedetail-cta-price strong {
-    color: #1b6b6a;
-    font-family: "Jost", sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-
-  .eyedetail-cta-price small {
-    color: #8c8c8c;
-    font-size: 11px;
-  }
-
-  .eyedetail-cta-button {
-    height: 46px;
-    padding: 0 26px;
-    flex: 0 0 auto;
-    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 3px;
     border: 0;
-    border-radius: 999px;
+    border-radius: 0;
     background: #1b6b6a;
     color: #ffffff;
+    text-align: center;
     font-family: "Jost", sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
     cursor: pointer;
     transition: background 0.2s ease;
   }
 
-  .eyedetail-cta-button svg {
-    width: 20px;
-    height: 20px;
-  }
-
   .eyedetail-cta-button:hover,
   .eyedetail-cta-button:active {
-    background: #e9f4f3;
+    background: #155756;
   }
 
   .eyedetail-cta-button:focus-visible {
-    outline: 2px solid #ffffff;
+    outline: 2px solid #1b6b6a;
     outline-offset: 2px;
   }
 
@@ -1946,8 +1925,26 @@
     cursor: wait;
   }
 
+  .eyedetail-cta-title {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .eyedetail-cta-sub {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
   /* toast bar ke upar dikhe */
   .eyedetail-toast {
-    bottom: 90px;
+    bottom: 100px;
   }
 }

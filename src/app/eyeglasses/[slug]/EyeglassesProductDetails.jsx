@@ -1047,22 +1047,26 @@ export default function EyeglassesProductPage({
 
               {/* MOBILE: sticky Add to Cart (pincode box se pehle ruk jata hai) */}
 
-              <div className="eyedetail-cta-bar">
-                <div className="eyedetail-cta-price">
-                  <strong>₹{totalPrice.toLocaleString("en-IN")}</strong>
-                  <small>Inclusive of taxes</small>
-                </div>
+              {/* MOBILE: sticky Add to Cart (pincode box se pehle ruk jata hai) */}
 
-                <button
-                  type="button"
-                  className="eyedetail-cta-button"
-                  onClick={addToCart}
-                  disabled={adding}
-                >
-                  <CartIcon />
-                  {adding ? "Adding..." : "Add to Cart"}
-                </button>
-              </div>
+{/* MOBILE: sticky Add to Cart (pincode box se pehle ruk jata hai) */}
+
+<div className="eyedetail-cta-bar">
+  <button
+    type="button"
+    className="eyedetail-cta-button"
+    onClick={addToCart}
+    disabled={adding}
+  >
+    <span className="eyedetail-cta-title">
+      {adding ? "ADDING..." : "ADD TO CART"}
+    </span>
+    <span className="eyedetail-cta-sub">
+      {quantity} {quantity === 1 ? "ITEM" : "ITEMS"} · ₹
+      {totalPrice.toLocaleString("en-IN")}
+    </span>
+  </button>
+</div>
 
               {/* DELIVERY */}
 
