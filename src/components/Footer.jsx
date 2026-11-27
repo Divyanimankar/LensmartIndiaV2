@@ -37,19 +37,13 @@ export default function Footer() {
     setMessage("");
 
     try {
-      /*
-        TODO: apni API yahan connect karo, e.g.
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: cleanEmail }),
+      });
 
-        const res = await fetch("/api/subscribe", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: cleanEmail }),
-        });
-
-        if (!res.ok) throw new Error("Failed");
-      */
-
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      if (!res.ok) throw new Error("Failed");
 
       setStatus("success");
       setMessage("Thanks for subscribing!");
@@ -89,26 +83,33 @@ export default function Footer() {
             </p>
 
             <div className="footer-socials">
+              {/* TODO: apne asli social page ke URL daalo */}
               <a
-                href="#"
+                href="https://www.facebook.com/"
                 className="social-link"
                 aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaFacebookF />
               </a>
 
               <a
-                href="#"
+                href="https://www.instagram.com/"
                 className="social-link"
                 aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaInstagram />
               </a>
 
               <a
-                href="#"
+                href="https://www.pinterest.com/"
                 className="social-link"
                 aria-label="Pinterest"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaPinterestP />
               </a>
@@ -124,6 +125,7 @@ export default function Footer() {
               NEED HELP?
             </h4>
 
+            {/* TODO: asli phone number daalo */}
             <a
               href="tel:+919876543210"
               className="footer-contact-item"
@@ -226,20 +228,22 @@ export default function Footer() {
 
             <ul className="footer-links">
               <li>
-                <Link href="eyeglasses">Eyeglasses</Link>
+                <Link href="/collections/eyeglasses">Eyeglasses</Link>
               </li>
 
               <li>
-                <Link href="sunglasses">Sunglasses</Link>
+                <Link href="/collections/sunglasses">Sunglasses</Link>
               </li>
 
               <li>
-                <Link href="/all-products">Contact Lenses</Link>
+                <Link href="/collections/contact-lenses">Contact Lenses</Link>
               </li>
 
+              {/* Solutions: jab page ready ho tab ye line uncomment karke sahi URL daalo
               <li>
-                <Link href="">Solutions</Link>
+                <Link href="/solutions">Solutions</Link>
               </li>
+              */}
             </ul>
           </div>
 
@@ -249,7 +253,7 @@ export default function Footer() {
 
             <ul className="footer-links">
               <li>
-                <Link href="about-us">About Us</Link>
+                <Link href="/about-us">About Us</Link>
               </li>
 
               <li>
@@ -261,87 +265,42 @@ export default function Footer() {
               </li>
 
               <li>
-                <Link href="blog">Blogs</Link>
+                <Link href="/blog">Blogs</Link>
               </li>
             </ul>
           </div>
 
+
           {/* CONTACT LENSES */}
-          {/* <div className="footer-column">
+          <div className="footer-column">
             <h3 className="footer-heading">CONTACT LENSES</h3>
 
             <ul className="footer-links">
               <li>
-                <Link href="daily-lenses">Daily Lenses</Link>
+                <Link href="/lens-type/daily">Daily Lenses</Link>
               </li>
 
               <li>
-                <Link href="weekly-lenses">Weekly Lenses</Link>
+                <Link href="/lens-type/weekly">Weekly Lenses</Link>
               </li>
 
               <li>
-                <Link href="monthly-lenses">Monthly Lenses</Link>
+                <Link href="/lens-type/monthly">Monthly Lenses</Link>
               </li>
 
               <li>
-                <Link href="toric-lenses">
-                  Toric / Astigmatism
-                </Link>
+                <Link href="/lens-type/toric">Toric / Astigmatism</Link>
               </li>
 
               <li>
-                <Link href="multifocal-lenses">
-                  Multifocal / Presbyopia
-                </Link>
+                <Link href="/lens-type/multifocal">Multifocal / Presbyopia</Link>
               </li>
 
               <li>
-                <Link href="color-lenses">Color Lenses</Link>
-              </li>
-
-              <li>
-                <Link href="all-products">
-                  All contact lenses
-                </Link>
+                <Link href="/lens-type/color">Color Lenses</Link>
               </li>
             </ul>
-          </div> */}
-
-
-          {/* CONTACT LENSES */}
-<div className="footer-column">
-  <h3 className="footer-heading">CONTACT LENSES</h3>
-
-  <ul className="footer-links">
-    <li>
-      <Link href="/lens-type/daily">Daily Lenses</Link>
-    </li>
-
-    <li>
-      <Link href="/lens-type/weekly">Weekly Lenses</Link>
-    </li>
-
-    <li>
-      <Link href="/lens-type/monthly">Monthly Lenses</Link>
-    </li>
-
-    <li>
-      <Link href="/lens-type/toric">Toric / Astigmatism</Link>
-    </li>
-
-    <li>
-      <Link href="/lens-type/multifocal">Multifocal / Presbyopia</Link>
-    </li>
-
-    <li>
-      <Link href="/lens-type/color">Color Lenses</Link>
-    </li>
-
-    {/* <li>
-      <Link href="/all-products">All contact lenses</Link>
-    </li> */}
-  </ul>
-</div>
+          </div>
 
 
           {/* HELP */}
@@ -350,7 +309,7 @@ export default function Footer() {
 
             <ul className="footer-links">
               <li>
-                <Link href="how-to-order">How to order</Link>
+                <Link href="/how-to-order">How to order</Link>
               </li>
 
               <li>
@@ -370,9 +329,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-
-          
 
         </div>
 

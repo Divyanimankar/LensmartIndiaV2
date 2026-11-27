@@ -1,7 +1,7 @@
+
 "use client";
 
-/* The form stays a client component. All its labels are functional
-   (inputs, validation), so they live in code rather than in Shopify. */
+import { useState } from "react";
 
 const TOPICS = [
   { value: "order", label: "Order Status & Tracking" },
@@ -12,6 +12,63 @@ const TOPICS = [
 ];
 
 export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState({
+    type: "",
+    message: "",
+  });
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (loading) return;
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    try {
+      setLoading(true);
+      setStatus({ type: "", message: "" });
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Unable to send message.");
+      }
+
+      setStatus({
+        type: "success",
+        message: "Thank you! Your message has been sent successfully.",
+      });
+
+      form.reset();
+
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message: error.message || "Something went wrong. Please try again.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="contact-form-card">
 
@@ -20,7 +77,7 @@ export default function ContactForm() {
         <p>Fields marked with * are required.</p>
       </div>
 
-      <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+      <form className="contact-form" onSubmit={handleSubmit}>
 
         {/* FULL NAME */}
         <div className="contact-field contact-full-field">
@@ -36,6 +93,7 @@ export default function ContactForm() {
               name="name"
               placeholder="e.g. Rahul Sharma"
               autoComplete="name"
+              maxLength={100}
               required
             />
           </div>
@@ -55,6 +113,7 @@ export default function ContactForm() {
               name="email"
               placeholder="name@example.com"
               autoComplete="email"
+              maxLength={254}
               required
             />
           </div>
@@ -74,6 +133,7 @@ export default function ContactForm() {
               name="phone"
               placeholder="+91 98765 43210"
               autoComplete="tel"
+              maxLength={25}
             />
           </div>
         </div>
@@ -104,18 +164,41 @@ export default function ContactForm() {
             id="message"
             name="message"
             rows="6"
+            maxLength={5000}
             placeholder="Please describe your question..."
             required
           ></textarea>
         </div>
 
+        {/* STATUS */}
+        {status.message && (
+          <p
+            role="status"
+            aria-live="polite"
+            style={{
+              color: status.type === "success" ? "#16803c" : "#dc2626",
+              fontSize: "14px",
+              margin: "0",
+            }}
+          >
+            {status.message}
+          </p>
+        )}
+
         {/* SEND BUTTON */}
-        <button type="submit" className="contact-submit-button">
-          <span>SEND MESSAGE</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M5 12h14" />
-            <path d="m13 6 6 6-6 6" />
-          </svg>
+        <button
+          type="submit"
+          className="contact-submit-button"
+          disabled={loading}
+        >
+          <span>{loading ? "SENDING..." : "SEND MESSAGE"}</span>
+
+          {!loading && (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m13 6 6 6-6 6" />
+            </svg>
+          )}
         </button>
 
       </form>
