@@ -457,6 +457,41 @@ export default function ContactLensProductDetails({
   const [prescriptionMode, setPrescriptionMode] = useState("manual");
   const [prescriptionFile, setPrescriptionFile] = useState(null);
 
+  const [rxUrl, setRxUrl] = useState("");
+const [rxUploading, setRxUploading] = useState(false);
+const [rxError, setRxError] = useState("");
+
+const handleRxFile = async (file) => {
+  if (!file) return;
+
+  if (file.size > 5 * 1024 * 1024) {
+    setRxError("File must be under 5 MB.");
+    return;
+  }
+
+  setPrescriptionFile(file);
+  setRxUrl("");
+  setRxError("");
+  setRxUploading(true);
+
+  try {
+    const fd = new FormData();
+    fd.append("file", file);
+
+    const res = await fetch("/api/prescription", { method: "POST", body: fd });
+    const data = await res.json();
+
+    if (!res.ok || !data.url) throw new Error(data.error || "Upload failed");
+
+    setRxUrl(data.url);
+  } catch (error) {
+    setRxError(error.message || "Upload failed. Please try again.");
+    setPrescriptionFile(null);
+  } finally {
+    setRxUploading(false);
+  }
+};
+
   /* PRESCRIBER */
 
   const [prescriberOpen, setPrescriberOpen] = useState(false);
@@ -820,10 +855,16 @@ export default function ContactLensProductDetails({
 
     /* UPLOAD VALIDATION */
 
-    if (prescriptionMode === "upload" && !prescriptionFile) {
-      alert("Please upload your prescription.");
-      return;
-    }
+    if (prescriptionMode === "upload") {
+  if (rxUploading) {
+    alert("Your prescription is still uploading. Please wait a moment.");
+    return;
+  }
+  if (!prescriptionFile || !rxUrl) {
+    alert("Please upload your prescription.");
+    return;
+  }
+}
 
     setAdding(true);
 
@@ -856,7 +897,7 @@ export default function ContactLensProductDetails({
         leftEye: buildEye(left, leftBoxes),
         prescriber: { clinicName, doctorName, phone, city },
         prescriptionMode,
-        prescriptionFileName: prescriptionFile ? prescriptionFile.name : "",
+        prescriptionUrl: prescriptionMode === "upload" ? rxUrl : "",
         link: `/contact-lenses/${product.slug}`,
       };
 
@@ -1431,9 +1472,7 @@ export default function ContactLensProductDetails({
                           type="file"
                           id="prescription-file"
                           accept=".jpg,.jpeg,.png,.pdf"
-                          onChange={(event) =>
-                            setPrescriptionFile(event.target.files?.[0] || null)
-                          }
+                          onChange={(event) => handleRxFile(event.target.files?.[0] || null)}
                         />
 
                         <label htmlFor="prescription-file">
@@ -1444,6 +1483,13 @@ export default function ContactLensProductDetails({
                           <strong>Upload Prescription</strong>
                           <span>JPG, PNG or PDF</span>
                         </label>
+                        {rxError && (
+  <p style={{ color: "#dc2626", fontSize: "13px", marginTop: "8px" }}>
+    {rxError}
+  </p>
+)}
+
+
                       </div>
                     ) : (
                       <div className="clp-upload-done">
@@ -1455,8 +1501,12 @@ export default function ContactLensProductDetails({
                           </span>
 
                           <div className="clp-upload-done-text">
-                            <strong>You have uploaded your prescription</strong>
-                            <p>{prescriptionFile.name}</p>
+                            <strong>
+  {rxUploading
+    ? "Uploading your prescription..."
+    : "You have uploaded your prescription"}
+</strong>
+<p>{prescriptionFile.name}</p>
                           </div>
                         </div>
 
@@ -1464,7 +1514,11 @@ export default function ContactLensProductDetails({
                           <button
                             type="button"
                             className="clp-upload-remove"
-                            onClick={() => setPrescriptionFile(null)}
+                            onClick={() => {
+  setPrescriptionFile(null);
+  setRxUrl("");
+  setRxError("");
+}}
                           >
                             Remove and add new
                           </button>
