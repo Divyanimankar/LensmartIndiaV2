@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { createPortal } from "react-dom";
 import "../../../styles/sunglassesProductDetails.css";
 import SimilarProduct from "@/components/SimilarProduct";
 import BrandProduct from "@/components/BrandProduct";
@@ -301,6 +302,60 @@ export default function SunglassesProductPage({
   }, [toast]);
 
   /* =========================================================
+     STICKY ADD TO CART (mobile)
+     CSS sticky kabhi kabhi client-side navigation par kaam nahi
+     karta, isliye bar ko JS se fixed/docked karte hain.
+  ========================================================= */
+
+  const ctaAnchorRef = useRef(null);
+  const [ctaFixed, setCtaFixed] = useState(false);
+
+  useEffect(() => {
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const anchor = ctaAnchorRef.current;
+
+      if (!anchor || window.innerWidth > 768) {
+        setCtaFixed(false);
+        return;
+      }
+
+      /* anchor ka neeche ka hissa screen ke neeche hai -> bar screen par chipki rahe */
+      setCtaFixed(anchor.getBoundingClientRect().bottom > window.innerHeight);
+    };
+
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+
+    /* page load hone par layout badalta hai (images etc.), isliye dobara check */
+    const timers = [60, 250, 700, 1500].map((ms) => setTimeout(update, ms));
+
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    window.addEventListener("load", schedule);
+
+    let observer;
+    if (typeof ResizeObserver !== "undefined") {
+      observer = new ResizeObserver(schedule);
+      observer.observe(document.body);
+    }
+
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      timers.forEach(clearTimeout);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("load", schedule);
+      if (observer) observer.disconnect();
+    };
+  }, [product]);
+
+  /* =========================================================
      NOT FOUND
   ========================================================= */
 
@@ -571,6 +626,26 @@ export default function SunglassesProductPage({
     L: "Large",
     XL: "Extra Large",
   };
+
+  /* sticky bar (mobile): scroll ke time portal se body me fixed, warna apni jagah */
+  const ctaBar = (
+    <div className={`sundetail-cta-bar${ctaFixed ? " sundetail-cta-bar--fixed" : ""}`}>
+      <button
+        type="button"
+        className="sundetail-cta-button"
+        onClick={addToCart}
+        disabled={adding}
+      >
+        <span className="sundetail-cta-title">
+          {adding ? "ADDING..." : "ADD TO CART"}
+        </span>
+        <span className="sundetail-cta-sub">
+          {quantity} {quantity === 1 ? "ITEM" : "ITEMS"} · ₹
+          {totalPrice.toLocaleString("en-IN")}
+        </span>
+      </button>
+    </div>
+  );
 
   /* =========================================================
      RETURN
@@ -853,22 +928,9 @@ export default function SunglassesProductPage({
 
               {/* MOBILE: sticky Add to Cart (pincode box se pehle ruk jata hai) */}
 
-<div className="sundetail-cta-bar">
-  <button
-    type="button"
-    className="sundetail-cta-button"
-    onClick={addToCart}
-    disabled={adding}
-  >
-    <span className="sundetail-cta-title">
-      {adding ? "ADDING..." : "ADD TO CART"}
-    </span>
-    <span className="sundetail-cta-sub">
-      {quantity} {quantity === 1 ? "ITEM" : "ITEMS"} · ₹
-      {totalPrice.toLocaleString("en-IN")}
-    </span>
-  </button>
-</div>
+              <div className="sundetail-cta-anchor" ref={ctaAnchorRef}>
+                {ctaFixed ? createPortal(ctaBar, document.body) : ctaBar}
+              </div>
 
               {/* DELIVERY */}
 

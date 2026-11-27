@@ -1866,31 +1866,36 @@
   }
 }
 /* =========================================================
-   MOBILE — STICKY "ADD TO CART"
-   Left: total price | Right: Add to Cart button.
-   Pincode box se pehle ruk jata hai.
-   Is block ko file ke SABSE NEECHE rakho.
-========================================================= */
-/* =========================================================
-   MOBILE — STICKY "ADD TO CART"
-   White strip, green button ke charo side white gap
+   MOBILE - STICKY "ADD TO CART"
+   White strip + teal button (ADD TO CART / ITEM - price).
+   Bar JS se fixed hota hai (portal) aur pincode box se pehle apni jagah dock.
    Is block ko file ke SABSE NEECHE rakho.
 ========================================================= */
 
 @media (max-width: 768px) {
-  /* white background, button ke charo side barabar gap */
+  /* bar ki jagah roki rehti hai, taaki fixed hone par layout na hile */
+  .eyedetail-cta-anchor {
+    min-height: calc(78px + env(safe-area-inset-bottom, 0px));
+    margin: 0 0 20px;
+  }
+
   .eyedetail-cta-bar {
-    position: sticky;
-    bottom: 0;
-    z-index: 30;
+    z-index: 900;
     display: block;
-    margin: 4px -16px 20px;
+    margin: 0 -16px;
     padding: 12px 12px calc(12px + env(safe-area-inset-bottom, 0px));
     background: #ffffff;
     box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
   }
 
-  /* green button */
+  .eyedetail-cta-bar--fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+  }
+
   .eyedetail-cta-button {
     width: 100%;
     min-height: 54px;
