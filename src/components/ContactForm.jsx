@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -13,28 +12,29 @@ const TOPICS = [
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  const [phone, setPhone] = useState("");
 
+  // type: "" | "success" | "error"
   const [status, setStatus] = useState({
     type: "",
     message: "",
   });
 
-  // Success button will remain visible for 5 seconds
+  // "Message sent successfully!" 2 second baad apne aap hat jaye
   useEffect(() => {
-    if (!success) return;
+    if (status.type !== "success") return;
 
     const timer = setTimeout(() => {
-      setSuccess(false);
-    }, 5000);
+      setStatus({ type: "", message: "" });
+    }, 2000);
 
     return () => clearTimeout(timer);
-  }, [success]);
+  }, [status]);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (loading || success) return;
+    if (loading) return;
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -42,10 +42,19 @@ export default function ContactForm() {
     const data = {
       name: formData.get("name"),
       email: formData.get("email"),
-      phone: formData.get("phone"),
+      phone: phone,
       subject: formData.get("subject"),
       message: formData.get("message"),
     };
+
+    // Phone optional hai, par agar daala hai to exactly 10 digits hone chahiye
+    if (phone && phone.length !== 10) {
+      setStatus({
+        type: "error",
+        message: "Please enter a valid 10-digit mobile number.",
+      });
+      return;
+    }
 
     try {
       setLoading(true);
@@ -62,22 +71,22 @@ export default function ContactForm() {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(
-          result.message || "Unable to send message."
-        );
+        throw new Error(result.message || "Unable to send message.");
       }
 
-      // Reset form after successful submission
+      // Form reset
       form.reset();
+      setPhone("");
 
-      // Show success text inside the button
-      setSuccess(true);
-
+      // Button ke neeche success message (2 second ke liye)
+      setStatus({
+        type: "success",
+        message: "Message sent successfully!",
+      });
     } catch (error) {
       setStatus({
         type: "error",
-        message:
-          error.message || "Something went wrong. Please try again.",
+        message: error.message || "Something went wrong. Please try again.",
       });
     } finally {
       setLoading(false);
@@ -152,9 +161,16 @@ export default function ContactForm() {
               type="tel"
               id="phone"
               name="phone"
-              placeholder="+91 98765 43210"
-              autoComplete="tel"
-              maxLength={25}
+              placeholder="98765 43210"
+              autoComplete="tel-national"
+              inputMode="numeric"
+              maxLength={10}
+              pattern="[0-9]{10}"
+              title="Enter a 10-digit mobile number"
+              value={phone}
+              onChange={(e) =>
+                setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))
+              }
             />
           </div>
         </div>
@@ -193,43 +209,30 @@ export default function ContactForm() {
           ></textarea>
         </div>
 
-        {/* ERROR MESSAGE ONLY */}
-        {status.type === "error" && status.message && (
-          <p
-            role="alert"
-            aria-live="polite"
-            style={{
-              color: "#dc2626",
-              fontSize: "14px",
-              margin: "0",
-            }}
-          >
-            {status.message}
-          </p>
-        )}
-
-        {/* SEND BUTTON */}
+        {/* SEND BUTTON (hamesha same rehta hai) */}
         <button
-  type="submit"
-  className={`contact-submit-button ${success ? "contact-submit-success" : ""}`}
-  disabled={loading || success}
-  aria-live="polite"
->
-  <span>
-    {loading
-      ? "SENDING..."
-      : success
-      ? "SEND SUCCESSFULLY !"
-      : "SEND MESSAGE"}
-  </span>
+          type="submit"
+          className="contact-submit-button"
+          disabled={loading}
+        >
+          <span>{loading ? "SENDING..." : "SEND MESSAGE"}</span>
 
-  {!loading && !success && (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M5 12h14" />
-      <path d="m13 6 6 6-6 6" />
-    </svg>
-  )}
-</button>
+          {!loading && (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14" />
+              <path d="m13 6 6 6-6 6" />
+            </svg>
+          )}
+        </button>
+
+        {/* SUCCESS / ERROR MESSAGE (button ke neeche, newsletter jaisa) */}
+        <p
+          className={`contact-form-message ${status.type}`}
+          role="status"
+          aria-live="polite"
+        >
+          {status.message}
+        </p>
 
       </form>
     </div>

@@ -881,3 +881,20 @@
 .contact-submit-button.contact-submit-success span {
   color: #ffffff !important;
 }
+
+.contact-form-message {
+  grid-column: 1 / -1;
+  min-height: 20px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.contact-form-message.success {
+  color: #1b6b6a;
+}
+
+.contact-form-message.error {
+  color: #dc2626;
+}

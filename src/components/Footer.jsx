@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   FaFacebookF,
@@ -21,6 +21,18 @@ export default function Footer() {
   // "idle" | "loading" | "success" | "error"
   const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
+
+  // "Thanks for subscribing!" 2 second baad apne aap hat jaye
+  useEffect(() => {
+    if (status !== "success") return;
+
+    const timer = setTimeout(() => {
+      setStatus("idle");
+      setMessage("");
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [status]);
 
   const handleSubscribe = async (event) => {
     event.preventDefault();
