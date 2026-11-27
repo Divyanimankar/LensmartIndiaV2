@@ -868,3 +868,16 @@
     transition: none !important;
   }
 }
+/* SUCCESS BUTTON - KEEP ORIGINAL HIGHLIGHT */
+.contact-submit-button.contact-submit-success,
+.contact-submit-button.contact-submit-success:disabled {
+  background: #1b6b6a !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  cursor: default !important;
+  box-shadow: 0 4px 12px rgba(27, 107, 106, 0.18);
+}
+
+.contact-submit-button.contact-submit-success span {
+  color: #ffffff !important;
+}

@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const TOPICS = [
   { value: "order", label: "Order Status & Tracking" },
@@ -13,15 +13,28 @@ const TOPICS = [
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
   const [status, setStatus] = useState({
     type: "",
     message: "",
   });
 
+  // Success button will remain visible for 5 seconds
+  useEffect(() => {
+    if (!success) return;
+
+    const timer = setTimeout(() => {
+      setSuccess(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [success]);
+
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (loading) return;
+    if (loading || success) return;
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -49,20 +62,22 @@ export default function ContactForm() {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.message || "Unable to send message.");
+        throw new Error(
+          result.message || "Unable to send message."
+        );
       }
 
-      setStatus({
-        type: "success",
-        message: "Thank you! Your message has been sent successfully.",
-      });
-
+      // Reset form after successful submission
       form.reset();
+
+      // Show success text inside the button
+      setSuccess(true);
 
     } catch (error) {
       setStatus({
         type: "error",
-        message: error.message || "Something went wrong. Please try again.",
+        message:
+          error.message || "Something went wrong. Please try again.",
       });
     } finally {
       setLoading(false);
@@ -82,11 +97,13 @@ export default function ContactForm() {
         {/* FULL NAME */}
         <div className="contact-field contact-full-field">
           <label htmlFor="name">Full Name *</label>
+
           <div className="contact-input">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="8" r="4" />
               <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
             </svg>
+
             <input
               type="text"
               id="name"
@@ -102,11 +119,13 @@ export default function ContactForm() {
         {/* EMAIL */}
         <div className="contact-field">
           <label htmlFor="email">Email Address *</label>
+
           <div className="contact-input">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <rect x="3" y="5" width="18" height="14" rx="2" />
               <path d="m3 7 9 6 9-6" />
             </svg>
+
             <input
               type="email"
               id="email"
@@ -122,11 +141,13 @@ export default function ContactForm() {
         {/* PHONE */}
         <div className="contact-field">
           <label htmlFor="phone">Phone Number</label>
+
           <div className="contact-input">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <rect x="7" y="2.5" width="10" height="19" rx="2" />
               <path d="M11 18.5h2" />
             </svg>
+
             <input
               type="tel"
               id="phone"
@@ -151,6 +172,7 @@ export default function ContactForm() {
                   value={t.value}
                   required={i === 0}
                 />
+
                 <span>{t.label}</span>
               </label>
             ))}
@@ -160,6 +182,7 @@ export default function ContactForm() {
         {/* MESSAGE */}
         <div className="contact-field contact-full-field">
           <label htmlFor="message">Message *</label>
+
           <textarea
             id="message"
             name="message"
@@ -170,13 +193,13 @@ export default function ContactForm() {
           ></textarea>
         </div>
 
-        {/* STATUS */}
-        {status.message && (
+        {/* ERROR MESSAGE ONLY */}
+        {status.type === "error" && status.message && (
           <p
-            role="status"
+            role="alert"
             aria-live="polite"
             style={{
-              color: status.type === "success" ? "#16803c" : "#dc2626",
+              color: "#dc2626",
               fontSize: "14px",
               margin: "0",
             }}
@@ -187,19 +210,26 @@ export default function ContactForm() {
 
         {/* SEND BUTTON */}
         <button
-          type="submit"
-          className="contact-submit-button"
-          disabled={loading}
-        >
-          <span>{loading ? "SENDING..." : "SEND MESSAGE"}</span>
+  type="submit"
+  className={`contact-submit-button ${success ? "contact-submit-success" : ""}`}
+  disabled={loading || success}
+  aria-live="polite"
+>
+  <span>
+    {loading
+      ? "SENDING..."
+      : success
+      ? "SEND SUCCESSFULLY !"
+      : "SEND MESSAGE"}
+  </span>
 
-          {!loading && (
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 12h14" />
-              <path d="m13 6 6 6-6 6" />
-            </svg>
-          )}
-        </button>
+  {!loading && !success && (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 12h14" />
+      <path d="m13 6 6 6-6 6" />
+    </svg>
+  )}
+</button>
 
       </form>
     </div>
