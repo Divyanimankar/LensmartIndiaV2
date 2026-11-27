@@ -184,6 +184,7 @@ function linesFor(item) {
     size: item.selectedSize || "",
     mode: item.prescriptionMode || "",
     file: item.prescriptionFileName || "",
+    fileUrl: item.prescriptionFileUrl || "",
     prescriber: item.prescriber || null,
   });
 
@@ -218,6 +219,7 @@ function linesFor(item) {
             ["BC", manual ? eye.bc : ""],
             ["DIA", manual ? eye.dia : ""],
             ["Prescription", manual ? "" : "Will be verified by LensMartIndia"],
+            ["Prescription file", manual ? "" : item.prescriptionFileUrl],
             ["Prescriber", prescriber],
           ]),
           ...hidden,
@@ -227,7 +229,7 @@ function linesFor(item) {
 
     if (!lines.length) return { error: "Please select at least one eye." };
 
-    return { set, type, lines, replaceKey: { type, id: item.id } };
+    return { set, type, lines, contact: true, productId: item.id };
   }
 
   /* frames: ek line, colour / size ke saath */
@@ -353,6 +355,7 @@ function mapCart(cart) {
         prescriber: meta.prescriber || {},
         prescriptionMode: meta.mode || "manual",
         prescriptionFileName: meta.file || "",
+        prescriptionFileUrl: meta.fileUrl || "",
         quantity:
           (rightEye.selected ? rightEye.quantity : 0) +
           (leftEye.selected ? leftEye.quantity : 0),
@@ -532,19 +535,61 @@ async function actionAdd(cartId, item) {
     return { cart, addedKey: built.set };
   }
 
-  /* contact lens: wahi product dobara add ho to purani entry hata do */
-  if (built.replaceKey) {
-    const oldLineIds = cart.lines.nodes
-      .filter((line) => {
-        const attrs = attrMap(line);
-        if (attrs._type !== built.replaceKey.type) return false;
-        return String(readMeta(attrs).id) === String(built.replaceKey.id);
-      })
-      .map((line) => line.id);
+  /* contact lens: alag power = alag product (replace nahi hota).
+     bilkul same power/BC/DIA/eye wala set pehle se ho to usi ke boxes badhao */
+  if (built.contact) {
+    const sig = (rows) =>
+      rows
+        .map((row) => {
+          const a = row.attrs;
+          return [
+            row.merchandiseId,
+            a.Eye, a.Power, a.CYL, a.Axis, a.Add, a.BC, a.DIA,
+            a["Prescription file"],
+          ]
+            .map((v) => text(v))
+            .join("|");
+        })
+        .sort()
+        .join("##");
 
-    if (oldLineIds.length) {
-      const data = await shopify(M_REMOVE, { cartId: cart.id, lineIds: oldLineIds });
-      cart = unwrap(data.cartLinesRemove) || cart;
+    const newSig = sig(
+      built.lines.map((line) => {
+        const a = {};
+        line.attributes.forEach(({ key, value }) => (a[key] = value));
+        return { merchandiseId: line.merchandiseId, attrs: a };
+      }),
+    );
+
+    /* cart ke lines ko _set ke hisaab se group karo */
+    const sets = new Map();
+    cart.lines.nodes.forEach((line) => {
+      const attrs = attrMap(line);
+      if (attrs._type !== built.type || !attrs.Eye) return;
+      if (String(readMeta(attrs).id) !== String(built.productId)) return;
+      const k = attrs._set || line.id;
+      if (!sets.has(k)) sets.set(k, []);
+      sets.get(k).push({ line, attrs, merchandiseId: line.merchandise?.id });
+    });
+
+    for (const [setKey, rows] of sets) {
+      if (sig(rows) !== newSig) continue;
+
+      /* same set mila -> har aankh ki boxes jodo */
+      const updates = rows
+        .map((row) => {
+          const eye = String(row.attrs.Eye).startsWith("Right") ? "Right" : "Left";
+          const add = built.lines.find((l) =>
+            l.attributes.some((x) => x.key === "Eye" && x.value.startsWith(eye)),
+          );
+          return {
+            id: row.line.id,
+            quantity: Math.min(99, row.line.quantity + (add?.quantity || 0)),
+          };
+        });
+
+      const data = await shopify(M_UPDATE, { cartId: cart.id, lines: updates });
+      return { cart: unwrap(data.cartLinesUpdate), addedKey: setKey };
     }
   } else {
     /* frames: same variant pehle se cart me ho to quantity badhao */
